@@ -1,0 +1,23 @@
+@import '../../../../styles/variables.scss';
+
+.status {
+	display: flex;
+	align-items: center;
+	width: fit-content;
+	height: 30px;
+	padding: 0 20px;
+	@include fontStyle(12px, 500, 14px);
+	border-radius: 24px;
+	// &_inactive {
+	// 	background-color: $colorGrey200;
+	// 	color: $colorGrey500;
+	// }
+	// &_active {
+	// 	background-color: $colorGreen100;
+	// 	color: $colorGrey700;
+	// }
+	// &_finished {
+	// 	background-color: $colorGrey500;
+	// 	color: $colorGrey200;
+	// }
+}

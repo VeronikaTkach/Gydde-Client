@@ -1,0 +1,12 @@
+@use '../../../styles/variables.scss' as v;
+
+.logout {
+	background-color: transparent;
+	@include v.fontStyle(16px, 700);
+	display: flex;
+	align-items: center;
+	&::before {
+		font-size: 24px;
+		margin-right: 8px;
+	}
+}

@@ -1,0 +1,16 @@
+@use '../../../styles/variables.scss' as v;
+@use '../../ui/buttons/Button/style.module.scss' as *;
+@use '../../profile/Accounts/style.module.scss' as *;
+
+.button {
+	@extend .button;
+	@extend .account;
+	background-color: v.$colorWhite;
+	&::before {
+		content: url(../../../assets/images/metamask.svg);
+	}
+}
+
+.connected {
+	@extend .account__connected;
+}

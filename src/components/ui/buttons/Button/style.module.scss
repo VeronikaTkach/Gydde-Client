@@ -1,0 +1,10 @@
+.button {
+	cursor: pointer;
+	&_icon {
+		@extend .button;
+		background-color: transparent;
+	}
+	&:disabled {
+
+	}
+}

@@ -1,0 +1,16 @@
+@import '../../../../styles/variables.scss';
+
+.experience {
+	background-color: $colorPurple300;
+	display: flex;
+	align-items: center;
+	width: fit-content;
+	@include fontStyle(12px, 700, 14px);
+	color: $colorWhite;
+	border-radius: 24px;
+	&::before {
+		content: url(../../../../assets/icons/lightning.svg);
+		@include width-height(16px);
+		margin-right: 2px;
+	}
+}

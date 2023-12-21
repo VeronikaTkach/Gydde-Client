@@ -1,0 +1,21 @@
+@import '../../../../styles/variables.scss';
+
+.path {
+	display: flex;
+	align-items: center;
+	gap: 30px;
+	width: fit-content;
+	padding: 0 24px;
+	@include fontStyle(12px, 500, 14px);
+	border-radius: 24px;
+	&__step {
+		height: 46px;
+		&_done {
+		}
+	}
+	&__arrow {
+		&::before {
+			font-size: 18px;
+		}
+	}
+}

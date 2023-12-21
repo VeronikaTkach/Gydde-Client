@@ -1,0 +1,55 @@
+@import '../../../../styles/variables.scss';
+
+.task {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+	min-width: 580px;
+	width: fit-content;
+	height: 102px;
+	padding: 0 24px;
+	border-radius: 24px;
+	&__twitter {
+		&_icon {
+			&::before {
+				content: url(../../../../assets/icons/twitter.svg);
+			}
+		}
+	}
+	&__discord {
+		&_icon {
+			&::before {
+				content: url(../../../../assets/icons/discord.svg);
+			}
+		}
+	}
+	&__telegram {
+		&_icon {
+			&::before {
+				content: url(../../../../assets/icons/twitter.svg);
+			}
+		}
+	}
+	&__type {
+		@include fontStyle(18px, 500, 22px);
+	}
+	&__awards {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		&::before {
+			content: '';
+			background: url(../../../../assets/icons/lightning.svg);
+			width: 36px;
+			height: 36px;
+			background-repeat: no-repeat;
+			background-size: 36px;
+			display: block;
+		}
+		&_xp {
+			@include fontStyle(16px, 700, 20px);
+		}
+	}
+}

@@ -1,0 +1,41 @@
+@import '../../../../styles/variables.scss';
+
+.level {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	width: fit-content;
+	height: 30px;
+	padding: 0 20px;
+	@include fontStyle(12px, 500, 14px);
+	// color: $colorGrey700;
+	border-radius: 24px;
+	&_beginner {
+			// background-color: $colorOrange100;
+		&::before {
+			content: '';
+			background-image: url(../../../../assets/icons/level_beginner.svg);
+			@include width-height(16px, 14px);
+			background-size: 16px 14px;
+		}
+	}
+	&_medium {
+		// background-color: $colorOrange200;
+		&::before {
+			content: '';
+			background-image: url(../../../../assets/icons/level_medium.svg);
+			@include width-height(16px, 14px);
+			background-size: 16px 14px;
+		}
+	}
+	&_expert {
+		// color: $colorWhite;
+		// background-color: $colorRed300;
+		&::before {
+			content: '';
+			background-image: url(../../../../assets/icons/level_expert.svg);
+			@include width-height(16px, 14px);
+			background-size: 16px 14px;
+		}
+	}
+}

@@ -1,0 +1,57 @@
+//colors
+$colorWhite: #ffffff;
+$colorBlack: #000;
+
+//gradient
+
+//sizes
+$sizeContainerLarge: 1920px;
+$sizeContainer: 1400px;
+$sizeExtraLarge: 1200px;
+$sizeLarge: 950px;
+$sizeMedium: 786px;
+$sizeSmall: 576px;
+
+//shadow
+
+//mixins
+@mixin fontStyle($size: 16px, $weight: 400, $height: normal) {
+	font-size: $size;
+	font-weight: $weight;
+	line-height: $height;
+}
+
+@mixin width-height($width, $height: $width) {
+	width: $width;
+	height: $height;
+}
+
+@mixin borderStyle($border, $borderRadius) {
+	border: $border;
+	border-radius: $borderRadius;
+}
+
+@mixin flex-grid($display, $direction, $justify, $align) {
+	display: $display;
+	flex-direction: $direction;
+	justify-content: $justify;
+	align-items: $align;
+}
+
+@mixin flexCenter {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+@mixin flexColumnCenter {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+@mixin textCenter {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}

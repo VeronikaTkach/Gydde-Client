@@ -1,0 +1,20 @@
+@import '../../styles/variables.scss';
+
+.wrapper {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	padding: 30px 30px 0;
+	&__container {
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+		max-width: $sizeContainer;
+		width: 100%;
+		min-height: 100vh;
+	}
+	&__authorization {
+		position: absolute;
+		margin: auto;
+	}
+}

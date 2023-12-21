@@ -1,0 +1,32 @@
+@import '../../../../styles/variables.scss';
+
+.chain {
+	// background-color: $colorQuaternaryGreen300;
+	display: flex;
+	align-items: center;
+	height: 30px;
+	width: fit-content;
+	padding: 0 20px;
+	gap: 10px;
+	@include fontStyle(12px, 500, 14px);
+	// color: $colorQuaternaryGreen700;
+	border-radius: 24px;
+	&_on {
+		&::before {
+			content: '';
+			background-image: url(../../../../assets/icons/onchain.svg);
+			@include width-height(20px);
+			background-size: 20px;
+			border-radius: 50%;
+		}
+	}
+	&_off {
+		&::before {
+			content: '';
+			background-image: url(../../../../assets/icons/offchain.svg);
+			@include width-height(20px);
+			background-size: 20px;
+			border-radius: 50%;
+		}
+	}
+}
