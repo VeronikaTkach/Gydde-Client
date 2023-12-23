@@ -6,12 +6,19 @@ import { Input } from '../../ui/Input';
 import s from './style.module.scss';
 
 export const mailValidation =
-  '/^(([^<>()[].,;:s@"]+(.[^<>()[].,;:s@"]+)*)|(".+"))@(([^<>()[].,;:s@"]+.)+[^<>()[].,;:s@"]{2,})$/iu';
-export const passwordValidation = /^[A-Za-z0-9_\-.@]+$/;
+  /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+export const nicknameValidation = /^[A-Za-z0-9_\-.@]+$/;
+export const passwordValidation = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^\w\s])/;
 
 export function FormRegister() {
   const dispatch = useDispatch();
-  const { register, setValue, handleSubmit } = useForm({
+  const {
+    register,
+    setValue,
+    getValues,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     mode: 'all',
     defaultValues: {
       isRemember: false,
@@ -28,33 +35,66 @@ export function FormRegister() {
       <Input
         className={s.form__field}
         placeholder={'Enter email address'}
-        nameField={'email'}
-        setValue={setValue}
-        register={register}
-        validation={{
-          required: 'Required!',
-          pattern: mailValidation,
-          minLength: 6,
-        }}
-      />
-      <Input
-        className={s.form__field}
-        placeholder={'Enter nickname'}
-        nameField={'first_name'}
+        name={'email'}
         setValue={setValue}
         register={register}
         validation={{
           required: 'Required!',
           pattern: {
-            value: passwordValidation,
+            value: mailValidation,
+            message: 'Enter a valid email address',
+          },
+          minLength: {
+            value: 6,
+            message: 'Email must be at least 6 characters long',
+          },
+        }}
+      />
+      {errors.email && <p className={s.form__error}>{errors.email.message}</p>}
+      <Input
+        className={s.form__field}
+        placeholder={'Enter nickname'}
+        name={'userName'}
+        setValue={setValue}
+        register={register}
+        validation={{
+          required: 'Required!',
+          pattern: {
+            value: nicknameValidation,
           },
           maxLength: 20,
         }}
       />
+      {errors.userName && <p className={s.form__error}>{errors.userName.message}</p>}
       <Input
         className={s.form__field}
-        placeholder={'Enter  new password'}
-        nameField={'password'}
+        placeholder={'Enter password'}
+        name={'password'}
+        setValue={setValue}
+        register={register}
+        type={'password'}
+        validation={{
+          required: 'Required!',
+          pattern: {
+            value: passwordValidation,
+            message:
+              'The password must contain Latin characters, special characters, numbers',
+          },
+          minLength: {
+            value: 8,
+            message: 'Password must be at least 8 characters long',
+          },
+          maxLength: {
+            value: 30,
+            message: 'Password must be no more than 30 characters',
+          },
+        }}
+      />
+      {errors.password && <p className={s.form__error}>{errors.password.message}</p>}
+      <Input
+        className={s.form__field}
+        placeholder={'Confirm password'}
+        name={'confirmPassword'}
         setValue={setValue}
         register={register}
         type={'password'}
@@ -63,9 +103,20 @@ export function FormRegister() {
           pattern: {
             value: passwordValidation,
           },
-          maxLength: 20,
+          minLength: {
+            value: 8,
+            message: 'Password must be at least 8 characters long',
+          },
+          maxLength: {
+            value: 30,
+            message: 'Password must be no more than 30 characters',
+          },
+          validate: (value) => value === getValues('password') || 'Passwords don\'t match'
         }}
       />
+      {errors.confirmPassword && (
+        <p className={s.form__error}>{errors.confirmPassword.message}</p>
+      )}
       <Button className={s.form__btnSubmit} type='submit'>
         Sign up
       </Button>
