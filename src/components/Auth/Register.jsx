@@ -10,7 +10,7 @@ export function Register({ changeAuthorizationForm }) {
           By signing up to Cryptocaps, you agree to Terms of Service and Privacy Policy
         </div>
       </div>
-      <FormRegister style={s.form} inputStyle={s.form__input} />
+      <FormRegister />
       <button className={s.auth__btn} onClick={() => changeAuthorizationForm(true)}>
         Log in
       </button>
