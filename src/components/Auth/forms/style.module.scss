@@ -19,6 +19,9 @@
 		align-self: flex-end;
 		margin-top: -40px;
 	}
+	&__error {
+		color: red;
+	}
 	&__btnSubmit {
 		padding: 20px 80px;
 		font-size: 20px;
