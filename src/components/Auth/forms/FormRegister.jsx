@@ -3,12 +3,12 @@ import { useForm } from 'react-hook-form';
 import { showAuthorizationWindow } from '../../../core/store/slices/windowStateSlice';
 import { Button } from '../../ui/buttons/Button';
 import { Input } from '../../ui/Input';
+import {
+  mailValidation,
+  nicknameValidation,
+  passwordValidation,
+} from '../validations/registerValidation';
 import s from './style.module.scss';
-
-export const mailValidation =
-  /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
-export const nicknameValidation = /^[A-Za-z0-9_\-.@]+$/;
-export const passwordValidation = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^\w\s])/;
 
 export function FormRegister() {
   const dispatch = useDispatch();
@@ -25,6 +25,9 @@ export function FormRegister() {
     },
   });
 
+  passwordValidation.validate = (value) =>
+    value === getValues('password') || 'Passwords don\'t match';
+
   const onSubmit = (data, e) => {
     e.preventDefault();
     dispatch(showAuthorizationWindow(false));
@@ -38,17 +41,7 @@ export function FormRegister() {
         name={'email'}
         setValue={setValue}
         register={register}
-        validation={{
-          required: 'Required!',
-          pattern: {
-            value: mailValidation,
-            message: 'Enter a valid email address',
-          },
-          minLength: {
-            value: 6,
-            message: 'Email must be at least 6 characters long',
-          },
-        }}
+        validation={mailValidation}
       />
       {errors.email && <p className={s.form__error}>{errors.email.message}</p>}
       <Input
@@ -57,13 +50,7 @@ export function FormRegister() {
         name={'userName'}
         setValue={setValue}
         register={register}
-        validation={{
-          required: 'Required!',
-          pattern: {
-            value: nicknameValidation,
-          },
-          maxLength: 20,
-        }}
+        validation={nicknameValidation}
       />
       {errors.userName && <p className={s.form__error}>{errors.userName.message}</p>}
       <Input
@@ -73,22 +60,7 @@ export function FormRegister() {
         setValue={setValue}
         register={register}
         type={'password'}
-        validation={{
-          required: 'Required!',
-          pattern: {
-            value: passwordValidation,
-            message:
-              'The password must contain Latin characters, special characters, numbers',
-          },
-          minLength: {
-            value: 8,
-            message: 'Password must be at least 8 characters long',
-          },
-          maxLength: {
-            value: 30,
-            message: 'Password must be no more than 30 characters',
-          },
-        }}
+        validation={passwordValidation}
       />
       {errors.password && <p className={s.form__error}>{errors.password.message}</p>}
       <Input
@@ -98,21 +70,7 @@ export function FormRegister() {
         setValue={setValue}
         register={register}
         type={'password'}
-        validation={{
-          required: 'Required!',
-          pattern: {
-            value: passwordValidation,
-          },
-          minLength: {
-            value: 8,
-            message: 'Password must be at least 8 characters long',
-          },
-          maxLength: {
-            value: 30,
-            message: 'Password must be no more than 30 characters',
-          },
-          validate: (value) => value === getValues('password') || 'Passwords don\'t match'
-        }}
+        validation={passwordValidation}
       />
       {errors.confirmPassword && (
         <p className={s.form__error}>{errors.confirmPassword.message}</p>
