@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { Button } from '../../ui/buttons/Button';
 import { Google, Telegram, Twitter } from '../../profile/Accounts';
 import { Input } from '../../ui/Input';
-import { mailValidation, passwordValidation } from '../validations/regValidation';
+import { mailRegExp, passwordRegExp } from '../validations/registerValidation';
 import s from './style.module.scss';
 
 export function FormAuthorization() {
@@ -27,7 +27,7 @@ export function FormAuthorization() {
         register={register}
         validation={{
           required: 'Required!',
-          pattern: mailValidation,
+          pattern: mailRegExp,
           minLength: 6,
         }}
       />
@@ -40,7 +40,7 @@ export function FormAuthorization() {
         type={'password'}
         validation={{
           required: 'Required!',
-          pattern: { value: passwordValidation },
+          pattern: { value: passwordRegExp },
           minLength: 6,
         }}
       />
