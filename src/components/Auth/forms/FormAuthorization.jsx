@@ -2,11 +2,15 @@ import { useForm } from 'react-hook-form';
 import { Button } from '../../ui/buttons/Button';
 import { Google, Telegram, Twitter } from '../../profile/Accounts';
 import { Input } from '../../ui/Input';
-import { mailRegExp, passwordRegExp } from '../validations/registerValidation';
+import { 
+  mailValidation, 
+  passwordValidation 
+} from '../validations/registerValidation';
+// import ApiClient from '../../../core/api/api';
 import s from './style.module.scss';
 
 export function FormAuthorization() {
-  const { register, setValue, handleSubmit } = useForm({
+  const { register, setValue, handleSubmit, formState: { errors } } = useForm({
     mode: 'all',
     defaultValues: {
       isRemember: false, //для чекбокса запомнить данные (должен быть)
@@ -25,12 +29,9 @@ export function FormAuthorization() {
         name={'email'}
         setValue={setValue}
         register={register}
-        validation={{
-          required: 'Required!',
-          pattern: mailRegExp,
-          minLength: 6,
-        }}
+        validation={mailValidation}
       />
+      {errors.email && <p className={s.form__error}>{errors.email.message}</p>}
       <Input
         className={s.form__field}
         placeholder={'Enter  password'}
@@ -38,12 +39,9 @@ export function FormAuthorization() {
         setValue={setValue}
         register={register}
         type={'password'}
-        validation={{
-          required: 'Required!',
-          pattern: { value: passwordRegExp },
-          minLength: 6,
-        }}
+        validation={passwordValidation}
       />
+      {errors.password && <p className={s.form__error}>{errors.password.message}</p>}
       <div className={s.form__link}>Forgot password?</div>
       <div className={s.accounts__list}>
         <Google />
