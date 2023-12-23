@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { Button } from '../../ui/buttons/Button';
 import { Google, Telegram, Twitter } from '../../profile/Accounts';
 import { Input } from '../../ui/Input';
-import { mailValidation, passwordValidation } from './FormRegister';
+import { mailValidation, passwordValidation } from '../validations/regValidation';
 import s from './style.module.scss';
 
 export function FormAuthorization() {
