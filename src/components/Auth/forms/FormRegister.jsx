@@ -9,6 +9,7 @@ import {
   passwordValidation,
 } from '../validations/registerValidation';
 import s from './style.module.scss';
+import { registerUser } from '../../../core/store/slices/registrationSlice';
 
 export function FormRegister() {
   const dispatch = useDispatch();
@@ -23,14 +24,17 @@ export function FormRegister() {
     defaultValues: {
       isRemember: false,
     },
+    shouldUnregister: true,
   });
 
   passwordValidation.validate = (value) =>
-    value === getValues('password') || 'Passwords don\'t match';
+    value === getValues('password') || 'Passwords do not match';
 
   const onSubmit = (data, e) => {
     e.preventDefault();
     dispatch(showAuthorizationWindow(false));
+    delete data.confirmPassword;
+    dispatch(registerUser(data));
   };
 
   return (
