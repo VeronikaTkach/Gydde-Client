@@ -1,13 +1,15 @@
 import { useForm } from 'react-hook-form';
 import { Button } from '../../ui/buttons/Button';
-import { Google, Telegram, Twitter } from '../../profile/Accounts';
+import { Telegram } from '../../profile/Accounts';
 import { Input } from '../../ui/Input';
-import { 
-  mailValidation, 
-  passwordValidation 
+import {
+  mailValidation,
+  passwordValidation
 } from '../validations/registerValidation';
 // import ApiClient from '../../../core/api/api';
 import s from './style.module.scss';
+import { Google } from '../Google';
+import { Twitter } from '../Twitter';
 
 export function FormAuthorization() {
   const { register, setValue, handleSubmit, formState: { errors } } = useForm({
