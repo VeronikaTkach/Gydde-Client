@@ -1,26 +1,38 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
+import { showAuthorizationWindow } from '../../../core/store/slices/windowStateSlice';
 import { Button } from '../../ui/buttons/Button';
 import { Telegram } from '../../profile/Accounts';
+import { Google } from '../Google';
+import { Twitter } from '../Twitter';
 import { Input } from '../../ui/Input';
 import {
   mailValidation,
   passwordValidation
 } from '../validations/registerValidation';
-// import ApiClient from '../../../core/api/api';
+import { authorizedUser } from '../../../core/store/slices/authorizationSlice';
 import s from './style.module.scss';
-import { Google } from '../Google';
-import { Twitter } from '../Twitter';
 
-export function FormAuthorization() {
-  const { register, setValue, handleSubmit, formState: { errors } } = useForm({
+export function FormAuthorization() {  
+  const { error } = useSelector((state) => state.authorization);
+  const dispatch = useDispatch();
+  const { 
+    register, 
+    setValue, 
+    handleSubmit, 
+    formState: { errors } 
+  } = useForm({
     mode: 'all',
     defaultValues: {
       isRemember: false, //для чекбокса запомнить данные (должен быть)
     },
+    
   });
-
+  
   const onSubmit = (data, e) => {
     e.preventDefault();
+    dispatch(showAuthorizationWindow(true));
+    dispatch(authorizedUser(data));
   };
 
   return (

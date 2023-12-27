@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { showAuthorizationWindow } from '../../../core/store/slices/windowStateSlice';
 import { Button } from '../../ui/buttons/Button';
@@ -9,8 +9,10 @@ import {
   passwordValidation,
 } from '../validations/registerValidation';
 import s from './style.module.scss';
+import { registerUser } from '../../../core/store/slices/registrationSlice';
 
 export function FormRegister() {
+  const { error } = useSelector((state) => state.registration);
   const dispatch = useDispatch();
   const {
     register,
@@ -23,14 +25,17 @@ export function FormRegister() {
     defaultValues: {
       isRemember: false,
     },
+    shouldUnregister: true,
   });
 
   passwordValidation.validate = (value) =>
-    value === getValues('password') || 'Passwords don\'t match';
+    value === getValues('password') || 'Passwords do not match';
 
   const onSubmit = (data, e) => {
     e.preventDefault();
     dispatch(showAuthorizationWindow(false));
+    delete data.confirmPassword;
+    dispatch(registerUser(data));
   };
 
   return (
@@ -72,8 +77,8 @@ export function FormRegister() {
         type={'password'}
         validation={passwordValidation}
       />
-      {errors.confirmPassword && (
-        <p className={s.form__error}>{errors.confirmPassword.message}</p>
+      {(errors.confirmPassword || error) && (
+        <p className={s.form__error}>{errors?.confirmPassword?.message || error}</p>
       )}
       <Button className={s.form__btnSubmit} type='submit'>
         Sign up
