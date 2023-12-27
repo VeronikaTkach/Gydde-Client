@@ -9,10 +9,13 @@ export function Twitter() {
   }
 
   return (
-    <TwitterLogin
-      authCallback={onConnect}
-      consumerKey={TWITTER_CLIENT_ID}
-      consumerSecret={TWITTER_SECRET_KEY}
-    />
+    <>
+      <TwitterLogin
+        authCallback={onConnect}
+        consumerKey={TWITTER_CLIENT_ID}
+        consumerSecret={TWITTER_SECRET_KEY}
+        callbackUrl={'http://localhost:3000'}
+      />
+    </>
   );
 }
