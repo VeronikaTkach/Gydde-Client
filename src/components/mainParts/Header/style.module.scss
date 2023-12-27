@@ -13,6 +13,7 @@
 		display: flex;
 		align-items: center;
 		gap: 31px;
+
 	}
 	z-index: 10;
 }
@@ -22,7 +23,7 @@
 	height: 100%;
 	z-index: 0;
 	&__list {
-		width: 1020px;
+		width: 1400px;
 		height: 100px;
 		display: flex;
 		align-items: center;
@@ -43,8 +44,16 @@
 		display: flex;
 		align-items: center;
 		height: 100%;
+		& img {
+			margin: 0;
+			padding: 0;
+			margin-top: -13px;
+			margin-right: 5px;
+			margin-left: -28px;
+			width: 56px;
+			height: 53px;
+		}
 		&:last-of-type {
-			margin-right: 60px;
 			&::after {
 				margin-left: 10px;
 				rotate: 270deg;
@@ -63,6 +72,16 @@
 				}
 			}
 		}
+	}
+	&__title {
+		color: v.$colorWhite;
+		font-family: Russo One;
+		@include v.fontStyle(36px);
+		line-height: normal;
+		margin-top: -8px;
+	}
+	&__link {
+		display: flex;
 	}
 }
 
@@ -94,23 +113,32 @@
 .auth {
 	position: relative;
 	height: 100%;
+	margin-left: -60px;
+	margin-top: -17px;	
 	&__button {
 		@extend .button;
-		@include v.fontStyle(18px, 500, 24px);
+		@include v.fontStyle(24px, 700, 32px);
 		border-radius: 20px;
-		width: 136px;
+		width: 233px;
 		height: 64px;
 		@include v.flexCenter;
 		margin: auto;
+		text-align: center;
+		font-family: Roboto;
+		background: transparent;
 		&_login {
-			padding: 18px 24px;
-		}
-		&_wallet {
-			width: 126px;
-			height: 64px;
-			@include v.flexCenter;
-			&::before {
-				margin-right: 8px;
+			padding: 20px 80px;
+			
+			background: v.$gradientGreen;
+			background-clip: text;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			@include v.borderStyle(3px solid v.$colorGreen, 16px);
+			&:hover {
+				background: v.$gradientGreen;
+				background-clip: padding-box;
+				-webkit-text-fill-color: unset;
+				color: v.$colorBlack;
 			}
 		}
 	}

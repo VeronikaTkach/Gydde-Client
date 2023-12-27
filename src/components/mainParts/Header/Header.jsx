@@ -37,41 +37,10 @@ export function Header({ className }) {
               activeClassName={s.navigation__link_active}
               to={'/'}>
               <img src={logo} alt='logo and home link' />
+              <p className={s.navigation__title}>Gydde</p>
             </NavigationLink>
           </li>
-          {navigation.map((item, idx) =>
-            item.type === 'link' ? (
-              <li className={s.navigation__item} key={idx}>
-                <NavigationLink
-                  className={s.navigation__link}
-                  activeClassName={s.navigation__link_active}
-                  to={item.link}>
-                  {item.title}
-                </NavigationLink>
-              </li>
-            ) : (
-              <li
-                className={cn(
-                  s.navigation__item,
-                  s.navigation__link,
-                  'icon_arrow_down_after'
-                )}
-                key={idx}>
-                {item.title}
-                <BorderBlock className={cn(s.navigation__submenu, s.submenu)}>
-                  {item.submenu.map((item, idx) => (
-                    <NavigationLink
-                      className={cn(s.submenu__link, 'icon_arrow_towards')}
-                      key={idx}
-                      activeClassName={s.navigation__link_active}
-                      to={item.link}>
-                      {item.title}
-                    </NavigationLink>
-                  ))}
-                </BorderBlock>
-              </li>
-            )
-          )}
+          
         </ul>
       </nav>
       <div className={cn(s.header__auth, s.auth)}>
@@ -91,9 +60,6 @@ export function Header({ className }) {
               className={cn(s.auth__button, s.auth__button_login)}
               onClick={() => dispatch(showAuthorizationWindow(true))}>
               Log In
-            </Button>
-            <Button className={cn(s.auth__button, s.auth__button_wallet, 'icon_money')}>
-              Wallet
             </Button>
           </>
         )}
