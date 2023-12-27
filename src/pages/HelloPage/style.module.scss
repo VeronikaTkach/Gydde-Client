@@ -1,0 +1,21 @@
+@import "../../styles/variables.scss";
+
+.content {
+    @include width-height(100%, 1080px);
+    background: url('../../assets/images/helloBgLights.svg');
+    position: absolute;
+    top: 0;
+    left: 0;
+    &__main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__langs {
+        @include width-height(584px,400px);
+        padding: 32px 24px;
+        border-radius: 28px;
+        border: 1px solid var(--Colors-Gray-Gray-600, #414141);
+        background: var(--Colors-Gray-Gray-700, #222);
+    }
+}
