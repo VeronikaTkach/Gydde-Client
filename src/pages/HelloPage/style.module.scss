@@ -1,9 +1,5 @@
 @import "../../styles/variables.scss";
 
-body {
-    background: #171717;
-}
-
 .content {
     @include width-height(100%, 1080px);
     background: url('../../assets/images/helloBgLights.svg');
