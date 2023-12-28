@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import cn from 'classnames';
 import { showAuthorizationWindow } from '../../../core/store/slices/windowStateSlice';
@@ -7,6 +7,7 @@ import { Button } from '../../ui/buttons/Button';
 import { NavigationLink } from '../../ui/Navlink';
 import { BorderBlock } from '../../ui/tags/BorderBlock';
 import s from './style.module.scss';
+import { RoutesName } from '../../../core/constants/Routes';
 
 const navigation = [
   { type: 'link', title: 'Quests', link: '/quests' },
@@ -26,6 +27,7 @@ const navigation = [
 ];
 export function Header({ className }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   return (
     <header className={cn(s.header, className)}>
@@ -40,7 +42,6 @@ export function Header({ className }) {
               <p className={s.navigation__title}>Gydde</p>
             </NavigationLink>
           </li>
-          
         </ul>
       </nav>
       <div className={cn(s.header__auth, s.auth)}>
@@ -58,7 +59,7 @@ export function Header({ className }) {
           <>
             <Button
               className={cn(s.auth__button, s.auth__button_login)}
-              onClick={() => dispatch(showAuthorizationWindow(true))}>
+              onClick={() => navigate(RoutesName.AuthPage)}>
               Log In
             </Button>
           </>
