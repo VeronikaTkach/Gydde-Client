@@ -51,6 +51,16 @@
 		width: fit-content;
 		margin: auto;
 	}
+	&__back {
+		background: url(../../assets/images/arrowPrev.svg);
+		width: 40px;
+		height: 24px;
+		margin-right: 16px;
+	}
+	&__header_row {
+		display: flex;
+    	align-items: center;
+	}
 }
 .info {
 	width: 100%;

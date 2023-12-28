@@ -11,7 +11,9 @@ import {
   passwordValidation
 } from '../validations/registerValidation';
 import { authorizedUser } from '../../../core/store/slices/authorizationSlice';
+import cn from 'classnames';
 import s from './style.module.scss';
+import { Fragment } from 'react';
 
 export function FormAuthorization() {  
   const { error } = useSelector((state) => state.authorization);
@@ -36,35 +38,33 @@ export function FormAuthorization() {
   };
 
   return (
-    <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-      <Input
-        className={s.form__field}
-        placeholder={'Enter email address'}
-        name={'email'}
-        setValue={setValue}
-        register={register}
-        validation={mailValidation}
-      />
-      {errors.email && <p className={s.form__error}>{errors.email.message}</p>}
-      <Input
-        className={s.form__field}
-        placeholder={'Enter  password'}
-        name={'password'}
-        setValue={setValue}
-        register={register}
-        type={'password'}
-        validation={passwordValidation}
-      />
-      {errors.password && <p className={s.form__error}>{errors.password.message}</p>}
-      <div className={s.form__link}>Forgot password?</div>
-      <div className={s.accounts__list}>
-        <Google />
-        <Twitter />
-        <Telegram />
-      </div>
+    <Fragment>
+      <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+        <div className={cn(s.input__title)}>Email address</div>
+        <Input
+          className={s.form__field}
+          placeholder={'Enter email address'}
+          name={'email'}
+          setValue={setValue}
+          register={register}
+          validation={mailValidation}
+        />
+        {errors.email && <p className={s.form__error}>{errors.email.message}</p>}
+        <div className={cn(s.input__title)}>Password</div>
+        <Input
+          className={s.form__field}
+          placeholder={'Enter  password'}
+          name={'password'}
+          setValue={setValue}
+          register={register}
+          type={'password'}
+          validation={passwordValidation}
+        />
+        {errors.password && <p className={s.form__error}>{errors.password.message}</p>}
+      </form>
       <Button className={s.form__btnSubmit} type={'submit'}>
         Log in
       </Button>
-    </form>
+    </Fragment>
   );
 }

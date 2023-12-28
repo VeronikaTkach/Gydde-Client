@@ -3,8 +3,7 @@
 .form {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	gap: 60px;
+	gap: 30px;
 	.form &__field {
 		height: 80px;
 		font-size: 24px;
@@ -23,6 +22,7 @@
 		color: red;
 	}
 	&__btnSubmit {
+		margin-left: 612px;
 		padding: 20px 80px;
 		font-size: 20px;
 		font-weight: 500;
@@ -34,4 +34,14 @@
 .accounts__list {
 	display: flex;
 	gap: 40px;
+}
+
+.input {
+	&__title {
+		font-family: 'Roboto', sans-serif;
+		font-size: 20px;
+		font-weight: 600;
+		line-height: 24px; /* 120% */
+		margin-bottom: 10px;
+	}
 }
