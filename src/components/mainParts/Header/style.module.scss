@@ -130,13 +130,13 @@
 		&_login {
 			padding: 20px 80px;
 			
-			background: v.$gradientGreen;
+			background: v.$colorGreen;
 			background-clip: text;
 			-webkit-background-clip: text;
 			-webkit-text-fill-color: transparent;
 			@include v.borderStyle(3px solid v.$colorGreen, 16px);
 			&:hover {
-				background: v.$gradientGreen;
+				background: v.$colorGreen;
 				background-clip: padding-box;
 				-webkit-text-fill-color: unset;
 				color: v.$colorBlack;
