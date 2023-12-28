@@ -1,36 +1,48 @@
 @use '../../styles/variables.scss' as v;
 
 .auth {
-	padding-bottom: 40px;
+	padding: 44px 60px;
 	margin: 0 auto;
-	// width: 1016px;
-	display: flex;
-	flex-direction: column;
-	gap: 90px;
+	width: 1016px;
+	min-height: 568px;
+	border-radius: 16px;
+	background-color: v.$colorBlack;
+	box-shadow: 0px 0px 10px 0px #8A2DE7;
+	color: v.$colorWhite;
 	overflow-y: scroll;
 	&::-webkit-scrollbar {
 		width: 0;
 	}
+	a {
+		color: v.$colorWhite;
+	}
+	&__header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 48px;
+	}
 	&__title {
 		font-family: 'Russo One', sans-serif;
-		align-self: flex-start;
 		font-size: 40px;
 		font-weight: 400;
 		line-height: 44px; /* 110% */
 		width: 100%;
-		margin-bottom: 24px;
+	}
+	&__close {
+		background: url(../../assets/images/close.svg);
+		width: 24px;
+		height: 24px;
+	}
+	&__body {
+		display: flex;
+		flex-direction: column;
+		gap: 52px;
 	}
 	&__description {
 		font-size: 20px;
 		font-weight: 700;
 		width: 100%;
-	}
-	&__social {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 36px;
-		margin-top: -20px;
 	}
 	&__btn {
 		background-color: transparent;
@@ -44,57 +56,66 @@
 	width: 100%;
 }
 
+.socials {
+	&__title {
+		font-family: 'Roboto', sans-serif;
+		font-size: 20px;
+		font-weight: 600;
+		line-height: 24px; /* 120% */
+		margin-bottom: 20px;
+	}
+	&__body {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 20px;
+	}
+}
+
 .social {
-	width: 1140px;
-	height: 86px;
+	width: 100%;
+	height: 68px;
 	display: flex;
 	align-items: center;
-	border-radius: 24px;
-	padding: 0 36px;
-	&_metamask {
-		width: 1140px;
-		height: 86px;
-		& > img {
-			background: url(../../assets/images/metamask.svg);
-			background-size: 34px;
-			width: 34px;
-			height: 34px;
-			display: block;
-			margin-right: 24px;
+	gap: 16px;
+	border-radius: 16px;
+	padding: 12px 36px;
+	background-color: #2B2B2B;
+	&_twitter {
+		&::before {
+			content: url(../../assets/images/twitter.svg);
+			width: 40px;
+			height: 40px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 		}
 	}
-	&_trust {
-		& > img {
-			background: url(../../assets/images/trust.png);
-			border-radius: 50%;
-			background-size: 34px;
-			width: 34px;
-			height: 34px;
-			display: block;
-			margin-right: 24px;
+	&_google {
+		&::before {
+			content: url(../../assets/images/google.svg);
+			width: 40px;
+			height: 40px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 		}
 	}
-	&_binance {
-		& > img {
-			background: url(../../assets/images/binance.svg),
-				linear-gradient(v.$colorBlack, v.$colorBlack);
-			border-radius: 50%;
-			background-size: 34px;
-			width: 34px;
-			height: 34px;
-			display: block;
-			margin-right: 24px;
-		}
+	&__img {
+		width: 40px;
+		height: 40px;
 	}
 	&__text {
 		display: flex;
 		align-items: center;
 		position: relative;
-		font-size: 24px;
-		font-weight: 600;
-		margin-right: 24px;
+		font-family: 'Roboto', sans-serif;
+		font-size: 20px;
+		font-weight: 400;
+		line-height: 26px; /* 130% */
 		width: 100%;
 		height: 100%;
+		color: v.$colorWhite;
 		& > button {
 			width: 100%;
 			height: 100%;
