@@ -4,7 +4,7 @@ import { Status } from '../../constants/Status';
 
 export const registerUser = createAsyncThunk(
   'registration/registerUser',
-  async function (regData, { rejectWithValue }) {
+  async function(regData, { rejectWithValue }) {
     try {
       const response = await axios.post('http://localhost:3004/register', regData);
       localStorage.setItem('accessToken', response.data.accessToken);
