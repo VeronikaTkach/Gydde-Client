@@ -5,5 +5,5 @@ export const GOOGLE_CLIENT_ID =
 export const GOOGLE_SECRET_KEY = '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';
 export const GOOGLE_CONFIRM_URL = 'https://accounts.google.com/o/oauth2/v2/auth';
 
-export const TWITTER_CLIENT_ID = 'Y1hITTU4c0RvamtyNVBQamhEcGk6MTpjaQ';
-export const TWITTER_SECRET_KEY = 'UkrYWyQMqOJ_9hnUI9gaRtkyEZRONu6GtcAfB9xwFtTtZz4mCx';
+export const TWITTER_CLIENT_ID = '7CFE03Qo4wMOYyzkHJspYpDG1';
+export const TWITTER_SECRET_KEY = 'QJE6nknjnP2smI0iMv3hCHrFuk9DTzOb8GNMVixDPanSDiBELG';

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Button } from '../../components/ui/buttons/Button/Button';
 import cn from 'classnames';
 import s from './style.module.scss';
@@ -19,38 +19,39 @@ const languages = [
   { lang: 'Русский', icon: russia },
   { lang: 'Español', icon: spain },
 ];
+const firstLanguage = 0;
+const step = 1;
 
 export function HelloPage() {
-  const [clickedElement, setClickedElement] = useState('English');
+  const [clickedElement, setClickedElement] = useState(firstLanguage);
   const [stop, setStop] = useState(false);
-  const [intervalLang, setIntervalLang] = useState(null);
-  function handleClick(element) {
-    setClickedElement(element);
-    setStop(true);
+  const timeRef = useRef(null);
+
+  useEffect(() => {
+    clearInterval(timeRef.current);
+
+    if (stop) {
+      return;
+    }
+
+    const timeInterval = 3000;
+    timeRef.current = setInterval(changeLanguage, timeInterval);
+
+    return () => clearInterval(timeRef.current);
+  }, [clickedElement, stop]);
+
+  function changeLanguage() {
+    if (clickedElement < languages.length - step) {
+      setClickedElement((prev) => ++prev);
+    } else {
+      setClickedElement(firstLanguage);
+    }
   }
 
-  useEffect(() => {
-    if (stop) {
-      clearInterval(intervalLang);
-    }
-  }, [stop, intervalLang]);
-  let i = 1;
-  useEffect(() => {
-    // eslint-disable-next-line no-magic-numbers
-    const interval = setInterval(updateLang, 3000);
-
-    function updateLang() {
-      setClickedElement(languages[i].lang);
-      i++;
-      if (i === languages.length) {
-        // eslint-disable-next-line no-magic-numbers
-        i = 0;
-      }
-    }
-    setIntervalLang(interval);
-
-    return () => clearInterval(interval);
-  }, []);
+  function handleClick(index) {
+    setClickedElement(index);
+    setStop(true);
+  }
 
   return (
     <main className={cn(s.content)}>
@@ -60,16 +61,14 @@ export function HelloPage() {
         </div>
         <div className={cn(s.content__langs)}>
           <ul className={cn(s.content__list)}>
-            {languages.map((item) => {
+            {languages.map((item, index) => {
               return (
                 <li
                   className={
-                    clickedElement === item.lang
-                      ? s.content__item_active
-                      : s.content__item
+                    clickedElement === index ? s.content__item_active : s.content__item
                   }
                   key={item.lang}
-                  onClick={() => handleClick(item.lang)}>
+                  onClick={() => handleClick(index)}>
                   <img src={item.icon} alt='country flag' />
                   <p>{item.lang}</p>
                 </li>
