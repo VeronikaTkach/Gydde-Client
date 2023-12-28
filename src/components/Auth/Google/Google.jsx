@@ -7,7 +7,7 @@ import {
   REDIRECT_URI,
 } from '../../../core/constants/authKeys';
 
-export function Google() {
+export function Google({className}) {
   async function onConnect() {
     const params = {
       redirect_uri: REDIRECT_URI,
@@ -28,7 +28,9 @@ export function Google() {
 
   return (
     <>
-      <Button className={cn(s.button)} onClick={onConnect}></Button>
+      <Button className={cn(s.button, className)} onClick={onConnect}>
+        Google
+      </Button>
     </>
   );
 }
