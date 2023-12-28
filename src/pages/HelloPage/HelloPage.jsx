@@ -36,12 +36,14 @@ export function HelloPage() {
   }, [stop, intervalLang]);
   let i = 1;
   useEffect(() => {
+    // eslint-disable-next-line no-magic-numbers
     const interval = setInterval(updateLang, 3000);
 
     function updateLang() {
       setClickedElement(languages[i].lang);
       i++;
       if (i === languages.length) {
+        // eslint-disable-next-line no-magic-numbers
         i = 0;
       }
     }
@@ -67,7 +69,6 @@ export function HelloPage() {
                       : s.content__item
                   }
                   key={item.lang}
-                  ref={item.ref}
                   onClick={() => handleClick(item.lang)}>
                   <img src={item.icon} alt='country flag' />
                   <p>{item.lang}</p>
