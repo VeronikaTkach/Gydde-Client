@@ -5,8 +5,4 @@
 .button {
 	@extend .button;
 	@extend .social__text;
-	background-color: transparent;
-	&::before {
-		content: url(../../../assets/images/done.svg);
-	}
 }
