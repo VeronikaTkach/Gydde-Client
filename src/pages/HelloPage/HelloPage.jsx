@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { Button } from '../../components/ui/buttons/Button/Button';
 import cn from 'classnames';
 import s from './style.module.scss';
 import helper from '../../assets/images/gydde_picture.png';
@@ -6,16 +8,27 @@ import indonesia from '../../assets/images/flagBi.svg';
 import china from '../../assets/images/flagCn.svg';
 import russia from '../../assets/images/flagRu.svg';
 import spain from '../../assets/images/flagEs.svg';
+import speaker from '../../assets/images/speaker.svg';
+import hand from '../../assets/images/hand.svg';
+import arrow from '../../assets/images/subtitleArrow.svg';
 
 const languages = [
   { lang: 'English', icon: usa },
   { lang: 'Bahasa Indonesia', icon: indonesia },
   { lang: '中文', icon: china },
-  { lang: 'Español', icon: spain },
   { lang: 'Русский', icon: russia },
+  { lang: 'Español', icon: spain },
 ];
 
 export function HelloPage() {
+
+  //const locale = useLocale(); 
+
+  const [clickedElement, setClickedElement] = useState('English');
+  function handleClick(element) {
+    setClickedElement(element);
+  }
+
   return (
     <main className={cn(s.content)}>
       <div className={cn(s.content__main)}>
@@ -26,7 +39,15 @@ export function HelloPage() {
           <ul className={cn(s.content__list)}>
             {languages.map((item) => {
               return (
-                <li className={cn(s.content__item)} key={item.lang}>
+                <li
+                  className={
+                    clickedElement === item.lang
+                      ? s.content__item_active
+                      : s.content__item
+                  }
+                  key={item.lang}
+                  ref={item.ref}
+                  onClick={() => handleClick(item.lang)}>
                   <img src={item.icon} alt='country flag' />
                   <p>{item.lang}</p>
                 </li>
@@ -36,7 +57,26 @@ export function HelloPage() {
           ;
         </div>
       </div>
-      <div></div>
+      <div className={cn(s.content__subtitles)}>
+        <div className={cn(s.subtitles__text)}>
+          <Button
+            className={cn(s.subtitles__speaker)}
+          >
+            <img src={speaker} alt="speaker" />
+          </Button>
+          <h2 className={cn(s.subtitles__greeting)}>Hello! I’m <span>Gydde!</span></h2>
+          
+        </div>
+        <div className={cn(s.subtitles__action)}>
+            <Button
+              className={cn(s.subtitles__answer)}s
+            >
+              Hi, Gydde!
+              <img src={hand} alt='hand' />
+            </Button>
+            <img className={cn(s.subtitles__arrow)} src={arrow} alt="arrow" />
+        </div>
+      </div>
     </main>
   );
 }
