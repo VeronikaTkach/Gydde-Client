@@ -1,0 +1,69 @@
+@use 'sass:map' ;
+@import './variables.scss';
+@import './themeVariables.scss';
+
+$themes: (
+  dark: (
+    //space
+    radiusSmall: $space5,
+    radiusMedium: $space6,
+    radiusLarge: $space9,
+    spacingNone: $spaceNone,
+    //colors
+    formBackground: $colorGray650,
+    formLabel: $colorGray100,
+    formLabelPlaceholder: $colorGray400,
+    bg: $colorBlack,
+    surfacePrimary: $colorWhiteOp10,
+    surfacePrimary2: $colorGray700,
+    surfacePrimaryAccent: $colorGreenPrimary100,
+    surfaceBorderSubtitles: $colorGray500,
+    surfaceBorder1: $colorGray600,
+    surfaceBorder2: $colorBlack,
+    textPrimaryMain: $colorWhite,
+    textAccent: $colorGreenPrimary100,
+    buttonBgHover: $colorGreenPrimary100,
+    buttonLabelHover: $colorBlack,
+    buttonBgActive: $colorGreenPrimary100,
+    buttonLabelActive: $colorBlack,
+    buttonLabelActive2: $colorGreenPrimary100,
+    buttonLabelActive3: $colorGray400,
+    buttonLabelDisabled: $colorGray500,
+    buttonBackgorundDisabled: $colorGray500,
+    buttonBgError: $colorRed500,
+    buttonPlaceholderError: $colorRed500,
+    bgSecondary: $colorWhite,
+    buttonBackgroundSecondary: $colorGreenPrimary100,
+    buttonLabelSecondary: $colorGreenPrimary100,
+    //gradient
+  ),
+  light: (
+    formBackground: $bgGreen,
+  ),
+);
+
+@mixin themed {
+  @each $theme, $map in $themes {
+    :global(.theme--#{$theme}) & {
+      $theme-map: () !global;
+
+      @each $key, $submap in $map {
+        $value: map.get($map, $key);
+        $theme-map: map.merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+      @content;
+
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function t( $key ) {
+  @return map-get( $theme-map , $key );
+}
+

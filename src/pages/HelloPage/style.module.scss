@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@use '../../styles/styles.scss' as *;
 
 .content {
   @include width-height(100%, 1080px);

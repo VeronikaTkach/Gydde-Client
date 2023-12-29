@@ -1,4 +1,4 @@
-@use '../../../styles/variables' as v;
+@use '../../../styles/styles.scss' as *;
 
 .accounts {
 	width: 908px;
@@ -13,7 +13,7 @@
 		padding: 35px 24px;
 	}
 	&__title {
-		@include v.fontStyle(24px, 900, 28px);
+		@include fontStyle(24px, 900, 28px);
 	}
 	&__list {
 		display: flex;
@@ -28,7 +28,7 @@
 	height: 64px;
 	border-radius: 24px;
 	box-shadow: 0 2px 2.5px #21222236;
-	@include v.flexCenter;
+	@include flexCenter;
 	&_binance {
 		&::before {
 			content: url(../../../assets/images/binance.svg);
@@ -71,7 +71,7 @@
 		width: 24px;
 		height: 24px;
 		border-radius: 50%;
-		@include v.flexCenter;
+		@include flexCenter;
 		&::before {
 			content: url(../../../assets/images/done.svg);
 		}

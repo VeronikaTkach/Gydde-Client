@@ -1,6 +1,5 @@
-@use '../../../styles/variables.scss' as v;
-@use '../../ui/buttons/Button/style.module.scss' as *;
 @use '../style.module.scss' as *;
+@use '../../ui/buttons/Button/style.module.scss' as *;
 
 .button {
 	@extend .button;

@@ -1,0 +1,233 @@
+//colors
+$colorWhite: #FDFAFF;
+$colorWhiteOp10: #fdfaff1a;
+$colorBlack: #171717;
+$bgGreen: #49FFB3;
+$bgBlue: #00FCFF;
+$colorGreen: #AAF97E;//удалить
+$colorPurple: #9278F7;//удалить
+
+$colorGreenPrimary100: #A7F67B;
+$colorGreenPrimary200: #89CB64;
+$colorGreenPrimary300: #6CA14E;
+$colorGreenPrimary400: #507A39;
+$colorGreenPrimary500: #365426;
+$colorGreenPrimary600: #1E3213;
+$colorGreenPrimary700: #091405;
+
+$colorGreenSecondary100: #9AEC6C;
+$colorGreenSecondary200: #7DC157;
+$colorGreenSecondary300: #619843;
+$colorGreenSecondary400: #477030;
+$colorGreenSecondary500: #2E4B1E;
+$colorGreenSecondary600: #17290D;
+$colorGreenSecondary700: #091404;
+
+$colorGreenTertiary100: #9AEC6C;
+$colorGreenTertiary200: #7DC157;
+$colorGreenTertiary300: #619843;
+$colorGreenTertiary400: #477030;
+$colorGreenTertiary500: #2E4B1E;
+$colorGreenTertiary600: #17290D;
+$colorGreenTertiary700: #091404;
+
+$colorPurplePrimary100: #DBD5FC;
+$colorPurplePrimary200: #B5A7FA;
+$colorPurplePrimary300: #9278F7;
+$colorPurplePrimary400: #7241F2;
+$colorPurplePrimary500: #5018BE;
+$colorPurplePrimary600: #2D0A72;
+$colorPurplePrimary700: #14033D;
+
+$colorPurpleSecondary100: #F3EFFD;
+$colorPurpleSecondary200: #DED0FB;
+$colorPurpleSecondary300: #BFA0F6;
+$colorPurpleSecondary400: #A36DF1;
+$colorPurpleSecondary500: #8A2DE7;
+$colorPurpleSecondary600: #5D1C9F;
+$colorPurpleSecondary700: #340C5D;
+
+$colorPurpleTertiary100: #FDFAFF;
+$colorPurpleTertiary200: #EAC5FF;
+$colorPurpleTertiary300: #DA8CFF;
+$colorPurpleTertiary400: #CE3DFF;
+$colorPurpleTertiary500: #A300CD;
+$colorPurpleTertiary600: #6E008B;
+$colorPurpleTertiary700: #3D004F;
+
+$colorRed100: #FEE4E2;
+$colorRed200: #FECDCA;
+$colorRed300: #FDA29B;
+$colorRed400: #F97066;
+$colorRed500: #F04438;
+$colorRed600: #D92D20;
+$colorRed700: #B32318;
+
+$colorOrange100: #FEEFC7;
+$colorOrange200: #FEDF89;
+$colorOrange300: #FEC84B;
+$colorOrange400: #FDB022;
+$colorOrange500: #F79009;
+$colorOrange600: #DC6803;
+$colorOrange700: #B54708;
+
+$colorBlue100: #E0E1FF;
+$colorBlue200: #B4B5FF;
+$colorBlue300: #8788FE;
+$colorBlue400: #5659FE;
+$colorBlue500: #0417FA;
+$colorBlue600: #010A9E;
+$colorBlue700: #00024B;
+
+$colorGray100: #F1F1F1;
+$colorGray200: #D3D3D3;
+$colorGray300: #ACACAC;
+$colorGray400: #868686;
+$colorGray500: #636363;
+$colorGray600: #414141;
+$colorGray650: #2B2B2B;
+$colorGray700: #222222;
+
+//gradient
+$gradientGray: linear-gradient(to right, #1C1C1C 35%, #4545456b 90%, #c3c3c300 10%);
+$gradientGreen: linear-gradient(to bottom, #AAF97E 0%, #9AEC6C 100%);
+$gradientPurple: linear-gradient(to bottom, #8A2DE7 0%, #5659FE 100%);
+$gradientShadow: linear-gradient(to right, #6B17C1 0%, #3B41C9 100%);
+$gradientMaskot: linear-gradient(to bottom, #5659FE 0%, #8A2DE7 100%);
+
+//shadow
+$shadowPurpleBackLight: 0 0 10px 0 $colorPurpleSecondary500;
+$shadowPurplePicture: 18px 0 28.8px 0 #675df91a;
+
+//spacing
+$spaceNone: 0;
+$space2: 4px;
+$space3: 8px;
+$space4: 12px;
+$space5: 16px;
+$space6: 20px;
+$space7: 24px;
+$space8: 28px;
+$space9: 32px;
+$space10: 36px;
+$space11: 40px;
+$space12: 44px;
+$space13: 48px;
+$space14: 52px;
+$space15: 56px;
+$space16: 60px;
+$space17: 64px;
+$space18: 68px;
+$space19: 72px;
+$space20: 76px;
+$space21: 80px;
+$space22: 84px;
+$space23: 88px;
+$space24: 92px;
+
+//sizes
+$sizeContainerLarge: 1920px;
+$sizeContainer: 1400px;
+$sizeExtraLarge: 1200px;
+$sizeLarge: 950px;
+$sizeMedium: 786px;
+$sizeSmall: 576px;
+
+//*mixins
+//general font mixins
+@mixin fontRoboto() {
+	font-family: Roboto, Arial, Helvetica, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+@mixin fontRussoOne() {
+	font-family: RussoOne, Arial, Helvetica, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+@mixin fontStyle($size: 16px, $weight: 400, $height: normal) {
+	font-size: $size;
+	font-weight: $weight;
+	line-height: $height;
+}
+
+//extends
+%fontRussoOneRerular {
+	@include fontRussoOne;
+	font-weight: 400;
+	line-height: normal;
+}
+
+//fonts
+@mixin textStyleTitle1() {
+	@extend %fontRussoOneRerular;
+	font-size: 48px;
+}
+@mixin textStyleTitle2() {
+	@extend %fontRussoOneRerular;
+	font-size: 36px;
+}
+@mixin textStyleTitle3() {
+	@extend %fontRussoOneRerular;
+	font-size: 40px;
+}
+@mixin textStyleSubtitle() {
+	@include fontRoboto;
+	@include fontStyle($size: 64px, $weight: 700, $height: 76px)
+}
+@mixin textStyleBody1() {
+	@include fontRoboto;
+	@include fontStyle($size: 24px, $weight: 500, $height: 32px)
+}
+@mixin textStyleBody2() {
+	@include fontRoboto;
+	@include fontStyle($size: 20px, $weight: 500, $height: 32px)
+}
+@mixin textStyleSecondary1() {
+	@include fontRoboto;
+	@include fontStyle($size: 20px, $weight: 400, $height: 26px)
+}
+@mixin textStyleSecondary2() {
+	@include fontRoboto;
+	@include fontStyle($size: 16px, $weight: 500, $height: 26px)
+}
+@mixin textStyleButton1() {
+	@include fontRoboto;
+	@include fontStyle($size: 24px, $weight: 700, $height: 32px)
+}
+@mixin textStyleButton2() {
+	@include fontRoboto;
+	@include fontStyle($size: 28px, $weight: 700, $height: 32px)
+}
+
+//others
+@mixin width-height($width, $height: $width) {
+	width: $width;
+	height: $height;
+}
+
+@mixin borderStyle($border, $borderRadius) {
+	border: $border;
+	border-radius: $borderRadius;
+}
+
+@mixin flex-grid($display, $direction, $justify, $align) {
+	display: $display;
+	flex-direction: $direction;
+	justify-content: $justify;
+	align-items: $align;
+}
+
+@mixin flexCenter {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+@mixin flexColumnCenter {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+@mixin textCenter {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
