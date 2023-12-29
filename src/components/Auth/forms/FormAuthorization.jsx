@@ -62,7 +62,7 @@ export function FormAuthorization() {
         />
         {errors.password && <p className={s.form__error}>{errors.password.message}</p>}
       </form>
-      <Button className={s.form__btnSubmit} type={'submit'}>
+      <Button className={s.form__btnSubmit} type={'submit'} length={'284px'} backgroundColor={'red'}>
         Log in
       </Button>
     </Fragment>
