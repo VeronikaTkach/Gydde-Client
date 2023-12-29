@@ -13,8 +13,8 @@ import hand from '../../assets/images/hand.svg';
 import arrow from '../../assets/images/subtitleArrow.svg';
 
 const languages = [
-  { lang: 'English', icon: usa, locale: 'en'},
-  { lang: 'Bahasa Indonesia', icon: indonesia, locale: 'id'},
+  { lang: 'English', icon: usa, locale: 'en' },
+  { lang: 'Bahasa Indonesia', icon: indonesia, locale: 'id' },
   { lang: '中文', icon: china, locale: 'cn' },
   { lang: 'Русский', icon: russia, locale: 'ru' },
   { lang: 'Español', icon: spain, locale: 'es' },
@@ -24,31 +24,34 @@ const step = 1;
 
 export function HelloPage() {
   const [clickedElement, setClickedElement] = useState(firstLanguage);
+  const [localedElement, setLocaledElement] = useState(firstLanguage);
   const [stop, setStop] = useState(false);
   const timeRef = useRef(null);
 
   function checkLanguage() {
     const userLocale = navigator.language.split('-')[firstLanguage];
-    languages.map((item) => {
-      if (item.locale == userLocale) {
+    languages.map((item, index) => {
+      if (item.locale === userLocale) {
         localStorage.setItem('user locale', item.locale);
         setStop(true);
-        changeLanguage(item);
+        setClickedElement(index);
       }
     });
   }
 
-  languages.map((item) => {
+  languages.map((item, index) => {
     if (localStorage.getItem('user locale') === item.locale) {
       useEffect(() => {
         checkLanguage();
+        setLocaledElement(index);
       }, []);
     }
   });
 
-  useEffect(() => {
-    changeLanguage();
-  }, []);
+  function handlePause() {
+    setStop((prev) => !prev);
+  }
+
   useEffect(() => {
     clearInterval(timeRef.current);
 
@@ -73,6 +76,7 @@ export function HelloPage() {
   function handleClick(index) {
     setClickedElement(index);
     setStop(true);
+    localStorage.setItem('user locale', languages[index].locale);
   }
 
   return (
@@ -82,7 +86,10 @@ export function HelloPage() {
           <img src={helper} alt='helper picture' />
         </div>
         <div className={cn(s.content__langs)}>
-          <ul className={cn(s.content__list)}>
+          <ul
+            className={cn(s.content__list)}
+            onMouseEnter={() => handlePause()}
+            onMouseLeave={() => handlePause()}>
             {languages.map((item, index) => {
               return (
                 <li
