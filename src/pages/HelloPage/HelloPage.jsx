@@ -13,42 +13,46 @@ import hand from '../../assets/images/hand.svg';
 import arrow from '../../assets/images/subtitleArrow.svg';
 
 const languages = [
-  { lang: 'English', icon: usa, locale: 'en'},
-  { lang: 'Bahasa Indonesia', icon: indonesia, locale: 'id'},
+  { lang: 'English', icon: usa, locale: 'en' },
+  { lang: 'Bahasa Indonesia', icon: indonesia, locale: 'id' },
   { lang: '中文', icon: china, locale: 'cn' },
   { lang: 'Русский', icon: russia, locale: 'ru' },
   { lang: 'Español', icon: spain, locale: 'es' },
 ];
 const firstLanguage = 0;
 const step = 1;
+const userLocale = navigator.language.split('-')[firstLanguage];
 
 export function HelloPage() {
   const [clickedElement, setClickedElement] = useState(firstLanguage);
   const [stop, setStop] = useState(false);
+  const [changing, setChanging] = useState(true);
   const timeRef = useRef(null);
 
   function checkLanguage() {
-    const userLocale = navigator.language.split('-')[firstLanguage];
-    languages.map((item) => {
-      if (item.locale == userLocale) {
+    languages.map((item, index) => {
+      if (item.locale === userLocale) {
         localStorage.setItem('user locale', item.locale);
         setStop(true);
-        changeLanguage(item);
+        setClickedElement(index);
+        setChanging(false);
       }
     });
   }
 
   languages.map((item) => {
-    if (localStorage.getItem('user locale') === item.locale) {
+    if (userLocale === item.locale) {
       useEffect(() => {
         checkLanguage();
       }, []);
     }
   });
 
-  useEffect(() => {
-    changeLanguage();
-  }, []);
+  function handlePause() {
+    if (changing) {
+      setStop((prev) => !prev);
+    }
+  }
   useEffect(() => {
     clearInterval(timeRef.current);
 
@@ -57,7 +61,9 @@ export function HelloPage() {
     }
 
     const timeInterval = 3000;
-    timeRef.current = setInterval(changeLanguage, timeInterval);
+    if (stop === false) {
+      timeRef.current = setInterval(changeLanguage, timeInterval);
+    }
 
     return () => clearInterval(timeRef.current);
   }, [clickedElement, stop]);
@@ -71,8 +77,10 @@ export function HelloPage() {
   }
 
   function handleClick(index) {
-    setClickedElement(index);
     setStop(true);
+    setChanging(false);
+    setClickedElement(index);
+    localStorage.setItem('user locale', languages[index].locale);
   }
 
   return (
@@ -82,7 +90,10 @@ export function HelloPage() {
           <img src={helper} alt='helper picture' />
         </div>
         <div className={cn(s.content__langs)}>
-          <ul className={cn(s.content__list)}>
+          <ul
+            className={cn(s.content__list)}
+            onMouseEnter={() => handlePause()}
+            onMouseLeave={() => handlePause()}>
             {languages.map((item, index) => {
               return (
                 <li
