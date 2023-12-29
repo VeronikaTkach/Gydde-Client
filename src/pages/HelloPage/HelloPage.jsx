@@ -13,11 +13,11 @@ import hand from '../../assets/images/hand.svg';
 import arrow from '../../assets/images/subtitleArrow.svg';
 
 const languages = [
-  { lang: 'English', icon: usa },
-  { lang: 'Bahasa Indonesia', icon: indonesia },
-  { lang: '中文', icon: china },
-  { lang: 'Русский', icon: russia },
-  { lang: 'Español', icon: spain },
+  { lang: 'English', icon: usa, locale: 'en'},
+  { lang: 'Bahasa Indonesia', icon: indonesia, locale: 'id'},
+  { lang: '中文', icon: china, locale: 'cn' },
+  { lang: 'Русский', icon: russia, locale: 'ru' },
+  { lang: 'Español', icon: spain, locale: 'es' },
 ];
 const firstLanguage = 0;
 const step = 1;
@@ -27,6 +27,28 @@ export function HelloPage() {
   const [stop, setStop] = useState(false);
   const timeRef = useRef(null);
 
+  function checkLanguage() {
+    const userLocale = navigator.language.split('-')[firstLanguage];
+    languages.map((item) => {
+      if (item.locale == userLocale) {
+        localStorage.setItem('user locale', item.locale);
+        setStop(true);
+        changeLanguage(item);
+      }
+    });
+  }
+
+  languages.map((item) => {
+    if (localStorage.getItem('user locale') === item.locale) {
+      useEffect(() => {
+        checkLanguage();
+      }, []);
+    }
+  });
+
+  useEffect(() => {
+    changeLanguage();
+  }, []);
   useEffect(() => {
     clearInterval(timeRef.current);
 
