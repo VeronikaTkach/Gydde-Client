@@ -21,37 +21,38 @@ const languages = [
 ];
 const firstLanguage = 0;
 const step = 1;
+const userLocale = navigator.language.split('-')[firstLanguage];
 
 export function HelloPage() {
   const [clickedElement, setClickedElement] = useState(firstLanguage);
-  const [localedElement, setLocaledElement] = useState(firstLanguage);
   const [stop, setStop] = useState(false);
+  const [changing, setChanging] = useState(true);
   const timeRef = useRef(null);
 
   function checkLanguage() {
-    const userLocale = navigator.language.split('-')[firstLanguage];
     languages.map((item, index) => {
       if (item.locale === userLocale) {
         localStorage.setItem('user locale', item.locale);
         setStop(true);
         setClickedElement(index);
+        setChanging(false);
       }
     });
   }
 
-  languages.map((item, index) => {
-    if (localStorage.getItem('user locale') === item.locale) {
+  languages.map((item) => {
+    if (userLocale === item.locale) {
       useEffect(() => {
         checkLanguage();
-        setLocaledElement(index);
       }, []);
     }
   });
 
   function handlePause() {
-    setStop((prev) => !prev);
+    if (changing) {
+      setStop((prev) => !prev);
+    }
   }
-
   useEffect(() => {
     clearInterval(timeRef.current);
 
@@ -60,7 +61,9 @@ export function HelloPage() {
     }
 
     const timeInterval = 3000;
-    timeRef.current = setInterval(changeLanguage, timeInterval);
+    if (stop === false) {
+      timeRef.current = setInterval(changeLanguage, timeInterval);
+    }
 
     return () => clearInterval(timeRef.current);
   }, [clickedElement, stop]);
@@ -74,8 +77,9 @@ export function HelloPage() {
   }
 
   function handleClick(index) {
-    setClickedElement(index);
     setStop(true);
+    setChanging(false);
+    setClickedElement(index);
     localStorage.setItem('user locale', languages[index].locale);
   }
 
