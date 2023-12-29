@@ -24,36 +24,19 @@ const step = 1;
 const userLocale = navigator.language.split('-')[firstLanguage];
 
 export function HelloPage() {
-  const [clickedElement, setClickedElement] = useState(firstLanguage);
+  const [activeLanguage, setActiveLanguage] = useState(firstLanguage);
   const [stop, setStop] = useState(false);
-  const [changing, setChanging] = useState(true);
+  const [isLanguageChoosen, setIsLanguageChoosen] = useState(false);
   const timeRef = useRef(null);
 
-  function checkLanguage() {
-    languages.map((item, index) => {
-      if (item.locale === userLocale) {
-        localStorage.setItem('user locale', item.locale);
-        setStop(true);
-        setClickedElement(index);
-        setChanging(false);
-      }
-    });
-  }
-
-  languages.map((item) => {
-    if (userLocale === item.locale) {
-      useEffect(() => {
-        checkLanguage();
-      }, []);
-    }
-  });
-
-  function handlePause() {
-    if (changing) {
-      setStop((prev) => !prev);
-    }
-  }
   useEffect(() => {
+    if (languages && !isLanguageChoosen) {
+      if (checkLanguage(languages)) {
+        setStop(true);
+
+        return;
+      }
+    }
     clearInterval(timeRef.current);
 
     if (stop) {
@@ -66,21 +49,43 @@ export function HelloPage() {
     }
 
     return () => clearInterval(timeRef.current);
-  }, [clickedElement, stop]);
+  }, [activeLanguage, stop, languages]);
 
-  function changeLanguage() {
-    if (clickedElement < languages.length - step) {
-      setClickedElement((prev) => ++prev);
-    } else {
-      setClickedElement(firstLanguage);
+  function checkLanguage(languages) {
+    return languages.some((item, index) => {
+      if (item.locale === userLocale) {
+        localStorage.setItem('userLocale', item.locale);
+        setActiveLanguage(index);
+        setIsLanguageChoosen(true);
+
+        return true;
+      }
+    });
+  }
+
+  function handlePause(e) {
+    if (!isLanguageChoosen) {
+      if (e.type === 'mouseenter') {
+        setStop(true);
+      } else {
+        setStop(false);
+      }
     }
   }
 
-  function handleClick(index) {
+  function changeLanguage() {
+    if (activeLanguage < languages.length - step) {
+      setActiveLanguage((prev) => ++prev);
+    } else {
+      setActiveLanguage(firstLanguage);
+    }
+  }
+
+  function chooseLanguage(index) {
     setStop(true);
-    setChanging(false);
-    setClickedElement(index);
-    localStorage.setItem('user locale', languages[index].locale);
+    setIsLanguageChoosen(true);
+    setActiveLanguage(index);
+    localStorage.setItem('userLocale', languages[index].locale);
   }
 
   return (
@@ -92,16 +97,16 @@ export function HelloPage() {
         <div className={cn(s.content__langs)}>
           <ul
             className={cn(s.content__list)}
-            onMouseEnter={() => handlePause()}
-            onMouseLeave={() => handlePause()}>
+            onMouseEnter={handlePause}
+            onMouseLeave={handlePause}>
             {languages.map((item, index) => {
               return (
                 <li
                   className={
-                    clickedElement === index ? s.content__item_active : s.content__item
+                    activeLanguage === index ? s.content__item_active : s.content__item
                   }
                   key={item.lang}
-                  onClick={() => handleClick(index)}>
+                  onClick={() => chooseLanguage(index)}>
                   <img src={item.icon} alt='country flag' />
                   <p>{item.lang}</p>
                 </li>
