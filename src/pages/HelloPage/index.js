@@ -1,3 +1,1 @@
-import HelloPage from "./HelloPage";
-
-export default HelloPage
+export * from './HelloPage';
