@@ -1,6 +1,7 @@
 @use '../styles/styles.scss' as *;
 @import '../styles/reset.scss';
-@import '../styles/fonts.scss';
+@import '../styles/fonts/fonts.scss';
+@import '../styles/fonts/iconsFont';
 
 * {
 	font-family: 'Roboto', Arial, Helvetica, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
