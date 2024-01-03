@@ -7,7 +7,7 @@
 	min-height: 568px;
 	border-radius: 16px;
 	background-color: $colorBlack;
-	box-shadow: 0px 0px 10px 0px #8A2DE7;
+	box-shadow: $shadowPurpleBackLight;
 	color: $colorWhite;
 	overflow-y: scroll;
 	&::-webkit-scrollbar {
@@ -17,22 +17,17 @@
 		color: $colorWhite;
 	}
 	&__header {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
+		@include flex-grid(flex, row, space-between, center);
 		margin-bottom: 48px;
 	}
 	&__title {
-		font-family: 'Russo One', sans-serif;
-		font-size: 40px;
-		font-weight: 400;
-		line-height: 44px; /* 110% */
+		@include fontRussoOne;
+		@include fontStyle(40px, 400, 44px);
 		width: 100%;
 	}
 	&__close {
 		background: url(../../assets/images/close.svg);
-		width: 24px;
-		height: 24px;
+		@include width-height(24px, 24px);
 	}
 	&__body {
 		display: flex;
@@ -40,21 +35,18 @@
 		gap: 52px;
 	}
 	&__description {
-		font-size: 20px;
-		font-weight: 700;
+		@include fontStyle(20px, 700, normal);
 		width: 100%;
 	}
 	&__btn {
 		background-color: transparent;
-		font-size: 24px;
-		font-weight: 600;
+		@include fontStyle (24px, 600, normal);
 		width: fit-content;
 		margin: auto;
 	}
 	&__back {
 		background: url(../../assets/images/arrowPrev.svg);
-		width: 40px;
-		height: 24px;
+		@include width-height (40px, 24px);
 		margin-right: 16px;
 	}
 	&__header_row {
@@ -68,23 +60,18 @@
 
 .socials {
 	&__title {
-		font-family: 'Roboto', sans-serif;
-		font-size: 20px;
-		font-weight: 600;
-		line-height: 24px; /* 120% */
+		@include fontRoboto;
+		@include fontStyle(20px, 700, 24px);
 		margin-bottom: 20px;
 	}
 	&__body {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
+		@include flex-grid(flex, row, space-between, center);
 		gap: 20px;
 	}
 }
 
 .social {
-	width: 100%;
-	height: 68px;
+	@include width-height(100%, 68px);
 	display: flex;
 	align-items: center;
 	gap: 16px;
@@ -96,41 +83,29 @@
 	&_twitter {
 		&::before {
 			content: url(../../assets/images/twitter.svg);
-			width: 40px;
-			height: 40px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
+			@include width-height(40px, 40px);
+			@include flexCenter;
 		}
 	}
 	&_google {
 		&::before {
 			content: url(../../assets/images/google.svg);
-			width: 40px;
-			height: 40px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
+			@include width-height(40px, 40px);
+			@include flexCenter;
 		}
 	}
 	&__img {
-		width: 40px;
-		height: 40px;
+		@include width-height(40px, 40px);
 	}
 	&__text {
 		display: flex;
 		align-items: center;
 		position: relative;
-		font-family: 'Roboto', sans-serif;
-		font-size: 20px;
-		font-weight: 400;
-		line-height: 26px; /* 130% */
-		width: 100%;
-		height: 100%;
+		@include textStyleSecondary1;
+		@include width-height(100%, 100%);
 		color: $colorWhite;
 		& > button {
-			width: 100%;
-			height: 100%;
+			@include width-height(100%, 100%);
 			position: absolute;
 			top: 0;
 			left: 0;
