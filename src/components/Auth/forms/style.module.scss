@@ -12,9 +12,9 @@
 		& > input {
 			font-size: 24px;
 			border-radius: 16px;
-			background-color: #2B2B2B;
+			background-color: $colorGray650;
 			&::placeholder {
-				font-size: 24px;
+				@include textStyleSecondary1;
 				padding: 14px 36px;
 			}
 		}
@@ -24,19 +24,17 @@
 		margin-top: -40px;
 	}
 	&__error {
-		color: red;
+		color: $colorRed500;
 	}
 	&__btnSubmit {
 		margin-left: 612px;
-		padding: 12px 80px;
-		font-size: 24px;
-		font-weight: 700;
-		font-family: 'Roboto', sans-serif;
-		color: #636363;
+		padding: 10px 80px;
+		color: $colorGray500;
 		width: 284px;
 		border-radius: 16px;
-		border: 2px solid #636363;
+		border: 2px solid $colorGray500;
 		background-color: $colorBlack;
+		@include textStyleButton1;
 	}
 }
 
@@ -47,9 +45,7 @@
 
 .input {
 	&__title {
-		font-family: 'Roboto', sans-serif;
-		font-size: 20px;
-		font-weight: 600;
-		line-height: 24px; /* 120% */
+		@include fontRoboto;
+		@include fontStyle(20px, 700, 24px);
 	}
 }
