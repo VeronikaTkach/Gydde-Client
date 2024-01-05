@@ -1,6 +1,7 @@
 module.exports = {
   env: {
     browser: true,
+    node: true,
     es2021: true,
   },
   extends: [
@@ -73,7 +74,10 @@ module.exports = {
     'rest-spread-spacing': ['warn', 'never'],
     'semi-spacing': ['warn', { before: false, after: true }],
     'space-before-blocks': 'warn',
-    'space-before-function-paren': ['warn', 'never'],
+    'space-before-function-paren': [
+      'warn',
+      { anonymous: 'always', named: 'never', asyncArrow: 'always' },
+    ],
     'space-in-parens': ['warn', 'never'],
     'space-infix-ops': 'warn',
     'space-unary-ops': [

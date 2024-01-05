@@ -1,56 +1,34 @@
 import cn from 'classnames';
+import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { setWindowOptions } from '../../../core/helpers/forWindow';
+import { RoutesName } from '../../../core/constants/Routes';
+import { LocalStorageItems } from '../../../core/constants/LocalStorageItems';
+import { Button } from '../../ui/buttons/Button';
 import s from './style.module.scss';
-import TwitterLogin from 'react-twitter-login';
-import {
-  REDIRECT_URI,
-  TWITTER_CLIENT_ID,
-  TWITTER_SECRET_KEY,
-} from '../../../core/constants/authKeys';
-import axios from 'axios';
 
 export function Twitter({ className }) {
-  const urlParams = new URLSearchParams(window.location.search);
-  const receivedCode = urlParams.get('code');
-  if (receivedCode) {
-    const decodedCode = decodeURIComponent(receivedCode);
-    console.log(decodedCode);
-    getToken(decodedCode);
-  }
-  //вариант 2
-  function onConnect2() {
-    const data = {
-      oauth_callback: REDIRECT_URI,
-      oauth_consumer_key: TWITTER_CLIENT_ID,
+  const navigate = useNavigate();
+  const [isAuthorizationDone, setIsAuthorizationDone] = useState(false);
+  const intervalId = useRef(null);
+  const timeInterval = 300;
+
+  useEffect(() => {
+    if (isAuthorizationDone) {
+      navigate(RoutesName.Root);
+    }
+
+    return () => {
+      clearInterval(intervalId.current);
     };
-    const options = {
-      method: 'POST',
-      url: 'https://api.twitter.com/oauth/request_token',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: data,
-    };
-    axios(options)
-      .then((res) => {
-        console.log(res); //блокируется корс
+  }, [isAuthorizationDone]);
 
-        // const params = {
-        //   redirect_uri: REDIRECT_URI,
-        //   client_id: TWITTER_CLIENT_ID,
-        //   oauth_token: res.oauth_token,
-        // };
-        // const searchParams = new URLSearchParams(params);
-
-        const requestUrl = 'https://api.twitter.com/oauth/authorize';
-
-        window.location.assign(`${requestUrl}?oauth_token=${res.oauth_token}`);
-      })
-      .catch(console.log);
-
+  function redirectToTwitterAuthorization() {
     const params = {
       response_type: 'code',
-      client_id: 'Y1hITTU4c0RvamtyNVBQamhEcGk6MTpjaQ', //работает с моим ключом приложения, возможно ключ Гайди не тот который нужен
-      redirect_uri: 'http://localhost:3000',
+      client_id: 'Y1hITTU4c0RvamtyNVBQamhEcGk6MTpjaQ',
+      // client_id: atob(process.env.REACT_APP_TWITTER_CLIENT_ID),//todo обновить ключи когда будут на беке
+      redirect_uri: process.env.REACT_APP_TWITTER_REDIRECT_URI,
       scope: 'offline.access',
       state: 'state',
       code_challenge: 'challenge',
@@ -58,51 +36,35 @@ export function Twitter({ className }) {
     };
 
     const searchParams = new URLSearchParams(params);
+    const windowOptions = setWindowOptions();
 
-    window.location.assign(`https://twitter.com/i/oauth2/authorize?${searchParams}`);
-    //после получаю код (чтобы вывелся в консоль нужно зоново открыть окно регистрауии) с которым можно запросить токен, но далее так же блокирует корс
+    window.open(
+      `${process.env.REACT_APP_TWITTER_CONFIRM_URL}?${searchParams}`,
+      '_blank',
+      windowOptions
+    );
+
+    checkAuthorizationStop();
   }
 
-  async function getToken(code) {
-    //блокируется корс
-    const tokenUrl = 'https://api.twitter.com/2/oauth2/token';
-
-    const headers = {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    };
-    const data = new URLSearchParams();
-    data.append('code', code);
-    data.append('grant_type', 'authorization_code');
-    data.append('client_id', 'Y1hITTU4c0RvamtyNVBQamhEcGk6MTpjaQ'); //
-    data.append('redirect_uri', 'http://localhost:3001');
-    data.append('code_verifier', 'challenge');
-
-    axios
-      .post(tokenUrl, data, { headers })
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error('Ошибка при запросе:', error);
-      });
+  function checkAuthorizationStop() {
+    if (!intervalId.current) {
+      intervalId.current = setInterval(() => {
+        if (localStorage[LocalStorageItems.AuthorizationDone]) {
+          localStorage.removeItem(LocalStorageItems.AuthorizationDone);
+          setIsAuthorizationDone(true);
+        }
+      }, timeInterval);
+    }
   }
-
-  //под библиотеку
-  // async function onConnect(err, data) {
-  //   console.log(err, data);
-  // }
 
   return (
     <>
-      {/* <TwitterLogin
-        authCallback={onConnect}
-        consumerKey={TWITTER_CLIENT_ID}
-        consumerSecret={TWITTER_SECRET_KEY}
-        callbackUrl={REDIRECT_URI}
-      /> */}
-      <button className={cn(className, s.button)} onClick={onConnect2}>
+      <Button
+        className={cn(className, s.button)}
+        onClick={redirectToTwitterAuthorization}>
         Twitter
-      </button>
+      </Button>
     </>
   );
 }

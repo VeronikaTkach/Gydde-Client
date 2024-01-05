@@ -3,6 +3,10 @@ export const RoutesName = {
   Root: '/',
   AuthPage: '/auth',
   MailAuthPage: '/mailauth',
+  GoogleOauthPage: '/oauth',
+  TwitterOauthPage: '/oauth/twitter',
+  MetamaskConnectPage: '/connect/metamask',
+  HelloPage: '/hello',
 };
 
 Object.freeze(RoutesName);
