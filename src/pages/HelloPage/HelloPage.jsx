@@ -13,7 +13,7 @@ export function HelloPage() {
         </div>
         <LanguageList />
       </div>
-      <Subtitle />
+      <Subtitle className={s.content__subtitle} />
     </main>
   );
 }

@@ -4,10 +4,11 @@ import s from './style.module.scss';
 import speaker from '../../assets/images/speaker.svg';
 import hand from '../../assets/images/hand.svg';
 import arrow from '../../assets/images/subtitleArrow.svg';
+import { SubtitleBlock } from '../ui/tags/SubtitleBlock';
 
-export function Subtitle() {
+export function Subtitle({ className }) {
   return (
-    <div className={cn(s.subtitles)}>
+    <SubtitleBlock className={cn(s.subtitles, className)}>
       <div className={cn(s.subtitles__text)}>
         <Button className={cn(s.subtitles__speaker)}>
           <img src={speaker} alt='speaker' />
@@ -26,6 +27,6 @@ export function Subtitle() {
         </Button>
         <img className={cn(s.subtitles__arrow)} src={arrow} alt='arrow' />
       </div>
-    </div>
+    </SubtitleBlock>
   );
 }

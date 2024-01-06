@@ -7,29 +7,20 @@
     align-items: flex-start;
     max-width: 1592px;
     width: 100%;
-    height: 228px;
-    border-radius: 28px;
-    border: 1px solid #636363;
-    background: rgba(253, 250, 255, 0.10);
-    backdrop-filter: blur(15px);
-    margin-top: -91px;
-    margin-left: 16px;
-    @media (max-width: 1600px) {
-      margin-left: 0px;
-    }
+    height: fit-content;
     &__text {
       display: flex;
       margin-top: 35px;
       margin-left: 35px;
     }
-  
+
     &__action {
       align-self: flex-end;
       margin-bottom: 54px;
       margin-right: 34px;
       margin-top: -3px;
     }
-  
+
     &__speaker {
       padding: 14px 18px;
       margin-right: 40px;
@@ -38,9 +29,9 @@
         background: t($buttonBgActive);
       }
     }
-  
+
     &__greeting {
-      
+
       font-family: Roboto;
       font-size: 64px;
       font-style: normal;
@@ -68,7 +59,7 @@
         -webkit-text-stroke: 13px #171717;
       }
     }
-  
+
     &__answer {
       padding: 24px 54px;
       border-radius: $space11;
@@ -87,14 +78,14 @@
         border: 1px solid $colorGray200;
         background: $gradientPurple;
       }
-  
+
       & img {
         margin-bottom: -5px;
         margin-right: -6px;
         margin-left: 7px;
       }
     }
-  
+
     &__arrow {
       margin-left: 38px;
       margin-bottom: -16px;
