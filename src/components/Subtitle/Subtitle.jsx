@@ -1,11 +1,11 @@
-import { Button } from '../../components/ui/buttons/Button/Button';
+import { Button } from '../ui/buttons/Button/Button';
 import cn from 'classnames';
 import s from './style.module.scss';
 import speaker from '../../assets/images/speaker.svg';
 import hand from '../../assets/images/hand.svg';
 import arrow from '../../assets/images/subtitleArrow.svg';
 
-export function Subtitles() {
+export function Subtitle() {
   return (
     <div className={cn(s.subtitles)}>
       <div className={cn(s.subtitles__text)}>

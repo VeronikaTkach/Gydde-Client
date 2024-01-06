@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import { Button } from '../../ui/buttons/Button';
-import { BorderBlock } from '../../ui/tags/BorderBlock';
+import { SubtitleBlock } from '../../ui/tags/SubtitleBlock';
 import { Metamask } from '../../Auth/Metamask';
 import s from './style.module.scss';
 
@@ -38,7 +38,7 @@ export const Telegram = ({ isConnected }) => (
 
 export function Accounts({ className }) {
   return (
-    <BorderBlock className={cn(s.accounts, className)}>
+    <SubtitleBlock className={cn(s.accounts, className)}>
       <div className={s.accounts__connects}>
         <div className={s.accounts__title}>Connect Wallet</div>
         <div className={s.accounts__list}>
@@ -56,6 +56,6 @@ export function Accounts({ className }) {
           <Telegram isConnected={false} />
         </div>
       </div>
-    </BorderBlock>
+    </SubtitleBlock>
   );
 }

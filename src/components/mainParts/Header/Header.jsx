@@ -5,7 +5,7 @@ import { showAuthorizationWindow } from '../../../core/store/slices/windowStateS
 import logo from '../../../assets/images/logo.png';
 import { Button } from '../../ui/buttons/Button';
 import { NavigationLink } from '../../ui/Navlink';
-import { BorderBlock } from '../../ui/tags/BorderBlock';
+import { SubtitleBlock } from '../../ui/tags/SubtitleBlock';
 import s from './style.module.scss';
 import { RoutesName } from '../../../core/constants/Routes';
 

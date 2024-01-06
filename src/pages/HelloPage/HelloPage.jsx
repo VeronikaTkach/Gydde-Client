@@ -1,5 +1,5 @@
 import { LanguageList } from '../../components/LanguageList';
-import { Subtitles } from '../../components/Subtitles';
+import { Subtitle } from '../../components/Subtitle';
 import cn from 'classnames';
 import s from './style.module.scss';
 import helper from '../../assets/images/gydde_picture.png';
@@ -13,7 +13,7 @@ export function HelloPage() {
         </div>
         <LanguageList />
       </div>
-      <Subtitles />
+      <Subtitle />
     </main>
   );
 }
