@@ -16,6 +16,7 @@ import s from './style.module.scss';
 import { Fragment } from 'react';
 
 export function FormAuthorization() {  
+  
   const { error } = useSelector((state) => state.authorization);
   const dispatch = useDispatch();
   const { 
@@ -42,7 +43,7 @@ export function FormAuthorization() {
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
         <div className={cn(s.input__title)}>Email address</div>
         <Input
-          className={s.form__field}
+          classError = {errors.email}
           placeholder={'Enter email address'}
           name={'email'}
           setValue={setValue}
@@ -52,7 +53,7 @@ export function FormAuthorization() {
         {errors.email && <p className={s.form__error}>{errors.email.message}</p>}
         <div className={cn(s.input__title)}>Password</div>
         <Input
-          className={s.form__field}
+          classError = {errors.password}
           placeholder={'Enter  password'}
           name={'password'}
           setValue={setValue}
