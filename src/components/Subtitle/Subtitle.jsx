@@ -14,6 +14,7 @@ export function BaseSubtitle({
   text,
   answerButtonText,
   answerButtonSticker,
+  answerButtonOnClick,
 }) {
   return (
     <Subtitle
@@ -40,11 +41,12 @@ export function BaseSubtitle({
         answerToMascot || (
           <>
             {(answerButtonText || answerButtonSticker) && (
-              <div className={cn(s.subtitle__answer, s.answer)}>
+              <div className={cn(s.subtitle__answer, s.answer, s.answer_size_l)}>
                 <AccentButton
                   className={s.answer__button}
                   children={answerButtonText}
                   sticker={answerButtonSticker}
+                  onClick={answerButtonOnClick}
                 />
                 <div
                   className={cn(

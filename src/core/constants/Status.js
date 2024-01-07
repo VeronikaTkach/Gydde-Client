@@ -12,5 +12,15 @@ export const Status = {
   Rejected: 2,
 };
 
+export const MetamaskConnectionStatus = {
+  NoWallet: 0,
+  Connecting: 1,
+  Error: 2,
+  Sign: 3,
+  Connected: 4,
+  Finish: 5,
+};
+
 Object.freeze(StatusCode);
 Object.freeze(Status);
+Object.freeze(MetamaskConnectionStatus);
