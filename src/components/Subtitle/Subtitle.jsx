@@ -1,32 +1,73 @@
-import { Button } from '../ui/buttons/Button/Button';
 import cn from 'classnames';
-import s from './style.module.scss';
-import speaker from '../../assets/images/speaker.svg';
-import hand from '../../assets/images/hand.svg';
-import arrow from '../../assets/images/subtitleArrow.svg';
 import { SubtitleBlock } from '../ui/tags/SubtitleBlock';
+import { TextWithBorder } from '../ui/tags/TextWithBorder';
+import { AccentButton } from '../ui/buttons/Button';
+import { SoundSwitchButton } from '../ui/buttons/SoundSwitchButton';
+import s from './style.module.scss';
 
-export function Subtitle({ className }) {
+export function BaseSubtitle({
+  className,
+  mascotVoice,
+  mascotText,
+  answerToMascot,
+  sound,
+  text,
+  answerButtonText,
+  answerButtonSticker,
+}) {
   return (
-    <SubtitleBlock className={cn(s.subtitles, className)}>
-      <div className={cn(s.subtitles__text)}>
-        <Button className={cn(s.subtitles__speaker)}>
-          <img src={speaker} alt='speaker' />
-        </Button>
-        <h2 className={cn(s.subtitles__greeting)}>
-          Hello! I’m <span>Gydde!</span>
-        </h2>
-        <h2 className={cn(s.subtitles__greeting_border)}>
-          Hello! I’m <span>Gydde!</span>
-        </h2>
-      </div>
-      <div className={cn(s.subtitles__action)}>
-        <Button className={cn(s.subtitles__answer)}>
-          Hi, Gydde!
-          <img src={hand} alt='hand' />
-        </Button>
-        <img className={cn(s.subtitles__arrow)} src={arrow} alt='arrow' />
-      </div>
+    <Subtitle
+      className={className}
+      mascotVoice={
+        mascotVoice || (
+          <>
+            {sound && (
+              <SoundSwitchButton
+                className={cn(s.subtitle__mascotVoice, s.subtitle__mascotVoice_size_l)}
+              />
+            )}
+          </>
+        )
+      }
+      mascotText={
+        mascotText || (
+          <div className={s.subtitle__mascotText}>
+            <TextWithBorder text={text} />
+          </div>
+        )
+      }
+      answerToMascot={
+        answerToMascot || (
+          <>
+            {(answerButtonText || answerButtonSticker) && (
+              <div className={cn(s.subtitle__answer, s.answer)}>
+                <AccentButton
+                  className={s.answer__button}
+                  children={answerButtonText}
+                  sticker={answerButtonSticker}
+                />
+                <div
+                  className={cn(
+                    s.answer__arrow,
+                    s.answer__arrow_size_l,
+                    'iconArrowMessage'
+                  )}
+                />
+              </div>
+            )}
+          </>
+        )
+      }
+    />
+  );
+}
+
+export function Subtitle({ className, mascotVoice, mascotText, answerToMascot }) {
+  return (
+    <SubtitleBlock className={cn(s.subtitle, className)}>
+      {mascotVoice}
+      {mascotText}
+      {answerToMascot}
     </SubtitleBlock>
   );
 }

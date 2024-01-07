@@ -1,93 +1,36 @@
 @use '../../styles/styles.scss' as *;
 
-.subtitles {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    max-width: 1592px;
-    width: 100%;
-    height: fit-content;
-    &__text {
-      display: flex;
-      margin-top: 35px;
-      margin-left: 35px;
-    }
+.subtitle {
+  display: grid;
+  width: 100%;
+  height: fit-content;
 
-    &__action {
-      align-self: flex-end;
-      margin-bottom: 54px;
-      margin-right: 34px;
-      margin-top: -3px;
-    }
-
-    &__speaker {
-      padding: 14px 18px;
-      margin-right: 40px;
-      @include themed() {
-        border-radius: t($radiusSmall);
-        background: t($buttonBgActive);
-      }
-    }
-
-    &__greeting {
-
-      font-family: Roboto;
-      font-size: 64px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 76px;
-      position: relative;
-      z-index: 1;
-      @include themed() {
-        color: t($textPrimaryMain);
-      }
-      & span {
-        @include themed() {
-          color: t($textAccent);
-        }
-      }
-
-      &_border {
-        font-family: Roboto;
-        font-size: 64px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 76px;
-        position: absolute;
-        left: 151px;
-        -webkit-text-stroke: 13px #171717;
-      }
-    }
-
-    &__answer {
-      padding: 24px 54px;
-      border-radius: $space11;
-      color: $colorBlack;
-      text-align: center;
-      font-family: Roboto;
-      font-size: 28px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 32px;
-      @include themed() {
-        background: t($buttonBgActive);
-      }
-
-      &:hover {
-        border: 1px solid $colorGray200;
-        background: $gradientPurple;
-      }
-
-      & img {
-        margin-bottom: -5px;
-        margin-right: -6px;
-        margin-left: 7px;
-      }
-    }
-
-    &__arrow {
-      margin-left: 38px;
-      margin-bottom: -16px;
+  &__mascotVoice {
+    width: fit-content;
+    &_size_l {
+      @include width-height($space20);
     }
   }
+
+  &__mascotText {
+    width: 100%;
+  }
+
+  &__answer {
+    display: flex;
+    justify-content: space-between;
+    align-self: end;
+  }
+}
+
+.answer {
+  &__arrow {
+    @include flexCenter;
+    &_size_m {
+      font-size: 56px;
+    }
+    &_size_l {
+      font-size: 66px;
+    }
+  }
+}

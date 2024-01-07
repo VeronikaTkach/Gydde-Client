@@ -1,0 +1,31 @@
+@use '../../../../styles/styles.scss' as *;
+
+.soundSwitch {
+	@include flexCenter;
+	border-radius: 16px;
+	font-size: 26px;
+	@include themed() {
+		background-color: t($buttonBgActive);
+		color: t($buttonLabelActive);
+	}
+	&:hover {
+		transition: .3;
+		@include themed() {
+			background: t($gradientButtonHover);
+			color: t($buttonLabelHover1);
+		}
+	}
+
+	&_off {
+		@include themed() {
+			background: t($buttonBackgorundDisabled);
+			color: t($buttonLabelActive);
+		}
+		&:hover {
+			@include themed() {
+				background: t($buttonBackgorundDisabled);
+				color: t($buttonLabelActive);
+			}
+		}
+	}
+}

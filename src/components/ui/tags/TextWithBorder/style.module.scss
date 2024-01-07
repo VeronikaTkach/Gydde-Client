@@ -1,0 +1,34 @@
+@use '../../../../styles/styles.scss' as *;
+
+.text {
+	position: relative;
+	display: inline-block;
+	@include themed() {
+		color: t($textPrimaryMain);
+	}
+font-size: 64px;
+	&_accent {
+		@include themed() {
+			color: t($textAccent);
+		}
+	}
+
+	&__withBorder {
+		position: relative;
+		z-index: 0;
+		@include themed() {
+			-webkit-text-stroke: .2em t($surfaceBorder2);
+			text-stroke: .2em t($surfaceBorder2);
+		}
+	}
+
+	&__withoutBorder {
+		position: absolute;
+		z-index: 1;
+	}
+
+	&_space {
+		display: inline-block;
+		width: .25em;
+	}
+}

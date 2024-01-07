@@ -1,3 +1,5 @@
+@use '../../../../styles/styles.scss' as *;
+
 .button {
 	cursor: pointer;
 	&_icon {
@@ -5,6 +7,50 @@
 		background-color: transparent;
 	}
 	&:disabled {
+		@include themed() {
+			background: t($buttonBackgorundDisabled);
+			color: t($buttonLabelDisabled);
+		}
+	}
 
+	&_accent, &_border  {
+		@include flexCenter;
+		white-space: nowrap;
+		transition: .3s;
+	}
+	&_accent {
+		gap: 8px;
+		padding: 20px 50px;
+		@include textStyleButton2;
+		@include borderStyle(1px solid transparent, 40px);
+		@include themed() {
+			background: t($buttonBgActive);
+			color: t($buttonLabelActive);
+		}
+		&:hover {
+			@include themed() {
+				background: t($buttonBgActive);
+				border-color: t($buttonBorderHover);
+				background: t($gradientButtonHover);
+				color: t($buttonLabelHover1);
+			}
+		}
+	}
+
+	&_border {
+		@include textStyleButton1;
+		background-color: transparent;
+		padding: $space4 $space7;
+		gap: 4px;
+		@include themed() {
+			@include borderStyle(3px solid t($buttonBgActive), 40px);
+			color: t($buttonLabelActive2);
+		}
+		&:hover {
+			@include themed() {
+				background-color: t($buttonBgHover);
+				color: t($buttonLabelHover);
+			}
+		}
 	}
 }

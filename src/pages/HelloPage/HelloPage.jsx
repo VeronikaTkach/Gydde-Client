@@ -1,8 +1,15 @@
-import { LanguageList } from '../../components/LanguageList';
-import { Subtitle } from '../../components/Subtitle';
 import cn from 'classnames';
-import s from './style.module.scss';
+import { LanguageList } from '../../components/LanguageList';
+import { BaseSubtitle } from '../../components/Subtitle';
 import helper from '../../assets/images/gydde_picture.png';
+import helloSticker from '../../assets/images/stickers/helloHand.png';
+import s from './style.module.scss';
+
+const mascotText = [
+  { part: 'Hello! I’m', isHighlighted: false },
+  { part: 'Gydde', isHighlighted: true },
+];
+const answerButtonText = 'Hi, Gydde!';
 
 export function HelloPage() {
   return (
@@ -13,7 +20,13 @@ export function HelloPage() {
         </div>
         <LanguageList />
       </div>
-      <Subtitle className={s.content__subtitle} />
+      <BaseSubtitle
+        className={s.content__subtitle}
+        sound={true}
+        text={mascotText}
+        answerButtonText={answerButtonText}
+        answerButtonSticker={helloSticker}
+      />
     </main>
   );
 }

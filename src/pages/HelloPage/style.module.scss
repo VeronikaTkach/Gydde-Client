@@ -25,6 +25,12 @@
   }
 
   &__subtitle {
+    @include textStyleSubtitle;
+    grid-template-columns: $space20 1fr 329px;
+    grid-template-rows: minmax(156px, 1fr);
+    gap: 40px;
+    padding: $space10;
     margin-top: -91px;
+    max-width: 1592px; //todo Временно! поправить остальные стили, субтитры должны ограничиваться контейнером, а не max-width
   }
 }
