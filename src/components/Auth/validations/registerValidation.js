@@ -7,11 +7,11 @@ export const mailValidation = {
   required: 'Required!',
   pattern: {
     value: mailRegExp,
-    message: 'Enter a valid email address',
+    message: 'Please enter a valid email address',
   },
   minLength: {
     value: 6,
-    message: 'Email must be at least 6 characters long',
+    message: 'Please enter a valid email address',
   },
 };
 
@@ -27,10 +27,10 @@ export const passwordValidation = {
   required: 'Required!',
   minLength: {
     value: 8,
-    message: 'Password must be at least 8 characters long',
+    message: 'Password must be at least 8 characters (latin letters, numbers or symbols)',
   },
-  maxLength: {
-    value: 30,
-    message: 'Password must be no more than 30 characters',
-  },
+  // maxLength: {
+  //   value: 30,
+  //   message: 'Password must be no more than 30 characters',
+  // },
 };

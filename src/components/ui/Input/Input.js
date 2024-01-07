@@ -23,9 +23,9 @@ export function Input(props) {
 
   return (
     <div className={cn(s.field, { [s.field_error]: props.classError }, props.className)}>
-      {!props.format && (
+          {!props.format && (
         <input
-          className={s.field__input}
+          className={cn(s.field__input, { [s.field__input_error]: props.classError }, props.className)}
           type={typeInput || 'text'}
           accept={props.accept}
           placeholder={props.placeholder}
@@ -40,8 +40,8 @@ export function Input(props) {
       )}
       {props.type === 'password' && (
         <button
-          className={cn(s.field__password, 'icon_eye_close', {
-            [cn(s.field__password_show, 'icon_eye_open')]: typeInput === 'text',
+          className={cn(s.field__password, 'iconEyeClose', {
+            [cn(s.field__password_show, 'iconEyeOpen')]: typeInput === 'text',
           })}
           type={'button'}
           onClick={showPassword}></button>
