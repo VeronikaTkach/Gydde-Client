@@ -3,14 +3,13 @@
 .languages {
   @include width-height(584px, 400px);
   padding: 32px 24px;
+  margin-right: 89px;
+  margin-top: 67px;
   border-radius: $space8;
   @include themed() {
     border: 1px solid t($surfaceBorder1);
     background: t($surfacePrimary2);
   }
-
-  margin-right: 89px;
-  margin-top: 67px;
 
   &__item {
     display: flex;
@@ -18,22 +17,19 @@
     align-items: center;
     @include width-height(536px, 64px);
     margin-bottom: 4px;
-    
+    padding-left: 15px;
+    padding-bottom: 3px;
     cursor: pointer;
-    font-family: Roboto;
     @include fontStyle(20px, 700, 32px);
     @include themed() {
       color: t($textPrimaryMain);
     }
     & img {
-      margin-left: 15px;
-      margin-bottom: 3px;
       clip-path: circle(50% at 50% 50%);
     }
 
     & p {
       margin-left: 12px;
-      margin-bottom: 3px;
     }
 
     &:hover {
@@ -44,29 +40,12 @@
     }
 
     &_active {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      @include width-height(536px, 64px);
-      margin-bottom: 4px;
-      cursor: pointer;
-      font-family: Roboto;
-      @include fontStyle(20px, 700, 32px);
+      @extend .languages__item;
       border-radius: $space4;
       @include themed() {
         border: 2px solid t($surfacePrimaryAccent);
         background-color: t($formBackground);
         color: t($textPrimaryMain);
-      }
-      & img {
-        margin-left: 13px;
-        margin-bottom: 3px;
-        clip-path: circle(50% at 50% 50%);
-      }
-
-      & p {
-        margin-left: 12px;
-        margin-bottom: 3px;
       }
     }
   }
