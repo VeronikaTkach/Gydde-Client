@@ -42,26 +42,33 @@ export function FormAuthorization() {
     <Fragment>
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
         <div className={cn(s.input__title)}>Email address</div>
-        <Input
-          classError = {errors.email}
-          placeholder={'Enter email address'}
-          name={'email'}
-          setValue={setValue}
-          register={register}
-          validation={mailValidation}
-        />
-        {errors.email && <p className={s.form__error}>{errors.email.message}</p>}
+        <div className={s.input__block}>
+          <Input
+            classError = {errors.email}
+            placeholder={'Enter email address'}
+            name={'email'}
+            setValue={setValue}
+            register={register}
+            validation={mailValidation}
+          />
+          {errors.email && <p className={s.form__error}>{errors.email.message}</p>}
+        </div>
+        
         <div className={cn(s.input__title)}>Password</div>
-        <Input
-          classError = {errors.password}
-          placeholder={'Enter  password'}
-          name={'password'}
-          setValue={setValue}
-          register={register}
-          type={'password'}
-          validation={passwordValidation}
-        />
-        {errors.password && <p className={s.form__error}>{errors.password.message}</p>}
+
+        <div className={s.input__block}>
+          <Input
+            classError = {errors.password}
+            placeholder={'Enter  password'}
+            name={'password'}
+            setValue={setValue}
+            register={register}
+            type={'password'}
+            validation={passwordValidation}
+          />
+          {errors.password && <p className={s.form__error}>{errors.password.message}</p>}
+        </div>
+        
       </form>
       <Button className={s.form__btnSubmit} type={'submit'} length={'284px'} backgroundColor={'red'}>
         Log in
