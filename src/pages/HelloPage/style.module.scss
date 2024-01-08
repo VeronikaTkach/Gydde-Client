@@ -2,12 +2,9 @@
 
 .content {
   @include width-height(100%, 1080px);
-  background: url('../../assets/images/helloBgLights.svg');
+  //background: url('../../assets/images/helloBgLights.svg');
   background-repeat: no-repeat;
   background-size: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
   display: flex;
   align-items: center;
   flex-direction: column;

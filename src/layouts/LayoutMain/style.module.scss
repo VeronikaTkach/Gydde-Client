@@ -8,6 +8,11 @@
 	@include themed() {
 		background-color: t($bg);
 	}
+	&__lights {
+		background: url('../../assets/images/helloBgLights.svg');
+    	background-repeat: no-repeat;
+   		background-size: cover;
+	}
 	&__container {
 		display: flex;
 		flex-direction: column;
@@ -16,6 +21,7 @@
 		width: 100%;
 		min-height: 100vh;
 		height: 100%;
+		
 	}
 	&__authorization {
 		position: absolute;
