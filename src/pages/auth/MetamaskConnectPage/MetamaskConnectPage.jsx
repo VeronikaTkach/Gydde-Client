@@ -14,6 +14,12 @@ import {
   metamaskAuthorization,
   setMetamaskConnectionStatus,
 } from '../../../core/store/slices/metamaskAuthorizationSlice';
+import smiley from '../../../assets/images/stickers/smiley.png';
+import ball from '../../../assets/images/stickers/ball.png';
+import bangOrange from '../../../assets/images/stickers/bangOrange.png';
+import bangWhite from '../../../assets/images/stickers/bangWhite.png';
+import metamaskSmiley from '../../../assets/images/stickers/metamask.png';
+import { StickersSpinner } from '../../../components/ui/loaders/StickersSpinner';
 import s from './style.module.scss';
 
 const connectionTextServer = {
@@ -94,7 +100,7 @@ export function MetamaskConnectPage() {
   connectionText[MetamaskConnectionStatus.Error].buttonOnClick = () =>
     dispatch(setMetamaskConnectionStatus(MetamaskConnectionStatus.Connecting)); //! временно
 
-  if (connectionStatus !== MetamaskConnectionStatus.NoWallet && !window.ethereum) {
+  if (connectionStatus !== MetamaskConnectionStatus.NoWallet && window.ethereum) {
     dispatch(setMetamaskConnectionStatus(MetamaskConnectionStatus.NoWallet));
 
     return;
@@ -115,6 +121,10 @@ export function MetamaskConnectPage() {
           }}
         />
       </div>
+      <StickersSpinner
+        className={s.connectWindow__spinner}
+        icons={[smiley, ball, bangOrange, metamaskSmiley, bangWhite]}
+      />
       <div className={cn(s.connectWindow__mascot, s.mascot)}>
         <img className={s.mascot__body} src={mascotBody} alt={'mascot'} />
         <img className={s.mascot__hands} src={mascotHands} alt={'mascot'} />

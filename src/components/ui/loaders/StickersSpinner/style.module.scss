@@ -1,0 +1,96 @@
+@use '../../../../styles/styles.scss' as *;
+
+.spinner {
+	width: 400px;
+	height: 400px;
+
+	&__img{
+		position: absolute;
+		left: 45%;
+		transform-origin: 50% 200px;
+		animation: img1 1.5s cubic-bezier(0.6,0,.4,1) infinite;
+	}
+	&__img:nth-child(1) {
+		animation-name: img1;
+		animation-delay: 150ms;
+	}
+	&__img:nth-child(2) {
+		animation-name: img2;
+		animation-delay: 200ms;
+	}
+	&__img:nth-child(3) {
+		animation-name: img3;
+		animation-delay: 250ms;
+	}
+	&__img:nth-child(4) {
+		animation-name: img4;
+		animation-delay: 300ms;
+		background-color: $colorWhite;
+		border-radius: 8px;
+		padding: 5px;
+	}
+	&__img:nth-child(5) {
+		animation-name: img5;
+		animation-delay: 450ms;
+	}
+}
+
+@keyframes img1 {
+  0% {
+    transform: rotateZ(-90deg) rotateX(10deg);
+		margin-left: 30px;
+  }
+	50% {
+		margin-left: -30px;
+  }
+  95%, 100% {
+    transform: rotateZ(270deg) rotateX(10deg);
+		margin-left: 30px;
+  }
+}
+
+@keyframes img2 {
+  0% {
+    transform: rotateZ(-50deg) rotateX(10deg);
+		margin-left: 30px;
+  }
+	50% {
+		margin-left: -30px;
+  }
+  95%, 100% {
+    transform: rotateZ(310deg) rotateX(10deg);
+		margin-left: 30px;
+  }
+}
+
+@keyframes img3 {
+  0% {
+    transform: rotateZ(-30deg) rotateX(10deg);
+  }
+  95%, 100% {
+    transform: rotateZ(330deg) rotateX(10deg);
+  }
+}
+
+@keyframes img4 {
+  0% {
+    transform: rotateZ(40deg) rotateX(0deg);
+  }
+  95%, 100% {
+    transform: rotateZ(400deg) rotateX(0deg);
+  }
+}
+
+@keyframes img5 {
+  0% {
+    transform: rotateZ(80deg) rotateX(10deg);
+		margin-left: -30px;
+  }
+	50% {
+		margin-left: 30px;
+  }
+  95%, 100% {
+    transform: rotateZ(440deg) rotateX(10deg);
+		margin-left: -30px;
+  }
+}
