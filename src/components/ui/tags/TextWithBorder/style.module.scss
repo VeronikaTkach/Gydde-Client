@@ -6,7 +6,7 @@
 	@include themed() {
 		color: t($textPrimaryMain);
 	}
-font-size: 64px;
+
 	&_accent {
 		@include themed() {
 			color: t($textAccent);

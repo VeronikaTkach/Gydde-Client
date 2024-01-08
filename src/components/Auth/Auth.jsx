@@ -35,10 +35,12 @@ export function Auth() {
         <div className={cn(s.auth__socials, s.socials)}>
           <div className={cn(s.socials__title)}>Log in with wallet</div>
           <div className={cn(s.socials__body)}>
-            <Link className={cn(s.social, s.social_metamask)} to='#'>
+            <Link
+              className={cn(s.social, s.social_metamask)}
+              to={RoutesName.MetamaskConnectPage}>
               <img className={s.social__img} src={IconM} />
               <div className={s.social__text}>
-                <Metamask />
+                {/* <Metamask /> */}
                 Metamask
               </div>
             </Link>

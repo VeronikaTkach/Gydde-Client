@@ -24,6 +24,13 @@
 }
 
 .answer {
+  display: flex;
+  &_size_m {
+    gap: $space6;
+  }
+  &_size_l {
+    gap: 34px;
+  }
   &__arrow {
     @include flexCenter;
     &_size_m {

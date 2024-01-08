@@ -1,10 +1,6 @@
-@use '../../ui/buttons/Button/style.module.scss' as *;
+@use '../../../styles/styles.scss' as *;
 
-.button {
-	@extend .button;
-	background-color: transparent;
-	&::before {
-		content: url(../../../assets/images/metamask.svg);
-	}
+.statusText {
+	@include fontRussoOne;
+	@include fontStyle(40px, 400, 44px);
 }
-

@@ -26,7 +26,7 @@
 
   &__subtitle {
     @include textStyleSubtitle;
-    grid-template-columns: $space20 1fr 329px;
+    grid-template-columns: $space20 1fr fit-content(30px);
     grid-template-rows: minmax(156px, 1fr);
     gap: 40px;
     padding: $space10;

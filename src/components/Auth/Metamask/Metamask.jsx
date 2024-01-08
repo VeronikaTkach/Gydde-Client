@@ -1,46 +1,45 @@
-import { useDispatch } from 'react-redux';
-import cn from 'classnames';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Web3 from 'web3';
-import { showAuthorizationWindow } from '../../../core/store/slices/windowStateSlice';
-import { Button } from '../../ui/buttons/Button';
+import { MetamaskConnectionStatus } from '../../../core/constants/Status';
+import {
+  getMetamaskAccount,
+  metamaskAuthorization,
+  sendMetamaskData,
+  setMetamaskMessage,
+  signMetamaskMessage,
+} from '../../../core/store/slices/metamaskAuthorizationSlice';
+import { RoutesName } from '../../../core/constants/Routes';
 import s from './style.module.scss';
 
-// const web3 = new Web3(Web3.givenProvider);
+const numberSize = 1000000;
 
-export function Metamask({ className }) {
+export function Metamask({ text }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const web3Ref = useRef(new Web3(window.ethereum));
+  const { connectionStatus, account, message, signedMessage } =
+    useSelector(metamaskAuthorization);
 
-  //обсудить путь с беком, не совсем ясно что по итогу ему нужно
-  async function onConnect() {
-    if (window.ethereum) {
-      window.ethereum
-        .request({ method: 'eth_requestAccounts' })
-        .then(() => {
-          localStorage.setItem('authorization', 'user');
-          dispatch(showAuthorizationWindow(false));
-        })
-        .catch((error) => console.error(error));
-    } else {
-      console.error('error');
+  useEffect(() => {
+    if (connectionStatus === MetamaskConnectionStatus.Connecting) {
+      dispatch(getMetamaskAccount(web3Ref.current));
+    } else if (connectionStatus === MetamaskConnectionStatus.Sign) {
+      const randomMessage = Math.floor(Math.random() * numberSize).toString();
+
+      dispatch(setMetamaskMessage(randomMessage));
+      dispatch(signMetamaskMessage(web3Ref.current));
+    } else if (connectionStatus === MetamaskConnectionStatus.Connected) {
+      sendMetamaskData({
+        account: account,
+        message: message,
+        signedMessage: signedMessage,
+      });
+    } else if (connectionStatus === MetamaskConnectionStatus.Finish) {
+      navigate(RoutesName.Root);
     }
-  }
+  }, [connectionStatus]);
 
-  async function requestEthereumAddress() {
-    const web3 = new Web3(window.ethereum);
-    try {
-      const accounts = await web3.eth.requestAccounts();
-
-      const code = Math.floor(Math.random() * 1000000).toString();
-
-      const signature = await web3.eth.personal.sign(code, accounts[0], '');
-
-      console.log(accounts, code, signature);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  return (
-    <Button className={cn(s.button, className)} onClick={requestEthereumAddress}></Button>
-  );
+  return <div className={s.statusText}>{text}</div>;
 }
