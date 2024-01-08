@@ -86,3 +86,9 @@
     color: #868686;
   }
 }
+.iconError {
+  &:before {
+    content: $iconError;
+    color: #f04438;
+  }
+}
