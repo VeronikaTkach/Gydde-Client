@@ -1,44 +1,37 @@
 @use '../../styles/styles.scss' as *;
 
 .auth {
-	padding: 40px 60px;
+	padding: $space12 $space16;
 	margin: 0 auto;
 	width: 1016px;
 	min-height: 568px;
-	border-radius: 16px;
 	@include themed() {
+		border-radius: t($radiusSmall);
 		color: t($textPrimaryMain);
-	}
-	@include themed() {
 		background-color: t($bg);
-	}
-	@include themed() {
 		box-shadow: t($shadowBgPopup);
 	}
-	overflow-y: scroll;
-	&::-webkit-scrollbar {
-		width: 0;
-	}
 	a {
-		color: $colorWhite;
+		@include themed() {
+			color: t($textPrimaryMain);
+		}
 	}
 	&__header {
 		@include flex-grid(flex, row, space-between, center);
-		margin-bottom: 48px;
+		margin-bottom: $space13;
 	}
 	&__title {
-		@include fontRussoOne;
-		@include fontStyle(40px, 400, 44px);
-		width: 100%;
+		@include textStyleTitle3;
+		line-height: 48px;
 	}
 	&__close {
-		font-size: 28px;
+		font-size: 24px;
 		background-color: transparent;
 	}
 	&__body {
 		display: flex;
 		flex-direction: column;
-		gap: 52px;
+		gap: $space14;
 	}
 	&__description {
 		@include fontStyle(20px, 700, normal);
@@ -60,6 +53,7 @@
     	align-items: center;
 	}
 }
+
 .info {
 	width: 100%;
 }
@@ -68,11 +62,11 @@
 	&__title {
 		@include fontRoboto;
 		@include fontStyle(20px, 700, 24px);
-		margin-bottom: 20px;
+		margin-bottom: $space6;
 	}
 	&__body {
 		@include flex-grid(flex, row, space-between, center);
-		gap: 20px;
+		gap: $space6;
 	}
 }
 
@@ -81,23 +75,23 @@
 	display: flex;
 	align-items: center;
 	gap: 16px;
-	border-radius: 16px;
-	padding: 12px 36px;
+	padding: $space4 30px;
 	@include themed() {
+		border-radius: t($radiusSmall);
 		background-color: t($formBackground);
+	}
+	&::before {
+		@include width-height(40px, 40px);
+		@include flexCenter;
 	}
 	&_twitter {
 		&::before {
 			content: url(../../assets/images/twitter.svg);
-			@include width-height(40px, 40px);
-			@include flexCenter;
 		}
 	}
 	&_google {
 		&::before {
 			content: url(../../assets/images/google.svg);
-			@include width-height(40px, 40px);
-			@include flexCenter;
 		}
 	}
 	&__img {
@@ -109,7 +103,9 @@
 		position: relative;
 		@include textStyleSecondary1;
 		@include width-height(100%, 100%);
-		color: $colorWhite;
+		@include themed() {
+			color: t($textPrimaryMain);
+		}
 		& > button {
 			@include width-height(100%, 100%);
 			position: absolute;
