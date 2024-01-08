@@ -46,6 +46,10 @@ export function Input(props) {
           type={'button'}
           onClick={showPassword}></button>
       )}
+
+      {/* {props.type === 'text' && (
+        <div className={cn(s.field__text, 'icon')}></div>
+      )} */}
     </div>
   );
 }

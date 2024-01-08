@@ -17,7 +17,7 @@ export function Auth() {
       <div className={s.auth__header}>
         <div className={s.auth__title}>Log in to Gydde</div>
         <Button
-          className={s.auth__close}
+          className={cn(s.auth__close, 'iconClose')}
           onClick={() => navigate(RoutesName.Back)}></Button>
       </div>
       <div className={s.auth__body}>
