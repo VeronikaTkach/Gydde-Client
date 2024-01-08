@@ -12,25 +12,29 @@ import './style.scss';
 
 export function App() {
   return (
-    <Routes>
-      <Route path={RoutesName.Root} element={<LayoutMain />}>
-        <Route index element={<HomePage />} />
-        <Route
-          path={RoutesName.GoogleOauthPage}
-          element={<SocialsOauthPage social={Socials.Google} />}
-        />
-        <Route
-          path={RoutesName.TwitterOauthPage}
-          element={<SocialsOauthPage social={Socials.Twitter} />}
-        />
-        <Route
-          path={RoutesName.MetamaskConnectPage}
-          element={<MetamaskConnectPage social={Socials.Twitter} />}
-        />
-        <Route path={RoutesName.AuthPage} element={<AuthPage />} />
-        <Route path={RoutesName.MailAuthPage} element={<MailAuthPage />} />
-        <Route path={RoutesName.HelloPage} element={<HelloPage />} />
-      </Route>
-    </Routes>
+    <>
+      <div id={'app'}>
+        <Routes>
+          <Route path={RoutesName.Root} element={<LayoutMain />}>
+            <Route index element={<HomePage />} />
+            <Route
+              path={RoutesName.GoogleOauthPage}
+              element={<SocialsOauthPage social={Socials.Google} />}
+            />
+            <Route
+              path={RoutesName.TwitterOauthPage}
+              element={<SocialsOauthPage social={Socials.Twitter} />}
+            />
+            <Route
+              path={RoutesName.MetamaskConnectPage}
+              element={<MetamaskConnectPage social={Socials.Twitter} />}
+            />
+            <Route path={RoutesName.AuthPage} element={<AuthPage />} />
+            <Route path={RoutesName.MailAuthPage} element={<MailAuthPage />} />
+            <Route path={RoutesName.HelloPage} element={<HelloPage />} />
+          </Route>
+        </Routes>
+      </div>
+    </>
   );
 }
