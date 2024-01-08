@@ -18,7 +18,7 @@ export function HelloPage() {
         <div className={cn(s.content__img)}>
           <img src={helper} alt='helper picture' />
         </div>
-        <LanguageList />
+        <LanguageList className={s.content__languages} />
       </div>
       <BaseSubtitle
         className={s.content__subtitle}

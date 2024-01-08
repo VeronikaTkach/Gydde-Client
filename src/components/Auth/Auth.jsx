@@ -17,11 +17,11 @@ export function Auth() {
       <div className={s.auth__header}>
         <div className={s.auth__title}>Log in to Gydde</div>
         <Button
-          className={s.auth__close}
+          className={cn(s.auth__close, 'iconClose')}
           onClick={() => navigate(RoutesName.Back)}></Button>
       </div>
       <div className={s.auth__body}>
-        <div className={cn(s.auth__socials, s.socials)}>
+        <div>
           <div className={cn(s.socials__title)}>Log in with social account</div>
           <div className={cn(s.socials__body)}>
             <Twitter className={cn(s.social, s.social_twitter)} />
@@ -32,7 +32,7 @@ export function Auth() {
             </Link>
           </div>
         </div>
-        <div className={cn(s.auth__socials, s.socials)}>
+        <div>
           <div className={cn(s.socials__title)}>Log in with wallet</div>
           <div className={cn(s.socials__body)}>
             <Link
