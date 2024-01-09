@@ -1,16 +1,19 @@
 import { LocalStorageItems } from '../constants/LocalStorageItems';
-import mainRequest from '../utils/mainApi';
+import mainRequest from '../utils/mainRequestUtils';
 
-export async function sendTwitterCode(code) {
-  const data = {
-    code: code,
-  };
+export const twitterAuthorization = {
+  sendCode: async (code) => {
+    const data = {
+      code: code,
+    };
 
-  try {
-    const result = await mainRequest.post('', data); //? backend api path
+    try {
+      const result = await mainRequest.post('', data); //? backend api path
 
-    localStorage.setItem(LocalStorageItems.JwtToken, result.token);
-  } catch (error) {
-    console.error(error);
-  }
-}
+      localStorage.setItem(LocalStorageItems.JwtToken, result.token);
+    } catch (error) {
+      console.error(error);
+    }
+  },
+};
+

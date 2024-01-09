@@ -1,21 +1,21 @@
 import cn from 'classnames';
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { setWindowOptions } from '../../../core/helpers/forWindow';
-import { RoutesName } from '../../../core/constants/Routes';
 import { LocalStorageItems } from '../../../core/constants/LocalStorageItems';
+import { showAuthorizationWindow } from '../../../core/store/slices/modalWindowStateSlice';
 import { Button } from '../../ui/buttons/Button';
 import s from './style.module.scss';
 
 export function Twitter({ className }) {
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isAuthorizationDone, setIsAuthorizationDone] = useState(false);
   const intervalId = useRef(null);
   const timeInterval = 300;
 
   useEffect(() => {
     if (isAuthorizationDone) {
-      navigate(RoutesName.Root);
+      dispatch(showAuthorizationWindow(false));
     }
 
     return () => {

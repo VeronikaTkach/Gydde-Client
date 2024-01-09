@@ -1,4 +1,69 @@
 @use '../../../styles/styles.scss' as *;
+@use '../../../components/Auth/style.module.scss' as *;
+
+.connectWindow {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	&__header {
+		display: flex;
+		justify-content: center;
+	}
+
+	&__spinner {
+		position: absolute;
+		margin-top: 45px;
+	}
+}
+
+.header {
+	&__close {
+		background-color: transparent;
+		position: absolute;
+		right: 0;
+		font-size: 24px;
+		padding: 10px 0 10px 10px;
+	}
+}
+
+.mascot {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+
+	&__body, &__hands {
+		@include width-height(208px, 280px);
+		margin-top: 54px;
+	}
+
+	&__body {
+		position: absolute;
+		z-index: 0;
+	}
+
+	&__hands {
+		z-index: 3;
+	}
+
+	&__text {
+		position: relative;
+		@include textStyleButton2;
+    grid-template-columns: 1fr fit-content(20px);
+    grid-template-rows: minmax(115px, 1fr);
+		gap: 20px;
+		margin-top: -48px;
+		padding: 20px;
+		z-index: 2;
+		&_noAnswer {
+			grid-template-columns: 1fr;
+			grid-template-rows: 1fr;
+		}
+	}
+}
 
 .statusText {
 	@include fontRussoOne;

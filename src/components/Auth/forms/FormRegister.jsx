@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { showAuthorizationWindow } from '../../../core/store/slices/windowStateSlice';
+import { showAuthorizationWindow } from '../../../core/store/slices/modalWindowStateSlice';
 import { Button } from '../../ui/buttons/Button';
 import { Input } from '../../ui/Input';
 import {

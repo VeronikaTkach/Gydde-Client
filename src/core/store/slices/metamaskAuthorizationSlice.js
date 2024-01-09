@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { MetamaskConnectionStatus } from '../../constants/Status';
-import mainRequest from '../../utils/mainApi';
+import mainRequest from '../../utils/mainRequestUtils';
 
 const initialState = {
   connectionStatus: MetamaskConnectionStatus.Connecting,

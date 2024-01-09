@@ -6,16 +6,18 @@ import { setWindowOptions } from '../../../core/helpers/forWindow';
 import { LocalStorageItems } from '../../../core/constants/LocalStorageItems';
 import { Button } from '../../ui/buttons/Button';
 import s from './style.module.scss';
+import { useDispatch } from 'react-redux';
+import { showAuthorizationWindow } from '../../../core/store/slices/modalWindowStateSlice';
 
 export function Google({ className }) {
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isAuthorizationDone, setIsAuthorizationDone] = useState(false);
   const intervalId = useRef(null);
   const timeInterval = 300;
 
   useEffect(() => {
     if (isAuthorizationDone) {
-      navigate(RoutesName.Root);
+      dispatch(showAuthorizationWindow(false));
     }
 
     return () => {

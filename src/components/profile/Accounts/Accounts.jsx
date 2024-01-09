@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { Button } from '../../ui/buttons/Button';
 import { SubtitleBlock } from '../../ui/tags/SubtitleBlock';
-import { Metamask } from '../../Auth/Metamask';
+import { MetamaskConnection } from '../../Auth/Metamask';
 import s from './style.module.scss';
 
 //временные компоненты-заглушки, по мере добавления выносить в отдельные файлы
@@ -43,7 +43,7 @@ export function Accounts({ className }) {
         <div className={s.accounts__title}>Connect Wallet</div>
         <div className={s.accounts__list}>
           <Binance isConnected={false} />
-          <Metamask isConnected={true} />
+          <MetamaskConnection isConnected={true} />
           <Trust isConnected={false} />
           <Phantom isConnected={false} />
         </div>

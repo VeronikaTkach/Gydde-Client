@@ -1,15 +1,24 @@
 @use '../../styles/styles.scss' as *;
 
 .auth {
-	padding: $space12 $space16;
-	margin: 0 auto;
-	width: 1016px;
-	min-height: 568px;
-	@include themed() {
-		border-radius: t($radiusSmall);
-		color: t($textPrimaryMain);
-		background-color: t($bg);
-		box-shadow: t($shadowBgPopup);
+	position: fixed;
+	left: 0;
+	top: 0;
+	@include width-height(100%, 100vh);
+	@include flexCenter;
+	z-index: 100;
+	background-color: #171717f2; //todo !временно, дизайнеры не добавили цвет пока
+	&__container {
+		padding: $space12 $space16 $space10;
+		margin: 0 auto;
+		width: 1016px;
+		min-height: 568px;
+		@include themed() {
+			border-radius: t($radiusSmall);
+			color: t($textPrimaryMain);
+			background-color: t($bg);
+			box-shadow: t($shadowBgPopup);
+		}
 	}
 	a {
 		@include themed() {
@@ -65,6 +74,7 @@
 		margin-bottom: $space6;
 	}
 	&__body {
+		height: 68px;
 		@include flex-grid(flex, row, space-between, center);
 		gap: $space6;
 	}
@@ -84,14 +94,24 @@
 		@include width-height(40px, 40px);
 		@include flexCenter;
 	}
-	&_twitter {
+	&_twitter {//todo задать с помощью иконочного шрифта
 		&::before {
-			content: url(../../assets/images/twitter.svg);
+			content: '';
+			background-image: url(../../assets/images/twitter.svg);
+			background-size: contain;
+			background-position: center;
+			background-size: 28px;
+			@include width-height(28px);
 		}
 	}
 	&_google {
 		&::before {
-			content: url(../../assets/images/google.svg);
+			content: '';
+			background-image: url(../../assets/images/google.svg);
+			background-size: cover;
+			background-position: center;
+			background-size: 33px;
+			@include width-height(33px);
 		}
 	}
 	&__img {

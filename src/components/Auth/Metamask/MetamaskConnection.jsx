@@ -15,7 +15,7 @@ import s from './style.module.scss';
 
 const numberSize = 1000000;
 
-export function Metamask({ text }) {
+export function MetamaskConnection({ text }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const web3Ref = useRef(new Web3(window.ethereum));

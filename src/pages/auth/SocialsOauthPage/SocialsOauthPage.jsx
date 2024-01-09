@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { Socials } from '../../../core/constants/Socials';
-import { getGooleToken, sendGooleToken } from '../../../core/api/authorizationGoogle';
-import { sendTwitterCode } from '../../../core/api/authorizationTwitter';
+import { googleAuthorization } from '../../../core/api/authorizationGoogle';
+import { twitterAuthorization } from '../../../core/api/authorizationTwitter';
 import { LocalStorageItems } from '../../../core/constants/LocalStorageItems';
-import { AuthPage } from '../AuthPage/AuthPage';
+import { HelloPage } from '../../HelloPage/HelloPage';
 
 export function SocialsOauthPage({ social }) {
   const urlParams = new URLSearchParams(window.location.search);
@@ -15,10 +15,10 @@ export function SocialsOauthPage({ social }) {
 
       (async () => {
         if (social === Socials.Google) {
-          const googleToken = await getGooleToken(decodedCode);
-          await sendGooleToken(googleToken);
+          const googleToken = await googleAuthorization.getToken(decodedCode);
+          await googleAuthorization.sendToken(googleToken);
         } else if (social === Socials.Twitter) {
-          await sendTwitterCode(decodedCode);
+          await twitterAuthorization.sendCode(decodedCode);
         }
 
         localStorage.setItem(
@@ -30,5 +30,5 @@ export function SocialsOauthPage({ social }) {
     }
   }, [receivedCode]);
 
-  return <AuthPage />; //todo поменять на лоадер когда будет
+  return <HelloPage />; //todo поменять на лоадер когда будет
 }

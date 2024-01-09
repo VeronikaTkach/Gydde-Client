@@ -1,1 +1,2 @@
-export * from './Metamask';
+export * from './MetamaskConnection';
+export * from './MetamaskView';

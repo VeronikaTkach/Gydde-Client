@@ -6,6 +6,8 @@
 
 	&__img{
 		position: absolute;
+		min-height: 20px;
+		min-width: 20px;
 		left: 45%;
 		transform-origin: 50% 200px;
 		animation: img1 1.5s cubic-bezier(0.6,0,.4,1) infinite;
@@ -13,14 +15,19 @@
 	&__img:nth-child(1) {
 		animation-name: img1;
 		animation-delay: 150ms;
+		transform: rotateZ(-90deg);
+		margin-left: 30px;
 	}
 	&__img:nth-child(2) {
 		animation-name: img2;
 		animation-delay: 200ms;
+		transform: rotateZ(-50deg);
+		margin-left: 30px;
 	}
 	&__img:nth-child(3) {
 		animation-name: img3;
 		animation-delay: 250ms;
+		transform: rotateZ(-30deg);
 	}
 	&__img:nth-child(4) {
 		animation-name: img4;
@@ -28,10 +35,13 @@
 		background-color: $colorWhite;
 		border-radius: 8px;
 		padding: 5px;
+		transform: rotateZ(40deg);
 	}
 	&__img:nth-child(5) {
 		animation-name: img5;
 		animation-delay: 450ms;
+		transform: rotateZ(80deg);
+		margin-left: -30px;
 	}
 }
 

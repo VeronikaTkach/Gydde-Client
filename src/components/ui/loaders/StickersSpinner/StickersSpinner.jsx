@@ -5,7 +5,9 @@ export function StickersSpinner({ className, icons, ...props }) {
   return (
     <div className={cn(s.spinner, className)} {...props}>
       {icons.map((item, index) => (
-        <img className={s.spinner__img} src={item} key={index} alt='sticker' />
+        <div className={s.spinner__img} key={index}>
+          <img src={item} alt='sticker' />
+        </div>
       ))}
     </div>
   );
