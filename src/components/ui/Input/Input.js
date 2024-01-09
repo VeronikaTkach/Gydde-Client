@@ -42,14 +42,15 @@ export function Input(props) {
         <button
           className={cn(s.field__password, 'iconEyeClose', {
             [cn(s.field__password_show, 'iconEyeOpen')]: typeInput === 'text',
+            [s.field__password_error]: props.classError,
           })}
           type={'button'}
           onClick={showPassword}></button>
       )}
 
-      {/* {props.type === 'text' && (
-        <div className={cn(s.field__text, 'icon')}></div>
-      )} */}
+      {(props.type === 'email' && props.classError) && (
+        <div className={cn(s.field__email_error, 'iconError')}></div>
+      )}
     </div>
   );
 }
