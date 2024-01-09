@@ -1,26 +1,20 @@
-import { Link, useNavigate } from 'react-router-dom';
 import cn from 'classnames';
-import IconE from '../../assets/images/email.svg';
-import IconM from '../../assets/images/metamask.svg';
 import { Button } from '../ui/buttons/Button';
 import s from './style.module.scss';
-import { RoutesName } from '../../core/constants/Routes';
-import { Google } from './Google';
-import { Twitter } from './Twitter';
 import Modal from '../ui/Modal/Modal';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   modalWindowState,
   showAuthorizationWindow,
 } from '../../core/store/slices/modalWindowStateSlice';
-import { useEffect } from 'react';
 import {
   allAuthorization,
   setCurrentAuthorizationType,
 } from '../../core/store/slices/authorizationSlice';
 import { AuthorizationType } from '../../core/constants/AuthorizationType';
-import { MailAuthorization } from './MailAuthorization';
-import { MetamaskConnection, MetamaskView } from './Metamask';
+import { MetamaskView } from './Metamask';
+import { AllAuthorizaitions } from './AllAuthorizaitions';
+import { FormAuthorization } from './forms';
 
 export function Auth() {
   const dispatch = useDispatch();
@@ -28,9 +22,6 @@ export function Auth() {
   const { currentAuthorizationType } = useSelector(allAuthorization);
 
   switch (currentAuthorizationType) {
-    case AuthorizationType.AuthMail:
-      return <MailAuthorization />;
-
     case AuthorizationType.AuthMetaMask:
       return <MetamaskView />;
     default:
@@ -45,7 +36,18 @@ export function Auth() {
           <div className={s.auth__container}>
             <div className={s.auth__wrapper}>
               <div className={s.auth__header}>
-                <div className={s.auth__title}>Log in to Gydde</div>
+                <div className={s.auth__header_row}>
+                  {currentAuthorizationType === AuthorizationType.AuthMail && (
+                    <Button
+                      className={cn(s.auth__back, 'iconArrowBack')}
+                      onClick={() => {
+                        dispatch(
+                          setCurrentAuthorizationType(AuthorizationType.NotСhosen)
+                        );
+                      }}></Button>
+                  )}
+                  <div className={s.auth__title}>Log in to Gydde</div>
+                </div>
                 <Button
                   className={cn(s.auth__close, 'iconClose')}
                   onClick={() => {
@@ -53,38 +55,12 @@ export function Auth() {
                     dispatch(setCurrentAuthorizationType(AuthorizationType.NotСhosen));
                   }}></Button>
               </div>
-              <div className={s.auth__body}>
-                <div>
-                  <div className={cn(s.socials__title)}>Log in with social account</div>
-                  <div className={cn(s.socials__body)}>
-                    <Twitter className={cn(s.social, s.social_twitter, 'iconTwitter')} />
-                    <Google className={cn(s.social, s.social_google)} />
-                    <Button
-                      className={cn(s.social, s.social_email)}
-                      onClick={() =>
-                        dispatch(setCurrentAuthorizationType(AuthorizationType.AuthMail))
-                      }>
-                      <img className={s.social__img} src={IconE} alt={'Email'} />
-                      <div className={s.social__text}>Email</div>
-                    </Button>
-                  </div>
-                </div>
-                <div>
-                  <div className={cn(s.socials__title)}>Log in with wallet</div>
-                  <div className={cn(s.socials__body)}>
-                    <Button
-                      className={cn(s.social, s.social_metamask)}
-                      onClick={() =>
-                        dispatch(
-                          setCurrentAuthorizationType(AuthorizationType.AuthMetaMask)
-                        )
-                      }>
-                      <img className={s.social__img} src={IconM} alt={'Metamask'} />
-                      <div className={s.social__text}>Metamask</div>
-                    </Button>
-                  </div>
-                </div>
-              </div>
+              {currentAuthorizationType === AuthorizationType.NotСhosen && (
+                <AllAuthorizaitions />
+              )}
+              {currentAuthorizationType === AuthorizationType.AuthMail && (
+                <FormAuthorization />
+              )}
             </div>
           </div>
         </Modal>
