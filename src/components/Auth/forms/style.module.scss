@@ -3,16 +3,20 @@
 .form {
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
+	gap: $space8;
+	width: 100%;
 	&__link {
 		align-self: flex-end;
 		margin-top: -40px;
 	}
 	&__error {
 		color: $colorRed500;
+		@include fontStyle(13px, 400, normal);
+		margin-top: -13px;
 	}
 	&__btnSubmit {
-		margin-left: 612px;
+		float: right;
+		margin-top: $space8;
 		padding: 10px 80px;
 		color: $colorGray500;
 		width: 284px;
@@ -21,16 +25,21 @@
 		background-color: $colorBlack;
 		@include textStyleButton1;
 	}
-}
-
-.accounts__list {
-	display: flex;
-	gap: 40px;
+	&__block {
+		height: 136px;
+		
+	}
 }
 
 .input {
 	&__title {
 		@include fontRoboto;
 		@include fontStyle(20px, 700, 24px);
+		margin-bottom: 20px;
+	}
+	&__block {
+		@include flex-grid(flex, column, null, null);
+		width: 100%;
+		gap: $space6;
 	}
 }
