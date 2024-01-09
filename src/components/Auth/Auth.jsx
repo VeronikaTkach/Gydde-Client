@@ -37,7 +37,7 @@ export function Auth() {
       break;
   }
 
-  //todo нужно переработать компонент, чтобы было 1 модальное окно и всё остальное внутри менялось от выбранного 'AuthorizationType', вынести кнопки навигации в общий компонент, чтобы не дублировать в других компонентах
+  //TODO: нужно переработать компонент, чтобы было 1 модальное окно и всё остальное внутри менялось от выбранного 'AuthorizationType', вынести кнопки навигации в общий компонент, чтобы не дублировать в других компонентах
   return (
     <>
       {modalAuthorization && (
@@ -79,7 +79,7 @@ export function Auth() {
                         setCurrentAuthorizationType(AuthorizationType.AuthMetaMask)
                       )
                     }>
-                    {/*todo alt!*/}
+                    {/*TODO alt!*/}
                     <img className={s.social__img} src={IconM} />
                     <div className={s.social__text}>Metamask</div>
                   </Button>
