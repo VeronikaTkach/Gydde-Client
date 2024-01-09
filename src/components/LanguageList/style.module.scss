@@ -1,10 +1,10 @@
 @use '../../styles/styles.scss' as *;
 
 .languages {
-  @include width-height(584px, 400px);
+  @include width-height(100%, 400px);
   padding: 32px 24px;
-  margin-right: 89px;
-  margin-top: 67px;
+  align-self: flex-start;
+  margin-top: 146px;
   border-radius: $space8;
   @include themed() {
     border: 1px solid t($surfaceBorder1);
@@ -15,7 +15,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    @include width-height(536px, 64px);
+    @include width-height(100%, 64px);
     margin-bottom: 4px;
     padding-left: 15px;
     padding-bottom: 3px;
