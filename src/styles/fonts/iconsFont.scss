@@ -13,7 +13,7 @@
 }
 
 [class^="icon"]::before, [class*=" icon"]::before,
-[class^="icon"]::after, [class*=" icon"]::after {
+[class^="icon"]::after, [class*=" icon"]::after, input[type="password"] {
   font-family: '#{$iconsFontFamily}' !important;
   font-style: normal;
   font-weight: normal;

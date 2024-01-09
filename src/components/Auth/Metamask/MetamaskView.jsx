@@ -27,10 +27,9 @@ import s from './style.module.scss';
 const connectionTextServer = {
   [MetamaskConnectionStatus.NoWallet]: {
     statusText: 'No wallet detected',
-    descriptionTextPart1: 'I see that you don’t have a wallet. No problem,',
-    descriptionTextPart2: 'I can show you',
-    descriptionTextPart3: 'how to create your first account.',
-    buttonText: 'Gydde, show me!',
+    descriptionTextPart1: 'I will show you',
+    descriptionTextPart2: 'how to create your first wallet.',
+    buttonText: 'Show me!',
   },
   [MetamaskConnectionStatus.Connecting]: {
     statusText: 'Connecting...',
@@ -46,7 +45,7 @@ const connectionTextServer = {
   },
   [MetamaskConnectionStatus.Sign]: {
     statusText: 'Connecting...',
-    descriptionTextPart1: 'Please sign the message request in your wallet to continue.',
+    descriptionTextPart1: 'Please',
     descriptionTextPart2: 'sign',
     descriptionTextPart3: 'the message request in your wallet to continue.',
   },
