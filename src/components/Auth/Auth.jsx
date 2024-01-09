@@ -43,49 +43,52 @@ export function Auth() {
       {modalAuthorization && (
         <Modal className={s.auth}>
           <div className={s.auth__container}>
-            <div className={s.auth__header}>
-              <div className={s.auth__title}>Log in to Gydde</div>
-              <Button
-                className={cn(s.auth__close, 'iconClose')}
-                onClick={() => {
-                  dispatch(showAuthorizationWindow(false));
-                  dispatch(setCurrentAuthorizationType(AuthorizationType.NotСhosen));
-                }}></Button>
-            </div>
-            <div className={s.auth__body}>
-              <div>
-                <div className={cn(s.socials__title)}>Log in with social account</div>
-                <div className={cn(s.socials__body)}>
-                  <Twitter className={cn(s.social, s.social_twitter)} />
-                  <Google className={cn(s.social, s.social_google)} />
-                  <Button
-                    className={cn(s.social, s.social_email)}
-                    onClick={() =>
-                      dispatch(setCurrentAuthorizationType(AuthorizationType.AuthMail))
-                    }>
-                    {/*todo alt!*/}
-                    <img className={s.social__img} src={IconE} />
-                    <div className={s.social__text}>Email</div>
-                  </Button>
+            <div className={s.auth__wrapper}>
+              <div className={s.auth__header}>
+                <div className={s.auth__title}>Log in to Gydde</div>
+                <Button
+                  className={cn(s.auth__close, 'iconClose')}
+                  onClick={() => {
+                    dispatch(showAuthorizationWindow(false));
+                    dispatch(setCurrentAuthorizationType(AuthorizationType.NotСhosen));
+                  }}></Button>
+              </div>
+              <div className={s.auth__body}>
+                <div>
+                  <div className={cn(s.socials__title)}>Log in with social account</div>
+                  <div className={cn(s.socials__body)}>
+                    <Twitter className={cn(s.social, s.social_twitter)} />
+                    <Google className={cn(s.social, s.social_google)} />
+                    <Button
+                      className={cn(s.social, s.social_email)}
+                      onClick={() =>
+                        dispatch(setCurrentAuthorizationType(AuthorizationType.AuthMail))
+                      }>
+                      {/*todo alt!*/}
+                      <img className={s.social__img} src={IconE} />
+                      <div className={s.social__text}>Email</div>
+                    </Button>
+                  </div>
+                </div>
+                <div>
+                  <div className={cn(s.socials__title)}>Log in with wallet</div>
+                  <div className={cn(s.socials__body)}>
+                    <Button
+                      className={cn(s.social, s.social_metamask)}
+                      onClick={() =>
+                        dispatch(
+                          setCurrentAuthorizationType(AuthorizationType.AuthMetaMask)
+                        )
+                      }>
+                      {/*TODO alt!*/}
+                      <img className={s.social__img} src={IconM} />
+                      <div className={s.social__text}>Metamask</div>
+                    </Button>
+                  </div>
                 </div>
               </div>
-              <div>
-                <div className={cn(s.socials__title)}>Log in with wallet</div>
-                <div className={cn(s.socials__body)}>
-                  <Button
-                    className={cn(s.social, s.social_metamask)}
-                    onClick={() =>
-                      dispatch(
-                        setCurrentAuthorizationType(AuthorizationType.AuthMetaMask)
-                      )
-                    }>
-                    {/*TODO alt!*/}
-                    <img className={s.social__img} src={IconM} />
-                    <div className={s.social__text}>Metamask</div>
-                  </Button>
-                </div>
-              </div>
             </div>
+
           </div>
         </Modal>
       )}

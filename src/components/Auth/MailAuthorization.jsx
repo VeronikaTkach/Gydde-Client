@@ -24,23 +24,25 @@ export function MailAuthorization() {
     <>
       <Modal className={s.auth}>
         <div className={s.auth__container}>
-          <div className={s.auth__header}>
-            <div className={s.auth__header_row}>
+          <div className={s.auth__wrapper}>
+            <div className={s.auth__header}>
+              <div className={s.auth__header_row}>
+                <Button
+                  className={cn(s.auth__back, 'iconArrowBack')}
+                  onClick={() => {
+                    dispatch(setCurrentAuthorizationType(AuthorizationType.NotСhosen));
+                  }}></Button>
+                <div className={s.auth__title}>Log in to Gydde</div>
+              </div>
               <Button
-                className={cn(s.auth__back, 'iconArrowBack')}
+                className={cn(s.auth__close, 'iconClose')}
                 onClick={() => {
+                  dispatch(showAuthorizationWindow(false));
                   dispatch(setCurrentAuthorizationType(AuthorizationType.NotСhosen));
                 }}></Button>
-              <div className={s.auth__title}>Log in to Gydde</div>
             </div>
-            <Button
-              className={cn(s.auth__close, 'iconClose')}
-              onClick={() => {
-                dispatch(showAuthorizationWindow(false));
-                dispatch(setCurrentAuthorizationType(AuthorizationType.NotСhosen));
-              }}></Button>
+            <FormAuthorization />
           </div>
-          <FormAuthorization />
         </div>
       </Modal>
     </>
