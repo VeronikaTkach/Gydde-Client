@@ -33,19 +33,26 @@ export function Input(props) {
           pattern={props.pattern}
           name={props.name}
           autoComplete={props.autoComplete || 'off'}
-          onChange={props.onChange || handleChange}
+          onChange={handleChange}
           {...(props.name ? {} : { value: inputValue })}
           {...(props.register ? { ...props.register(props.name, props.validation) } : '')}
         />
       )}
       {props.type === 'password' && (
         <button
-          className={cn(s.field__password, 'iconEyeClose', {
-            [cn(s.field__password_show, 'iconEyeOpen')]: typeInput === 'text',
-            [s.field__password_error]: props.classError,
-          })}
+          className={
+            cn
+            (
+              s.field__password, 
+              { [s.field__password_error]: props.classError }, 
+              { [cn(s.field__password_show, 'iconEyeOpen')]: typeInput === 'text' },
+              { ['iconError']: !inputValue && props.classError },
+              { ['iconEyeClose']: inputValue }
+            )
+          }
           type={'button'}
-          onClick={showPassword}></button>
+          onClick={showPassword}>
+        </button>
       )}
 
       {(props.type === 'email' && props.classError) && (

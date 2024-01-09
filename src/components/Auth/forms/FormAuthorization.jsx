@@ -39,7 +39,7 @@ export function FormAuthorization() {
   };
 
   return (
-    <Fragment>
+    <>
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
         <div className={s.form__block}>
           <div className={cn(s.input__title)}>Email address</div>
@@ -75,6 +75,6 @@ export function FormAuthorization() {
       <Button className={s.form__btnSubmit} type={'submit'}>
           Log in
       </Button>
-    </Fragment>
+    </>
   );
 }

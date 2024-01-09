@@ -12,6 +12,7 @@
 	&_error {
 		border: 1px solid $colorRed500;
 		color: $colorRed500;
+
 	}
 	&__input {
 		font-size: 24px;
@@ -28,6 +29,7 @@
 		}
 		&::placeholder{
 			color: $colorGray400;
+			@include textStyleSecondary1;
 		}
 		&_error {
 			color: $colorRed500;
@@ -40,13 +42,13 @@
 		font-size: 32px;
 		background-color: transparent;
 		margin: 0 36px 0 0;
+		color: $colorGray400;
 		&::before {
-			
+
 		}
 		&_show {
 			font-size: 23px;
 			&::before {
-				
 			}
 		}
 		&_error {
@@ -60,9 +62,6 @@
 			font-size: 32px;
 			background-color: transparent;
 			margin: 0 36px 0 0;
-			// &::before {
-			// 	color: $colorRed500;
-			//   }
 		}
 	}
 }
