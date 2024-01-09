@@ -57,15 +57,14 @@ export function Auth() {
                 <div>
                   <div className={cn(s.socials__title)}>Log in with social account</div>
                   <div className={cn(s.socials__body)}>
-                    <Twitter className={cn(s.social, s.social_twitter)} />
+                    <Twitter className={cn(s.social, s.social_twitter, 'iconTwitter')} />
                     <Google className={cn(s.social, s.social_google)} />
                     <Button
                       className={cn(s.social, s.social_email)}
                       onClick={() =>
                         dispatch(setCurrentAuthorizationType(AuthorizationType.AuthMail))
                       }>
-                      {/*todo alt!*/}
-                      <img className={s.social__img} src={IconE} />
+                      <img className={s.social__img} src={IconE} alt={'Email'} />
                       <div className={s.social__text}>Email</div>
                     </Button>
                   </div>
@@ -80,15 +79,13 @@ export function Auth() {
                           setCurrentAuthorizationType(AuthorizationType.AuthMetaMask)
                         )
                       }>
-                      {/*TODO alt!*/}
-                      <img className={s.social__img} src={IconM} />
+                      <img className={s.social__img} src={IconM} alt={'Metamask'} />
                       <div className={s.social__text}>Metamask</div>
                     </Button>
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
         </Modal>
       )}
