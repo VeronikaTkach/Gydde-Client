@@ -16,10 +16,6 @@
     margin-right: 22px;
   }
 
-  &__img {
-  
-  }
-
   &__subtitle {
     @include textStyleSubtitle;
     grid-template-columns: $space20 1fr fit-content(30px);

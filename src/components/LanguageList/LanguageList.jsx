@@ -25,12 +25,10 @@ export function LanguageList() {
   const timeRef = useRef(null);
 
   useEffect(() => {
-    if (languages && !isLanguageChoosen) {
-      if (checkLanguage(languages)) {
-        setStop(true);
+    if (languages && isLanguageChoosen) {
+      setStop(true);
 
-        return;
-      }
+      return;
     }
     clearInterval(timeRef.current);
 
@@ -51,9 +49,8 @@ export function LanguageList() {
       if (item.locale === userLocale) {
         localStorage.setItem('userLocale', item.locale);
         setActiveLanguage(index);
-        setIsLanguageChoosen(true);
 
-        return true;
+        return;
       }
     });
   }
