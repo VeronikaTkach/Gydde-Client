@@ -147,7 +147,7 @@ $sizeSmall: 576px;
 }
 
 //extends
-%fontRussoOneRerular {
+%fontRussoOneRegular {
 	@include fontRussoOne;
 	font-weight: 400;
 	line-height: normal;
@@ -155,15 +155,15 @@ $sizeSmall: 576px;
 
 //fonts
 @mixin textStyleTitle1() {
-	@extend %fontRussoOneRerular;
+	@extend %fontRussoOneRegular;
 	font-size: 48px;
 }
 @mixin textStyleTitle2() {
-	@extend %fontRussoOneRerular;
+	@extend %fontRussoOneRegular;
 	font-size: 36px;
 }
 @mixin textStyleTitle3() {
-	@extend %fontRussoOneRerular;
+	@extend %fontRussoOneRegular;
 	font-size: 40px;
 }
 @mixin textStyleSubtitle() {
