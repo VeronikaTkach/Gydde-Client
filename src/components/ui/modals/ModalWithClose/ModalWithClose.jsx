@@ -1,8 +1,8 @@
 import cn from 'classnames';
-import { Button } from '../../ui/buttons/Button';
+import { Button } from '../../buttons/Button';
 import s from './style.module.scss';
-import Modal from '../../ui/Modal/Modal';
-import { withClose } from '../../../core/hoc/modal/withClose';
+import Modal from '../Modal/Modal';
+import { withClose } from './hoc/withClose';
 
 function ModalWithClose({ children, onClose }) {
   return (
