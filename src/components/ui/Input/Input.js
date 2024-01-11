@@ -33,7 +33,7 @@ export function Input(props) {
           pattern={props.pattern}
           name={props.name}
           autoComplete={props.autoComplete || 'off'}
-          onChange={handleChange}
+          onInput={handleChange}
           {...(props.name ? {} : { value: inputValue })}
           {...(props.register ? { ...props.register(props.name, props.validation) } : '')}
         />
@@ -54,10 +54,11 @@ export function Input(props) {
           onClick={showPassword}>
         </button>
       )}
-
       {(props.type === 'email' && props.classError) && (
         <div className={cn(s.field__email_error, 'iconError')}></div>
       )}
     </div>
   );
 }
+
+

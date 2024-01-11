@@ -25,7 +25,7 @@ export function FormAuthorization() {
     handleSubmit,
     formState: { errors }
   } = useForm({
-    mode: 'all',
+    mode: 'onBlur',
     defaultValues: {
       isRemember: false, //для чекбокса запомнить данные (должен быть)
     },
