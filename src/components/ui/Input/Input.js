@@ -45,8 +45,8 @@ export function Input(props) {
             (
               s.field__password, 
               { [s.field__password_error]: props.classError }, 
+              { [cn(s.field__password_empty, 'iconError')]: !inputValue && props.classError },
               { [cn(s.field__password_show, 'iconEyeOpen')]: typeInput === 'text' },
-              { ['iconError']: !inputValue && props.classError },
               { ['iconEyeClose']: inputValue }
             )
           }

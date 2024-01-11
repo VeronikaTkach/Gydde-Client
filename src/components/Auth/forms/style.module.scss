@@ -1,4 +1,5 @@
 @use '../../../styles/styles.scss' as *;
+@use '../../ui/buttons/Button/style.module.scss' as *;
 
 .form {
 	display: flex;
@@ -14,16 +15,30 @@
 		@include fontStyle(13px, 400, normal);
 		margin-top: -13px;
 	}
-	&__btnSubmit {
-		float: right;
-		margin-top: $space8;
-		padding: 10px 80px;
-		color: $colorGray500;
+	&__btn {
+		margin-left: auto;
 		width: 284px;
-		border-radius: 16px;
-		border: 3px solid $colorGray500;
-		background-color: $colorBlack;
-		@include textStyleButton1;
+		height: 56px;
+		font-family: Roboto;
+		background: transparent;
+		&_submit {
+			@extend .button;
+			@include textStyleButton1;
+			padding: 10px 80px;
+			width: 284px;
+			height: 56px;
+			background: $colorGreen;
+			background-clip: text;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			@include borderStyle(3px solid $colorGreen, 16px);
+			&:hover {
+				background: $colorGreen;
+				background-clip: padding-box;
+				-webkit-text-fill-color: unset;
+				color: $colorBlack;
+			}
+		}
 	}
 	&__block {
 		height: 136px;

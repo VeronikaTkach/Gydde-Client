@@ -17,14 +17,14 @@ import { Fragment } from 'react';
 
 export function FormAuthorization() {
 
-  const { error } = useSelector((state) => state.authorization);
-  const dispatch = useDispatch();
+  const { error }=useSelector((state) => state.authorization);
+  const dispatch=useDispatch();
   const {
     register,
     setValue,
     handleSubmit,
     formState: { errors }
-  } = useForm({
+  }=useForm({
     mode: 'onBlur',
     defaultValues: {
       isRemember: false, //для чекбокса запомнить данные (должен быть)
@@ -32,7 +32,7 @@ export function FormAuthorization() {
 
   });
 
-  const onSubmit = (data, e) => {
+  const onSubmit=(data, e) => {
     e.preventDefault();
     dispatch(showAuthorizationWindow(true));
     dispatch(authorizedUser(data));
@@ -45,7 +45,7 @@ export function FormAuthorization() {
           <div className={cn(s.input__title)}>Email address</div>
           <div className={s.input__block}>
             <Input
-              classError = {errors.email}
+              classError={errors.email}
               placeholder={'Enter email address'}
               name={'email'}
               setValue={setValue}
@@ -60,7 +60,7 @@ export function FormAuthorization() {
           <div className={cn(s.input__title)}>Password</div>
           <div className={s.input__block}>
             <Input
-              classError = {errors.password}
+              classError={errors.password}
               placeholder={'Enter  password'}
               name={'password'}
               setValue={setValue}
@@ -71,10 +71,12 @@ export function FormAuthorization() {
             {errors.password && <p className={s.form__error}>{errors.password.message}</p>}
           </div>
         </div>
+        <div className={s.form__btn}>
+          <Button className={s.form__btn_submit} type={'submit'}>
+            Log in
+          </Button>
+        </div>
       </form>
-      <Button className={s.form__btnSubmit} type={'submit'}>
-          Log in
-      </Button>
     </>
   );
 }
