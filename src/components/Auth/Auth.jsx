@@ -16,7 +16,8 @@ import { AuthorizationType } from '../../core/constants/AuthorizationType';
 import { MetamaskView } from './Metamask';
 import { AllAuthorizaitions } from './AllAuthorizaitions';
 import { FormAuthorization } from './forms';
-import ModalWithClose from '../ui/modals/ModalWithClose/ModalWithClose';
+import withClose from '../ui/modals/Modal/hoc/withClose';
+import Modal from '../ui/modals/Modal/Modal';
 
 export function Auth() {
   const dispatch = useDispatch();
@@ -30,6 +31,8 @@ export function Auth() {
       dispatch(setMetamaskConnectionStatus(MetamaskConnectionStatus.Connecting));
     }
   };
+
+  const ModalWithClose = withClose(Modal, onClose);
 
   //TODO: нужно переработать компонент, чтобы было 1 модальное окно и всё остальное внутри менялось от выбранного 'AuthorizationType', вынести кнопки навигации в общий компонент, чтобы не дублировать в других компонентах
   return (
