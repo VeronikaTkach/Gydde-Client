@@ -1,14 +1,14 @@
 import cn from 'classnames';
+import { useDispatch, useSelector } from 'react-redux';
 import IconE from '../../assets/images/email.svg';
 import IconM from '../../assets/images/metamask.svg';
-import { Button } from '../ui/buttons/Button';
-import s from './style.module.scss';
-import { Google } from './Google';
-import { Twitter } from './Twitter';
-import { useDispatch, useSelector } from 'react-redux';
 import { modalWindowState } from '../../core/store/slices/modalWindowStateSlice';
 import { setCurrentAuthorizationType } from '../../core/store/slices/authorizationSlice';
 import { AuthorizationType } from '../../core/constants/AuthorizationType';
+import { Button } from '../ui/buttons/Button';
+import { Google } from './Google';
+import { Twitter } from './Twitter';
+import s from './style.module.scss';
 
 export function AllAuthorizaitions() {
   const dispatch = useDispatch();
