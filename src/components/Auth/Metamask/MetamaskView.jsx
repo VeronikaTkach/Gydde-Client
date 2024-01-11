@@ -19,37 +19,6 @@ import {
 } from '../../../core/store/slices/metamaskAuthorizationSlice';
 import s from './style.module.scss';
 
-const connectionTextServer = {
-  [MetamaskConnectionStatus.NoWallet]: {
-    statusText: 'No wallet detected',
-    descriptionTextPart1: 'I will show you',
-    descriptionTextPart2: 'how to create your first wallet.',
-    buttonText: 'Show me!',
-  },
-  [MetamaskConnectionStatus.Connecting]: {
-    statusText: 'Connecting...',
-    descriptionTextPart1: 'Open the',
-    descriptionTextPart2: 'MetaMask',
-    descriptionTextPart3: 'browser extension and confirm connection to',
-    descriptionTextPart4: 'Gydde.com',
-  },
-  [MetamaskConnectionStatus.Error]: {
-    statusText: 'Connection error',
-    descriptionText: 'Something went wrong',
-    buttonText: 'Try again',
-  },
-  [MetamaskConnectionStatus.Sign]: {
-    statusText: 'Connecting...',
-    descriptionTextPart1: 'Please',
-    descriptionTextPart2: 'sign',
-    descriptionTextPart3: 'the message request in your wallet to continue.',
-  },
-  [MetamaskConnectionStatus.Connected]: {
-    statusText: 'Connected',
-    descriptionText: 'Logging in',
-  },
-};
-
 const connectionText = {
   [MetamaskConnectionStatus.NoWallet]: {
     statusText: 'No wallet detected',

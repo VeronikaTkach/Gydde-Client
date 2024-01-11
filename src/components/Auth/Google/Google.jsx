@@ -1,7 +1,5 @@
 import cn from 'classnames';
-import { useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
-import { RoutesName } from '../../../core/constants/Routes';
 import { setWindowOptions } from '../../../core/helpers/forWindow';
 import { LocalStorageItems } from '../../../core/constants/LocalStorageItems';
 import { Button } from '../../ui/buttons/Button';

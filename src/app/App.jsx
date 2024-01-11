@@ -14,16 +14,16 @@ export function App() {
         <Routes>
           <Route path={RoutesName.Root} element={<LayoutMain />}>
             <Route index element={<HomePage />} />
-            <Route
-              path={RoutesName.GoogleOauthPage}
-              element={<SocialsOauthPage social={Socials.Google} />}
-            />
-            <Route
-              path={RoutesName.TwitterOauthPage}
-              element={<SocialsOauthPage social={Socials.Twitter} />}
-            />
             <Route path={RoutesName.HelloPage} element={<HelloPage />} />
           </Route>
+          <Route
+            path={RoutesName.GoogleOauthPage}
+            element={<SocialsOauthPage social={Socials.Google} />}
+          />
+          <Route
+            path={RoutesName.TwitterOauthPage}
+            element={<SocialsOauthPage social={Socials.Twitter} />}
+          />
         </Routes>
       </div>
     </>
