@@ -1,6 +1,4 @@
 import cn from 'classnames';
-import { Button } from '../ui/buttons/Button';
-import s from './style.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   modalWindowState,
@@ -13,11 +11,13 @@ import {
 import { setMetamaskConnectionStatus } from '../../core/store/slices/metamaskAuthorizationSlice';
 import { MetamaskConnectionStatus } from '../../core/constants/Status';
 import { AuthorizationType } from '../../core/constants/AuthorizationType';
+import { Button } from '../ui/buttons/Button';
+import { withClose } from '../ui/modals/Modal/hoc/withClose';
+import Modal from '../ui/modals/Modal/Modal';
 import { MetamaskView } from './Metamask';
 import { AllAuthorizaitions } from './AllAuthorizaitions';
 import { FormAuthorization } from './forms';
-import withClose from '../ui/modals/Modal/hoc/withClose';
-import Modal from '../ui/modals/Modal/Modal';
+import s from './style.module.scss';
 
 export function Auth() {
   const dispatch = useDispatch();
@@ -34,11 +34,10 @@ export function Auth() {
 
   const ModalWithClose = withClose(Modal, onClose);
 
-  //TODO: нужно переработать компонент, чтобы было 1 модальное окно и всё остальное внутри менялось от выбранного 'AuthorizationType', вынести кнопки навигации в общий компонент, чтобы не дублировать в других компонентах
   return (
     <>
       {modalAuthorization && (
-        <ModalWithClose onClose={onClose} className={s.auth}>
+        <ModalWithClose onClose={onClose}>
           {(currentAuthorizationType === AuthorizationType.NotСhosen ||
             currentAuthorizationType === AuthorizationType.AuthMail) && (
             <div className={s.auth__header}>
