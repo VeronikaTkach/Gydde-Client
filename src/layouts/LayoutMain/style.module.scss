@@ -10,18 +10,16 @@
 	}
 	&__lights {
 		background: url('../../assets/images/helloBgLights.svg');
-    	background-repeat: no-repeat;
-   		background-size: cover;
+		background-repeat: no-repeat;
+		background-size: cover;
 	}
 	&__container {
 		display: flex;
 		flex-direction: column;
 		gap: 30px;
-		max-width: $sizeContainer+192px;
-		width: 100%;
-		min-height: 100vh;
-		height: 100%;
-
+		transform-origin: top center;
+		max-width: none;
+		padding: 0 16px;
 	}
 	&__authorization {
 		position: absolute;

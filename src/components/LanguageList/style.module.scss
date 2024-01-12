@@ -3,22 +3,22 @@
 .languages {
   @include width-height(100%, 400px);
   padding: 32px 24px;
-  align-self: flex-start;
-  margin-top: 146px;
   border-radius: $space8;
   @include themed() {
     border: 1px solid t($surfaceBorder1);
     background: t($surfacePrimary2);
   }
-
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
   &__item {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     @include width-height(100%, 64px);
-    margin-bottom: 4px;
-    padding-left: 15px;
-    padding-bottom: 3px;
+    padding: 0 15px;
     cursor: pointer;
     @include fontStyle(20px, 700, 32px);
     @include themed() {

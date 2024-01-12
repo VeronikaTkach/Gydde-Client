@@ -130,7 +130,7 @@
 		background: transparent;
 		&_login {
 			padding: 20px 80px;
-
+			white-space: nowrap;
 			background: $colorGreen;
 			background-clip: text;
 			-webkit-background-clip: text;
