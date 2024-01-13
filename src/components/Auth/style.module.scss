@@ -23,6 +23,10 @@
 		font-size: 28px;
 		background-color: transparent;
 		margin-right: 16px;
+		color: $colorGray400;
+		&:hover {
+			color: $colorGray650;
+		}
 	}
 
 	a {
@@ -55,6 +59,9 @@
 		border-radius: t($radiusSmall);
 		background-color: t($formBackground);
 	}
+	&:hover {
+		background: $gradientButtonHoverDark1;
+	}
 	&_twitter {
 		&::before {
 			font-size: 40px;
@@ -63,10 +70,11 @@
 	&_google {
 		&::before {
 			content: '';
-			background-image: url(../../assets/images/google.png);
+			background-image: url(../../assets/images/google.svg);
 			background-size: 33px;
 			background-position: center;
 			@include width-height(33px);
+			background-color: transparent;
 		}
 	}
 	&__img {
