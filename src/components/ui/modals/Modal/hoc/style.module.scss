@@ -34,6 +34,10 @@
 		z-index: 100;
 		font-size: 24px;
 		background-color: transparent;
+		color: $colorGray400;
+		&:hover {
+			color: $colorGray650;
+		}
 	}
 }
 
