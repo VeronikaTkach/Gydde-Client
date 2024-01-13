@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import IconE from '../../assets/images/email.svg';
 import IconM from '../../assets/images/metamask.svg';
 import { modalWindowState } from '../../core/store/slices/modalWindowStateSlice';
-import { setCurrentAuthorizationType } from '../../core/store/slices/authorizationSlice';
+import { setCurrentAuthorizationType } from '../../core/store/slices/mailAuthorizationSlice';
 import { AuthorizationType } from '../../core/constants/AuthorizationType';
 import { Button } from '../ui/buttons/Button';
 import { Google } from './Google';

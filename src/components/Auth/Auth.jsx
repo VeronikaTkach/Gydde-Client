@@ -7,7 +7,7 @@ import {
 import {
   allAuthorization,
   setCurrentAuthorizationType,
-} from '../../core/store/slices/authorizationSlice';
+} from '../../core/store/slices/mailAuthorizationSlice';
 import { setMetamaskConnectionStatus } from '../../core/store/slices/metamaskAuthorizationSlice';
 import { MetamaskConnectionStatus } from '../../core/constants/Status';
 import { AuthorizationType } from '../../core/constants/AuthorizationType';

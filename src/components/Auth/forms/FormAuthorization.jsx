@@ -5,7 +5,7 @@ import { showAuthorizationWindow } from '../../../core/store/slices/modalWindowS
 import { Button } from '../../ui/buttons/Button';
 import { Input } from '../../ui/Input';
 import { mailValidation, passwordValidation } from '../validations/registerValidation';
-import { authorizedUser } from '../../../core/store/slices/authorizationSlice';
+import { authorizedUser } from '../../../core/store/slices/mailAuthorizationSlice';
 import cn from 'classnames';
 import s from './style.module.scss';
 
