@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { showAuthorizationWindow } from '../../../core/store/slices/modalWindowStateSlice';
@@ -9,13 +10,14 @@ import cn from 'classnames';
 import s from './style.module.scss';
 
 export function FormAuthorization() {
+  const [loading, setLoading] = useState(false);
   const { error } = useSelector((state) => state.authorization);
   const dispatch = useDispatch();
   const {
     register,
     setValue,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
   } = useForm({
     mode: 'onBlur',
     defaultValues: {
@@ -27,6 +29,7 @@ export function FormAuthorization() {
     e.preventDefault();
     dispatch(showAuthorizationWindow(true));
     dispatch(authorizedUser(data));
+    setLoading(true);
   };
 
   return (
@@ -65,8 +68,8 @@ export function FormAuthorization() {
           </div>
         </div>
         <div className={s.form__btn}>
-          <Button className={s.form__btn_submit} type={'submit'}>
-            Log in
+          <Button className={s.form__btn_submit} type={'submit'} disabled={loading}>
+            {loading ? 'iconLoader' : 'Log in'}
           </Button>
         </div>
       </form>
