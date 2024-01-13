@@ -13,12 +13,12 @@ export const Status = {
 };
 
 export const MetamaskConnectionStatus = {
-  NoWallet: 0,
-  Connecting: 1,
-  Error: 2,
-  Sign: 3,
-  Connected: 4,
-  Finish: 5,
+  NoWallet: 'NoWallet',
+  Connecting: 'Connecting',
+  Error: 'Error',
+  Sign: 'Sign',
+  Connected: 'Connected',
+  Finish: 'Finish',
 };
 
 Object.freeze(StatusCode);

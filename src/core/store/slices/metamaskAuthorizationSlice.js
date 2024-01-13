@@ -8,6 +8,7 @@ const initialState = {
   message: null,
   signedMessage: null,
   error: null,
+  firstHighlightedItem: 1,
 };
 
 export const getMetamaskAccount = createAsyncThunk(
@@ -67,6 +68,9 @@ export const metamaskAuthorizationSlice = createSlice({
     setError: (state, action) => {
       state.error = action.payload;
     },
+    setFirstHighlightedItem: (state, action) => {
+      state.firstHighlightedItem = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -113,8 +117,12 @@ export const metamaskAuthorizationSlice = createSlice({
   },
 });
 
-export const { setMetamaskConnectionStatus, setMetamaskMessage, setError } =
-  metamaskAuthorizationSlice.actions;
+export const {
+  setMetamaskConnectionStatus,
+  setMetamaskMessage,
+  setError,
+  setFirstHighlightedItem,
+} = metamaskAuthorizationSlice.actions;
 export const metamaskAuthorization = (state) => state.metamaskAuthorization;
 
 export default metamaskAuthorizationSlice.reducer;

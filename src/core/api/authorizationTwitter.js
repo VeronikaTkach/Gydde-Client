@@ -8,7 +8,7 @@ export const twitterAuthorization = {
     };
 
     try {
-      const result = await mainRequest.post('', data); //? backend api path
+      const result = await mainRequest.get('', data); //? backend api path
 
       localStorage.setItem(LocalStorageItems.JwtToken, result.token);
     } catch (error) {
@@ -16,4 +16,3 @@ export const twitterAuthorization = {
     }
   },
 };
-

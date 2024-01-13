@@ -88,7 +88,7 @@ module.exports = {
       },
     ],
     'switch-colon-spacing': ['warn', { after: true, before: false }],
-    'wrap-regex': 'warn',
+    '@stylistic/js/wrap-regex': 'off',
     'prettier/prettier': [
       'warn',
       {

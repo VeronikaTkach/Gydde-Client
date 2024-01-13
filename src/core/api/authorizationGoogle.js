@@ -1,15 +1,17 @@
 import { LocalStorageItems } from '../constants/LocalStorageItems';
+import { collectSearchParams } from '../helpers/collectSearchParams';
 import googleRequest from '../utils/googleRequestUtils';
 import mainRequest from '../utils/mainRequestUtils';
 
 export const googleAuthorization = {
   getToken: async (code) => {
-    const params = new URLSearchParams();
-    params.append('code', code);
-    params.append('client_id', atob(process.env.REACT_APP_GOOGLE_CLIENT_ID));
-    params.append('client_secret', atob(process.env.REACT_APP_GOOGLE_SECRET_KEY));
-    params.append('redirect_uri', process.env.REACT_APP_GOOGLE_REDIRECT_URI);
-    params.append('grant_type', 'authorization_code');
+    const params = collectSearchParams({
+      code: code,
+      client_id: atob(process.env.REACT_APP_GOOGLE_CLIENT_ID),
+      client_secret: atob(process.env.REACT_APP_GOOGLE_SECRET_KEY),
+      redirect_uri: process.env.REACT_APP_GOOGLE_REDIRECT_URI,
+      grant_type: 'authorization_code',
+    });
 
     try {
       const result = await googleRequest.post('', params);

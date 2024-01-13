@@ -1,0 +1,22 @@
+export const TEXT_KEYS = {
+  METAMASK_CONNECT: [
+    'Metamask_NoWallet.statusText',
+    'Metamask_NoWallet.descriptionTextHighlightedPart1',
+    'Metamask_NoWallet.descriptionTextHighlightedPart2',
+    'Metamask_NoWallet.buttonText',
+    'Metamask_Connecting.statusText',
+    'Metamask_Connecting.descriptionTextHighlightedPart1',
+    'Metamask_Connecting.descriptionTextHighlightedPart2',
+    'Metamask_Connecting.descriptionTextHighlightedPart3',
+    'Metamask_Connecting.descriptionTextHighlightedPart4',
+    'Metamask_Error.statusText',
+    'Metamask_Error.descriptionText',
+    'Metamask_Error.buttonText',
+    'Metamask_Sign.statusText',
+    'Metamask_Sign.descriptionTextHighlightedPart1',
+    'Metamask_Sign.descriptionTextHighlightedPart2',
+    'Metamask_Sign.descriptionTextHighlightedPart3',
+    'Metamask_Connected.statusText',
+    'Metamask_Connected.descriptionText',
+  ],
+};

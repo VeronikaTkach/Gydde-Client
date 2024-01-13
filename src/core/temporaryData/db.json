@@ -1,0 +1,22 @@
+{
+	"getText": {
+		"Metamask_NoWallet.statusText": "No wallet detected",
+		"Metamask_NoWallet.descriptionTextHighlightedPart1": "I will show you",
+		"Metamask_NoWallet.descriptionTextHighlightedPart2": "how to create your first wallet.",
+		"Metamask_NoWallet.buttonText": "Show me!",
+		"Metamask_Connecting.statusText": "Connecting...",
+		"Metamask_Connecting.descriptionTextHighlightedPart1": "Open the",
+		"Metamask_Connecting.descriptionTextHighlightedPart2": "MetaMask",
+		"Metamask_Connecting.descriptionTextHighlightedPart3": "browser extension and confirm connection to",
+		"Metamask_Connecting.descriptionTextHighlightedPart4": "Gydde.com",
+		"Metamask_Error.statusText": "Connection error",
+		"Metamask_Error.descriptionText": "Something went wrong",
+		"Metamask_Error.buttonText": "Try again",
+		"Metamask_Sign.statusText": "Connecting...",
+		"Metamask_Sign.descriptionTextHighlightedPart1": "Please",
+		"Metamask_Sign.descriptionTextHighlightedPart2": "sign",
+		"Metamask_Sign.descriptionTextHighlightedPart3": "the message request in your wallet to continue.",
+		"Metamask_Connected.statusText": "Connected",
+		"Metamask_Connected.descriptionText": "Logging in"
+	}
+}
