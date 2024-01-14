@@ -31,9 +31,11 @@ $themes: (
     buttonBgHover: $colorGreenPrimary100,
     buttonLabelHover: $colorBlack,
     buttonLabelHover1: $colorWhite,
+    buttonLabelHover2: $colorGray650,
     buttonBorderHover: $colorGray200,
     buttonBgPressed: $colorGreenPrimary100,
     buttonLabelPressed: $colorBlack,
+    buttonLabelDefault1: $colorGray400,
     buttonLabelDisabled: $colorGray500,
     buttonBackgorundDisabled: $colorGray500,
     buttonBgError: $colorRed500,
@@ -44,6 +46,7 @@ $themes: (
     //gradient
     gradientImage: $gradientPurple,
     gradientButtonHover: $gradientPurple,
+    gradientButtonHover1: $gradientGray,
     //shadow
     shadowBgPopup: $shadowPurpleBackLight,
   ),

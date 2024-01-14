@@ -34,9 +34,13 @@
 		z-index: 100;
 		font-size: 24px;
 		background-color: transparent;
-		color: $colorGray400;
+		@include themed() {
+			color: t($buttonLabelDefault1);
+		}
 		&:hover {
-			color: $colorGray650;
+			@include themed() {
+				color: t($buttonLabelHover2);
+			}
 		}
 	}
 }

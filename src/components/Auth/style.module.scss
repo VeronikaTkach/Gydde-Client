@@ -23,9 +23,13 @@
 		font-size: 28px;
 		background-color: transparent;
 		margin-right: 16px;
-		color: $colorGray400;
+		@include themed() {
+			color: t($buttonLabelDefault1);
+		}
 		&:hover {
-			color: $colorGray650;
+			@include themed() {
+				color: t($buttonLabelHover2);
+			}
 		}
 	}
 
@@ -60,7 +64,9 @@
 		background-color: t($formBackground);
 	}
 	&:hover {
-		background: $gradientButtonHoverDark1;
+		@include themed() {
+			background: t($gradientButtonHover1);
+		}
 	}
 	&_twitter {
 		&::before {
