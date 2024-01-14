@@ -84,3 +84,14 @@
     content: $iconError;
   }
 }
+.iconPlay {
+  &:before {
+    content: $iconPlay;
+  }
+}
+.iconPause {
+  &:before {
+    content: $iconPause;
+  }
+}
+
