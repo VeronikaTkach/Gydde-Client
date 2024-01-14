@@ -10,7 +10,7 @@ import { Google } from './Google';
 import { Twitter } from './Twitter';
 import s from './style.module.scss';
 
-export function AllAuthorizaitions() {
+export function AllAuthorizaitions({ modalsText }) {
   const dispatch = useDispatch();
   useSelector(modalWindowState);
 
@@ -18,7 +18,7 @@ export function AllAuthorizaitions() {
     <>
       <div className={s.auth__body}>
         <div>
-          <div className={cn(s.socials__title)}>Log in with social account</div>
+          <div className={cn(s.socials__title)}>{modalsText.socialsTitle}</div>
           <div className={cn(s.socials__body)}>
             <Twitter className={cn(s.social, s.social_twitter, 'iconTwitter')} />
             <Google className={cn(s.social, s.social_google)} />
@@ -28,12 +28,12 @@ export function AllAuthorizaitions() {
                 dispatch(setCurrentAuthorizationType(AuthorizationType.AuthMail))
               }>
               <img className={s.social__img} src={IconE} alt={'Email'} />
-              <div className={s.social__text}>Email</div>
+              <div className={s.social__text}>{modalsText.email}</div>
             </Button>
           </div>
         </div>
         <div>
-          <div className={cn(s.socials__title)}>Log in with wallet</div>
+          <div className={cn(s.socials__title)}>{modalsText.walletTitle}</div>
           <div className={cn(s.socials__body)}>
             <Button
               className={cn(s.social, s.social_metamask)}
@@ -41,7 +41,7 @@ export function AllAuthorizaitions() {
                 dispatch(setCurrentAuthorizationType(AuthorizationType.AuthMetaMask))
               }>
               <img className={s.social__img} src={IconM} alt={'Metamask'} />
-              <div className={s.social__text}>Metamask</div>
+              <div className={s.social__text}>{modalsText.metamask}</div>
             </Button>
           </div>
         </div>

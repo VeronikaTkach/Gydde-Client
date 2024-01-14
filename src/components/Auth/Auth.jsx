@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   modalWindowState,
@@ -11,6 +12,8 @@ import {
 import { setMetamaskConnectionStatus } from '../../core/store/slices/metamaskAuthorizationSlice';
 import { MetamaskConnectionStatus } from '../../core/constants/Status';
 import { AuthorizationType } from '../../core/constants/AuthorizationType';
+import { getStaticModalsText } from '../../core/store/staticText/modalsThunk';
+import { TEXT_KEYS } from '../../core/constants/textKeys';
 import { Button } from '../ui/buttons/Button';
 import { withClose } from '../ui/modals/Modal/hoc/withClose';
 import Modal from '../ui/modals/Modal/Modal';
@@ -23,6 +26,11 @@ export function Auth() {
   const dispatch = useDispatch();
   const { modalAuthorization } = useSelector(modalWindowState);
   const { currentAuthorizationType } = useSelector(allAuthorization);
+  const { modalsText } = useSelector((state) => state.staticModalsText);
+
+  useEffect(() => {
+    dispatch(getStaticModalsText.modals(TEXT_KEYS.AUTH));
+  }, []);
 
   const onClose = () => {
     dispatch(showAuthorizationWindow(false));
@@ -49,12 +57,12 @@ export function Auth() {
                       dispatch(setCurrentAuthorizationType(AuthorizationType.NotСhosen));
                     }}></Button>
                 )}
-                <div className={s.auth__title}>Log in to Gydde</div>
+                <div className={s.auth__title}>{modalsText.title}</div>
               </div>
             </div>
           )}
           {currentAuthorizationType === AuthorizationType.NotСhosen && (
-            <AllAuthorizaitions />
+            <AllAuthorizaitions modalsText={modalsText} />
           )}
           {currentAuthorizationType === AuthorizationType.AuthMail && (
             <FormAuthorization />
