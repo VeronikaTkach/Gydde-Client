@@ -17,6 +17,14 @@
 		"Metamask_Sign.descriptionTextHighlightedPart2": "sign",
 		"Metamask_Sign.descriptionTextHighlightedPart3": "the message request in your wallet to continue.",
 		"Metamask_Connected.statusText": "Connected",
-		"Metamask_Connected.descriptionText": "Logging in"
+		"Metamask_Connected.descriptionText": "Logging in",
+
+		"Auth.title": "Log in to Gydde",
+		"Auth.socialsTitle": "Log in with social account",
+		"Auth.walletTitle": "Log in with wallet",
+		"Auth.twitter": "Twitter",
+		"Auth.google": "Google",
+		"Auth.email": "Email",
+		"Auth.metamask": "Metamask"
 	}
 }

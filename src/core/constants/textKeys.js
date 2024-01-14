@@ -19,4 +19,13 @@ export const TEXT_KEYS = {
     'Metamask_Connected.statusText',
     'Metamask_Connected.descriptionText',
   ],
+  AUTH: [
+    'Auth.title',
+    'Auth.socialsTitle',
+    'Auth.walletTitle',
+    'Auth.twitter',
+    'Auth.google',
+    'Auth.email',
+    'Auth.metamask',
+  ],
 };
