@@ -37,7 +37,6 @@
 .iconTwitter {
   &:before {
     content: $iconTwitter;
-    color: #fdfaff;
   }
 }
 .iconLoader {
@@ -68,13 +67,11 @@
 .iconEmail {
   &:before {
     content: $iconEmail;
-    color: #3c63ec;
   }
 }
 .iconArrowMessage {
   &:before {
     content: $iconArrowMessage;
-    color: #a7f67b;
   }
 }
 .iconClose {
@@ -85,6 +82,5 @@
 .iconError {
   &:before {
     content: $iconError;
-    color: #f04438;
   }
 }
