@@ -4,15 +4,15 @@ import { staticTextHelper } from '../../helpers/staticTextHelper';
 
 export const getStaticModalsText = {
   //комментарии TODO оставляем в каждом запросе пока не будет бек, чтобы потом ничего не пропустить
-  metamaskConnect: createAsyncThunk(
-    'staticModalsText/metamaskConnect', //имена должны совпадать
+  modals: createAsyncThunk(
+    'staticModalsText/modals', //имена должны совпадать
     async function (keys, { rejectWithValue }) {
       //почти обычный запрос с выбросом ошибки в стор
       try {
         const response = await mainRequest.get('/getText', { keys: keys }); //тут уже ничего не надо писать
         // console.log(response);
 
-        // return response.data; //TODO раскомментировать когда будет бек
+        // return staticTextHelper.convertKeys(response.data); //TODO раскомментировать когда будет бек
 
         //TODO удалить когда будет бек
         const data = keys.map((item) => {
