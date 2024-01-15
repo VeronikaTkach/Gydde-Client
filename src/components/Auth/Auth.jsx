@@ -21,6 +21,7 @@ import { MetamaskView } from './Metamask';
 import { AllAuthorizaitions } from './AllAuthorizaitions';
 import { FormAuthorization } from './forms';
 import s from './style.module.scss';
+import { withBorderShadow } from '../ui/modals/Modal/hoc/withBorderShadow';
 
 export function Auth() {
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ export function Auth() {
     }
   };
 
-  const ModalWithClose = withClose(Modal, onClose);
+  const ModalWithClose = withClose(withBorderShadow(Modal), onClose);
 
   return (
     <>

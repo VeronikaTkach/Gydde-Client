@@ -7,20 +7,15 @@ export function withClose(Component, onClose) {
     return (
       <Component
         {...props}
-        onClose={onClose}
         children={
-          <div className={s.modal}>
-            <div className={s.modal__container}>
-              <div className={s.modal__wrapper}>
-                <div className={s.modal__header}>
-                  <Button
-                    className={cn(s.modal__close, 'iconClose')}
-                    onClick={onClose}></Button>
-                </div>
-                <div>{props.children}</div>
-              </div>
+          <>
+            <div className={s.modal__header}>
+              <Button
+                className={cn(s.modal__close, 'iconClose')}
+                onClick={onClose}></Button>
             </div>
-          </div>
+            <div>{props.children}</div>
+          </>
         }></Component>
     );
   };
