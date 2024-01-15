@@ -2,12 +2,26 @@
 
 .content {
   @include flexColumnCenter;
+  margin-top: -11px;
+  
   &__main {
     display: flex;
     align-items: center;
     width: 100%;
+    padding: 0px 32px;
+    gap: 63px;
     padding-right: 96px;
-    gap: 60px;
+  }
+  &__container {
+
+  }
+  &__img {
+    width: 616px;
+    height: 536px;
+  }
+  
+  &__languages {
+    margin-top: -54px;
   }
 
   &__subtitle {

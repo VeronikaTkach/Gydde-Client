@@ -1,8 +1,8 @@
 @use '../../styles/styles.scss' as *;
 
 .languages {
-  @include width-height(100%, 400px);
-  padding: 32px 24px;
+  @include width-height(100%, 360px);
+  padding: $space9 $space7;
   border-radius: $space8;
   @include themed() {
     border: 1px solid t($surfaceBorder1);
@@ -17,19 +17,21 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    @include width-height(100%, 64px);
+    @include width-height(100%, 56px);
     padding: 0 15px;
+    gap: 12px;
     cursor: pointer;
-    @include fontStyle(20px, 700, 32px);
+    @include fontStyle(20px, 500, 24px);
     @include themed() {
       color: t($textPrimaryMain);
     }
     & img {
       clip-path: circle(50% at 50% 50%);
+      width: 32px;
     }
 
     & p {
-      margin-left: 12px;
+      
     }
 
     &:hover {

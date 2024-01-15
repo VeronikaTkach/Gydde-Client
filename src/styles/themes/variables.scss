@@ -169,7 +169,7 @@ $sizeSmall: 576px;
 }
 @mixin textStyleSubtitle() {
 	@include fontRoboto;
-	@include fontStyle($size: 64px, $weight: 700, $height: 76px)
+	@include fontStyle($size: 52px, $weight: 700, $height: 64px)
 }
 @mixin textStyleBody1() {
 	@include fontRoboto;

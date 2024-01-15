@@ -68,7 +68,8 @@ export const staticTextHelper = {
 
   //add flag isHighlighted
   setHighlightedText: (textObj, firstHighlightedPart) => {
-    const removeLength = 'HighlightedPart'.length;
+    const remove = 1;
+    const removeLength = -'HighlightedPart'.length - remove;
     const firstElem = 0;
     const newTextObj = {};
     const highLightedText = [];

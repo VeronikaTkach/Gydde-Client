@@ -25,6 +25,10 @@
 		"Auth.twitter": "Twitter",
 		"Auth.google": "Google",
 		"Auth.email": "Email",
-		"Auth.metamask": "Metamask"
+		"Auth.metamask": "Metamask",
+
+		"Hello.mascotTextHighlightedPart1": "Hello! I'm",
+		"Hello.mascotTextHighlightedPart2": "Gydde",
+		"Hello.answerButtonText": "Hi, Gydde!"
 	}
 }

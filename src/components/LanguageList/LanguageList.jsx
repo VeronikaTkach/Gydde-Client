@@ -18,7 +18,7 @@ const firstLanguage = 0;
 const step = 1;
 const userLocale = navigator.language.split('-')[firstLanguage];
 
-export function LanguageList() {
+export function LanguageList({ className }) {
   const [activeLanguage, setActiveLanguage] = useState(firstLanguage);
   const [stop, setStop] = useState(false);
   const [isLanguageChoosen, setIsLanguageChoosen] = useState(false);
@@ -81,7 +81,7 @@ export function LanguageList() {
   }
 
   return (
-    <div className={cn(s.languages)}>
+    <div className={cn(s.languages, className)}>
       <ul
         className={cn(s.languages__list)}
         onMouseEnter={handlePause}

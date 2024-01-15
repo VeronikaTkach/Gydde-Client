@@ -28,4 +28,9 @@ export const TEXT_KEYS = {
     'Auth.email',
     'Auth.metamask',
   ],
+  HELLO: [
+    'Hello.mascotTextHighlightedPart1',
+    'Hello.mascotTextHighlightedPart2',
+    'Hello.answerButtonText',
+  ],
 };

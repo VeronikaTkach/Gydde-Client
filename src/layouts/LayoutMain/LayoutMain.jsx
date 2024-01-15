@@ -19,13 +19,11 @@ export function LayoutMain() {
       })}>
       <div
         className={s.wrapper__container}
-        style={
-          {
-            // transform: `scale(${zoomValue})`,
-            // maxHeight: `${height}px`,
-            // minWidth: `${maxAvailableWidth}px`,
-          }
-        }>
+        style={{
+          //transform: `scale(${zoomValue})`,
+          //maxHeight: `${height}px`,
+          //minWidth: `${maxAvailableWidth}px`,
+        }}>
         <Header />
         <Outlet />
       </div>
