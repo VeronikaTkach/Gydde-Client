@@ -7,7 +7,7 @@ import { showAuthorizationWindow } from '../../../core/store/slices/modalWindowS
 import { Button } from '../../ui/buttons/Button';
 import s from './style.module.scss';
 
-export function Twitter({ className }) {
+export function Twitter({ className, children }) {
   const dispatch = useDispatch();
   const [isAuthorizationDone, setIsAuthorizationDone] = useState(false);
   const intervalId = useRef(null);
@@ -63,7 +63,7 @@ export function Twitter({ className }) {
       <Button
         className={cn(className, s.button)}
         onClick={redirectToTwitterAuthorization}>
-        Twitter
+        {children}
       </Button>
     </>
   );

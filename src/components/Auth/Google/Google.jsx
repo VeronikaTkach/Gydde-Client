@@ -7,7 +7,7 @@ import s from './style.module.scss';
 import { useDispatch } from 'react-redux';
 import { showAuthorizationWindow } from '../../../core/store/slices/modalWindowStateSlice';
 
-export function Google({ className }) {
+export function Google({ className, children }) {
   const dispatch = useDispatch();
   const [isAuthorizationDone, setIsAuthorizationDone] = useState(false);
   const intervalId = useRef(null);
@@ -62,7 +62,7 @@ export function Google({ className }) {
   return (
     <>
       <Button className={cn(s.button, className)} onClick={redirectToGoogleAuthorization}>
-        Google
+        {children}
       </Button>
     </>
   );

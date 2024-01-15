@@ -20,8 +20,14 @@ export function AllAuthorizaitions({ modalsText }) {
         <div>
           <div className={cn(s.socials__title)}>{modalsText.socialsTitle}</div>
           <div className={cn(s.socials__body)}>
-            <Twitter className={cn(s.social, s.social_twitter, 'iconTwitter')} />
-            <Google className={cn(s.social, s.social_google)} />
+            <Twitter
+              className={cn(s.social, s.social_twitter, 'iconTwitter')}
+              children={modalsText.twitter}
+            />
+            <Google
+              className={cn(s.social, s.social_google)}
+              children={modalsText.google}
+            />
             <Button
               className={cn(s.social, s.social_email)}
               onClick={() =>
