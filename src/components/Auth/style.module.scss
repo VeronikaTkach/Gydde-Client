@@ -26,6 +26,7 @@
 		@include themed() {
 			color: t($buttonLabelDefault1);
 		}
+		transition: color 0.3s ease;
 		&:hover {
 			@include themed() {
 				color: t($buttonLabelHover2);
@@ -61,8 +62,9 @@
 	padding: $space4 30px;
 	@include themed() {
 		border-radius: t($radiusSmall);
-		background-color: t($formBackground);
+		background: t($formBackground);
 	}
+	transition: background 0.3s ease;
 	&:hover {
 		@include themed() {
 			background: t($gradientButtonHover1);

@@ -37,6 +37,7 @@
 		@include themed() {
 			color: t($buttonLabelDefault1);
 		}
+		transition: color 0.3s ease;
 		&:hover {
 			@include themed() {
 				color: t($buttonLabelHover2);
