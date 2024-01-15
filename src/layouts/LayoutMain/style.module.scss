@@ -4,6 +4,7 @@
 	display: flex;
 	justify-content: center;
 	width: 100%;
+	height: 100vh;
 	padding: 0 30px;
 	@include themed() {
 		background-color: t($bg);
@@ -19,11 +20,27 @@
 		gap: 30px;
 		transform-origin: top center;
 		width: 100%;
-		max-width: none;
+		max-width: 1400px;
 		padding: 0 16px;
 	}
 	&__authorization {
 		position: absolute;
 		margin: auto;
 	}
+}
+
+@for $i from 1 through 30 {
+  $scale: 1 - ($i * .05);
+
+  .wrapper__container {
+    $height: 1080px - ($i * 50px);
+    $width: 1400px - ($i * 30px);
+
+		@media screen and (max-width: $width) {
+      transform: scale($scale);
+    }
+    @media screen and (max-height: $height) {
+      transform: scale($scale);
+    }
+  }
 }
