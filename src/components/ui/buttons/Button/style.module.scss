@@ -20,8 +20,8 @@
 	}
 	&_accent {
 		gap: 8px;
-		padding: 20px 50px;
-		@include textStyleButton2;
+		padding: 18px 44px;
+		@include textStyleButton3;
 		@include borderStyle(1px solid transparent, 40px);
 		@include themed() {
 			background: t($buttonBgActive);

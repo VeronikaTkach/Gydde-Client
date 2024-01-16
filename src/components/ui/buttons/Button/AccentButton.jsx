@@ -6,7 +6,7 @@ export function AccentButton({ className, children, sticker, ...props }) {
   return (
     <Button className={cn(s.button_accent, className)} {...props}>
       <span>{children}</span>
-      {sticker && <img src={sticker} alt={'sticker'} />}
+      {sticker && <img width='24px' src={sticker} alt={'sticker'} />}
     </Button>
   );
 }
