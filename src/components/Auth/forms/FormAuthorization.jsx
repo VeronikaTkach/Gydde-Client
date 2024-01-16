@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { showAuthorizationWindow } from '../../../core/store/slices/modalWindowStateSlice';
@@ -8,8 +8,7 @@ import { mailValidation, passwordValidation } from '../validations/registerValid
 import { authorizedUser } from '../../../core/store/slices/mailAuthorizationSlice';
 import cn from 'classnames';
 import s from './style.module.scss';
-import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
-import { PageName } from '../../../core/constants/PageNames';
+import { staticText } from '../../../core/store/staticText/slice';
 
 export function FormAuthorization() {
   const [loading, setLoading] = useState(false);
@@ -27,12 +26,6 @@ export function FormAuthorization() {
       isRemember: false,
     },
   });
-
-  useEffect(() => {
-    return () => {
-      dispatch(removeUnusedStaticText(PageName.Metamask));
-    };
-  }, []);
 
   const onSubmit = (data, e) => {
     e.preventDefault();

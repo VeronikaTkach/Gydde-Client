@@ -34,6 +34,7 @@ export function Auth() {
 
     return () => {
       dispatch(removeUnusedStaticText(PageName.Auth));
+      dispatch(removeUnusedStaticText(PageName.Metamask));
     };
   }, []);
 

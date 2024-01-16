@@ -21,8 +21,7 @@ import {
 } from '../../../core/store/slices/metamaskAuthorizationSlice';
 import { staticTextHelper } from '../../../core/helpers/staticTextHelper';
 import s from './style.module.scss';
-import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
-import { PageName } from '../../../core/constants/PageNames';
+import { staticText } from '../../../core/store/staticText/slice';
 
 const connectionText = {
   [MetamaskConnectionStatus.NoWallet]: {
@@ -52,12 +51,6 @@ export function MetamaskView() {
   const [currentText, setCurrentText] = useState(null);
 
   useEffect(() => {
-    return () => {
-      dispatch(removeUnusedStaticText(PageName.Metamask));
-    };
-  }, []);
-
-  useEffect(() => {
     if (connectionStatus && staticTextStatusMetamask === Status.Resolved) {
       const highlightedText = staticTextHelper.setHighlightedText(
         staticTextMetamask[connectionStatus],
@@ -77,7 +70,6 @@ export function MetamaskView() {
   return (
     <>
       {staticTextStatusMetamask === Status.Resolved &&
-        staticTextMetamask &&
         connectionStatus &&
         currentText && (
           <div className={s.connectWindow}>
