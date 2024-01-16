@@ -4,16 +4,9 @@ export const nicknameRegExp = /^[A-Za-z0-9_\-.@]+$/;
 export const passwordRegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^\w\s])/;
 
 export const mailValidation = {
-  required: {
-    value: mailRegExp,
-    message: '',
-  },
+  required: 'Required!',
   pattern: {
     value: mailRegExp,
-    message: 'Please enter a valid email address',
-  },
-  minLength: {
-    value: 6,
     message: 'Please enter a valid email address',
   },
 };

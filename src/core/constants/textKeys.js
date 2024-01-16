@@ -35,6 +35,10 @@ export const TEXT_KEYS = {
     `${PageName.Hello}.mascotTextHighlightedPart2`,
     `${PageName.Hello}.answerButtonText`,
   ],
-  MAIL_AUTHORIZATION: [`${PageName.MailAuthorization}.mailLabel`],
+  MAIL_AUTHORIZATION: [
+    `${PageName.MailAuthorization}.mailLabel`,
+    `${PageName.MailAuthorization}.mailErrorText_pattern`,
+    `${PageName.MailAuthorization}.mailErrorText_required`,
+  ],
   HEADER: [`${PageName.Header}.buttonLogin`],
 };
