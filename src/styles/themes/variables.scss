@@ -127,7 +127,7 @@ $space24: 92px;
 
 //sizes
 $sizeContainerLarge: 1920px;
-$sizeContainer: 1400px;
+$sizeContainer: 1432px;
 $sizeExtraLarge: 1200px;
 $sizeLarge: 950px;
 $sizeMedium: 786px;
@@ -202,6 +202,10 @@ $rightHeart: url('../../assets/images/stickers/rightHeart.png');
 @mixin textStyleButton2() {
 	@include fontRoboto;
 	@include fontStyle($size: 28px, $weight: 700, $height: 32px)
+}
+@mixin textStyleButton3() {
+	@include fontRoboto;
+	@include fontStyle($size: 24px, $weight: 700, $height: 32px)
 }
 
 //others
