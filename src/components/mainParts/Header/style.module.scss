@@ -65,13 +65,12 @@
 			}
 		}
 	}
-	&__title {
-		font-family: RussoOne;
-		@include fontStyle(36px, 400, 48px);
-		font-style: normal;
-		text-shadow: 0px 0px 1.052px #773DEF, 0px 0px 5.258px #7142F2, 0px 0px 10.517px #7241F2;
+	&__logo {
 		@include themed() {
-			color: t($textPrimaryMain)
+			background-image: t($imageLogo);
+			background-position: center;
+			background-size: 143px;
+			@include width-height(125px, 48px);
 		}
 	}
 	&__link {
@@ -115,8 +114,12 @@
 		@include flexCenter;
 		&_login {
 			&:hover {
-				background: $colorGreen;
-				color: $colorBlack;
+				@include themed() {
+					background: t($buttonBgPressed);
+					color: t($buttonLabelPressed);
+				}
+				// background: $colorGreen;
+				// color: $colorBlack;
 			}
 		}
 	}

@@ -15,6 +15,7 @@ import { ButtonWithBorder } from '../../ui/buttons/Button';
 import { NavigationLink } from '../../ui/Navlink';
 import { Auth } from '../../Auth';
 import s from './style.module.scss';
+import { RoutesName } from '../../../core/constants/Routes';
 
 export function Header({ className }) {
   const dispatch = useDispatch();
@@ -39,8 +40,8 @@ export function Header({ className }) {
                 <NavigationLink
                   className={s.navigation__link}
                   activeClassName={s.navigation__link_active}
-                  to={'/'}>
-                  <p className={s.navigation__title}>Gydde</p>
+                  to={RoutesName.Root}>
+                  <div className={s.navigation__logo}></div>
                 </NavigationLink>
               </li>
             </ul>
