@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { showAuthorizationWindow } from '../../../core/store/slices/modalWindowStateSlice';
@@ -8,10 +8,13 @@ import { mailValidation, passwordValidation } from '../validations/registerValid
 import { authorizedUser } from '../../../core/store/slices/mailAuthorizationSlice';
 import cn from 'classnames';
 import s from './style.module.scss';
+import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
+import { PageName } from '../../../core/constants/PageNames';
 
 export function FormAuthorization() {
   const [loading, setLoading] = useState(false);
-  const { error } = useSelector((state) => state.authorization);
+  // const { error } = useSelector((state) => state.authorization);
+  const { staticTextMailAuthorization } = useSelector(staticText);
   const dispatch = useDispatch();
   const {
     register,
@@ -21,11 +24,17 @@ export function FormAuthorization() {
   } = useForm({
     mode: 'onBlur',
     defaultValues: {
-      isRemember: false, //для чекбокса запомнить данные (должен быть)
+      isRemember: false,
     },
   });
 
-  const onSubmit=(data, e) => {
+  useEffect(() => {
+    return () => {
+      dispatch(removeUnusedStaticText(PageName.Metamask));
+    };
+  }, []);
+
+  const onSubmit = (data, e) => {
     e.preventDefault();
     dispatch(showAuthorizationWindow(true));
     dispatch(authorizedUser(data));
@@ -34,45 +43,49 @@ export function FormAuthorization() {
 
   return (
     <>
-      <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-        <div className={s.form__block}>
-          <div className={cn(s.input__title)}>Email address</div>
-          <div className={s.input__block}>
-            <Input
-              classError={errors.email}
-              placeholder={'Enter email address'}
-              name={'email'}
-              setValue={setValue}
-              register={register}
-              type={'email'}
-              validation={mailValidation}
-            />
-            {errors.email && <p className={s.form__error}>{errors.email.message}</p>}
+      {staticTextMailAuthorization && (
+        <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+          <div className={s.form__block}>
+            <div className={cn(s.input__title)}>
+              {staticTextMailAuthorization.mailLabel}
+            </div>
+            <div className={s.input__block}>
+              <Input
+                classError={errors.email}
+                placeholder={'Enter email address'}
+                name={'email'}
+                setValue={setValue}
+                register={register}
+                type={'email'}
+                validation={mailValidation}
+              />
+              {errors.email && <p className={s.form__error}>{errors.email.message}</p>}
+            </div>
           </div>
-        </div>
-        <div className={s.form__block}>
-          <div className={cn(s.input__title)}>Password</div>
-          <div className={s.input__block}>
-            <Input
-              classError={errors.password}
-              placeholder={'Enter  password'}
-              name={'password'}
-              setValue={setValue}
-              register={register}
-              type={'password'}
-              validation={passwordValidation}
-            />
-            {errors.password && (
-              <p className={s.form__error}>{errors.password.message}</p>
-            )}
+          <div className={s.form__block}>
+            <div className={cn(s.input__title)}>Password</div>
+            <div className={s.input__block}>
+              <Input
+                classError={errors.password}
+                placeholder={'Enter  password'}
+                name={'password'}
+                setValue={setValue}
+                register={register}
+                type={'password'}
+                validation={passwordValidation}
+              />
+              {errors.password && (
+                <p className={s.form__error}>{errors.password.message}</p>
+              )}
+            </div>
           </div>
-        </div>
-        <div className={s.form__btn}>
-          <Button className={s.form__btn_submit} type={'submit'} disabled={loading}>
-            {loading ? 'iconLoader' : 'Log in'}
-          </Button>
-        </div>
-      </form>
+          <div className={s.form__btn}>
+            <Button className={s.form__btn_submit} type={'submit'} disabled={loading}>
+              {loading ? 'iconLoader' : 'Log in'}
+            </Button>
+          </div>
+        </form>
+      )}
     </>
   );
 }

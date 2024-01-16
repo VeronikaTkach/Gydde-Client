@@ -1,69 +1,65 @@
-import cn from 'classnames';
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  modalWindowState,
-  showAuthorizationWindow,
-} from '../../core/store/slices/modalWindowStateSlice';
+import { useEffect } from 'react';
+import cn from 'classnames';
+import { showAuthorizationWindow } from '../../core/store/slices/modalWindowStateSlice';
 import {
   allAuthorization,
   setCurrentAuthorizationType,
 } from '../../core/store/slices/mailAuthorizationSlice';
 import { setMetamaskConnectionStatus } from '../../core/store/slices/metamaskAuthorizationSlice';
-import { MetamaskConnectionStatus } from '../../core/constants/Status';
+import { MetamaskConnectionStatus, Status } from '../../core/constants/Status';
 import { AuthorizationType } from '../../core/constants/AuthorizationType';
-import { getStaticModalsText } from '../../core/store/staticText/modalsThunk';
+import { getStaticText } from '../../core/store/staticText/thunk';
 import { TEXT_KEYS } from '../../core/constants/textKeys';
+import { PageName } from '../../core/constants/PageNames';
+import { removeUnusedStaticText, staticText } from '../../core/store/staticText/slice';
 import { Button } from '../ui/buttons/Button';
 import { withClose } from '../ui/modals/Modal/hoc/withClose';
+import { withBorderShadow } from '../ui/modals/Modal/hoc/withBorderShadow';
 import Modal from '../ui/modals/Modal/Modal';
 import { MetamaskView } from './Metamask';
 import { AllAuthorizaitions } from './AllAuthorizaitions';
 import { FormAuthorization } from './forms';
 import s from './style.module.scss';
-import { withBorderShadow } from '../ui/modals/Modal/hoc/withBorderShadow';
 
 export function Auth() {
   const dispatch = useDispatch();
-  const { modalAuthorization } = useSelector(modalWindowState);
   const { currentAuthorizationType } = useSelector(allAuthorization);
-  const { modalsText } = useSelector((state) => state.staticModalsText);
+  const { staticTextAuth, staticTextStatusAuth } = useSelector(staticText);
 
   useEffect(() => {
-    dispatch(getStaticModalsText.modals(TEXT_KEYS.AUTH));
+    dispatch(getStaticText.basic(TEXT_KEYS.AUTH));
+    dispatch(getStaticText.basic(TEXT_KEYS.METAMASK_CONNECT));
+    dispatch(getStaticText.basic(TEXT_KEYS.MAIL_AUTHORIZATION));
+
+    return () => {
+      dispatch(removeUnusedStaticText(PageName.Auth));
+    };
   }, []);
 
   const onClose = () => {
-    dispatch(showAuthorizationWindow(false));
-    dispatch(setCurrentAuthorizationType(AuthorizationType.NotСhosen));
     if (currentAuthorizationType === AuthorizationType.AuthMetaMask) {
       dispatch(setMetamaskConnectionStatus(MetamaskConnectionStatus.Connecting));
     }
+    dispatch(setCurrentAuthorizationType(AuthorizationType.NotСhosen));
+    dispatch(showAuthorizationWindow(false));
   };
 
   const ModalWithClose = withClose(withBorderShadow(Modal), onClose);
 
   return (
-    <>
-      {modalAuthorization && (
-        <ModalWithClose onClose={onClose}>
+    <ModalWithClose onClose={onClose}>
+      {staticTextStatusAuth === Status.Resolved && (
+        <>
           {(currentAuthorizationType === AuthorizationType.NotСhosen ||
             currentAuthorizationType === AuthorizationType.AuthMail) && (
-            <div className={s.auth__header}>
-              <div className={s.auth__header_row}>
-                {currentAuthorizationType === AuthorizationType.AuthMail && (
-                  <Button
-                    className={cn(s.auth__back, 'iconArrowBack')}
-                    onClick={() => {
-                      dispatch(setCurrentAuthorizationType(AuthorizationType.NotСhosen));
-                    }}></Button>
-                )}
-                <div className={s.auth__title}>{modalsText.title}</div>
-              </div>
-            </div>
+            <AuthHeader
+              staticTextAuth={staticTextAuth}
+              currentAuthorizationType={currentAuthorizationType}
+            />
           )}
           {currentAuthorizationType === AuthorizationType.NotСhosen && (
-            <AllAuthorizaitions modalsText={modalsText} />
+            <AllAuthorizaitions />
           )}
           {currentAuthorizationType === AuthorizationType.AuthMail && (
             <FormAuthorization />
@@ -71,8 +67,29 @@ export function Auth() {
           {currentAuthorizationType === AuthorizationType.AuthMetaMask && (
             <MetamaskView />
           )}
-        </ModalWithClose>
+        </>
       )}
+    </ModalWithClose>
+  );
+}
+
+export function AuthHeader({ currentAuthorizationType, staticTextAuth }) {
+  const dispatch = useDispatch();
+
+  return (
+    <>
+      <div className={s.auth__header}>
+        <div className={s.auth__header_row}>
+          {currentAuthorizationType === AuthorizationType.AuthMail && (
+            <Button
+              className={cn(s.auth__back, 'iconArrowBack')}
+              onClick={() => {
+                dispatch(setCurrentAuthorizationType(AuthorizationType.NotСhosen));
+              }}></Button>
+          )}
+          <div className={s.auth__title}>{staticTextAuth.title}</div>
+        </div>
+      </div>
     </>
   );
 }

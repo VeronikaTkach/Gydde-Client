@@ -3,8 +3,7 @@ import modalWindowState from './slices/modalWindowStateSlice';
 import registration from './slices/registrationSlice';
 import authorization from './slices/mailAuthorizationSlice';
 import metamaskAuthorization from './slices/metamaskAuthorizationSlice';
-import staticPageText from './staticText/pageSlice';
-import staticModalsText from './staticText/modalsSlice';
+import staticText from './staticText/slice';
 
 export const store = configureStore({
   reducer: {
@@ -12,8 +11,7 @@ export const store = configureStore({
     registration,
     authorization,
     metamaskAuthorization,
-    staticPageText,
-    staticModalsText
+    staticText,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
 });

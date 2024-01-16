@@ -29,6 +29,10 @@
 
 		"Hello.mascotTextHighlightedPart1": "Hello! I'm",
 		"Hello.mascotTextHighlightedPart2": "Gydde",
-		"Hello.answerButtonText": "Hi, Gydde!"
+		"Hello.answerButtonText": "Hi, Gydde!",
+"Subtitle.answerButtonText": "Hi, Gydde22!",
+		"MailAuthorization.mailLabel": "Email address",
+
+		"Header.buttonLogin": "Log in"
 	}
 }

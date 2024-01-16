@@ -69,7 +69,6 @@
 		font-family: RussoOne;
 		@include fontStyle(36px, 400, 48px);
 		font-style: normal;
-		margin-top: 5px;
 		text-shadow: 0px 0px 1.052px #773DEF, 0px 0px 5.258px #7142F2, 0px 0px 10.517px #7241F2;
 		@include themed() {
 			color: t($textPrimaryMain)
@@ -110,28 +109,13 @@
 	height: 100%;
 	margin-top: 30px;
 	&__button {
-		@extend .button;
 		@include fontStyle(20px, 700, 24px);
-		border-radius: 20px;
 		width: 200px;
 		height: 56px;
 		@include flexCenter;
-		margin: auto;
-		text-align: center;
-		font-family: Roboto;
-		background: transparent;
 		&_login {
-			padding: 20px 80px;
-			white-space: nowrap;
-			background: $colorGreen;
-			background-clip: text;
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-			@include borderStyle(3px solid $colorGreen, 40px);
 			&:hover {
 				background: $colorGreen;
-				background-clip: padding-box;
-				-webkit-text-fill-color: unset;
 				color: $colorBlack;
 			}
 		}

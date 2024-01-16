@@ -24,7 +24,7 @@ export function MetamaskConnection({ text }) {
   const web3Ref = useRef(new Web3(window.ethereum));
   const { connectionStatus, account, message, signedMessage } =
     useSelector(metamaskAuthorization);
-console.log(connectionStatus)
+
   useEffect(() => {
     if (connectionStatus === MetamaskConnectionStatus.Connecting) {
       dispatch(getMetamaskAccount(web3Ref.current));

@@ -15,7 +15,7 @@
 		width: 100%;
 	}
 	&__wrapper {
-		padding: $space12 $space16;
+		padding: $space12 $space16 $space10;
 		min-height: 568px;
 		@include themed() {
 			border-radius: t($radiusSmall);

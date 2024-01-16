@@ -19,10 +19,10 @@ import {
   setFirstHighlightedItem,
   setMetamaskConnectionStatus,
 } from '../../../core/store/slices/metamaskAuthorizationSlice';
-import { getStaticModalsText } from '../../../core/store/staticText/modalsThunk';
-import { TEXT_KEYS } from '../../../core/constants/textKeys';
 import { staticTextHelper } from '../../../core/helpers/staticTextHelper';
 import s from './style.module.scss';
+import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
+import { PageName } from '../../../core/constants/PageNames';
 
 const connectionText = {
   [MetamaskConnectionStatus.NoWallet]: {
@@ -47,8 +47,25 @@ const firstItem = 0;
 export function MetamaskView() {
   const dispatch = useDispatch();
   const { connectionStatus, firstHighlightedItem } = useSelector(metamaskAuthorization);
-  const { modalsText, modalsStatus } = useSelector((state) => state.staticModalsText);
+  const { staticTextMetamask, staticTextStatusMetamask } = useSelector(staticText);
+
   const [currentText, setCurrentText] = useState(null);
+
+  useEffect(() => {
+    return () => {
+      dispatch(removeUnusedStaticText(PageName.Metamask));
+    };
+  }, []);
+
+  useEffect(() => {
+    if (connectionStatus && staticTextStatusMetamask === Status.Resolved) {
+      const highlightedText = staticTextHelper.setHighlightedText(
+        staticTextMetamask[connectionStatus],
+        firstHighlightedItem
+      );
+      setCurrentText(highlightedText);
+    }
+  }, [connectionStatus, staticTextStatusMetamask]);
 
   if (connectionStatus !== MetamaskConnectionStatus.NoWallet && !window.ethereum) {
     dispatch(setMetamaskConnectionStatus(MetamaskConnectionStatus.NoWallet));
@@ -57,24 +74,10 @@ export function MetamaskView() {
     return;
   }
 
-  useEffect(() => {
-    dispatch(getStaticModalsText.metamaskConnect(TEXT_KEYS.METAMASK_CONNECT));
-  }, []);
-
-  useEffect(() => {
-    if (connectionStatus && modalsStatus === Status.Resolved) {
-      const highlightedText = staticTextHelper.setHighlightedText(
-        modalsText[connectionStatus],
-        firstHighlightedItem
-      );
-      setCurrentText(highlightedText);
-    }
-  }, [connectionStatus, modalsStatus]);
-
   return (
     <>
-      {modalsStatus === Status.Resolved &&
-        modalsText &&
+      {staticTextStatusMetamask === Status.Resolved &&
+        staticTextMetamask &&
         connectionStatus &&
         currentText && (
           <div className={s.connectWindow}>
