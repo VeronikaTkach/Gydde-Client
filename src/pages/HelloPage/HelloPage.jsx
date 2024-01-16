@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import cn from 'classnames';
 import { LanguageList } from '../../components/LanguageList';
 import { BaseSubtitle } from '../../components/Subtitle';
-import helper from '../../assets/images/gydde_picture.png';
+import helper from '../../assets/images/gyddePicture.png';
 import helloSticker from '../../assets/images/stickers/helloHand.png';
 import { TEXT_KEYS } from '../../core/constants/textKeys';
 import { Status } from '../../core/constants/Status';

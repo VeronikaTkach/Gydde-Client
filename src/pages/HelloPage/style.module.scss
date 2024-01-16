@@ -13,13 +13,27 @@
     padding-right: 96px;
   }
   &__container {
-
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      @include themed() {
+        background:
+          t($imageHelloLeftTopSticker) left 64px top 80px / 89px 89px no-repeat,
+          t($imageHelloRightDownSticker) right 42px bottom 92px / 98px 101px no-repeat;
+      }
+    }
   }
   &__img {
     width: 616px;
     height: 536px;
   }
-  
+
   &__languages {
     margin-top: -54px;
   }
