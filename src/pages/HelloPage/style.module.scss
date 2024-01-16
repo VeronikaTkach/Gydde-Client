@@ -8,9 +8,9 @@
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 0px 32px;
+    padding: 0px 48px;
     gap: 63px;
-    padding-right: 96px;
+    padding-right: 113px;
   }
   &__container {
     position: relative;
@@ -41,9 +41,9 @@
   &__subtitle {
     @include textStyleSubtitle;
     grid-template-columns: $space20 1fr fit-content(30px);
-    grid-template-rows: minmax(156px, 1fr);
-    gap: 40px;
-    padding: $space10;
+    grid-template-rows: repeat(2, minmax(70px, 1fr));
+    grid-column-gap: 9px;
+    padding: 36px;
     margin-top: -64px;
   }
 }

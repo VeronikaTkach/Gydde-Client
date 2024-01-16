@@ -2,7 +2,7 @@
 
 .soundSwitch {
 	@include flexCenter;
-	border-radius: 16px;
+	border-radius: 12px;
 	font-size: 26px;
 	@include themed() {
 		background-color: t($buttonBgActive);

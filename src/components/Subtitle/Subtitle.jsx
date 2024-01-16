@@ -2,7 +2,7 @@ import cn from 'classnames';
 import { SubtitleBlock } from '../ui/tags/SubtitleBlock';
 import { TextWithBorder } from '../ui/tags/TextWithBorder';
 import { AccentButton } from '../ui/buttons/Button';
-import { SoundSwitchButton } from '../ui/buttons/SoundSwitchButton';
+import { PlayButton } from '../ui/buttons/PlayButton';
 import s from './style.module.scss';
 
 export function BaseSubtitle({
@@ -23,7 +23,7 @@ export function BaseSubtitle({
         mascotVoice || (
           <>
             {sound && (
-              <SoundSwitchButton
+              <PlayButton
                 className={cn(s.subtitle__mascotVoice, s.subtitle__mascotVoice_size_l)}
               />
             )}

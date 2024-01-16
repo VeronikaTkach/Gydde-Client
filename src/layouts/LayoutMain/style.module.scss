@@ -19,8 +19,9 @@
 		flex-direction: column;
 		transform-origin: top center;
 		width: 100%;
-		max-width: 1400px;
+		max-width: $sizeContainer;
 		padding: 0 16px;
+		height: fit-content;
 	}
 	&__authorization {
 		position: absolute;
@@ -29,11 +30,11 @@
 }
 
 @for $i from 1 through 30 {
-  $scale: 1 - ($i * .05);
+  $scale: 1.2 - ($i * .05);
 
   .wrapper__container {
     $height: 1080px - ($i * 50px);
-    $width: 1400px - ($i * 30px);
+    $width: 1400px - ($i * 40px);
 
 		@media screen and (max-width: $width) {
       transform: scale($scale);

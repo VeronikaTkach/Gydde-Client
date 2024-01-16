@@ -4,11 +4,10 @@
   display: grid;
   width: 100%;
   height: fit-content;
-
   &__mascotVoice {
     width: fit-content;
     &_size_l {
-      @include width-height($space20);
+      @include width-height($space15);
     }
   }
 
@@ -20,6 +19,7 @@
     display: flex;
     justify-content: space-between;
     align-self: end;
+    grid-area: 2 / 3 / 3 / 4;
   }
 }
 
@@ -29,7 +29,7 @@
     gap: $space6;
   }
   &_size_l {
-    gap: 34px;
+    gap: 16px;
   }
   &__arrow {
     @include flexCenter;
@@ -37,7 +37,8 @@
       font-size: 56px;
     }
     &_size_l {
-      font-size: 66px;
+      font-size: 48px;
+      color: $colorGreen;
     }
   }
 }
