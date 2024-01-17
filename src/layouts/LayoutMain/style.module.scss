@@ -5,7 +5,6 @@
 	justify-content: center;
 	width: 100%;
 	height: 100vh;
-	padding: 0 30px;
 	@include themed() {
 		background-color: t($bg);
 	}
@@ -29,16 +28,29 @@
 	}
 }
 
-@for $i from 1 through 30 {
-  $scale: 1.2 - ($i * .05);
+//resize to 800px of width
+@for $i from 1 through 50 {
+  $scale: 1 - ($i * .05);
+  $scaleBigScreen: 1.2 - ($i * .05);
 
   .wrapper__container {
-    $height: 1080px - ($i * 50px);
-    $width: 1400px - ($i * 40px);
+    $height: 830px - ($i * 40px);
+    $bigHeight: 1120px - ($i * 40px);
+    $width: 1520px - ($i * 70px);
 
-		@media screen and (max-width: $width) {
-      transform: scale($scale);
-    }
+		@if ($width * $height / 1520px) < $height {
+			@if $width < 1000 and $width > 900 {
+				@media screen and (max-width: $width) {
+					min-width: 1440px;
+					transform: scale($scale);
+				}
+			}@else {
+				@media screen and (max-width: $width) {
+					min-width: 1440px;
+					transform: scale($scale);
+				}
+			}
+		}
     @media screen and (max-height: $height) {
       transform: scale($scale);
     }
