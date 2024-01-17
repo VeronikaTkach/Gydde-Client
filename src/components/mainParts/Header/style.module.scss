@@ -4,7 +4,7 @@
 .header {
 	display: flex;
 	align-items: flex-end;
-	@include width-height(100%, 94px);
+	@include width-height(100%, 56px);
 	&__row {
 		display: flex;
 		justify-content: space-between;

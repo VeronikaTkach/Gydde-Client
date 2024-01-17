@@ -5,7 +5,6 @@
 	justify-content: center;
 	width: 100%;
 	height: 100vh;
-	padding: 0 30px;
 	@include themed() {
 		background-color: t($bg);
 	}
@@ -20,8 +19,10 @@
 		transform-origin: top center;
 		width: 100%;
 		max-width: $sizeContainer;
-		padding: 0 16px;
+		padding: 38px 16px 0;
 		height: fit-content;
+		min-width: $sizeContainer;
+		transform: scale(1.4);
 	}
 	&__authorization {
 		position: absolute;
@@ -29,16 +30,19 @@
 	}
 }
 
-@for $i from 1 through 30 {
-  $scale: 1.2 - ($i * .05);
+//resize by height and width
+@for $i from 1 through 50 {
+  $scale: 1.4 - ($i * .05);
 
   .wrapper__container {
-    $height: 1080px - ($i * 50px);
-    $width: 1400px - ($i * 40px);
+    $height: 1160px - ($i * 40px);
+    $width: 2080px - ($i * 70px);
 
-		@media screen and (max-width: $width) {
-      transform: scale($scale);
-    }
+		@if ($width * $height / 2080px) < $height {
+			@media screen and (max-width: $width) {
+				transform: scale($scale);
+			}
+		}
     @media screen and (max-height: $height) {
       transform: scale($scale);
     }

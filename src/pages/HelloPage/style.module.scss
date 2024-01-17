@@ -2,7 +2,6 @@
 
 .content {
   @include flexColumnCenter;
-  margin-top: -11px;
 
   &__main {
     display: flex;
