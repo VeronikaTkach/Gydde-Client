@@ -21,6 +21,8 @@
 		max-width: $sizeContainer;
 		padding: 0 16px;
 		height: fit-content;
+		min-width: 1440px;
+		transform: scale(1.4);
 	}
 	&__authorization {
 		position: absolute;
@@ -28,27 +30,17 @@
 	}
 }
 
-//resize to 800px of width
+//resize by height and width
 @for $i from 1 through 50 {
-  $scale: 1 - ($i * .05);
-  $scaleBigScreen: 1.2 - ($i * .05);
+  $scale: 1.4 - ($i * .05);
 
   .wrapper__container {
-    $height: 830px - ($i * 40px);
-    $bigHeight: 1120px - ($i * 40px);
-    $width: 1520px - ($i * 70px);
+    $height: 1150px - ($i * 40px);
+    $width: 2080px - ($i * 70px);
 
-		@if ($width * $height / 1520px) < $height {
-			@if $width < 1000 and $width > 900 {
-				@media screen and (max-width: $width) {
-					min-width: 1440px;
-					transform: scale($scale);
-				}
-			}@else {
-				@media screen and (max-width: $width) {
-					min-width: 1440px;
-					transform: scale($scale);
-				}
+		@if ($width * $height / 2050px) < $height {
+			@media screen and (max-width: $width) {
+				transform: scale($scale);
 			}
 		}
     @media screen and (max-height: $height) {
