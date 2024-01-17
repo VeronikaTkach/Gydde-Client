@@ -19,9 +19,9 @@
 		transform-origin: top center;
 		width: 100%;
 		max-width: $sizeContainer;
-		padding: 0 16px;
+		padding: 38px 16px 0;
 		height: fit-content;
-		min-width: 1440px;
+		min-width: $sizeContainer;
 		transform: scale(1.4);
 	}
 	&__authorization {
@@ -35,10 +35,10 @@
   $scale: 1.4 - ($i * .05);
 
   .wrapper__container {
-    $height: 1150px - ($i * 40px);
+    $height: 1160px - ($i * 40px);
     $width: 2080px - ($i * 70px);
 
-		@if ($width * $height / 2050px) < $height {
+		@if ($width * $height / 2080px) < $height {
 			@media screen and (max-width: $width) {
 				transform: scale($scale);
 			}
