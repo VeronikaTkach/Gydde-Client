@@ -20,12 +20,10 @@ export const nicknameValidation = {
 };
 
 export const passwordValidation = {
-  required: {
-    value: mailRegExp,
+  required: '',
+  pattern: {
+    value: passwordRegExp,
+    minLength: 8,
     message: '',
-  },
-  minLength: {
-    value: 8,
-    message: 'Password must be at least 8 characters (latin letters, numbers or symbols)',
   },
 };

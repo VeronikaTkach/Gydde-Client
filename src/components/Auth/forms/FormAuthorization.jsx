@@ -19,8 +19,15 @@ export function FormAuthorization() {
   const dispatch = useDispatch();
   const { staticTextMailAuthorization, staticTextStatusMailAuthorization } =
     useSelector(staticText);
+
+  // const { staticTextPasswordAuthorization, staticTextStatusPasswordAuthorization } =
+  //   useSelector(staticText);
+
   // const { error } = useSelector((state) => state.authorization);
   const [mailValidation, setMailValidation] = useState(mailValidationWithoutMessage);
+  const [passwordValidation, setPasswordValidation] = useState(
+    passwordValidationWithoutMessage
+  );
   const [loading, setLoading] = useState(false); //TODO только если временно! статус должен идти из стора при отправке запроса
   const {
     register,
@@ -40,9 +47,22 @@ export function FormAuthorization() {
         staticTextMailAuthorization,
         mailValidationWithoutMessage
       );
+
       setMailValidation(convertedMailValidation);
+      setPasswordValidation(convertedMailValidation);
     }
   }, [staticTextStatusMailAuthorization]);
+
+  // useEffect(() => {
+  //   if (staticTextStatusPasswordAuthorization === Status.Resolved) {
+  //     const convertedPasswordValidation = staticTextHelper.convertToValidation(
+  //       staticTextPasswordAuthorization,
+  //       passwordValidationWithoutMessage
+  //     );
+
+  //     setPasswordValidation(convertedPasswordValidation);
+  //   }
+  // }, [staticTextStatusPasswordAuthorization]);
 
   const onSubmit = (data, e) => {
     e.preventDefault();
@@ -62,7 +82,7 @@ export function FormAuthorization() {
             <div className={s.input__block}>
               <Input
                 classError={errors.email}
-                placeholder={'Enter email address'}
+                placeholder={staticTextMailAuthorization.mailPlaceholder}
                 name={'email'}
                 setValue={setValue}
                 register={register}
@@ -73,16 +93,18 @@ export function FormAuthorization() {
             </div>
           </div>
           <div className={s.form__block}>
-            <div className={cn(s.input__title)}>Password</div>
+            <div className={cn(s.input__title)}>
+              {staticTextMailAuthorization.passwordLabel}
+            </div>
             <div className={s.input__block}>
               <Input
                 classError={errors.password}
-                placeholder={'Enter  password'}
+                placeholder={staticTextMailAuthorization.passwordPlaceholder}
                 name={'password'}
                 setValue={setValue}
                 register={register}
                 type={'password'}
-                // validation={passwordValidation}
+                validation={passwordValidation}
               />
               {errors.password && (
                 <p className={s.form__error}>{errors.password.message}</p>
@@ -92,7 +114,8 @@ export function FormAuthorization() {
           <div className={s.form__btn}>
             <Button className={s.form__btn_submit} type={'submit'} disabled={loading}>
               {/* TODO тут текст кладётся. 'iconLoader' нужно в класс ставить */}
-              {loading ? 'iconLoader' : 'Log in'}
+              {/* {loading ? 'iconLoader' : {staticTextMailAuthorization.button}} */}
+              {staticTextMailAuthorization.button}
             </Button>
           </div>
         </form>

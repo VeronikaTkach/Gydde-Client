@@ -33,7 +33,11 @@
 
 		"MailAuthorization.mailLabel": "Email address",
 		"MailAuthorization.mailErrorText_pattern": "Please enter a valid email address",
-		"MailAuthorization.mailErrorText_required": "Required!",
+		"MailAuthorization.mailPlaceholder": "Enter email address",
+		"MailAuthorization.passwordLabel": "Password",
+		"MailAuthorization.passwordErrorText_pattern": "Password must be at least 8 characters (latin letters, numbers or symbols)",
+		"MailAuthorization.passwordPlaceholder": "Enter  password",
+		"MailAuthorization.button": "Log in",
 
 		"Header.buttonLogin": "Log in"
 	}

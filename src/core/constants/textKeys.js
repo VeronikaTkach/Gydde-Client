@@ -38,7 +38,11 @@ export const TEXT_KEYS = {
   MAIL_AUTHORIZATION: [
     `${PageName.MailAuthorization}.mailLabel`,
     `${PageName.MailAuthorization}.mailErrorText_pattern`,
-    `${PageName.MailAuthorization}.mailErrorText_required`,
+    `${PageName.MailAuthorization}.mailPlaceholder`,
+    `${PageName.MailAuthorization}.passwordLabel`,
+    `${PageName.MailAuthorization}.passwordErrorText_pattern`,
+    `${PageName.MailAuthorization}.passwordPlaceholder`,
+    `${PageName.MailAuthorization}.button`,
   ],
   HEADER: [`${PageName.Header}.buttonLogin`],
 };
