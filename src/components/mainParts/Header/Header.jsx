@@ -34,39 +34,41 @@ export function Header({ className }) {
     <>
       {staticTextStatusHeader === Status.Resolved && (
         <header className={cn(s.header, className)}>
-          <nav className={cn(s.header__navigation, s.navigation)}>
-            <ul className={cn(s.navigation__list)}>
-              <li className={s.navigation__item}>
-                <NavigationLink
-                  className={s.navigation__link}
-                  activeClassName={s.navigation__link_active}
-                  to={RoutesName.Root}>
-                  <div className={s.navigation__logo}></div>
-                </NavigationLink>
-              </li>
-            </ul>
-          </nav>
-          <div className={cn(s.header__auth, s.auth)}>
-            {localStorage.authorization ? (
-              <Link
-                to={
-                  localStorage.authorization === 'user'
-                    ? '/account/leaderboard'
-                    : 'admin/tasks'
-                }
-                className={cn(s.auth__button, s.auth__button_login)}>
-                Profile
-              </Link>
-            ) : (
-              <>
-                <ButtonWithBorder
-                  className={cn(s.auth__button, s.auth__button_login)}
-                  onClick={() => dispatch(showAuthorizationWindow(true))}>
-                  {staticTextHeader.buttonLogin}
-                </ButtonWithBorder>
-                {modalAuthorization && <Auth />}
-              </>
-            )}
+          <div className={cn(s.header__row)}>
+            <nav className={cn(s.header__navigation, s.navigation)}>
+              <ul className={cn(s.navigation__list)}>
+                <li className={s.navigation__item}>
+                  <NavigationLink
+                    className={s.navigation__link}
+                    activeClassName={s.navigation__link_active}
+                    to={RoutesName.Root}>
+                    <div className={s.navigation__logo}></div>
+                  </NavigationLink>
+                </li>
+              </ul>
+            </nav>
+            <div className={cn(s.header__auth, s.auth)}>
+              {localStorage.authorization ? (
+                <Link
+                  to={
+                    localStorage.authorization === 'user'
+                      ? '/account/leaderboard'
+                      : 'admin/tasks'
+                  }
+                  className={cn(s.auth__button, s.auth__button_login)}>
+                  Profile
+                </Link>
+              ) : (
+                <>
+                  <ButtonWithBorder
+                    className={cn(s.auth__button, s.auth__button_login)}
+                    onClick={() => dispatch(showAuthorizationWindow(true))}>
+                    {staticTextHeader.buttonLogin}
+                  </ButtonWithBorder>
+                  {modalAuthorization && <Auth />}
+                </>
+              )}
+            </div>
           </div>
         </header>
       )}
