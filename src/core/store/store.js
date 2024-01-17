@@ -3,6 +3,7 @@ import modalWindowState from './slices/modalWindowStateSlice';
 import registration from './slices/registrationSlice';
 import authorization from './slices/mailAuthorizationSlice';
 import metamaskAuthorization from './slices/metamaskAuthorizationSlice';
+import soundSettings from './slices/soundSettingsSlice';
 import staticText from './staticText/slice';
 
 export const store = configureStore({
@@ -12,6 +13,7 @@ export const store = configureStore({
     authorization,
     metamaskAuthorization,
     staticText,
+    soundSettings,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
 });
