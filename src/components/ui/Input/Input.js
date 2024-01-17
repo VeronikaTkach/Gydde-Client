@@ -1,6 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import s from './style.module.scss';
+import { Button } from '../buttons/Button';
 
 export function Input(props) {
   const [inputValue, setInputValue] = React.useState(props.defaultValue || '');
@@ -36,14 +37,14 @@ export function Input(props) {
           disabled={props.disabled}
           pattern={props.pattern}
           name={props.name}
-          autoComplete={props.autoComplete || 'off'}
+          autoComplete={props.autoComplete || 'on'}
           onInput={handleChange}
           {...(props.name ? {} : { value: inputValue })}
           {...(props.register ? { ...props.register(props.name, props.validation) } : '')}
         />
       )}
       {props.type === 'password' && (
-        <button
+        <Button
           className={cn(
             s.field__password,
             { [s.field__password_error]: props.classError },
@@ -54,7 +55,7 @@ export function Input(props) {
             { ['iconEyeClose']: inputValue }
           )}
           type={'button'}
-          onClick={showPassword}></button>
+          onClick={showPassword}></Button>
       )}
       {props.type === 'email' && props.classError && (
         <div className={cn(s.field__email_error, 'iconError')}></div>

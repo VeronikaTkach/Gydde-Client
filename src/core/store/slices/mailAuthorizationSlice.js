@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
 import { Status } from '../../constants/Status';
 import { AuthorizationType } from '../../constants/AuthorizationType';
+import mainRequest from '../../utils/mainRequestUtils';
 
 const initialState = {
   status: null,
@@ -10,11 +10,10 @@ const initialState = {
 };
 
 export const authorizedUser = createAsyncThunk(
-  'authorization/authorizationUser',
-  async function (authData, { rejectWithValue }) {
+  'mailAuthorization/mailAuthorizationUser',
+  async function (authData, { rejectWithValue }) { //todo создавать не просто запросы, а использовать базовый запрос 'mainRequest'
     try {
-      const response = await axios.post('http://localhost:3004/authorization', authData);//todo создавать не просто запросы, а использовать базовый запрос 'mainRequest'
-      localStorage.setItem('accessToken', response.data.accessToken);
+      const response = await mainRequest.post('localhost:8080', authData);
 
       return response.data;
     } catch (error) {
@@ -24,7 +23,7 @@ export const authorizedUser = createAsyncThunk(
 );
 
 export const authorizationSlice = createSlice({
-  name: 'authorization',
+  name: 'mailAuthorization',
   initialState,
   reducers: {
     setCurrentAuthorizationType: (state, action) => {
