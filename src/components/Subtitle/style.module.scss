@@ -25,6 +25,11 @@
 
 .answer {
   display: flex;
+  &__arrow {
+    @include themed() {
+      color: t($buttonLabelActive2);
+    }
+  }
   &_size_m {
     gap: $space6;
   }

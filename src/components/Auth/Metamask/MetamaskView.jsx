@@ -21,7 +21,10 @@ import {
 } from '../../../core/store/slices/metamaskAuthorizationSlice';
 import { staticTextHelper } from '../../../core/helpers/staticTextHelper';
 import s from './style.module.scss';
-import { staticText } from '../../../core/store/staticText/slice';
+import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
+import { getStaticText } from '../../../core/store/staticText/thunk';
+import { TEXT_KEYS } from '../../../core/constants/textKeys';
+import { PageName } from '../../../core/constants/PageNames';
 
 const connectionText = {
   [MetamaskConnectionStatus.NoWallet]: {
@@ -49,6 +52,13 @@ export function MetamaskView() {
   const { staticTextMetamask, staticTextStatusMetamask } = useSelector(staticText);
 
   const [currentText, setCurrentText] = useState(null);
+  useEffect(() => {
+    dispatch(getStaticText.basic(TEXT_KEYS.METAMASK_CONNECT));
+
+    return () => {
+      dispatch(removeUnusedStaticText(PageName.Metamask));
+    };
+  }, []);
 
   useEffect(() => {
     if (connectionStatus && staticTextStatusMetamask === Status.Resolved) {

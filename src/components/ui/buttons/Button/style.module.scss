@@ -19,9 +19,10 @@
 		transition: .3s;
 	}
 	&_accent {
+		height: 68px;
 		gap: 8px;
-		padding: 18px 44px;
-		@include textStyleButton3;
+		padding: 0 $space12;
+		@include textStyleButton2;
 		@include borderStyle(1px solid transparent, 40px);
 		@include themed() {
 			background: t($buttonBgActive);

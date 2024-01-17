@@ -11,17 +11,17 @@ import {
 import { authorizedUser } from '../../../core/store/slices/mailAuthorizationSlice';
 import cn from 'classnames';
 import s from './style.module.scss';
-import { staticText } from '../../../core/store/staticText/slice';
+import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
 import { staticTextHelper } from '../../../core/helpers/staticTextHelper';
 import { Status } from '../../../core/constants/Status';
+import { getStaticText } from '../../../core/store/staticText/thunk';
+import { TEXT_KEYS } from '../../../core/constants/textKeys';
+import { PageName } from '../../../core/constants/PageNames';
 
 export function FormAuthorization() {
   const dispatch = useDispatch();
   const { staticTextMailAuthorization, staticTextStatusMailAuthorization } =
     useSelector(staticText);
-
-  // const { staticTextPasswordAuthorization, staticTextStatusPasswordAuthorization } =
-  //   useSelector(staticText);
 
   // const { error } = useSelector((state) => state.authorization);
   const [mailValidation, setMailValidation] = useState(mailValidationWithoutMessage);
@@ -42,27 +42,28 @@ export function FormAuthorization() {
   });
 
   useEffect(() => {
+    dispatch(getStaticText.basic(TEXT_KEYS.MAIL_AUTHORIZATION));
+
+    return () => {
+      dispatch(removeUnusedStaticText(PageName.MailAuthorization));
+    };
+  }, []);
+
+  useEffect(() => {
     if (staticTextStatusMailAuthorization === Status.Resolved) {
       const convertedMailValidation = staticTextHelper.convertToValidation(
         staticTextMailAuthorization,
         mailValidationWithoutMessage
       );
+      const convertedPasswordValidation = staticTextHelper.convertToValidation(
+        staticTextMailAuthorization,
+        mailValidationWithoutMessage
+      );
 
       setMailValidation(convertedMailValidation);
-      setPasswordValidation(convertedMailValidation);
+      setPasswordValidation(convertedPasswordValidation);
     }
   }, [staticTextStatusMailAuthorization]);
-
-  // useEffect(() => {
-  //   if (staticTextStatusPasswordAuthorization === Status.Resolved) {
-  //     const convertedPasswordValidation = staticTextHelper.convertToValidation(
-  //       staticTextPasswordAuthorization,
-  //       passwordValidationWithoutMessage
-  //     );
-
-  //     setPasswordValidation(convertedPasswordValidation);
-  //   }
-  // }, [staticTextStatusPasswordAuthorization]);
 
   const onSubmit = (data, e) => {
     e.preventDefault();

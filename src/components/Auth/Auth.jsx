@@ -14,9 +14,8 @@ import { TEXT_KEYS } from '../../core/constants/textKeys';
 import { PageName } from '../../core/constants/PageNames';
 import { removeUnusedStaticText, staticText } from '../../core/store/staticText/slice';
 import { Button } from '../ui/buttons/Button';
-import { withClose } from '../ui/modals/Modal/hoc/withClose';
-import { withBorderShadow } from '../ui/modals/Modal/hoc/withBorderShadow';
-import Modal from '../ui/modals/Modal/Modal';
+import ModalWithClose from '../ui/modals/Modal/ModalWithClose';
+import ModalWithBorderShadow from '../ui/modals/Modal/ModalWithBorder';
 import { MetamaskView } from './Metamask';
 import { AllAuthorizaitions } from './AllAuthorizaitions';
 import { FormAuthorization } from './forms';
@@ -29,12 +28,9 @@ export function Auth() {
 
   useEffect(() => {
     dispatch(getStaticText.basic(TEXT_KEYS.AUTH));
-    dispatch(getStaticText.basic(TEXT_KEYS.METAMASK_CONNECT));
-    dispatch(getStaticText.basic(TEXT_KEYS.MAIL_AUTHORIZATION));
 
     return () => {
       dispatch(removeUnusedStaticText(PageName.Auth));
-      dispatch(removeUnusedStaticText(PageName.Metamask));
     };
   }, []);
 
@@ -46,10 +42,8 @@ export function Auth() {
     dispatch(showAuthorizationWindow(false));
   };
 
-  const ModalWithClose = withClose(withBorderShadow(Modal), onClose);
-
   return (
-    <ModalWithClose onClose={onClose}>
+    <ModalWithClose Component={ModalWithBorderShadow} onClose={onClose}>
       {staticTextStatusAuth === Status.Resolved && (
         <>
           {(currentAuthorizationType === AuthorizationType.NotСhosen ||

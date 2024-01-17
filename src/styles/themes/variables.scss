@@ -197,15 +197,15 @@ $rightHeart: url('../../assets/images/stickers/rightHeart.png');
 }
 @mixin textStyleButton1() {
 	@include fontRoboto;
-	@include fontStyle($size: 24px, $weight: 700, $height: 32px)
+	@include fontStyle($size: 20px, $weight: 700, $height: 32px)
 }
 @mixin textStyleButton2() {
 	@include fontRoboto;
-	@include fontStyle($size: 28px, $weight: 700, $height: 32px)
+	@include fontStyle($size: 24px, $weight: 700, $height: 32px)
 }
 @mixin textStyleButton3() {
 	@include fontRoboto;
-	@include fontStyle($size: 24px, $weight: 700, $height: 32px)
+	@include fontStyle($size: 28px, $weight: 700, $height: 32px)
 }
 
 //others

@@ -1,0 +1,50 @@
+@use '../../../../styles/styles.scss' as *;
+
+.modal {
+	position: fixed;
+	left: 0;
+	top: 0;
+	@include width-height(100%, 100vh);
+	@include flexCenter;
+	z-index: 100;
+	background-color: #171717f2; //TODO !временно, дизайнеры не добавили цвет пока
+	&__container {
+		padding: 0 $space5;
+		margin: 0 auto;
+		max-width: 1048px;
+		width: 100%;
+	}
+	&__wrapper {
+		padding: $space12 $space16 $space10;
+		min-height: 568px;
+		@include themed() {
+			border-radius: t($radiusSmall);
+			color: t($textPrimaryMain);
+			background-color: t($bg);
+			box-shadow: t($shadowBgPopup);
+		}
+	}
+	&__header {
+		position: relative;
+	}
+	&__close {
+		position: absolute;
+		top: 12px;
+		right: 0;
+		z-index: 100;
+		font-size: 24px;
+		background-color: transparent;
+		@include themed() {
+			color: t($buttonLabelDefault1);
+		}
+		transition: color 0.3s ease;
+		&:hover {
+			@include themed() {
+				color: t($buttonLabelHover2);
+			}
+		}
+	}
+}
+
+
+
