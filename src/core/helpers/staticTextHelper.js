@@ -109,14 +109,14 @@ export const staticTextHelper = {
   convertToValidation: (textObj, validationObj) => {
     const convertedValidation = {};
 
-    for (const key in textObj.mailErrorText) {
+    for (const key in textObj) {
       if (typeof validationObj[key] === 'object') {
         convertedValidation[key] = {
           ...validationObj[key],
-          message: textObj.mailErrorText[key],
+          message: textObj[key],
         };
       } else {
-        convertedValidation[key] = textObj.mailErrorText[key];
+        convertedValidation[key] = textObj[key];
       }
     }
 

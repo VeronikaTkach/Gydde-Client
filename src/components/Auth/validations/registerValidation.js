@@ -21,9 +21,8 @@ export const nicknameValidation = {
 
 export const passwordValidation = {
   required: '',
-  // pattern: {
-  //   // value: passwordRegExp,
-  //   // minLength: 8,
-  //   message: '',
-  // },
+  minLength: {
+    value: 8,
+    message: '',
+  },
 };

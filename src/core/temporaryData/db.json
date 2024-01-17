@@ -35,7 +35,7 @@
 		"MailAuthorization.mailErrorText_pattern": "Please enter a valid email address",
 		"MailAuthorization.mailPlaceholder": "Enter email address",
 		"MailAuthorization.passwordLabel": "Password",
-		"MailAuthorization.passwordErrorText_pattern": "Password must be at least 8 characters (latin letters, numbers or symbols)",
+		"MailAuthorization.passwordErrorText_minLength": "Password must be at least 8 characters (latin letters, numbers or symbols)",
 		"MailAuthorization.passwordPlaceholder": "Enter  password",
 		"MailAuthorization.button": "Log in",
 

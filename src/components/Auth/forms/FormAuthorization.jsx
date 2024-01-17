@@ -52,12 +52,12 @@ export function FormAuthorization() {
   useEffect(() => {
     if (staticTextStatusMailAuthorization === Status.Resolved) {
       const convertedMailValidation = staticTextHelper.convertToValidation(
-        staticTextMailAuthorization,
+        staticTextMailAuthorization.mailErrorText,
         mailValidationWithoutMessage
       );
       const convertedPasswordValidation = staticTextHelper.convertToValidation(
-        staticTextMailAuthorization,
-        mailValidationWithoutMessage
+        staticTextMailAuthorization.passwordErrorText,
+        passwordValidationWithoutMessage
       );
 
       setMailValidation(convertedMailValidation);
