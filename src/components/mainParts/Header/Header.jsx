@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import {
   modalWindowState,
   showAuthorizationWindow,
+  showQuestWindow,
 } from '../../../core/store/slices/modalWindowStateSlice';
 import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
 import { getStaticText } from '../../../core/store/staticText/thunk';
@@ -16,10 +17,11 @@ import { NavigationLink } from '../../ui/Navlink';
 import { Auth } from '../../Auth';
 import s from './style.module.scss';
 import { RoutesName } from '../../../core/constants/Routes';
+import { QuestWindow } from '../../quests/QuestWindow';
 
 export function Header({ className }) {
   const dispatch = useDispatch();
-  const { modalAuthorization } = useSelector(modalWindowState);
+  const { modalAuthorization, modalQuest } = useSelector(modalWindowState);
   const { staticTextHeader, staticTextStatusHeader } = useSelector(staticText);
 
   useEffect(() => {
@@ -34,6 +36,9 @@ export function Header({ className }) {
     <>
       {staticTextStatusHeader === Status.Resolved && (
         <header className={cn(s.header, className)}>
+          {/* {modalQuest && */}
+          <QuestWindow />
+          {/* } */}
           <div className={cn(s.header__row)}>
             <nav className={cn(s.header__navigation, s.navigation)}>
               <ul className={cn(s.navigation__list)}>
@@ -47,15 +52,13 @@ export function Header({ className }) {
                 </li>
               </ul>
             </nav>
+
+            {/* ВРЕМЕННО */}
+            <button onClick={() => dispatch(showQuestWindow(true))}>quest window</button>
+
             <div className={cn(s.header__auth, s.auth)}>
               {localStorage.authorization ? (
-                <Link
-                  to={
-                    localStorage.authorization === 'user'
-                      ? '/account/leaderboard'
-                      : 'admin/tasks'
-                  }
-                  className={cn(s.auth__button, s.auth__button_login)}>
+                <Link to={'/'} className={cn(s.auth__button, s.auth__button_login)}>
                   Profile
                 </Link>
               ) : (

@@ -1,0 +1,13 @@
+@use '../../../styles/styles.scss' as *;
+
+.questChat {
+	display: grid;
+	grid-template-rows: 52px 1fr 52px;
+	&__chat {
+		position: relative;
+
+	}
+	&__scrollDown {
+		position: absolute;
+	}
+}

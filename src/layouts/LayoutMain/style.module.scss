@@ -31,7 +31,7 @@
 }
 
 //resize by height and width
-@for $i from 1 through 50 {
+@for $i from 1 through 25 {
   $scale: 1.4 - ($i * .05);
 
   .wrapper__container {

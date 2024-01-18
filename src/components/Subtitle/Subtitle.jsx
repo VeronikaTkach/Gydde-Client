@@ -4,6 +4,7 @@ import { TextWithBorder } from '../ui/tags/TextWithBorder';
 import { AccentButton } from '../ui/buttons/Button';
 import { PlayButton } from '../ui/buttons/PlayButton';
 import s from './style.module.scss';
+import { AudioPlayerWithProgressBar } from '../soundControls/AudioPlayer/AudioPlayerWithProgressBar';
 
 export function BaseSubtitle({
   className,
@@ -22,6 +23,7 @@ export function BaseSubtitle({
       mascotVoice={
         mascotVoice || (
           <>
+              {/* <AudioPlayerWithProgressBar /> */}
             {sound && (
               <PlayButton
                 className={cn(s.subtitle__mascotVoice, s.subtitle__mascotVoice_size_l)}
