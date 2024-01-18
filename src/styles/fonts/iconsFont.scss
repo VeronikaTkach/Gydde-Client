@@ -94,3 +94,13 @@
     content: $iconPause;
   }
 }
+.iconRewind {
+  &:before {
+    content: $iconRewind;
+  }
+}
+.iconSearch {
+  &:before {
+    content: $iconSearch;
+  }
+}
