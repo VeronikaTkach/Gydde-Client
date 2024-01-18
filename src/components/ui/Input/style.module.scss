@@ -38,21 +38,27 @@
 			}
 		}
 	}
-	&__password {
-		font-size: 32px;
+	&__btn {
 		background-color: transparent;
-		margin: 0 36px 0 0;
 		color: $colorGray400;
-		&_show {
-			font-size: 23px;
-		}
-		&_error {
-			&::before {
-				color: $colorRed500;
-			  }
-		}
-		&_empty {
+		&__password {
+			margin: 0 36px 0 0;
 			font-size: 32px;
+			&_show {
+				font-size: 23px;
+			}
+			&_error {
+				&::before {
+					color: $colorRed500;
+				  }
+			}
+			&_empty {
+				font-size: 32px;
+			}
+		}
+		&__search {
+			margin: 0 24px 0 0;
+			font-size: 24px;
 		}
 	}
 	&__email {
@@ -62,4 +68,9 @@
 			margin: 0 36px 0 0;
 		}
 	}
+}
+
+.inputQuest {
+	width: 312px;
+	height: $space14;
 }

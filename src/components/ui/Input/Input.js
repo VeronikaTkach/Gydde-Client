@@ -46,8 +46,9 @@ export function Input(props) {
       {props.type === 'password' && (
         <Button
           className={cn(
-            s.field__password,
-            { [s.field__password_error]: props.classError },
+            s.field__btn,
+            s.field__btn__password,
+            { [s.field__btn__password_error]: props.classError },
             {
               [cn(s.field__password_empty, 'iconError')]: !inputValue && props.classError,
             },

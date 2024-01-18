@@ -33,3 +33,21 @@
     gap: 8px;
   }
 }
+
+.header {
+  &__logo {
+    @include themed() {
+      background-image: t($imageLogo);
+      background-position: center;
+      background-size: 143px;
+      @include width-height(125px, 48px);
+    }
+  }
+  &__btnClose {
+    background-color: transparent;
+    &::before {
+      font-size: 24px;
+      color: $colorGray400;
+    }
+  }
+}

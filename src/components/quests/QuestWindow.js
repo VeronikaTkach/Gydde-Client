@@ -19,7 +19,7 @@ export function QuestWindow({ className }) {
     <Modal className={cn(s.questWindow, className)}>
       <div className={cn(s.questWindow__container)}>
         <div className={cn(s.questWindow__header, s.header)}>
-          <img className={cn(s.header__logo)} src={logo} alt={'logo'} />
+          <div className={cn(s.header__logo)}/>
           <Button
             className={cn(s.header__btnClose, 'iconClose')}
             onClick={() => dispatch(showQuestWindow(false))}
