@@ -3,3 +3,17 @@
 .audioRate {
 
 }
+
+.audioPlayer {
+    &__btn {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        font-size: 20px;
+        padding: 12px 12px 12px 14px;
+        &:hover {
+            transition: .3s;
+            background: #89CB64;
+        }
+    }
+}
