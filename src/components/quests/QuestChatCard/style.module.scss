@@ -1,5 +1,112 @@
 @use '../../../styles/styles.scss' as *;
 
 .questCard {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  border-radius: $space6;
+  backdrop-filter: blur(15px);
+  cursor: pointer;
+  padding: 12px;
+  gap: 12px;
 
+  @include themed() {
+    background: t($surfacePrimary2);
+  }
+  &_active {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    border-radius: $space6;
+    backdrop-filter: blur(15px);
+    cursor: pointer;
+    padding: 11px;
+    gap: 12px;
+    border: 1px solid $colorGray600;
+    background: $colorGray650;    
+  }
+  &__img {
+    border-radius: $space6;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 139px;
+    gap: 5px;
+  }
+
+  &__desc {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 22px;
+  }
+
+  &__notification {
+    background: $colorGreenPrimary100;
+    padding: 0 7px;
+    align-self: flex-end;
+    color: #000;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+    border-radius: $space6;
+
+    &_blank {
+      height: 22px;
+    }
+  }
+
+  &__title {
+    @include fontRoboto;
+    @include fontStyle(18px, 500, 20px);
+    font-style: normal;
+
+    @include themed() {
+      color: t($textPrimaryMain);
+    }
+  }
+
+  &__author {
+    color: $colorGray400;
+    @include fontRoboto;
+    @include fontStyle(16px, 500, 20px);
+    font-style: normal;
+  }
+
+  &__progress {
+    align-self: flex-end;
+    text-align: right;
+    @include fontRoboto;
+    @include fontStyle(16px, 500, 20px);
+    font-style: normal;
+    justify-self: flex-end;
+
+    @include themed() {
+      background: t($gradientQuestProgress);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    &_ready {
+      text-align: right;
+      @include fontRoboto;
+      @include fontStyle(16px, 500, 20px);
+      font-style: normal;
+      justify-self: flex-end;
+      color: $colorGray300;
+    }
+  }
 }

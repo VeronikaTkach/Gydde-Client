@@ -1,5 +1,13 @@
 @use '../../../styles/styles.scss' as *;
 
 .questSidePannel {
+    & ul {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+}
 
+.questCard_active {
+    background: var(--Colors-Gray-Gray-650, #2B2B2B);
 }
