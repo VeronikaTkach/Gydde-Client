@@ -1,6 +1,6 @@
 import cn from 'classnames';
-import { SoundSwitchStatus } from '../../../../core/constants/SoundSwitchStatus';
-import { Button } from '../Button';
+import { SoundSwitchStatus } from '../../../core/constants/SoundSwitchStatus';
+import { Button } from '../../ui/buttons/Button';
 import s from './style.module.scss';
 import { useRef } from 'react';
 
