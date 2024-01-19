@@ -9,7 +9,7 @@ export function QuestSearch({ className }) {
 
   return (
     <div className={cn(s.questSearch, className)}>
-      <InputSearch className={s.questSearch__input} />
+      <InputSearch className={s.questSearch__input}></InputSearch>
     </div>
   );
 }

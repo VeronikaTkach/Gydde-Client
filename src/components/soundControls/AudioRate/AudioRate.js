@@ -3,16 +3,20 @@ import cn from 'classnames';
 import s from './style.module.scss';
 import { Button } from '../../ui/buttons/Button';
 
+export function AudioRate() {
+  const [rate, setRate] = useState(1);
 
-export function AudioRate({ className }) {
+  const toggleRate = () => {
+    const newRate = rate === 1 ? 2 : 1;
+    setRate(newRate);
+  };
+  // useEffect(() => {
 
-  useEffect(() => {
-
-  }, []);
+  // }, []);
 
   return (
-    <div className={cn(s.audioRate, className)}>
-
+    <div className={cn(s.audioRate)}>
+      <Button className={s.audioRate__btn} onClick={toggleRate}>{rate === 1 ? '1x' : '2x'}</Button>
     </div>
   );
 }

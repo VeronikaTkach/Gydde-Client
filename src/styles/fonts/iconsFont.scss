@@ -51,11 +51,13 @@
 }
 .iconEyeClose {
   &:before {
+    font-size: 32px;
     content: $iconEyeClose;
   }
 }
 .iconEyeOpen {
   &:before {
+    font-size: 23px;
     content: $iconEyeOpen;
   }
 }
