@@ -1,5 +1,77 @@
 @use '../../../styles/styles.scss' as *;
 
+@mixin defaultStep {
+  width: 100%;
+  height: 10px;
+  border-radius: $space24;
+}
+
 .questProgressBar {
- 
+  display: flex;
+  width: 100%;
+  gap: 4px;
+}
+
+.step {
+  @include defaultStep();
+  @include themed() {
+    background: t($formBackground);
+  }
+  &__completed {
+    @include defaultStep();
+    & div {
+      &:nth-child(1) {
+        height: 3px;
+        border-top-left-radius: 126px;
+        border-top-right-radius: 126px;
+        @include themed() {
+          background: t($buttonBgUpProgressBar2);
+        }
+      }
+      &:nth-child(2) {
+        height: 4px;
+        @include themed() {
+          background: t($buttonBgMidProgressBar);
+        }
+      }
+      &:nth-child(3) {
+        border-bottom-left-radius: 126px;
+        border-bottom-right-radius: 126px;
+        height: 3px;
+        @include themed() {
+          background: t($buttonBgDownProgressBar2);
+        }
+      }
+    }
+  }
+  &__progress {
+    @include defaultStep();
+    @include themed() {
+      background: t($formBackground);
+    }
+    & div {
+      &:nth-child(1) {
+        height: 3px;
+        border-top-left-radius: 126px;
+        border-top-right-radius: 126px;
+        @include themed() {
+          background: t($buttonBgUpProgressBar);
+        }
+      }
+      &:nth-child(2) {
+        height: 4px;
+        @include themed() {
+          background: t($buttonBgMidProgressBar2);
+        }
+      }
+      &:nth-child(3) {
+        border-bottom-left-radius: 126px;
+        border-bottom-right-radius: 126px;
+        height: 3px;
+        @include themed() {
+          background: t($buttonBgDownProgressBar);
+        }
+      }
+    }
+  }
 }

@@ -3,9 +3,17 @@ import s from './style.module.scss';
 
 const zeroNotifications = 0;
 
-export function QuestChatCard({ className, text, img, isActive }) {
+export function QuestChatCard({ className, text, img, isActive, isHover }) {
   return (
-    <div className={cn(isActive === false ? s.questCard : s.questCard_active, className)}>
+    <div
+      className={cn(
+        isActive === false && isHover === false
+          ? s.questCard
+          : isActive === true
+            ? s.questCard_active
+            : s.questCard_hover,
+        className
+      )}>
       <img className={s.questCard__img} src={img} alt='image of guide' />
       <div className={cn(s.questCard__info)}>
         <div className={s.questCard__text}>
