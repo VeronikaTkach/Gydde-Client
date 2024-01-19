@@ -12,42 +12,63 @@ const sound = new Howl({
 });
 
 export const AudioPlayerWithProgressBar = () => {
-  // let status = SoundSwitchStatus.On;
   const [switchStatus, setSwitchStatus] = useState(SoundSwitchStatus.On);
-  // const sound = new Howl({
-  //   src: audio,
-  //   html5: true,
-  // });
+  const [progress, setProgress] = useState(sound.seek());
+
+  const interval = 100;
+  const timeout = 300;
+  const minPercent = 0;
+  const maxPercent = 100;
+  let timer;
+
+  sound.once('play', () => {
+    timer = setInterval(() => {
+      setProgress(Math.ceil((sound.seek() / sound.duration()) * maxPercent));
+      // console.log('setInterval');
+    }, interval);
+  });
+
+  sound.on('pause', () => {
+    clearInterval(timer);
+  });
+
+  sound.on('end', () => {
+    setSwitchStatus(SoundSwitchStatus.On);
+    clearInterval(timer);
+    setProgress(maxPercent);
+    // после проигрывания очищать прогрессбар или нет?
+    setTimeout(() => {
+      setProgress(minPercent);
+    }, timeout);
+  });
+
   const soundPlay = () => {
-    // setSwitchStatus(status);
     if (switchStatus) {
       sound.play();
-      // status = SoundSwitchStatus.Off;
       setSwitchStatus(SoundSwitchStatus.Off);
-
-      // console.log('pause', status);
-
-      // return status;
     } else {
       sound.pause();
-      // status = SoundSwitchStatus.On;
       setSwitchStatus(SoundSwitchStatus.On);
-      // console.log('pause', status);
-
-      // return status;
+      clearInterval(timer);
     }
   };
-  // console.log('status', status);
 
   return (
-    <>
+    <div className={cn(s.audioPlayer)}>
       <PlayButton
         className={cn(s.audioPlayer__btn)}
         onClick={soundPlay}
         switchStatus={switchStatus}
       />
-      {/* <button onClick={() => soundPlay(audio)}>sound</button> */}
-    </>
+      <div className={cn(s.audioPlayer__right)}>
+        <div className={cn(s.audioPlayer__progressBar)}>
+          <div
+            className={cn(s.audioPlayer__progress)}
+            style={{ width: progress + '%' }}></div>
+        </div>
+        <div className={cn(s.audioPlayer__time)}>00:26</div>
+      </div>
+    </div>
   );
 
   // const audioRef = useRef(null);

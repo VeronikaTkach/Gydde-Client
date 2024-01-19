@@ -6,6 +6,7 @@ import ModalWithClose from '../ui/modals/Modal/ModalWithClose';
 import Modal from '../ui/modals/Modal/Modal';
 import { Button } from '../ui/buttons/Button';
 import { QuestSidePannel } from './QuestSidePannel';
+import { QuestChatBottomPannel } from './QuestChatBottomPannel';
 import { QuestChat } from './QuestChat';
 import { useDispatch } from 'react-redux';
 import { showQuestWindow } from '../../core/store/slices/modalWindowStateSlice';
@@ -19,7 +20,7 @@ export function QuestWindow({ className }) {
     <Modal className={cn(s.questWindow, className)}>
       <div className={cn(s.questWindow__container)}>
         <div className={cn(s.questWindow__header, s.header)}>
-          <div className={cn(s.header__logo)}/>
+          <div className={cn(s.header__logo)} />
           <Button
             className={cn(s.header__btnClose, 'iconClose')}
             onClick={() => dispatch(showQuestWindow(false))}
@@ -28,6 +29,7 @@ export function QuestWindow({ className }) {
         <div className={cn(s.questWindow__app, className)}>
           <QuestSidePannel />
           <QuestChat />
+          <QuestChatBottomPannel />
         </div>
       </div>
     </Modal>

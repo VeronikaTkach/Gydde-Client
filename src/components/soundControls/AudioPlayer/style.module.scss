@@ -5,15 +5,55 @@
 }
 
 .audioPlayer {
+    //TODO поправить стили
+    display: flex;
+    gap: 12px;
+
     &__btn {
-        width: 44px;
-        height: 44px;
+        @include width-height(44px);
         border-radius: 50%;
         font-size: 20px;
         padding: 12px 12px 12px 14px;
         &:hover {
             transition: .3s;
-            background: #89CB64;
+            background: $colorGreenPrimary200;// TODO добавить из темы
+            @include themed() {
+                color: t($buttonLabelHover);
+            }
         }
+    }
+
+    &__right {
+        @include flex-grid(flex, column, space-between, flex-start);
+    }
+
+    &__progressBar {
+        @include width-height(242px, 20px);
+        @include themed() {
+			background: t($bgSecondary);
+		}
+        position: relative;
+        mask-image: url(../../../assets/images/audioProgressBar.png);
+        mask-repeat: no-repeat;
+        mask-position: center;
+        -webkit-mask-image: url(../../../assets/images/audioProgressBar.png);
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+    }
+
+    &__progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        @include themed() {
+			background: t($gradientLabelHover);
+		}
+    }
+
+    &__time {
+        @include fontStyle($weight: 500, $height: 20px);
+        color: $colorGray500;
     }
 }

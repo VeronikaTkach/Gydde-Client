@@ -15,7 +15,7 @@ export function QuestChatBottomPannel({ className }) {
       <div
         className={cn(
           s.chatBottomPannel__answer,
-          s.chatBottomPannel__answerb_uttons
+          s.chatBottomPannel__answer_buttons
         )}></div>
     </div>
   );
