@@ -9,7 +9,7 @@
 		color: t($buttonLabelActive);
 	}
 	&:hover {
-		transition: .3;
+		transition: .3s;
 		@include themed() {
 			background: t($gradientButtonHover);
 			color: t($buttonLabelHover1);
