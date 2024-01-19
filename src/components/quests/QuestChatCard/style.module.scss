@@ -1,29 +1,30 @@
 @use '../../../styles/styles.scss' as *;
 
-.questCard {
+@mixin questCard($padding) {
   display: flex;
   width: 100%;
   height: fit-content;
   border-radius: $space6;
   backdrop-filter: blur(15px);
   cursor: pointer;
-  padding: 12px;
+  padding: $padding;
   gap: 12px;
+}
 
+.questCard {
+  @include questCard(12px);
   @include themed() {
     background: t($surfacePrimary2);
   }
+  &_hover {
+    @include questCard(12px);
+    background: $colorGray650; 
+    transition: .3s;
+  }
   &_active {
-    display: flex;
-    width: 100%;
-    height: fit-content;
-    border-radius: $space6;
-    backdrop-filter: blur(15px);
-    cursor: pointer;
-    padding: 11px;
-    gap: 12px;
+    @include questCard(11px);
     border: 1px solid $colorGray600;
-    background: $colorGray650;    
+    background: $colorGray650;
   }
   &__img {
     border-radius: $space6;
