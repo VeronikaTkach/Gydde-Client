@@ -37,11 +37,17 @@ export function QuestProgressBar({ className }) {
 
 function QuestProgressBarStep({ steps, currentStep }) {
   const [width, setWidth] = useState((currentStep / steps) * converToPercent + '%');
-
   useEffect(() => {
-    if (width === '0%') setWidth('100%');
-    else setWidth((currentStep / steps) * converToPercent + '%');
-  }, [width]);
+    if (width === '0%') {
+      setWidth('100%');
+
+      return;
+    } else {
+      setWidth((currentStep / steps) * converToPercent + '%');
+
+      return;
+    }
+  }, []);
 
   return (
     <div
