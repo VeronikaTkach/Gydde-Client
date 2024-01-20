@@ -1,6 +1,6 @@
 @use '../../../styles/styles.scss' as *;
 
-.audioRate {
+.soundVolume {
     &__sound {
         @include width-height(24px, 20px);
         background: transparent;

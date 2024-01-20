@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Howl } from 'howler';
 import cn from 'classnames';
 import audio from '../../../assets/audio/olivia-russian.mp3';
@@ -6,6 +7,7 @@ import { SoundSwitchStatus } from '../../../core/constants/SoundSwitchStatus';
 import { formatTimeFromSeconds } from '../../../core/helpers/formatTimeFromSeconds';
 import { PlayButton } from '../PlayButton/PlayButton';
 import s from './style.module.scss';
+import { soundSettings } from '../../../core/store/slices/soundSettingsSlice';
 
 const sound = new Howl({
   src: audio,
@@ -14,6 +16,9 @@ const sound = new Howl({
 });
 
 export const AudioPlayerWithProgressBar = () => {
+  const { soundRate } = useSelector(soundSettings);
+  const { audioVolume } = useSelector(soundSettings);
+
   const [switchStatus, setSwitchStatus] = useState(SoundSwitchStatus.On);
   const [progress, setProgress] = useState(sound.seek());
   const [duration, setDuration] = useState(formatTimeFromSeconds(sound.duration()));
@@ -58,6 +63,9 @@ export const AudioPlayerWithProgressBar = () => {
       clearInterval(timer);
     }
   };
+
+  sound.rate(soundRate);
+  sound.volume(audioVolume);
 
   return (
     <div className={cn(s.audioPlayer)}>

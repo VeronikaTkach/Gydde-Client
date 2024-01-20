@@ -1,5 +1,7 @@
 @use '../../../styles/styles.scss' as *;
 
 .questChatHeader {
-
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
