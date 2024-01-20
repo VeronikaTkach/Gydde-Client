@@ -27,6 +27,10 @@
         @include flex-grid(flex, column, space-between, flex-start);
     }
 
+    &__off {
+        padding: 12px;
+    }
+
     &__progressBar {
         @include width-height(242px, 20px);
         @include themed() {
@@ -52,7 +56,7 @@
 		}
     }
 
-    &__time {
+    &__duration {
         @include fontStyle($weight: 500, $height: 20px);
         color: $colorGray500;
     }
