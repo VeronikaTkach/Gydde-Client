@@ -2,24 +2,31 @@ import { useEffect, useRef, useState } from 'react';
 import { Howl } from 'howler';
 import cn from 'classnames';
 import audio from '../../../assets/audio/olivia-russian.mp3';
-import { PlayButton } from '../PlayButton/PlayButton';
 import { SoundSwitchStatus } from '../../../core/constants/SoundSwitchStatus';
+import { formatTimeFromSeconds } from '../../../core/helpers/formatTimeFromSeconds';
+import { PlayButton } from '../PlayButton/PlayButton';
 import s from './style.module.scss';
 
 const sound = new Howl({
   src: audio,
   html5: true,
+  preload: 'metadata',
 });
 
 export const AudioPlayerWithProgressBar = () => {
   const [switchStatus, setSwitchStatus] = useState(SoundSwitchStatus.On);
   const [progress, setProgress] = useState(sound.seek());
+  const [duration, setDuration] = useState(formatTimeFromSeconds(sound.duration()));
 
   const interval = 100;
   const timeout = 300;
   const minPercent = 0;
   const maxPercent = 100;
   let timer;
+
+  sound.on('load', () => {
+    setDuration(formatTimeFromSeconds(sound.duration()));
+  });
 
   sound.once('play', () => {
     timer = setInterval(() => {
@@ -36,7 +43,6 @@ export const AudioPlayerWithProgressBar = () => {
     setSwitchStatus(SoundSwitchStatus.On);
     clearInterval(timer);
     setProgress(maxPercent);
-    // после проигрывания очищать прогрессбар или нет?
     setTimeout(() => {
       setProgress(minPercent);
     }, timeout);
@@ -56,7 +62,9 @@ export const AudioPlayerWithProgressBar = () => {
   return (
     <div className={cn(s.audioPlayer)}>
       <PlayButton
-        className={cn(s.audioPlayer__btn)}
+        className={cn(s.audioPlayer__btn, {
+          [s.audioPlayer__off]: switchStatus === SoundSwitchStatus.Off,
+        })}
         onClick={soundPlay}
         switchStatus={switchStatus}
       />
@@ -66,7 +74,7 @@ export const AudioPlayerWithProgressBar = () => {
             className={cn(s.audioPlayer__progress)}
             style={{ width: progress + '%' }}></div>
         </div>
-        <div className={cn(s.audioPlayer__time)}>00:26</div>
+        <div className={cn(s.audioPlayer__duration)}>{duration}</div>
       </div>
     </div>
   );
