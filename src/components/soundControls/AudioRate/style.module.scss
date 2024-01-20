@@ -18,9 +18,5 @@
         @include fontRoboto;
         @include fontStyle(16px, 500, 20px)
     }
-    &__sound {
-        @include width-height(24px, 20px);
-        background: transparent;
-        cursor: pointer;
-    }
+
 }
