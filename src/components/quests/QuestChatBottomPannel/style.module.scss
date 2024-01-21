@@ -1,5 +1,95 @@
 @use '../../../styles/styles.scss' as *;
 
 .chatBottomPannel {
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: $space14;
+  padding: 0px $space5;
+  border-bottom-left-radius: $space6;
+  border-bottom-right-radius: $space6;
+  @include themed() {
+    border: 1px solid t($surfaceBorderSubtitles);
+    background: t($surfacePrimary2);
+  }
+  &__answer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    gap: $space5;
+    }
+  &__input {
+    width: 100%;
+    height: $space10;
+    border-radius: $space6;
+    text-align: right;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+    padding: 0px $space5;
+    @include themed() {
+      background: t($formBackground);
+      color: t($textPrimaryMain)
+    }
+    &::placeholder {
+      @include themed() {
+        color: t($formLabelPlaceholder)
+      }
+    }
+  }
+  &__send {
+    font-size: 20px;
+    width: $space10;
+    height: $space10;
+    padding: 0px 10px;
+    padding-top: 2px;
+    border-radius: 50%;
+    @include themed() {
+      background: t($buttonBgActive);
+    }
+    &_disabled {
+      font-size: 20px;
+      width: $space10;
+      height: $space10;
+      padding: 0px 10px;
+      padding-top: 2px;
+      border-radius: 50%;
+      cursor: not-allowed;
+      @include themed() {
+        background: t($buttonBgInactive);
+      }
+    }
+  }
+  &__text {
+    &_gray {
+        text-align: right;
+        font-family: Roboto;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 22px;
+        display: flex;
+        align-items: center;
+        @include themed() {
+            color: t($formLabelPlaceholder)
+        }
+    }
+    &_white {
+        text-align: right;
+        font-family: Roboto;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 22px;
+        display: flex;
+        align-items: center;
+        @include themed() {
+            color: t($textPrimaryMain)
+        }
+    }
+  }
 }
