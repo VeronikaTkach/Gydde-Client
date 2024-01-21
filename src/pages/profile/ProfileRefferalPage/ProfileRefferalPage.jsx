@@ -4,6 +4,7 @@ import cn from 'classnames';
 import s from './style.module.scss';
 import { NavigationLink } from '../../../components/ui/Navlink';
 import { ProfileFolder } from '../../../components/profile/ProfileFolder';
+import { RefferalAndGuides } from '../../../components/profile/RefferalAndGuides/RefferalAndGuides';
 
 export function ProfileRefferalPage({ children }) {
   const dispatch = useDispatch();
@@ -14,7 +15,9 @@ export function ProfileRefferalPage({ children }) {
     <>
       <main className={cn(s.content)}>
         <div className={cn(s.content__container)}>
-          <ProfileFolder>тут писать компонент как в обычном диве</ProfileFolder>
+          <ProfileFolder>
+            <RefferalAndGuides />
+          </ProfileFolder>
         </div>
       </main>
     </>
