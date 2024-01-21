@@ -1,9 +1,6 @@
 @use '../../../styles/styles.scss' as *;
 
 .soundVolume {
-    &__sound {
-        @include width-height(24px, 20px);
-        background: transparent;
-        cursor: pointer;
-    }
+    @include width-height(28px);
+    background: transparent;
 }
