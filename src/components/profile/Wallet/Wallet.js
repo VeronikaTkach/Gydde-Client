@@ -3,11 +3,11 @@ import cn from 'classnames';
 import s from './style.module.scss';
 import { Button } from '../../ui/buttons/Button';
 
-export function RefferalAd({ className }) {
+export function Wallet({ className }) {
   useEffect(() => {}, []);
 
   return (
-    <div className={cn(s.refferal, className)}>
+    <div className={cn(s.wallet, className)}>
     </div>
   );
 }

@@ -8,6 +8,7 @@ import { Socials } from '../core/constants/Socials';
 import './style.scss';
 import { ProfileRefferalPage } from '../pages/profile/ProfileRefferalPage';
 import { ProfileGuidesPage } from '../pages/profile/ProfileGuidesPage';
+import { ProfileWalletPage } from '../pages/profile/ProfileWalletPage/ProfileWalletPage';
 
 export function App() {
   return (
@@ -19,6 +20,7 @@ export function App() {
             <Route path={RoutesName.HelloPage} element={<HelloPage />} />
             <Route path={RoutesName.ProfileRefferal} element={<ProfileRefferalPage />} />
             <Route path={RoutesName.ProfileGuides} element={<ProfileGuidesPage />} />
+            <Route path={RoutesName.ProfileWallet} element={<ProfileWalletPage />} />
           </Route>
           <Route
             path={RoutesName.GoogleOauthPage}
