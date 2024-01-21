@@ -6,6 +6,8 @@ import { HelloPage } from '../pages/HelloPage/HelloPage';
 import { RoutesName } from '../core/constants/Routes';
 import { Socials } from '../core/constants/Socials';
 import './style.scss';
+import { ProfileRefferalPage } from '../pages/profile/ProfileRefferalPage';
+import { ProfileGuidesPage } from '../pages/profile/ProfileGuidesPage';
 
 export function App() {
   return (
@@ -15,6 +17,8 @@ export function App() {
           <Route path={RoutesName.Root} element={<LayoutMain />}>
             <Route index element={<GuidePage />} />
             <Route path={RoutesName.HelloPage} element={<HelloPage />} />
+            <Route path={RoutesName.ProfileRefferal} element={<ProfileRefferalPage />} />
+            <Route path={RoutesName.ProfileGuides} element={<ProfileGuidesPage />} />
           </Route>
           <Route
             path={RoutesName.GoogleOauthPage}

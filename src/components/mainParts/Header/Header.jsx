@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 import {
   modalWindowState,
   showAuthorizationWindow,
-  showProfileWindow,
   showQuestWindow,
 } from '../../../core/store/slices/modalWindowStateSlice';
 import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
@@ -19,12 +18,10 @@ import { Auth } from '../../Auth';
 import s from './style.module.scss';
 import { RoutesName } from '../../../core/constants/Routes';
 import { QuestWindow } from '../../quests/QuestWindow';
-import { ProfileWindow } from '../../profile/ProfileWindow';
-import axios from 'axios';
 
 export function Header({ className }) {
   const dispatch = useDispatch();
-  const { modalAuthorization, modalQuest, modalProfile } = useSelector(modalWindowState);
+  const { modalAuthorization, modalQuest } = useSelector(modalWindowState);
   const { staticTextHeader, staticTextStatusHeader } = useSelector(staticText);
 
   useEffect(() => {
@@ -39,8 +36,7 @@ export function Header({ className }) {
     <>
       {staticTextStatusHeader === Status.Resolved && (
         <header className={cn(s.header, className)}>
-          {modalQuest && <QuestWindow />}
-          {modalProfile && <ProfileWindow />}
+          {modalQuest && <QuestWindow />}{/* TODO ВРЕМЕННО */}
           <div className={cn(s.header__row)}>
             <nav className={cn(s.header__navigation, s.navigation)}>
               <ul className={cn(s.navigation__list)}>
@@ -55,11 +51,9 @@ export function Header({ className }) {
               </ul>
             </nav>
 
-            {/* ВРЕМЕННО */}
+            {/*TODO ВРЕМЕННО */}
             <button onClick={() => dispatch(showQuestWindow(true))}>quest window</button>
-            <button onClick={() => dispatch(showProfileWindow(true))}>
-              profile window
-            </button>
+            <Link to={'profile/refferal'}>profile</Link>
 
             <div className={cn(s.header__auth, s.auth)}>
               {localStorage.authorization ? (

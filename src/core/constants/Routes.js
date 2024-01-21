@@ -7,6 +7,9 @@ export const RoutesName = {
   TwitterOauthPage: '/oauth/twitter',
   MetamaskConnectPage: '/connect/metamask',
   HelloPage: '/hello',
+  Profile: '/profile',
+  ProfileRefferal: '/profile/refferal',
+  ProfileGuides: '/profile/guides',
 };
 
 Object.freeze(RoutesName);

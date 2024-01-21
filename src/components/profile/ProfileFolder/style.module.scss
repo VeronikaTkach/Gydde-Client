@@ -1,0 +1,23 @@
+@use '../../../styles/styles.scss' as *;
+
+.folder {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	width: 100%;
+	// z-index: 10;
+}
+
+.tabs {
+	display: flex;
+	justify-content: space-around;
+	height: 54px;
+	width: 100%;
+	@include themed() {
+		background-color: t($surfaceBorderSubtitles);
+	}
+	&__tab {
+
+	width: 100%;
+	}
+}

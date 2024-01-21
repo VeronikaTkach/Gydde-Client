@@ -10,7 +10,7 @@ export function LayoutMain() {
   return (
     <div
       className={cn(s.wrapper, {
-        [s.wrapper__lights]: path === RoutesName.HelloPage,
+        [s.wrapper__lights]: path === RoutesName.Root,
       })}>
       <div className={s.wrapper__container}>
         <Header />

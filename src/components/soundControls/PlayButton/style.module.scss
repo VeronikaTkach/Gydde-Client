@@ -2,17 +2,21 @@
 
 .soundSwitch {
 	@include flexCenter;
-	border-radius: 12px;
+	border-radius: 50%;
 	font-size: 26px;
 	@include themed() {
 		background-color: t($buttonBgActive);
 		color: t($buttonLabelActive);
 	}
+	&::before {
+		margin-left: 3px;
+	}
 	&:hover {
 		transition: .3s;
 		@include themed() {
-			background: t($gradientButtonHover);
-			color: t($buttonLabelHover1);
+			// background: t($gradientButtonHover);
+			background-color: #89CB64;
+			// color: t($buttonLabelHover1);
 		}
 	}
 
