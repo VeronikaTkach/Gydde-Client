@@ -7,13 +7,14 @@ const initialState = {
   status: null,
   error: null,
   currentAuthorizationType: AuthorizationType.NotСhosen,
+  loading: false,
 };
 
 export const authorizedUser = createAsyncThunk(
   'mailAuthorization/mailAuthorizationUser',
   async function (authData, { rejectWithValue }) { //todo создавать не просто запросы, а использовать базовый запрос 'mainRequest'
     try {
-      const response = await mainRequest.post('localhost:8080', authData);
+      const response = await mainRequest.post('/auth/email', authData);
 
       return response.data;
     } catch (error) {
@@ -28,6 +29,9 @@ export const authorizationSlice = createSlice({
   reducers: {
     setCurrentAuthorizationType: (state, action) => {
       state.currentAuthorizationType = action.payload;
+    },
+    setLoading: (state, action) => {
+      state.loading = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -48,5 +52,6 @@ export const authorizationSlice = createSlice({
 
 export const { setCurrentAuthorizationType } = authorizationSlice.actions;
 export const allAuthorization = (state) => state.authorization;
+export const loading = (state) => state.loading;
 
 export default authorizationSlice.reducer;

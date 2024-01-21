@@ -1,7 +1,6 @@
 @use '../../../../styles/styles.scss' as *;
 
 .loaderImg {
-    position: absolute;
     font-size: 32px;
     animation: spin 5s linear 0s infinite;
 }

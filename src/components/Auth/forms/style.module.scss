@@ -16,6 +16,7 @@
 		margin-top: -13px;
 	}
 	&__btn {
+		@include flex-grid (flex, none, center, center);
 		margin-left: auto;
 		width: 284px;
 		height: 56px;
@@ -31,6 +32,8 @@
 			background-clip: text;
 			-webkit-background-clip: text;
 			-webkit-text-fill-color: transparent;
+			position: absolute;
+			z-index: 1;
 			@include borderStyle(3px solid $colorGreen, 16px);
 			&:hover {
 				background: $colorGreen;
@@ -38,11 +41,21 @@
 				-webkit-text-fill-color: unset;
 				color: $colorBlack;
 			}
+			&:disabled {
+				@include themed() {
+					background: $colorGreen;
+					cursor:default;
+				}
+			}
 		}
 	}
 	&__block {
 		height: 136px;
 		
+	}
+	&__loader {
+		z-index: 10;
+		color: $colorBlack;
 	}
 }
 
