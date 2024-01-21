@@ -27,10 +27,31 @@ export const googleAuthorization = {
       id_token: idToken,
     };
 
-    try {
-      const result = await mainRequest.post('', data); //? backend api path
+    function setCookie(name, value, daysToExpire) {
+      const date = new Date();
+      date.setTime(date.getTime() + daysToExpire * 24 * 60 * 60 * 1000);
+      const expires = 'expires=' + date.toUTCString();
+      document.cookie = name + '=' + value + '; ' + expires;
+    }
 
-      localStorage.setItem(LocalStorageItems.JwtToken, result.token);
+    setCookie('XSRF-TOKEN', '4a8fdfd8-587c-491f-a5b1-a2fe64feed99', 30);
+    // document.cookie = "empty_cookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    // const response = await mainRequest.get('/auth/gmail');
+    // console.log(console.log(response.headers['Cookie']))
+    const decodedCookie = decodeURIComponent(document.cookie);
+    // console.log(response);
+    console.log(decodedCookie);
+    console.log(`OAuth ${idToken}`);
+    try {
+      // mainRequest.defaults.headers.common['Authorization'] = `OAuth ${idToken}`;
+      const result = await mainRequest.get('/auth/gmail', {
+        headers: {
+          Authorization: `OAuth ${idToken}`,
+        },
+        withCredentials: true,
+      }); //? backend api path
+console.log(result)
+      // localStorage.setItem(LocalStorageItems.JwtToken, result.token);
     } catch (error) {
       console.error(error);
     }

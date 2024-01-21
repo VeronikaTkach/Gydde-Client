@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { HomePage } from '../pages/HomePage';
+import { GuidePage } from '../pages/GuidePage';
 import { LayoutMain } from '../layouts/LayoutMain';
 import { SocialsOauthPage } from '../pages/auth/SocialsOauthPage';
 import { HelloPage } from '../pages/HelloPage/HelloPage';
@@ -13,7 +13,7 @@ export function App() {
       <div id={'app'}>
         <Routes>
           <Route path={RoutesName.Root} element={<LayoutMain />}>
-            <Route index element={<HomePage />} />
+            <Route index element={<GuidePage />} />
             <Route path={RoutesName.HelloPage} element={<HelloPage />} />
           </Route>
           <Route

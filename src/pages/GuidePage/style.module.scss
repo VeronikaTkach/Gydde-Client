@@ -1,0 +1,23 @@
+@use '../../styles/styles.scss' as *;
+
+.content {
+	&__mainScreen {
+		position: relative;
+		padding: 12px 0;
+	}
+	&__carousel {
+		padding: 0 120px;
+	}
+	&__mascotImg {
+		position: absolute;
+		bottom: 40px;
+	}
+	&__subtitle {
+		@include fontStyle(28px, 700, 40px);
+		grid-template-columns: $space14 1fr fit-content(50px);
+		grid-template-rows: 1fr 50px;
+		gap: $space7;
+		padding: $space8;
+		margin-top: -75px;
+	}
+}

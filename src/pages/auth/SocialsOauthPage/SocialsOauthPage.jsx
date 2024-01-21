@@ -32,7 +32,7 @@ export function SocialsOauthPage({ social }) {
           LocalStorageItems.AuthorizationDone,
           LocalStorageItems.AuthorizationDone
         );
-        window.close();
+        // window.close();
       })();
     }
   }, [receivedCode]);

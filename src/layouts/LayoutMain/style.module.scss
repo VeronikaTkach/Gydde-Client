@@ -5,6 +5,9 @@
 	justify-content: center;
 	width: 100%;
 	height: 100vh;
+	background: url('../../assets/images/questBgLights.png');
+	background-repeat: no-repeat;
+	background-size: cover;
 	@include themed() {
 		background-color: t($bg);
 	}

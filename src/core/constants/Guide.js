@@ -1,3 +1,12 @@
+export const Carousel = {
+  FirstGuide: 0,
+  SecondGuide: 1,
+  ThirdGuide: 2,
+  NextGuide: 3,
+  LastGuide: 1,
+};
+
+Object.freeze(Carousel);
 // export const QuestDifficulty = {
 //   Beginner: 0,
 //   Medium: 1,
