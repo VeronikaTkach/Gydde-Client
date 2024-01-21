@@ -1,22 +1,20 @@
 @use '../../../styles/styles.scss' as *;
 
 .audioRate {
-    @include flex-grid(flex, null, space-between, null);
-    width: 95px;
-    &_main{
-        display: flex;
-        width: 50px;
-        height: var(--Spacing-8, 28px);
-        justify-content: center;
-        align-items: center;
-        border: 2px solid $colorPurpleTertiary100;
-        border-radius: 20px;
+    @include flexCenter;
+    @include width-height(52px, 28px);
+    @include fontStyle(16px, 500, 20px);
+    @include themed() {
+        border: 2px solid t($buttonBgActive2);
+		border-radius: t($radiusMedium);
+        color: t($buttonBgActive2);
+	}
+    background-color: transparent;
+    &:hover {
+        transition: .3s;
+        @include themed() {
+            border-color: t($buttonBorderHover);
+            color: t($buttonBorderHover);
+        }
     }
-    &__btn {
-        background-color: transparent;
-        color: $colorPurpleTertiary100;
-        @include fontRoboto;
-        @include fontStyle(16px, 500, 20px)
-    }
-
 }
