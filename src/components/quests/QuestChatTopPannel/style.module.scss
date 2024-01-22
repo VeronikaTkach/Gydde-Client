@@ -1,10 +1,19 @@
 @use '../../../styles/styles.scss' as *;
 
 .questChatHeader {
-    @include flex-grid(flex, null, space-between, center);
+    padding: $space4 $space5;
     gap: $space6;
+    @include width-height(100%, 52px);
+    @include flex-grid(flex, null, space-between, center);
     &__audioSettings {
         @include flex-grid(flex, null, space-between, center);
         gap: 16px;
+    }
+    &__title {
+        white-space: nowrap;
+        @include fontStyle(18px, 500, 22px);
+        @include themed() {
+            color: t($textPrimaryMain);
+        }
     }
 }
