@@ -4,21 +4,37 @@ import cn from 'classnames';
 import s from './style.module.scss';
 import { ProfileFolder } from '../../../components/profile/ProfileFolder';
 import { RefferalAndGuides } from '../../../components/profile/RefferalAndGuides/RefferalAndGuides';
+import { TEXT_KEYS } from '../../../core/constants/textKeys';
+import { PageName } from '../../../core/constants/PageNames';
+import { Status } from '../../../core/constants/Status';
+import { getStaticText } from '../../../core/store/staticText/thunk';
+import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
 
 export function ProfileGuidesPage({ children }) {
   const dispatch = useDispatch();
+  const { staticTextProfile, staticTextStatusProfile } = useSelector(staticText);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    dispatch(getStaticText.basic(TEXT_KEYS.PROFILE));
+
+    return () => {
+      dispatch(removeUnusedStaticText(PageName.Profile));
+    };
+  }, []);
+
+  console.log(staticTextProfile);
 
   return (
     <>
-      <main className={cn(s.content)}>
-        <div className={cn(s.content__container)}>
-          <ProfileFolder>
-            <RefferalAndGuides />
-          </ProfileFolder>
-        </div>
-      </main>
+      {staticTextStatusProfile && (
+        <main className={cn(s.content)}>
+          <div className={cn(s.content__container)}>
+            <ProfileFolder>
+              <RefferalAndGuides text={staticTextProfile.Guides} />
+            </ProfileFolder>
+          </div>
+        </main>
+      )}
     </>
   );
 }

@@ -1,5 +1,28 @@
 @use '../../../styles/styles.scss' as *;
 
 .profile {
+    width: 100%;
+    @include flexCenter;
+    border-bottom-left-radius: $space8;
+    border-bottom-right-radius: $space8;
+    padding: 57px 0px 0px 35px;
+    height: fit-content;
+    @include themed() {
+        background: t($bg);
+        border: 1px solid t($surfaceBorderSubtitles)
+    }
+    &__img {
+      margin-bottom: -20px;
+    }
+    &__info {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    &__rewards {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
 
+    }
 }

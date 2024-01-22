@@ -34,20 +34,20 @@
 }
 
 //resize by height and width
-@for $i from 1 through 25 {
-  $scale: 1.4 - ($i * .05);
+// @for $i from 1 through 25 {
+//   $scale: 1.4 - ($i * .05);
 
-  .wrapper__container {
-    $height: 1160px - ($i * 40px);
-    $width: 2080px - ($i * 70px);
+//   .wrapper__container {
+//     $height: 1160px - ($i * 40px);
+//     $width: 2080px - ($i * 70px);
 
-		@if ($width * $height / 2080px) < $height {
-			@media screen and (max-width: $width) {
-				transform: scale($scale);
-			}
-		}
-    @media screen and (max-height: $height) {
-      transform: scale($scale);
-    }
-  }
-}
+// 		@if ($width * $height / 2080px) < $height {
+// 			@media screen and (max-width: $width) {
+// 				transform: scale($scale);
+// 			}
+// 		}
+//     @media screen and (max-height: $height) {
+//       transform: scale($scale);
+//     }
+//   }
+// }

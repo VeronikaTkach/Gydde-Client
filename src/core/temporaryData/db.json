@@ -39,6 +39,20 @@
 		"MailAuthorization.passwordPlaceholder": "Enter password",
 		"MailAuthorization.button": "Log in",
 
-		"Header.buttonLogin": "Log in"
+		"Header.buttonLogin": "Log in",
+		"Profile_Guides.btnText": "Claim",
+		"Profile_Guides.rewardsTitle": "Unclaimed rewards",
+		"Profile_Guides.rewardsTotal": "$6.26",
+		"Profile_Guides.referalTitle": "Referral quest completions",
+		"Profile_Guides.referalTotal": "3",
+		"Profile_Guides.earningsTitle": "Lifetime earnings",
+		"Profile_Guides.earningsTotal": "$ 4.23",
+		"Profile_Referals.btnText": "Claim",
+		"Profile_Referals.rewardsTitle": "Unclaimed rewards",
+		"Profile_Referals.rewardsTotal": "$6.26",
+		"Profile_Referals.referalTitle": "Referral quest completions",
+		"Profile_Referals.referalTotal": "3",
+		"Profile_Referals.earningsTitle": "Total rewards earned",
+		"Profile_Referals.earningsTotal": "$ 4.23"
 	}
 }
