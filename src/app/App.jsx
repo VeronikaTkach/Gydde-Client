@@ -9,6 +9,7 @@ import './style.scss';
 import { ProfileRefferalPage } from '../pages/profile/ProfileRefferalPage';
 import { ProfileGuidesPage } from '../pages/profile/ProfileGuidesPage';
 import { ProfileWalletPage } from '../pages/profile/ProfileWalletPage/ProfileWalletPage';
+import { ProfileSettingsPage } from '../pages/profile/ProfileSettingsPage';
 
 export function App() {
   return (
@@ -21,6 +22,7 @@ export function App() {
             <Route path={RoutesName.ProfileRefferal} element={<ProfileRefferalPage />} />
             <Route path={RoutesName.ProfileGuides} element={<ProfileGuidesPage />} />
             <Route path={RoutesName.ProfileWallet} element={<ProfileWalletPage />} />
+            <Route path={RoutesName.ProfileSettings} element={<ProfileSettingsPage />} />
           </Route>
           <Route
             path={RoutesName.GoogleOauthPage}

@@ -5,6 +5,7 @@
 	flex-direction: column;
 	position: relative;
 	width: 100%;
+	min-height: 492px;
 	@include themed() {
 		background-color: t($buttonLabelActive);
 		@include borderStyle(1px solid t($surfaceBorderSubtitles), 28px);

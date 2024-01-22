@@ -11,6 +11,7 @@ export const RoutesName = {
   ProfileRefferal: '/profile/refferal',
   ProfileGuides: '/profile/guides',
   ProfileWallet: '/profile/wallet',
+  ProfileSettings: '/profile/settings',
 };
 
 Object.freeze(RoutesName);
