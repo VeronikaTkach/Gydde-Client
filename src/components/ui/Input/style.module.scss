@@ -20,11 +20,12 @@
 		height: 100%;
 		background-color: $colorGray650;
 		width: 100%;
-		padding: 14px 36px;
 		color: $colorGray100;
 		@include textStyleSecondary1;
 		cursor: text;
+
 		// &:disabled{
+		// 	cursor: default;
 		// }
 		&::placeholder{
 			color: $colorGray400;
@@ -35,31 +36,6 @@
 			&::placeholder{
 				color: $colorRed500;
 			}
-		}
-	}
-	&__btn {
-		background-color: transparent;
-		color: $colorGray400;
-		&__password {
-			@include flex-grid(flex, null, null, center);
-			margin: 0 36px 0 0;
-			font-size: 32px;
-			&_show {
-				font-size: 32px;
-			}
-			&_error {
-				&::before {
-					color: $colorRed500;
-
-				  }
-			}
-			&_empty {
-				font-size: 32px;
-			}
-		}
-		&__search {
-			margin: 0 24px 0 0;
-			font-size: 24px;
 		}
 	}
 	&__email {

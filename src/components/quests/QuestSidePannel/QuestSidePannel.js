@@ -38,13 +38,14 @@ const card = [
 ];
 
 const firstItem = 0;
+const numberOfCards = card.length;
 
 export function QuestSidePannel({ className }) {
   const [activeQuest, setActiveQuest] = useState(firstItem);
   const [hoverQuest, setHoverQuest] = useState(null);
-  useEffect(() => {
+  // useEffect(() => {
 
-  }, []);
+  // }, []);
 
   function handleClick(index) {
     setActiveQuest(index);
@@ -57,7 +58,7 @@ export function QuestSidePannel({ className }) {
 
   return (
     <div className={cn(s.questSidePannel, className)}>
-      <QuestSearch />
+      <QuestSearch numberOfCards={numberOfCards} />
       <ul>
         {card.map((item, index) => {
           return (

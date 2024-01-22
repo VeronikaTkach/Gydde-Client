@@ -1,6 +1,45 @@
 @use '../../../styles/styles.scss' as *;
 
 .questSearch {
+  @include flex-grid(flex, none, flex-end, center);
   &__input {
+    position: relative;
+    z-index: 1;
   }
+  &__title {
+    ::placeholder {
+      padding: 0 $space4;
+      @include textStyleBody1;
+      color: $colorGray500;
+    }
+  }
+}
+.field {
+	&__btn {
+    position: absolute;
+    z-index: 10;
+		background-color: transparent;
+		color: $colorGray400;
+		&__password {
+			@include flex-grid(flex, null, null, center);
+			margin: 0 36px 0 0;
+			font-size: 32px;
+			&_show {
+				font-size: 32px;
+			}
+			&_error {
+				&::before {
+					color: $colorRed500;
+
+				  }
+			}
+			&_empty {
+				font-size: 32px;
+			}
+		}
+		&__search {
+			margin: 0 24px 0 0;
+			font-size: 24px;
+		}
+	}
 }

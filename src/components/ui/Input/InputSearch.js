@@ -23,11 +23,6 @@ export function InputSearch(props) {
           onInput={handleChange}
         />
       )}
-      <Button
-        className={cn(s.field__btn, s.field__btn__search, 'iconSearch')}
-        type={'button'}
-        // onClick={searchHandler}
-      />
     </div>
   );
 }
