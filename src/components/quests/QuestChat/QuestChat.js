@@ -4,6 +4,7 @@ import s from './style.module.scss';
 import { Button } from '../../ui/buttons/Button';
 import { ChatMessage } from '../ChatMessage';
 import { QuestChatTopPannel } from '../QuestChatTopPannel/QuestChatTopPannel';
+import { QuestChatBottomPannel } from '../QuestChatBottomPannel';
 
 export function QuestChat({ className }) {
   useEffect(() => {}, []);
@@ -15,6 +16,7 @@ export function QuestChat({ className }) {
         <ChatMessage />
         <Button className={cn(s.questChat__scrollDown)} />
       </div>
+      <QuestChatBottomPannel />
     </div>
   );
 }

@@ -29,7 +29,6 @@ export function QuestWindow({ className }) {
         <div className={cn(s.questWindow__app, className)}>
           <QuestSidePannel />
           <QuestChat />
-          <QuestChatBottomPannel />
         </div>
       </div>
     </Modal>
