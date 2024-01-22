@@ -24,9 +24,8 @@
 		color: $colorGray100;
 		@include textStyleSecondary1;
 		cursor: text;
-
-		&:disabled{
-		}
+		// &:disabled{
+		// }
 		&::placeholder{
 			color: $colorGray400;
 			@include textStyleSecondary1;

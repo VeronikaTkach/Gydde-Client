@@ -36,7 +36,8 @@ export function Header({ className }) {
     <>
       {staticTextStatusHeader === Status.Resolved && (
         <header className={cn(s.header, className)}>
-          {modalQuest && <QuestWindow />}{/* TODO ВРЕМЕННО */}
+          {modalQuest && <QuestWindow />}
+          {/* TODO ВРЕМЕННО */}
           <div className={cn(s.header__row)}>
             <nav className={cn(s.header__navigation, s.navigation)}>
               <ul className={cn(s.navigation__list)}>

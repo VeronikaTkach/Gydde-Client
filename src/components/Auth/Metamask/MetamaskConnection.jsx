@@ -14,7 +14,6 @@ import {
 import { RoutesName } from '../../../core/constants/Routes';
 import s from './style.module.scss';
 
-const numberSize = 1000000;
 const firstItem = 0;
 const secondItem = 1;
 
@@ -22,26 +21,26 @@ export function MetamaskConnection({ text }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const web3Ref = useRef(new Web3(window.ethereum));
-  const { connectionStatus, account, message, signedMessage } =
-    useSelector(metamaskAuthorization);
+  const { connectionStatus, message, signedMessage } = useSelector(metamaskAuthorization);
 
   useEffect(() => {
     if (connectionStatus === MetamaskConnectionStatus.Connecting) {
       dispatch(getMetamaskAccount(web3Ref.current));
       dispatch(setFirstHighlightedItem(secondItem));
     } else if (connectionStatus === MetamaskConnectionStatus.Sign) {
-      const randomMessage = Math.floor(Math.random() * numberSize).toString();
+      const randomMessage = crypto.randomUUID();
 
       dispatch(setMetamaskMessage(randomMessage));
       dispatch(signMetamaskMessage(web3Ref.current));
       dispatch(setFirstHighlightedItem(secondItem));
     } else if (connectionStatus === MetamaskConnectionStatus.Connected) {
+      const authorizationData = {
+        signature: signedMessage,
+        uuid: message,
+      };
+
       dispatch(setFirstHighlightedItem(firstItem));
-      sendMetamaskData({
-        account: account,
-        message: message,
-        signedMessage: signedMessage,
-      });
+      dispatch(sendMetamaskData(authorizationData));
     } else if (connectionStatus === MetamaskConnectionStatus.Finish) {
       navigate(RoutesName.Root);
     }

@@ -41,6 +41,8 @@ export function FormAuthorization() {
     },
   });
 
+  // email: 'email@mail.com',
+  // password: 'qwerty12345678', //?
   useEffect(() => {
     dispatch(getStaticText.basic(TEXT_KEYS.MAIL_AUTHORIZATION));
 
@@ -67,7 +69,6 @@ export function FormAuthorization() {
 
   const onSubmit = (data, e) => {
     e.preventDefault();
-    dispatch(showAuthorizationWindow(true));
     dispatch(authorizedUser(data));
     setLoading(true); //TODO перенести логику лоадера в стор, а то получается он не вырубится никогда
   };

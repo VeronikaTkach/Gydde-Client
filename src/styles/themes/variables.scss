@@ -1,6 +1,7 @@
 //colors
 $colorWhite: #FDFAFF;
 $colorWhiteOp10: #fdfaff1a;
+$colorWhiteOp28: #fdfaff47;
 $colorBlack: #171717;
 $bgGreen: #49FFB3;
 $bgBlue: #00FCFF;
@@ -90,6 +91,7 @@ $colorGray700: #222222;
 
 //gradient
 $gradientPurple: linear-gradient(to bottom, #8A2DE7, #5659FE);
+$gradientPurpleInvert: linear-gradient(to bottom, #5659FE, #882FE8);
 $gradientGreen: linear-gradient(to bottom, #AAF97E 0%, #9AEC6C 100%);
 $gradientShadow: linear-gradient(to right, #6B17C1 0%, #3B41C9 100%);
 $gradientMaskot: linear-gradient(to bottom, #5659FE 0%, #8A2DE7 100%);

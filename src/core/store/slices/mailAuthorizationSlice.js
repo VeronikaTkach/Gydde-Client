@@ -2,18 +2,23 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Status } from '../../constants/Status';
 import { AuthorizationType } from '../../constants/AuthorizationType';
 import mainRequest from '../../utils/mainRequestUtils';
+import { ErrorType } from '../../constants/Errors';
+import { TEXT_ERRORS } from '../../constants/textErrors';
+import { showAuthorizationWindow } from './modalWindowStateSlice';
 
 const initialState = {
   status: null,
-  error: null,
+  errorMessage: null,
   currentAuthorizationType: AuthorizationType.NotСhosen,
 };
 
 export const authorizedUser = createAsyncThunk(
   'mailAuthorization/mailAuthorizationUser',
-  async function (authData, { rejectWithValue }) { //todo создавать не просто запросы, а использовать базовый запрос 'mainRequest'
+  async function (authData, { rejectWithValue, dispatch }) {
     try {
-      const response = await mainRequest.post('localhost:8080', authData);
+      const response = await mainRequest.post('/auth/email', authData);
+
+      dispatch(showAuthorizationWindow(false));
 
       return response.data;
     } catch (error) {
@@ -34,14 +39,22 @@ export const authorizationSlice = createSlice({
     builder
       .addCase(authorizedUser.pending, (state) => {
         state.status = Status.Loading;
-        state.error = null;
+        state.errorMessage = null;
       })
       .addCase(authorizedUser.fulfilled, (state) => {
         state.status = Status.Resolved;
       })
       .addCase(authorizedUser.rejected, (state, action) => {
         state.status = Status.Rejected;
-        state.error = action.payload;
+
+        switch (action.payload.data.state.type) {
+          case ErrorType.Error:
+            state.errorMessage = TEXT_ERRORS.AUTH.INCORRECT_MAIL_AUTH;
+            break;
+          default:
+            state.errorMessage = TEXT_ERRORS.ERROR;
+            break;
+        }
       });
   },
 });

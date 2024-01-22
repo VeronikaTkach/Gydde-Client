@@ -31,9 +31,12 @@ export const signMetamaskMessage = createAsyncThunk(
     const state = getState();
     const message = state.metamaskAuthorization.message;
     const account = state.metamaskAuthorization.account;
+    // console.log(message);
 
     try {
+      const result = await mainRequest.get(`/auth/metamask/message/${message}`);
       const response = await web3.eth.personal.sign(message, account, '');
+      // console.log(result, response);
 
       return response;
     } catch (error) {
@@ -45,12 +48,16 @@ export const signMetamaskMessage = createAsyncThunk(
 export const sendMetamaskData = createAsyncThunk(
   'metamaskAuthorization/sendMetamaskData',
   async function (data, { rejectWithValue }) {
+    // console.log(data);
     try {
-      const response = await mainRequest.post('', data); //? backend api path
+      const response = await mainRequest.post('/auth/metamask', JSON.stringify(data));
+      // console.log(response);
 
       return response.data.id_token;
     } catch (error) {
-      return rejectWithValue(error.message);
+      // console.log(error);
+
+      return rejectWithValue(error);
     }
   }
 );
@@ -112,7 +119,7 @@ export const metamaskAuthorizationSlice = createSlice({
       })
       .addCase(sendMetamaskData.rejected, (state, action) => {
         state.connectionStatus = MetamaskConnectionStatus.Error;
-        state.error = action.payload.message;
+        state.error = action.payload;
       });
   },
 });
