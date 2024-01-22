@@ -3,24 +3,8 @@
 .audioPlayer {
     @include flex-grid(flex, null, space-between, center);
     gap: 16px;
-    // TODO объединить общие стили
-    &__prev {
-        background: transparent;
-        @include width-height(24px);
+    &__prev, &__next, &__play {
         @include flexCenter;
-        &:hover {
-            svg { //TODO добавить через иконочный шрифт
-                path {
-                    @include themed() {
-                        transition: .3s;
-                        fill: t($buttonBorderHover);
-                    }
-                }
-            }
-        }
-    }
-    &__play {
-        font-size: 22px;
         @include width-height(24px);
         @include themed() {
 			color: t($buttonLabelActive4);
@@ -30,23 +14,20 @@
             transition: .3s;
             @include themed() {
                 color: t($buttonBorderHover);
-                background: transparent;
+                background-color: transparent;
             }
         }
     }
-    &__next {
-        background: transparent;
+    &__prev, &__next {
         font-size: 14px;
-        @include flexCenter;
-        @include width-height(24px);
-        @include themed() {
-			color: t($buttonLabelActive4);
-		}
-        &:hover {
-            transition: .3s;
-            @include themed() {
-                color: t($buttonBorderHover);
-            }
+    }
+    &__prev {
+        transform: rotate(180deg);
+    }
+    &__play {
+        font-size: 22px;
+        &::before {
+            margin-left: 0;
         }
     }
 }
@@ -55,32 +36,32 @@
     //TODO поправить стили
     display: flex;
     gap: 12px;
-
     &__btn {
-        @include width-height(44px);
         border-radius: 50%;
         font-size: 20px;
-        padding: 12px 12px 12px 14px;
+        @include width-height(44px);
+        @include flexCenter;
+        &::before {
+            margin-left: 2px;
+        }
         &:hover {
             transition: .3s;
             @include themed() {
-                color: t($buttonLabelHover);
-                background: $colorGreenPrimary200;// TODO добавить из темы
+                background: t($buttonBgHover3);
             }
         }
     }
-
-    &__right {
-        @include flex-grid(flex, column, space-between, null);
-    }
-
     &__off {
-        padding: 12px;
+        &::before {
+            margin-left: 0px;
+        }
         @include themed() {
             background: t($buttonBgActive);
         }
     }
-
+    &__right {
+        @include flex-grid(flex, column, space-between, null);
+    }
     &__progressBar {
         @include width-height(242px, 20px);
         @include themed() {
@@ -94,7 +75,6 @@
         -webkit-mask-repeat: no-repeat;
         -webkit-mask-position: center;
     }
-
     &__progress {
         position: absolute;
         top: 0;
@@ -105,9 +85,10 @@
 			background: t($gradientLabelHover);
 		}
     }
-
     &__duration {
         @include fontStyle($weight: 500, $height: 20px);
-        color: $colorGray500;
+        @include themed() {
+			color: t($messageLabelGuides);
+		}
     }
 }

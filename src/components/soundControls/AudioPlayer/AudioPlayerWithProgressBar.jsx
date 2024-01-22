@@ -15,15 +15,13 @@ export const sound = new Howl({
 export const AudioPlayerWithProgressBar = () => {
   const { soundSwitch, progress, duration, switchAudio } = usePlayer(sound);
 
+  const classes = cn(s.audio__btn, {
+    [s.audio__off]: soundSwitch === SoundSwitchStatus.Off,
+  });
+
   return (
     <div className={cn(s.audio)}>
-      <PlayButton
-        className={cn(s.audio__btn, {
-          [s.audio__off]: soundSwitch === SoundSwitchStatus.Off,
-        })}
-        onClick={switchAudio}
-        switchStatus={soundSwitch}
-      />
+      <PlayButton className={classes} onClick={switchAudio} switchStatus={soundSwitch} />
       <div className={cn(s.audio__right)}>
         <div className={cn(s.audio__progressBar)}>
           <div className={cn(s.audio__progress)} style={{ width: progress + '%' }}></div>
