@@ -3,6 +3,12 @@
 .questChat {
 	display: grid;
 	grid-template-rows: 52px 1fr 52px;
+	@include themed() {
+		border-radius: t($radiusMedium);
+		border: 1px solid t($surfaceBorderSubtitles);
+		background: t($surfacePrimary);
+	}
+
 	&__chat {
 		position: relative;
 

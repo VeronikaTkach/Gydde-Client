@@ -3,8 +3,13 @@
 .questChatHeader {
     padding: $space4 $space5;
     gap: $space6;
+    border-top-left-radius: 19px;
+    border-top-right-radius: 19px;
     @include width-height(100%, 52px);
     @include flex-grid(flex, null, space-between, center);
+    @include themed() {
+		background: t($surfacePrimary2);
+	}
     &__audioSettings {
         @include flex-grid(flex, null, space-between, center);
         gap: 16px;

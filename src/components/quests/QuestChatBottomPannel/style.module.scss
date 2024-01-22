@@ -8,10 +8,10 @@
   width: 100%;
   height: $space14;
   padding: 0px $space5;
-  border-bottom-left-radius: $space6;
-  border-bottom-right-radius: $space6;
+  border-bottom-left-radius: 19px;
+  border-bottom-right-radius: 19px;
   @include themed() {
-    border: 1px solid t($surfaceBorderSubtitles);
+    border-top: 1px solid t($surfaceBorderSubtitles);
     background: t($surfacePrimary2);
   }
   &__answer {
