@@ -156,3 +156,9 @@
     content: $iconLogout;
   }
 }
+.iconSeparator {
+  &:before {
+    content: $iconSeparator;
+    color: #636363;
+  }
+}

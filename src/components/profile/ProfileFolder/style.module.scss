@@ -5,19 +5,42 @@
 	flex-direction: column;
 	position: relative;
 	width: 100%;
-	// z-index: 10;
+	@include themed() {
+		background-color: t($buttonLabelActive);
+		@include borderStyle(1px solid t($surfaceBorderSubtitles), 28px);
+	}
 }
 
 .tabs {
 	display: flex;
-	justify-content: space-around;
 	height: 54px;
 	width: 100%;
+		border-radius: 28px 28px 0 0;
+
 	@include themed() {
-		background-color: t($surfaceBorderSubtitles);
+		border-bottom: 1px solid t($surfaceBorderSubtitles);
+		background-color: t($surfacePrimary);
 	}
 	&__tab {
-
-	width: 100%;
+		position: relative;
+		@include textCenter;
+		@include fontStyle(16px, 500, 20px);
+		width: 100%;
+		@include themed() {
+			color: t($buttonLabelDefault);
+		}
+		&::before {
+			position: absolute;
+			left: 0;
+			font-size: 40px;
+			@include themed() {
+				color: t($surfaceBorderSubtitles);
+			}
+		}
+		&_active {
+			@include themed() {
+				color: t($buttonLabelActive2);
+			}
+		}
 	}
 }

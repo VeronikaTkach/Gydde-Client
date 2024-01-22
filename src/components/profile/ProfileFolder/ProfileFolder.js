@@ -1,9 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 import s from './style.module.scss';
-import { Button } from '../../ui/buttons/Button';
 import { NavigationLink } from '../../ui/Navlink';
-import { NavLink } from 'react-router-dom';
 
 const folderTabs = [
   { title: 'Referral program', to: '/profile/refferal' },
@@ -12,15 +9,15 @@ const folderTabs = [
   { title: 'Account settings', to: '/profile/settings' },
 ];
 
-export function ProfileFolder({ className, children }) {
-  useEffect(() => {}, []);
+const firstItem = 0;
 
+export function ProfileFolder({ className, children }) {
   return (
-    <div className={cn(s.folder)}>
+    <div className={cn(s.folder, className)}>
       <div className={cn(s.folder__tabs, s.tabs)}>
         {folderTabs.map((item, index) => (
           <NavigationLink
-            className={s.tabs__tab}
+            className={cn(s.tabs__tab, { ['iconSeparator']: index !== firstItem })}
             activeClassName={s.tabs__tab_active}
             key={index}
             to={item.to}>
