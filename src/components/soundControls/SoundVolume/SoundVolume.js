@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import cn from 'classnames';
 import s from './style.module.scss';
 import { Button } from '../../ui/buttons/Button';
-import soundOn from '../../../assets/images/sound.svg';
-import soundOff from '../../../assets/images/soundOff.svg';
+import soundOn from '../../../assets/images/sound.svg'; // TODO добавить через иконочный шрифт
+import soundOff from '../../../assets/images/soundOff.svg'; // TODO добавить через иконочный шрифт
 import { AudioVolume } from '../../../core/constants/AudioVolume';
 import { setAudioVolume } from '../../../core/store/slices/soundSettingsSlice';
 
@@ -27,10 +27,8 @@ export function SoundVolume() {
   }, [soundVolume]);
 
   return (
-    <div className={cn(s.soundVolume)}>
-      <Button className={cn(s.soundVolume__sound)} onClick={toggleVolume}>
-        <img src={soundVolumeImg} />
-      </Button>
-    </div>
+    <Button className={cn(s.soundVolume)} onClick={toggleVolume}>
+      <img src={soundVolumeImg} />
+    </Button>
   );
 }

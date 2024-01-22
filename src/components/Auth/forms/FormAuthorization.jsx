@@ -17,13 +17,14 @@ import { Status } from '../../../core/constants/Status';
 import { getStaticText } from '../../../core/store/staticText/thunk';
 import { TEXT_KEYS } from '../../../core/constants/textKeys';
 import { PageName } from '../../../core/constants/PageNames';
+import { LoaderForButtons } from '../../ui/loaders/LoaderForButtons';
 
 export function FormAuthorization() {
   const dispatch = useDispatch();
   const { staticTextMailAuthorization, staticTextStatusMailAuthorization } =
     useSelector(staticText);
 
-  // const { error } = useSelector((state) => state.authorization);
+  const { error } = useSelector((state) => state.authorization);
   const [mailValidation, setMailValidation] = useState(mailValidationWithoutMessage);
   const [passwordValidation, setPasswordValidation] = useState(
     passwordValidationWithoutMessage
@@ -114,11 +115,10 @@ export function FormAuthorization() {
             </div>
           </div>
           <div className={s.form__btn}>
-            <Button className={s.form__btn_submit} type={'submit'} disabled={loading}>
-              {/* TODO тут текст кладётся. 'iconLoader' нужно в класс ставить */}
-              {/* {loading ? 'iconLoader' : {staticTextMailAuthorization.button}} */}
-              {staticTextMailAuthorization.button}
+            <Button className={cn(s.form__btn_submit)} type={'submit'} disabled={loading}>
+              {loading ? '' : staticTextMailAuthorization.button}
             </Button>
+            <div className={s.form__loader}>{loading ? <LoaderForButtons /> : ''}</div>
           </div>
         </form>
       )}

@@ -15,8 +15,10 @@ export function QuestChatTopPannel({ className }) {
       <AudioPlayer />
       <div className={cn(s.questChatHeader__title)}></div>
       <QuestProgressBar />
-      <AudioRate />
-      <SoundVolume />
+      <div className={cn(s.questChatHeader__audioSettings)}>
+        <AudioRate />
+        <SoundVolume />
+      </div>
     </div>
   );
 }

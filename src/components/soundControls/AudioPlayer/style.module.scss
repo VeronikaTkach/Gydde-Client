@@ -1,10 +1,57 @@
 @use '../../../styles/styles.scss' as *;
 
-.audioRate {
-
+.audioPlayer {
+    @include flex-grid(flex, null, space-between, center);
+    gap: 16px;
+    // TODO объединить общие стили
+    &__prev {
+        background: transparent;
+        @include width-height(24px);
+        @include flexCenter;
+        &:hover {
+            svg { //TODO добавить через иконочный шрифт
+                path {
+                    @include themed() {
+                        transition: .3s;
+                        fill: t($buttonBorderHover);
+                    }
+                }
+            }
+        }
+    }
+    &__play {
+        font-size: 22px;
+        @include width-height(24px);
+        @include themed() {
+			color: t($buttonLabelActive4);
+            background-color: transparent;
+		}
+        &:hover {
+            transition: .3s;
+            @include themed() {
+                color: t($buttonBorderHover);
+                background: transparent;
+            }
+        }
+    }
+    &__next {
+        background: transparent;
+        font-size: 14px;
+        @include flexCenter;
+        @include width-height(24px);
+        @include themed() {
+			color: t($buttonLabelActive4);
+		}
+        &:hover {
+            transition: .3s;
+            @include themed() {
+                color: t($buttonBorderHover);
+            }
+        }
+    }
 }
 
-.audioPlayer {
+.audio {
     //TODO поправить стили
     display: flex;
     gap: 12px;
@@ -16,19 +63,22 @@
         padding: 12px 12px 12px 14px;
         &:hover {
             transition: .3s;
-            background: $colorGreenPrimary200;// TODO добавить из темы
             @include themed() {
                 color: t($buttonLabelHover);
+                background: $colorGreenPrimary200;// TODO добавить из темы
             }
         }
     }
 
     &__right {
-        @include flex-grid(flex, column, space-between, flex-start);
+        @include flex-grid(flex, column, space-between, null);
     }
 
     &__off {
         padding: 12px;
+        @include themed() {
+            background: t($buttonBgActive);
+        }
     }
 
     &__progressBar {

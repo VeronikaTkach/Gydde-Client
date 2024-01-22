@@ -1,11 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { SoundRate } from '../../constants/SoundRate';
 import { AudioVolume } from '../../constants/AudioVolume';
+import { SoundSwitchStatus } from '../../constants/SoundSwitchStatus';
 
 const initialState = {
   isSoundOn: true,
   soundRate: SoundRate.Normal,
   audioVolume: AudioVolume.On,
+  soundSwitch: SoundSwitchStatus.On,
 };
 
 export const soundSettingsSlice = createSlice({
@@ -21,10 +23,13 @@ export const soundSettingsSlice = createSlice({
     setAudioVolume: (state, action) => {
       state.audioVolume = action.payload;
     },
+    switchSound: (state, action) => {
+      state.soundSwitch = action.payload;
+    },
   },
 });
 
-export const { setSoundVolume, setSoundRate, setAudioVolume } =
+export const { setSoundVolume, setSoundRate, setAudioVolume, switchSound } =
   soundSettingsSlice.actions;
 export const soundSettings = (state) => state.soundSettings;
 

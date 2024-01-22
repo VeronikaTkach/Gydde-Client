@@ -1,7 +1,10 @@
 @use '../../../styles/styles.scss' as *;
 
 .questChatHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-grid(flex, null, space-between, center);
+    gap: $space6;
+    &__audioSettings {
+        @include flex-grid(flex, null, space-between, center);
+        gap: 16px;
+    }
 }

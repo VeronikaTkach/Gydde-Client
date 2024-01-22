@@ -29,14 +29,8 @@ export function AudioRate() {
   }, [rate]);
 
   return (
-    <>
-      <div className={s.audioRate}>
-        <div className={s.audioRate_main}>
-          <Button className={s.audioRate__btn} onClick={switchRate}>
-            {rate + 'x'}
-          </Button>
-        </div>
-      </div>
-    </>
+    <Button className={s.audioRate} onClick={switchRate}>
+      {rate + 'x'}
+    </Button>
   );
 }

@@ -1,6 +1,9 @@
 @use '../../../styles/styles.scss' as *;
 
 .questSidePannel {
+    display: flex;
+    gap: $space3;
+    flex-direction: column;
     & ul {
         display: flex;
         flex-direction: column;

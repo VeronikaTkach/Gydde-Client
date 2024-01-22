@@ -10,6 +10,7 @@ const initialState = {
   status: null,
   errorMessage: null,
   currentAuthorizationType: AuthorizationType.NotСhosen,
+  loading: false,
 };
 
 export const authorizedUser = createAsyncThunk(
@@ -33,6 +34,9 @@ export const authorizationSlice = createSlice({
   reducers: {
     setCurrentAuthorizationType: (state, action) => {
       state.currentAuthorizationType = action.payload;
+    },
+    setLoading: (state, action) => {
+      state.loading = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -61,5 +65,6 @@ export const authorizationSlice = createSlice({
 
 export const { setCurrentAuthorizationType } = authorizationSlice.actions;
 export const allAuthorization = (state) => state.authorization;
+export const loading = (state) => state.loading;
 
 export default authorizationSlice.reducer;
