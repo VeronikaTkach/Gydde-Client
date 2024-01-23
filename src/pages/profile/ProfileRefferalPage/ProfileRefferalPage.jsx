@@ -13,7 +13,8 @@ import { removeUnusedStaticText, staticText } from '../../../core/store/staticTe
 
 export function ProfileRefferalPage({ children }) {
   const dispatch = useDispatch();
-  const { staticTextProfileReferals, staticTextStatusProfileReferals } = useSelector(staticText);
+  const { staticTextProfileReferals, staticTextStatusProfileReferals } =
+    useSelector(staticText);
 
   useEffect(() => {
     dispatch(getStaticText.basic(TEXT_KEYS.PROFILE_REFERALS));
@@ -26,13 +27,15 @@ export function ProfileRefferalPage({ children }) {
 
   return (
     <>
-      <main className={cn(s.content)}>
-        <div className={cn(s.content__container)}>
-          <ProfileFolder>
-            <RefferalAndGuides text={staticTextProfileReferals}/>
-          </ProfileFolder>
-        </div>
-      </main>
+      {staticTextStatusProfileReferals === Status.Resolved && (
+        <main className={cn(s.content)}>
+          <div className={cn(s.content__container)}>
+            <ProfileFolder>
+              <RefferalAndGuides text={staticTextProfileReferals} />
+            </ProfileFolder>
+          </div>
+        </main>
+      )}
     </>
   );
 }
