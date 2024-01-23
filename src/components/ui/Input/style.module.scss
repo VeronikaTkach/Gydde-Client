@@ -20,6 +20,7 @@
 		height: 100%;
 		background-color: $colorGray650;
 		width: 100%;
+		padding: 14px $space10;
 		color: $colorGray100;
 		@include textStyleSecondary1;
 		cursor: text;
@@ -38,6 +39,23 @@
 			}
 		}
 	}
+	&__btn {
+		display: flex;
+		&__password {
+		font-size: 32px;
+		background-color: transparent;
+		margin: 0 36px 0 0;
+		color: $colorGray400;
+		&_show {
+			font-size: 23px;
+		}
+		&_error {
+			&::before {
+				color: $colorRed500;
+			  }
+		}
+		}
+	}
 	&__email {
 		&_error {
 			font-size: 32px;
@@ -48,6 +66,6 @@
 }
 
 .inputQuest {
-	width: 320px;
+	width: 100%;
 	height: $space14;
 }
