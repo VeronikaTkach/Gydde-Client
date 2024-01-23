@@ -36,6 +36,7 @@ export function usePlayer(sound) {
 
   sound.on('pause', () => {
     clearInterval(timer);
+    setSwitchStatus(SoundSwitchStatus.On);
   });
 
   sound.on('end', () => {
