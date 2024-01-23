@@ -15,14 +15,14 @@ export function ProfileGuidesPage({ children }) {
   const { staticTextProfile, staticTextStatusProfile } = useSelector(staticText);
 
   useEffect(() => {
-    dispatch(getStaticText.basic(TEXT_KEYS.PROFILE));
+    dispatch(getStaticText.basic(TEXT_KEYS.PROFILE_GUIDES));
 
     return () => {
-      dispatch(removeUnusedStaticText(PageName.Profile));
+      dispatch(removeUnusedStaticText(PageName.ProfileGuides));
     };
   }, []);
 
-  console.log(staticTextProfile);
+  //console.log(staticTextProfile);
 
   return (
     <>

@@ -4,7 +4,8 @@ export const PageName = {
   Metamask: 'Metamask',
   MailAuthorization: 'MailAuthorization',
   Header: 'Header',
-  Profile: 'Profile',
+  ProfileReferals: 'ProfileReferals',
+  ProfileGuides: 'ProfileGuides',
 };
 
 Object.freeze(PageName);
