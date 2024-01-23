@@ -41,10 +41,10 @@
 
 		"Header.buttonLogin": "Log in",
 
-		"Profile.refferalTab": "",
-		"Profile.guidesTab": "refferalTab",
-		"Profile.walletTab": "refferalTab",
-		"Profile.settingsTab": "refferalTab",
+		"Profile.refferalTab": "Referral reward",
+		"Profile.guidesTab": "Guides reward",
+		"Profile.walletTab": "Wallet",
+		"Profile.settingsTab": "Account settings",
 
 		"ProfileGuides.btnText": "Claim",
 		"ProfileGuides.rewardsTitle": "Unclaimed rewards",
