@@ -40,6 +40,12 @@
 		"MailAuthorization.button": "Log in",
 
 		"Header.buttonLogin": "Log in",
+
+		"Profile.refferalTab": "",
+		"Profile.guidesTab": "refferalTab",
+		"Profile.walletTab": "refferalTab",
+		"Profile.settingsTab": "refferalTab",
+
 		"ProfileGuides.btnText": "Claim",
 		"ProfileGuides.rewardsTitle": "Unclaimed rewards",
 		"ProfileGuides.rewardsTotal": "$6.26",
@@ -47,13 +53,34 @@
 		"ProfileGuides.referalTotal": "3",
 		"ProfileGuides.earningsTitle": "Lifetime earnings",
 		"ProfileGuides.earningsTotal": "$ 4.23",
-		
+
 		"ProfileReferals.btnText": "Claim",
 		"ProfileReferals.rewardsTitle": "Unclaimed rewards",
 		"ProfileReferals.rewardsTotal": "$6.26",
 		"ProfileReferals.referalTitle": "Referral quest completions",
 		"ProfileReferals.referalTotal": "3",
 		"ProfileReferals.earningsTitle": "Total rewards earned",
-		"ProfileReferals.earningsTotal": "$ 4.23"
+		"ProfileReferals.earningsTotal": "$ 4.23",
+
+		"ProfileSettings.userNameTitle": "User name",
+		"ProfileSettings.socialTitle": "Уour social account",
+		"ProfileSettings.connectMail": "Connect Email Address",
+		"ProfileSettings.connectTwitter": "Connect Twitter Account",
+		"ProfileSettings.setPass": "Set password",
+		"ProfileSettings.logout": "Log out",
+		"ProfileSettings.editMailTitle": "Enter email address",
+		"ProfileSettings.editNameTitle": "Name editing",
+		"ProfileSettings.setPassTitle": "Set password",
+		"ProfileSettings.changePassTitle": "Change password",
+		"ProfileSettings.fieldName": "Enter your name",
+		"ProfileSettings.fieldMail": "Enter email address",
+		"ProfileSettings.fieldPass": "Enter password",
+		"ProfileSettings.fieldEnterPass": "Enter password",
+		"ProfileSettings.fieldRepeatPass": "Repeat password",
+		"ProfileSettings.fieldLastPass": "Enter last password",
+		"ProfileSettings.fieldNewPass": "Enter new password",
+		"ProfileSettings.connectSocial": "Connect with social account",
+		"ProfileSettings.socialGoogle": "Google",
+		"ProfileSettings.btnSave": "Save"
 	}
 }
