@@ -48,19 +48,13 @@
 
 		"ProfileGuides.btnText": "Claim",
 		"ProfileGuides.rewardsTitle": "Unclaimed rewards",
-		"ProfileGuides.rewardsTotal": "$6.26",
 		"ProfileGuides.referalTitle": "Referral quest completions",
-		"ProfileGuides.referalTotal": "3",
 		"ProfileGuides.earningsTitle": "Lifetime earnings",
-		"ProfileGuides.earningsTotal": "$ 4.23",
-
+		
 		"ProfileReferals.btnText": "Claim",
 		"ProfileReferals.rewardsTitle": "Unclaimed rewards",
-		"ProfileReferals.rewardsTotal": "$6.26",
 		"ProfileReferals.referalTitle": "Referral quest completions",
-		"ProfileReferals.referalTotal": "3",
 		"ProfileReferals.earningsTitle": "Total rewards earned",
-		"ProfileReferals.earningsTotal": "$ 4.23",
 
 		"ProfileSettings.userNameTitle": "User name",
 		"ProfileSettings.socialTitle": "Уour social account",

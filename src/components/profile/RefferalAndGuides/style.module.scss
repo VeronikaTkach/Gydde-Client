@@ -2,27 +2,94 @@
 
 .profile {
     width: 100%;
-    @include flexCenter;
+    display: flex;
     border-bottom-left-radius: $space8;
     border-bottom-right-radius: $space8;
-    padding: 57px 0px 0px 35px;
+    padding: 57px 120px 0px 43px;
     height: fit-content;
+    gap: 64px;
     @include themed() {
         background: t($bg);
         border: 1px solid t($surfaceBorderSubtitles)
     }
     &__img {
+      width: 360px;
+      height: 397px;
       margin-bottom: -20px;
     }
     &__info {
       display: flex;
       flex-direction: column;
       width: 100%;
+      gap: $space11;
     }
     &__rewards {
       display: flex;
       justify-content: space-between;
       width: 100%;
-
+      height: fit-content;
+      padding: $space4 $space6;
+      border-radius: 20px;
+      backdrop-filter: blur(26px);
+      @include themed() {
+        background: t($formBackground);
+      }
+    }
+    &__unclaimed {
+      display: flex;
+      flex-direction: column;
+      gap: $space4;
+    }
+    &__title {
+      @include fontStyle(20px, 500, 24px);
+      font-style: normal;
+      @include themed() {
+        color: t($formLabelPlaceholder);
+      }
+    }
+    &__total {
+      @include fontStyle(32px, 700, 38px);
+      font-style: normal;
+      @include themed() {
+        color: t($textPrimaryMain);
+      }
+    }
+    &__container {
+      width: 100%;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      gap: $space4;
+      padding: $space5 $space6;
+      border-radius: 20px;
+      backdrop-filter: blur(26px);
+      @include themed() {
+        background: t($formBackground);
+      }
+    }
+    &__referals {
+      display: flex;
+      gap: $space11;
+    }
+    &__btn {
+      background: transparent;
+      height: 41px;
+      padding: 0px $space9;
+      color: var(--Colors-Secondary-Button-button-label-secondary, #A7F67B);
+      text-align: center;
+      @include fontStyle(20px, 700, 24px);
+      font-style: normal;
+      align-self: center;
+      @include themed() {
+        @include borderStyle(3px solid t($buttonBackgroundSecondary), $space7);
+      }
+      &:hover {
+        border-radius: 20px;
+        border-style: solid;
+        border-width: 3px;
+        @include themed() {
+          border-image: t($gradientButtonHover1) 30;
+        }
+      }
     }
 }
