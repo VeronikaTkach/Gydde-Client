@@ -22,8 +22,8 @@ export const authorizedUser = createAsyncThunk(
 
       return response.data;
     } catch (error) {
+      // const response = await mainRequest.post('/auth/email', authData);
 
-      const response = await mainRequest.post('/auth/email', authData);
       return rejectWithValue(error.message);
     }
   }

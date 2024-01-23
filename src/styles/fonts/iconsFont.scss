@@ -156,6 +156,11 @@
     content: $iconLogout;
   }
 }
+.iconLogout_after {
+  &:after {
+    content: $iconLogout;
+  }
+}
 .iconSeparator {
   &:before {
     content: $iconSeparator;
