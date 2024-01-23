@@ -6,6 +6,7 @@
 	position: relative;
 	width: 100%;
 	min-height: 492px;
+	height: 100%;
 	@include themed() {
 		background-color: t($buttonLabelActive);
 		@include borderStyle(1px solid t($surfaceBorderSubtitles), 28px);
@@ -16,8 +17,7 @@
 	display: flex;
 	height: 54px;
 	width: 100%;
-		border-radius: 28px 28px 0 0;
-
+	border-radius: 28px 28px 0 0;
 	@include themed() {
 		border-bottom: 1px solid t($surfaceBorderSubtitles);
 		background-color: t($surfacePrimary);

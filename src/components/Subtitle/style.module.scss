@@ -1,52 +1,38 @@
 @use '../../styles/styles.scss' as *;
 
-.subtitle {
+.baseSubtitle {
   display: grid;
   width: 100%;
-  height: fit-content;
+  grid-template-areas:
+    'audio text .'
+    'audio .    button';
   &__mascotVoice {
-    width: fit-content;
-    &_size_l {
-      @include width-height($space15);
+    grid-area: audio;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  &_play {
+    @include width-height(52px);
+  }
+  .baseSubtitle__mascotVoice_rate {
+      @include width-height(52px);
+      @include themed() {
+        border-radius: 50%;
+      }
     }
   }
-
   &__mascotText {
     width: 100%;
   }
 
-  &__answer {
-    display: flex;
-    justify-content: space-between;
-    align-self: end;
-    grid-area: 2 / 3 / 3 / 4;
-  }
 }
 
 .answer {
   display: flex;
-  &__arrow {
-    @include themed() {
-      color: t($buttonLabelActive2);
-    }
-  }
-  &_size_m {
-    gap: $space6;
-  }
-  &_size_l {
-    gap: 16px;
-  }
-  &__arrow {
-    @include flexCenter;
-    &_size_m {
-      font-size: 56px;
-    }
-    &_size_l {
-      font-size: 48px;
-      color: $colorGreen;
-    }
-  }
+  grid-area: button;
+  gap: 20px;
   &__button {
     min-width: 160px;
+    height: 100%;
   }
 }

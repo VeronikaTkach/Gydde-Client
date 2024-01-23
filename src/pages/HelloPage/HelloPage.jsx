@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import cn from 'classnames';
 import { LanguageList } from '../../components/LanguageList';
-import { BaseSubtitle } from '../../components/Subtitle';
+import { SubtitleWithAccentButton } from '../../components/Subtitle';
 import helper from '../../assets/images/gyddePicture.png';
 import helloSticker from '../../assets/images/stickers/helloHand.png';
 import { TEXT_KEYS } from '../../core/constants/textKeys';
@@ -12,6 +12,7 @@ import { getStaticText } from '../../core/store/staticText/thunk';
 import { removeUnusedStaticText, staticText } from '../../core/store/staticText/slice';
 import { PageName } from '../../core/constants/PageNames';
 import s from './style.module.scss';
+import audioHello from '../../assets/audio/olivia-russian.mp3';
 
 const highlightedItemIndex = 1;
 
@@ -48,12 +49,12 @@ export function HelloPage() {
             </div>
             <LanguageList className={s.content__languages} />
           </div>
-          <BaseSubtitle
+          <SubtitleWithAccentButton
             className={s.content__subtitle}
-            sound={true}
+            sound={audioHello}
             text={currentText.mascotText}
-            answerButtonText={currentText.answerButtonText}
-            answerButtonSticker={helloSticker}
+            buttonText={currentText.answerButtonText}
+            buttonSticker={helloSticker}
           />
         </main>
       )}

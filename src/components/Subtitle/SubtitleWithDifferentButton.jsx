@@ -1,9 +1,9 @@
 import cn from 'classnames';
-import { ButtonWithBorder } from '../ui/buttons/Button';
-import { BaseSubtitle } from './BaseSubtitle';
+import { AccentButton, ButtonWithBorder } from '../ui/buttons/Button';
 import s from './style.module.scss';
+import { BaseSubtitle } from './BaseSubtitle';
 
-export function SubtitleWithTwoButtons({
+export function SubtitleWithDifferentButton({
   leftButtonText,
   leftButtonSticker,
   leftButtonOnClick,
@@ -25,7 +25,7 @@ export function SubtitleWithTwoButtons({
               sticker={leftButtonSticker}
               onClick={leftButtonOnClick}
             />
-            <ButtonWithBorder
+            <AccentButton
               className={s.answer__button}
               children={rightButtonText}
               sticker={rightButtonSticker}

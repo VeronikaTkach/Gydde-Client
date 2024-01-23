@@ -1,36 +1,34 @@
-import { useEffect, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames';
 import s from './style.module.scss';
 import { Button } from '../../ui/buttons/Button';
 import { SoundRate } from '../../../core/constants/SoundRate';
-import { setSoundRate } from '../../../core/store/slices/soundSettingsSlice';
+import {
+  setSoundRate,
+  soundSettings,
+} from '../../../core/store/slices/soundSettingsSlice';
 
-export function AudioRate() {
-  const [rate, setRate] = useState(SoundRate.Normal);
+export function AudioRate({ className }) {
+  const { soundRate } = useSelector(soundSettings);
   const dispatch = useDispatch();
 
   const switchRate = () => {
-    switch (rate) {
+    switch (soundRate) {
       case SoundRate.Normal:
-        setRate(SoundRate.Medium);
+        dispatch(setSoundRate(SoundRate.Medium));
         break;
       case SoundRate.Medium:
-        setRate(SoundRate.Fast);
+        dispatch(setSoundRate(SoundRate.Fast));
         break;
       case SoundRate.Fast:
-        setRate(SoundRate.Normal);
+        dispatch(setSoundRate(SoundRate.Normal));
         break;
     }
   };
 
-  useEffect(() => {
-    dispatch(setSoundRate(rate));
-  }, [rate]);
-
   return (
-    <Button className={s.audioRate} onClick={switchRate}>
-      {rate + 'x'}
+    <Button className={cn(s.audioRate, className)} onClick={switchRate}>
+      {soundRate + 'x'}
     </Button>
   );
 }

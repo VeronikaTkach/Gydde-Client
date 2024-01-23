@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { formatTimeFromSeconds } from '../helpers/formatTimeFromSeconds';
 import { soundSettings, switchSound } from '../store/slices/soundSettingsSlice';
@@ -7,9 +7,13 @@ import { SoundSwitchStatus } from '../constants/SoundSwitchStatus';
 export function usePlayer(sound) {
   const dispatch = useDispatch();
   const { soundRate, audioVolume, soundSwitch } = useSelector(soundSettings);
-  const [switchStatus, setSwitchStatus] = useState(SoundSwitchStatus.On);
+  const [switchStatus, setSwitchStatus] = useState(soundSwitch);
   const [progress, setProgress] = useState(sound.seek());
   const [duration, setDuration] = useState(formatTimeFromSeconds(sound.duration()));
+
+  useEffect(() => {
+    dispatch(switchSound(switchStatus));
+  }, [switchStatus]);
 
   const interval = 100;
   const timeout = 300;
@@ -17,14 +21,10 @@ export function usePlayer(sound) {
   const maxPercent = 100;
   let timer;
 
-  useEffect(() => {
-    dispatch(switchSound(switchStatus));
-  }, [switchStatus]);
-
   sound.rate(soundRate);
   sound.volume(audioVolume);
 
-  sound.on('load', () => {
+  sound.once('load', () => {
     setDuration(formatTimeFromSeconds(sound.duration()));
   });
 
@@ -32,13 +32,17 @@ export function usePlayer(sound) {
     timer = setInterval(() => {
       setProgress(Math.ceil((sound.seek() / sound.duration()) * maxPercent));
     }, interval);
+    setSwitchStatus(SoundSwitchStatus.Off);
+    // dispatch(switchSound(SoundSwitchStatus.Off));
   });
 
-  sound.on('pause', () => {
+  sound.once('pause', () => {
     clearInterval(timer);
+    setSwitchStatus(SoundSwitchStatus.On);
+    // dispatch(switchSound(SoundSwitchStatus.On));
   });
 
-  sound.on('end', () => {
+  sound.once('end', () => {
     setSwitchStatus(SoundSwitchStatus.On);
     clearInterval(timer);
     setProgress(maxPercent);
@@ -50,11 +54,13 @@ export function usePlayer(sound) {
   const switchAudio = () => {
     if (soundSwitch) {
       sound.play();
-      setSwitchStatus(SoundSwitchStatus.Off);
+      dispatch(switchSound(SoundSwitchStatus.Off));
+      //   console.log('in switchAudio if');
     } else {
       sound.pause();
-      setSwitchStatus(SoundSwitchStatus.On);
+      dispatch(switchSound(SoundSwitchStatus.On));
       clearInterval(timer);
+      //   console.log('in switchAudio else');
     }
   };
 
