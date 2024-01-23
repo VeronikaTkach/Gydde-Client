@@ -1,30 +1,28 @@
-import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames';
 import s from './style.module.scss';
 import { Button } from '../../ui/buttons/Button';
 import { AudioVolume } from '../../../core/constants/AudioVolume';
-import { setAudioVolume } from '../../../core/store/slices/soundSettingsSlice';
+import {
+  setAudioVolume,
+  soundSettings,
+} from '../../../core/store/slices/soundSettingsSlice';
 
 export function SoundVolume() {
-  const [soundVolume, setSoundVolume] = useState(AudioVolume.On);
+  const { audioVolume } = useSelector(soundSettings);
   const dispatch = useDispatch();
 
   const classes = cn(s.soundVolume, {
-    [s.soundVolume__off]: soundVolume === AudioVolume.Off,
+    [s.soundVolume__off]: audioVolume === AudioVolume.Off,
   });
 
   const toggleVolume = () => {
-    if (soundVolume) {
-      setSoundVolume(AudioVolume.Off);
+    if (audioVolume) {
+      dispatch(setAudioVolume(AudioVolume.Off));
     } else {
-      setSoundVolume(AudioVolume.On);
+      dispatch(setAudioVolume(AudioVolume.On));
     }
   };
-
-  useEffect(() => {
-    dispatch(setAudioVolume(soundVolume));
-  }, [soundVolume]);
 
   return <Button className={classes} onClick={toggleVolume}></Button>;
 }
