@@ -41,18 +41,19 @@
 
 		"Header.buttonLogin": "Log in",
 		"ProfileGuides.btnText": "Claim",
-		"Profile_Guides.rewardsTitle": "Unclaimed rewards",
-		"Profile_Guides.rewardsTotal": "$6.26",
-		"Profile_Guides.referalTitle": "Referral quest completions",
-		"Profile_Guides.referalTotal": "3",
-		"Profile_Guides.earningsTitle": "Lifetime earnings",
-		"Profile_Guides.earningsTotal": "$ 4.23",
-		"Profile_Referals.btnText": "Claim",
-		"Profile_Referals.rewardsTitle": "Unclaimed rewards",
-		"Profile_Referals.rewardsTotal": "$6.26",
-		"Profile_Referals.referalTitle": "Referral quest completions",
-		"Profile_Referals.referalTotal": "3",
-		"Profile_Referals.earningsTitle": "Total rewards earned",
-		"Profile_Referals.earningsTotal": "$ 4.23"
+		"ProfileGuides.rewardsTitle": "Unclaimed rewards",
+		"ProfileGuides.rewardsTotal": "$6.26",
+		"ProfileGuides.referalTitle": "Referral quest completions",
+		"ProfileGuides.referalTotal": "3",
+		"ProfileGuides.earningsTitle": "Lifetime earnings",
+		"ProfileGuides.earningsTotal": "$ 4.23",
+		
+		"ProfileReferals.btnText": "Claim",
+		"ProfileReferals.rewardsTitle": "Unclaimed rewards",
+		"ProfileReferals.rewardsTotal": "$6.26",
+		"ProfileReferals.referalTitle": "Referral quest completions",
+		"ProfileReferals.referalTotal": "3",
+		"ProfileReferals.earningsTitle": "Total rewards earned",
+		"ProfileReferals.earningsTotal": "$ 4.23"
 	}
 }

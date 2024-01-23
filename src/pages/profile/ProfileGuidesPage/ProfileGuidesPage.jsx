@@ -12,25 +12,24 @@ import { removeUnusedStaticText, staticText } from '../../../core/store/staticTe
 
 export function ProfileGuidesPage({ children }) {
   const dispatch = useDispatch();
-  const { staticTextProfile, staticTextStatusProfile } = useSelector(staticText);
+  const { staticTextProfileGuides, staticTextStatusProfileGuides } =
+    useSelector(staticText);
 
   useEffect(() => {
-    dispatch(getStaticText.basic(TEXT_KEYS.PROFILE));
+    dispatch(getStaticText.basic(TEXT_KEYS.PROFILE_GUIDES));
 
     return () => {
-      dispatch(removeUnusedStaticText(PageName.Profile));
+      dispatch(removeUnusedStaticText(PageName.ProfileGuides));
     };
   }, []);
 
-  console.log(staticTextProfile);
-
   return (
     <>
-      {staticTextStatusProfile && (
+      {staticTextStatusProfileGuides === Status.Resolved && (
         <main className={cn(s.content)}>
           <div className={cn(s.content__container)}>
             <ProfileFolder>
-              <RefferalAndGuides text={staticTextProfile.Guides} />
+              <RefferalAndGuides text={staticTextProfileGuides} />
             </ProfileFolder>
           </div>
         </main>
