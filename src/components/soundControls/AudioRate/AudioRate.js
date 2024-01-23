@@ -6,7 +6,7 @@ import { Button } from '../../ui/buttons/Button';
 import { SoundRate } from '../../../core/constants/SoundRate';
 import { setSoundRate } from '../../../core/store/slices/soundSettingsSlice';
 
-export function AudioRate() {
+export function AudioRate({className}) {
   const [rate, setRate] = useState(SoundRate.Normal);
   const dispatch = useDispatch();
 
@@ -29,7 +29,7 @@ export function AudioRate() {
   }, [rate]);
 
   return (
-    <Button className={s.audioRate} onClick={switchRate}>
+    <Button className={cn(s.audioRate, className)} onClick={switchRate}>
       {rate + 'x'}
     </Button>
   );

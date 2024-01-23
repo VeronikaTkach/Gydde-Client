@@ -2,7 +2,7 @@ import cn from 'classnames';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { MetamaskConnection } from '../../../components/Auth/Metamask';
-import { SubtitleRegular } from '../../../components/Subtitle';
+import { SubtitleWithBorderButton } from '../../../components/Subtitle';
 import mascotBody from '../../../assets/images/mascot/mascotBodyStands.png';
 import mascotHands from '../../../assets/images/mascot/mascotHandsStands.png';
 import thumbUp from '../../../assets/images/stickers/thumbUp.png';
@@ -96,14 +96,14 @@ export function MetamaskView() {
             <div className={cn(s.connectWindow__mascot, s.mascot)}>
               <img className={s.mascot__body} src={mascotBody} alt={'mascot'} />
               <img className={s.mascot__hands} src={mascotHands} alt={'mascot'} />
-              <SubtitleRegular
+              <SubtitleWithBorderButton
                 className={cn(s.mascot__text, {
                   [s.mascot__text_noAnswer]: !currentText.buttonText,
                 })}
                 text={currentText.descriptionText}
-                answerButtonText={currentText.buttonText}
-                answerButtonSticker={connectionText[connectionStatus]?.buttonSticker}
-                answerButtonOnClick={connectionText[connectionStatus]?.buttonOnClick}
+                buttonText={currentText.buttonText}
+                buttonSticker={connectionText[connectionStatus]?.buttonSticker}
+                buttonOnClick={connectionText[connectionStatus]?.buttonOnClick}
               />
             </div>
             <div className={s.connectWindow__descriptionText}></div>

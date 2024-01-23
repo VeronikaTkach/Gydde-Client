@@ -3,7 +3,6 @@ import { Status } from '../../constants/Status';
 import { AuthorizationType } from '../../constants/AuthorizationType';
 import mainRequest from '../../utils/mainRequestUtils';
 import { ErrorType } from '../../constants/Errors';
-import { TEXT_ERRORS } from '../../constants/textErrors';
 import { showAuthorizationWindow } from './modalWindowStateSlice';
 
 const initialState = {
@@ -23,6 +22,8 @@ export const authorizedUser = createAsyncThunk(
 
       return response.data;
     } catch (error) {
+
+      const response = await mainRequest.post('/auth/email', authData);
       return rejectWithValue(error.message);
     }
   }
@@ -53,10 +54,10 @@ export const authorizationSlice = createSlice({
 
         switch (action.payload.data.state.type) {
           case ErrorType.Error:
-            state.errorMessage = TEXT_ERRORS.AUTH.INCORRECT_MAIL_AUTH;
+            // state.errorMessage = TEXT_ERRORS.AUTH.INCORRECT_MAIL_AUTH;
             break;
           default:
-            state.errorMessage = TEXT_ERRORS.ERROR;
+            // state.errorMessage = TEXT_ERRORS.ERROR;
             break;
         }
       });
