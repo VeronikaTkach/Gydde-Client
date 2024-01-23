@@ -20,7 +20,6 @@
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 10;
       @include themed() {
         background:
           t($imageHelloLeftTopSticker) left 64px top 80px / 89px 89px no-repeat,
