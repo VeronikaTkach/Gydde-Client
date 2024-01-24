@@ -2,13 +2,22 @@ import cn from 'classnames';
 import s from './style.module.scss';
 import { GuideCarousel } from '../../components/GuideCarousel';
 import { SubtitleWithTwoButtons } from '../../components/Subtitle';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { switchGuides } from '../../core/store/slices/guidesCarouselSlice';
 import { Position } from '../../core/constants/Position';
 import mascotShows from '../../assets/images/mascot/mascotShows.png';
+import { useEffect } from 'react';
+import { guideRequest } from '../../core/store/guide/thunk';
+import { guide } from '../../core/store/guide/slice';
 
 export function GuidePage() {
-  const dispath = useDispatch();
+  const dispatch = useDispatch();
+  const { guidesGalery } = useSelector(guide);
+
+  useEffect(() => {
+    dispatch(guideRequest.guidesGalery());
+  }, []);
+  // console.log(guidesGalery);
 
   return (
     <main className={cn(s.content)}>
@@ -27,8 +36,8 @@ export function GuidePage() {
           text={'some text'}
           leftButtonText={'Back'}
           rightButtonText={'Next'}
-          leftButtonOnClick={() => dispath(switchGuides(Position.Next))}
-          rightButtonOnClick={() => dispath(switchGuides(Position.Previous))}
+          leftButtonOnClick={() => dispatch(switchGuides(Position.Next))}
+          rightButtonOnClick={() => dispatch(switchGuides(Position.Previous))}
         />
       </div>
     </main>

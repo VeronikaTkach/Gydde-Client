@@ -13,7 +13,7 @@ $transitionMax: $transitionMin, box-shadow $animTime ease, opacity $animTime eas
   border-radius: 32px;
   transform-origin: bottom center;
   @include themed() {
-    background-color: t($surfacePrimary2);
+    background-color: t($buttonLabelActive);
   }
   &__imageContainer {
     @include width-height(280px);
