@@ -7,10 +7,10 @@ export const guideRequest = {
     'guide/guidesGalery',
     async function (_, { rejectWithValue, getState }) {
       const state = getState();
-      const token = state.authorization.message;
-
+      const token = state.authorization.token;
+      console.log(token);
       try {
-        const response = await mainRequest.get('/quest/user/1', {
+        const response = await mainRequest.get('/quests-preview/1', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
