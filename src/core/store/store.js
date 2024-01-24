@@ -6,6 +6,7 @@ import metamaskAuthorization from './slices/metamaskAuthorizationSlice';
 import soundSettings from './slices/soundSettingsSlice';
 import staticText from './staticText/slice';
 import guidesCarousel from './slices/guidesCarouselSlice';
+import guide from './guide/slice';
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
     staticText,
     soundSettings,
     guidesCarousel,
+    guide,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
 });

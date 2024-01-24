@@ -44,7 +44,7 @@
 		}
 		&:hover {
 			@include themed() {
-				color: t($surfaceBorderSubtitles);
+				color: t($messageLabelGuides);
 			}
 		}
 	}
@@ -106,12 +106,13 @@
 		height: $space18;
 		padding: 12px 30px;
 		border-radius: 16px;
+		border: 1px solid transparent;
 		@include themed() {
 			background: t($buttonBgDefault);
 		}
 		&:hover {
 			@include themed() {
-				background: t($gradientButtonHover1);
+				border-color: t($surfaceBorderSubtitles);
 			}
 		}
 	}
@@ -149,7 +150,7 @@
 			}
 			&:hover {
 				@include themed() {
-					color: t($surfaceBorderSubtitles);
+					color: t($messageLabelGuides);
 				}
 			}
 		}
