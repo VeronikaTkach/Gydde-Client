@@ -89,4 +89,13 @@ export const TEXT_KEYS = {
     `${PageName.ProfileSettings}.socialGoogle`,
     `${PageName.ProfileSettings}.btnSave`,
   ],
+  PROFILE_WALLET: [
+    `${PageName.ProfileWallet}.formTitle`,
+    `${PageName.ProfileWallet}.statusWallet`,
+    `${PageName.ProfileWallet}.balanceTitle`,
+    `${PageName.ProfileWallet}.balanceValue`,
+    `${PageName.ProfileWallet}.networkTitle`,
+    `${PageName.ProfileWallet}.networkName`,
+    `${PageName.ProfileWallet}.statusForm`,
+  ],
 };

@@ -8,6 +8,7 @@ export const PageName = {
   ProfileReferals: 'ProfileReferals',
   ProfileGuides: 'ProfileGuides',
   ProfileSettings: 'ProfileSettings',
+  ProfileWallet: 'ProfileWallet',
 };
 
 Object.freeze(PageName);

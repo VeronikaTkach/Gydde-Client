@@ -1,17 +1,27 @@
 @use '../../../styles/styles.scss' as *;
 
 .wallet {
-    @include width-height(562px, 278px);
-
-
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom-left-radius: $space8;
+    border-bottom-right-radius: $space8;
+    padding: 57px 120px 0px 0px;
+    height: fit-content;
+    gap: 64px;
+    @include themed() {
+        background: t($bg);
+        border: 1px solid t($surfaceBorderSubtitles)
+    }
     &__form{
+        @include width-height(562px, 278px);
         @include borderStyle(1px solid $colorGray600, 20px);
         @include flex-grid(flex, column, none, flex-start);
         padding: 20px;
-        gap: 16px;
+        gap: 12px;
         flex-shrink: 0;
         background: $colorGray650;
-        backdrop-filter: blur(26px);
+        // backdrop-filter: blur(26px);
         &_title {
             @include fontRoboto;
             @include width-height(100%, auto);
@@ -88,14 +98,19 @@
                 flex-shrink: 0;
             }
         }
-
     }
     &__img {
-        @include width-height(auto, 26px);
-        &_disconnect {
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
-        }
+        padding: 0px 64px 0px 43px;
+    }
+    &__mascot {
+        width: 360px;
+        height: 397px;
+        margin-bottom: -20px;
+        padding: 0px 64px 0px 43px;
+    }
+    &__icon {
+        background: transparent;
+        color: $colorGray400;
+        font-size: 20px;
     }
 }

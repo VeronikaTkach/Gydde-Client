@@ -75,6 +75,14 @@
 		"ProfileSettings.fieldNewPass": "Enter new password",
 		"ProfileSettings.connectSocial": "Connect with social account",
 		"ProfileSettings.socialGoogle": "Google",
-		"ProfileSettings.btnSave": "Save"
+		"ProfileSettings.btnSave": "Save",
+
+		"ProfileWallet.formTitle": "Your wallet address",
+		"ProfileWallet.statusWallet": "Connected",
+		"ProfileWallet.balanceTitle": "Balance ETH",
+		"ProfileWallet.balanceValue": "0",
+		"ProfileWallet.networkTitle": "Connected network",
+		"ProfileWallet.networkName": "Ethereum",
+		"ProfileWallet.statusForm": "Disconnect"
 	}
 }
