@@ -7,6 +7,7 @@ export function SubtitleWithBorderButton({
   buttonText,
   buttonSticker,
   buttonOnClick,
+  size,
   ...props
 }) {
   return (
@@ -16,7 +17,9 @@ export function SubtitleWithBorderButton({
         (buttonText || buttonSticker) && (
           <div className={cn(s.subtitle__answer, s.answer)}>
             <ButtonWithBorder
-              className={s.answer__button}
+              className={cn(s.answer__button, {
+                [s[`answer__button_size_${size}`]]: size,
+              })}
               children={buttonText}
               sticker={buttonSticker}
               onClick={buttonOnClick}

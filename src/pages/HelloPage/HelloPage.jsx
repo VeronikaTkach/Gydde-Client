@@ -13,6 +13,7 @@ import { removeUnusedStaticText, staticText } from '../../core/store/staticText/
 import { PageName } from '../../core/constants/PageNames';
 import s from './style.module.scss';
 import audioHello from '../../assets/audio/olivia-russian.mp3';
+import { Size } from '../../core/constants/Size';
 
 const highlightedItemIndex = 1;
 
@@ -55,6 +56,7 @@ export function HelloPage() {
             text={currentText.mascotText}
             buttonText={currentText.answerButtonText}
             buttonSticker={helloSticker}
+            size={Size.L}
           />
         </main>
       )}

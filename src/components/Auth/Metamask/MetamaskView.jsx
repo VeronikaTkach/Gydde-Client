@@ -20,26 +20,18 @@ import {
   setMetamaskConnectionStatus,
 } from '../../../core/store/slices/metamaskAuthorizationSlice';
 import { staticTextHelper } from '../../../core/helpers/staticTextHelper';
-import s from './style.module.scss';
 import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
 import { getStaticText } from '../../../core/store/staticText/thunk';
 import { TEXT_KEYS } from '../../../core/constants/textKeys';
 import { PageName } from '../../../core/constants/PageNames';
+import { Size } from '../../../core/constants/Size';
+import s from './style.module.scss';
 
-const connectionText = {
+const buttonIcon = {
   [MetamaskConnectionStatus.NoWallet]: {
-    statusText: 'No wallet detected',
-    descriptionText: [
-      { part: 'I will show you', isHighlighted: true },
-      { part: 'how to create your first wallet.', isHighlighted: false },
-    ],
-    buttonText: 'Show me!',
     buttonSticker: smileyEyesStar,
   },
   [MetamaskConnectionStatus.Error]: {
-    statusText: 'Connection error',
-    descriptionText: 'Something went wrong',
-    buttonText: 'Try again',
     buttonSticker: thumbUp,
   },
 };
@@ -77,6 +69,14 @@ export function MetamaskView() {
     return;
   }
 
+  function handleClick() {
+    if (connectionStatus === MetamaskConnectionStatus.NoWallet) {
+      //TODO отправить куда-то
+    } else if (connectionStatus === MetamaskConnectionStatus.Error) {
+      dispatch(setMetamaskConnectionStatus(MetamaskConnectionStatus.Connecting));
+    }
+  }
+
   return (
     <>
       {staticTextStatusMetamask === Status.Resolved &&
@@ -102,8 +102,9 @@ export function MetamaskView() {
                 })}
                 text={currentText.descriptionText}
                 buttonText={currentText.buttonText}
-                buttonSticker={connectionText[connectionStatus]?.buttonSticker}
-                buttonOnClick={connectionText[connectionStatus]?.buttonOnClick}
+                buttonSticker={buttonIcon[connectionStatus]?.buttonSticker}
+                buttonOnClick={handleClick}
+                size={Size.L}
               />
             </div>
             <div className={s.connectWindow__descriptionText}></div>
