@@ -17,31 +17,29 @@
 		@include flexCenter;
 		white-space: nowrap;
 		transition: .3s;
-	}
-	&_accent {
-		height: 100%;
+		border-radius: 40px;
 		gap: 8px;
-		padding: 0 $space12;
-		@include textStyleButton2;
-		@include borderStyle(1px solid transparent, 40px);
+	}
+
+	&_accent {
 		@include themed() {
 			background: t($buttonBgActive);
 			color: t($buttonLabelActive);
 		}
+		&::before {
+			font-size: $space8;
+			animation: spin 2s linear 0s infinite;
+		}
 		&:hover {
 			@include themed() {
-				background: t($buttonBgActive);
-				border-color: t($buttonBorderHover);
-				background: t($gradientButtonHover);
-				color: t($buttonLabelHover1);
+				background: t($buttonBgHover3);
+				color: t($buttonLabelHover);
 			}
 		}
 	}
 
 	&_border {
-		@include textStyleButton1;
 		background-color: transparent;
-		padding: $space4 $space7;
 		gap: 4px;
 		@include themed() {
 			@include borderStyle(3px solid t($buttonBgActive), 40px);
@@ -53,5 +51,19 @@
 				color: t($buttonLabelHover);
 			}
 		}
+		&::before {
+			font-size: $space8;
+			animation: spin 2s linear 0s infinite;
+		}
+		&:disabled {
+			@include themed() {
+				background: t($buttonBackgorundDisabled);
+				color: t($buttonLabelDisabled);
+			}
+		}
 	}
+}
+
+@keyframes spin {
+  to {transform:rotate(360deg);}
 }

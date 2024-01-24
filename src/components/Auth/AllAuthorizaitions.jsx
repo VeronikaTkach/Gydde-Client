@@ -2,7 +2,7 @@ import cn from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
 import IconE from '../../assets/images/email.svg';
 import IconM from '../../assets/images/metamask.svg';
-import { setCurrentAuthorizationType } from '../../core/store/slices/mailAuthorizationSlice';
+import { setCurrentAuthorizationType } from '../../core/store/auth/slice';
 import { AuthorizationType } from '../../core/constants/AuthorizationType';
 import { staticText } from '../../core/store/staticText/slice';
 import { Status } from '../../core/constants/Status';

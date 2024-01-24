@@ -23,23 +23,17 @@
 		font-family: Roboto;
 		background: transparent;
 		&_submit {
-			@extend .button;
 			@include textStyleButton1;
-			padding: 10px 80px;
 			width: 284px;
 			height: 56px;
-			background: $colorGreen;
-			background-clip: text;
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-			position: absolute;
-			z-index: 1;
-			@include borderStyle(3px solid $colorGreen, 16px);
+			border-radius: 16px;
 			&:hover {
-				background: $colorGreen;
-				background-clip: padding-box;
-				-webkit-text-fill-color: unset;
-				color: $colorBlack;
+				@include themed() {
+					color: $colorBlack;
+					background: $colorGreen;
+					background-clip: padding-box;
+					-webkit-text-fill-color: unset;
+				}
 			}
 			&:disabled {
 				@include themed() {
@@ -51,11 +45,6 @@
 	}
 	&__block {
 		height: 136px;
-		
-	}
-	&__loader {
-		z-index: 10;
-		color: $colorBlack;
 	}
 }
 

@@ -17,8 +17,9 @@ export function GuidePage() {
   useEffect(() => {
     dispatch(guideRequest.guidesGalery());
   }, []);
+
   // console.log(guidesGalery);
-console.log(localStorage.getItem('AuthorizationToken'),)
+  // console.log(localStorage.getItem('AuthorizationToken'),)
   return (
     <main className={cn(s.content)}>
       <div className={cn(s.content__mainScreen, s.mainScreen)}>

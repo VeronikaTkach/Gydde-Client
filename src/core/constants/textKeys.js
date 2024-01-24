@@ -44,7 +44,7 @@ export const TEXT_KEYS = {
     `${PageName.MailAuthorization}.mailErrorText_pattern`,
     `${PageName.MailAuthorization}.mailPlaceholder`,
     `${PageName.MailAuthorization}.passwordLabel`,
-    `${PageName.MailAuthorization}.passwordErrorText_minLength`,
+    `${PageName.MailAuthorization}.passwordErrorText`,
     `${PageName.MailAuthorization}.passwordPlaceholder`,
     `${PageName.MailAuthorization}.button`,
   ],

@@ -35,6 +35,7 @@
 		"MailAuthorization.mailErrorText_pattern": "Please enter a valid email address",
 		"MailAuthorization.mailPlaceholder": "Enter email address",
 		"MailAuthorization.passwordLabel": "Password",
+		"MailAuthorization.passwordErrorText": "Incorrect email or password",
 		"MailAuthorization.passwordErrorText_minLength": "Password must be at least 8 characters (latin letters, numbers or symbols)",
 		"MailAuthorization.passwordPlaceholder": "Enter password",
 		"MailAuthorization.button": "Log in",
@@ -50,7 +51,7 @@
 		"ProfileGuides.rewardsTitle": "Unclaimed rewards",
 		"ProfileGuides.referalTitle": "Referral quest completions",
 		"ProfileGuides.earningsTitle": "Lifetime earnings",
-		
+
 		"ProfileReferals.btnText": "Claim",
 		"ProfileReferals.rewardsTitle": "Unclaimed rewards",
 		"ProfileReferals.referalTitle": "Referral quest completions",

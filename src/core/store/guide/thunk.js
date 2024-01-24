@@ -5,12 +5,14 @@ import mainRequest from '../../utils/mainRequestUtils';
 export const guideRequest = {
   guidesGalery: createAsyncThunk(
     'guide/guidesGalery',
-    async function (_, { rejectWithValue }) {
+    async function (_, { rejectWithValue, getState }) {
+      const state = getState();
+      const token = state.authorization.message;
+
       try {
         const response = await mainRequest.get('/quest/user/1', {
           headers: {
-            Authorization:
-              'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyLWlkIjoxLCJzdWIiOiJ1c2VybmFtZSIsImlhdCI6MTcwNjEwNjc3MCwiZXhwIjoxNzA2MTkzMTcwfQ.5EyiI27oWExHlDWdh_W1sKYSOQ4e722hqPt4VA49YWE',
+            Authorization: `Bearer ${token}`,
           },
         });
         console.log(response);

@@ -24,7 +24,11 @@
 		color: $colorGray100;
 		@include textStyleSecondary1;
 		cursor: text;
-
+		@include themed() {
+			color: t($formLabel);
+			-webkit-text-fill-color: t($formLabel);
+			text-fill-color: t($formLabel);
+		}
 		// &:disabled{
 		// 	cursor: default;
 		// }
@@ -33,9 +37,15 @@
 			@include textStyleSecondary1;
 		}
 		&_error {
-			color: $colorRed500;
+			@include themed() {
+				color: t($buttonPlaceholderError);
+				-webkit-text-fill-color: t($buttonPlaceholderError);
+				text-fill-color: t($buttonPlaceholderError);
+			}
 			&::placeholder{
-				color: $colorRed500;
+				@include themed() {
+					color: t($buttonPlaceholderError);
+				}
 			}
 		}
 	}

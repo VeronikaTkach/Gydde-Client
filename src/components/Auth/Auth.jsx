@@ -5,7 +5,7 @@ import { showAuthorizationWindow } from '../../core/store/slices/modalWindowStat
 import {
   allAuthorization,
   setCurrentAuthorizationType,
-} from '../../core/store/slices/mailAuthorizationSlice';
+} from '../../core/store/auth/slice';
 import { setMetamaskConnectionStatus } from '../../core/store/slices/metamaskAuthorizationSlice';
 import { MetamaskConnectionStatus, Status } from '../../core/constants/Status';
 import { AuthorizationType } from '../../core/constants/AuthorizationType';
