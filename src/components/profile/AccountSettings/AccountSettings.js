@@ -3,7 +3,7 @@ import s from './style.module.scss';
 import { Button } from '../../ui/buttons/Button';
 import mascot from '../../../assets/images/mascot/mascotGood.png';
 import usa from '../../../assets/images/flagUsa.svg';
-import { STATIC_TEXT } from '../../../core/constants/StaticText';
+import { STATIC_TEXT } from '../../../core/constants/staticTex';
 import { PageName } from '../../../core/constants/PageNames';
 
 export function AccountSettings({ className, staticTextProfileSettings }) {

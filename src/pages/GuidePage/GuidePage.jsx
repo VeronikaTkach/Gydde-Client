@@ -18,7 +18,7 @@ export function GuidePage() {
     dispatch(guideRequest.guidesGalery());
   }, []);
   // console.log(guidesGalery);
-
+console.log(localStorage.getItem('AuthorizationToken'),)
   return (
     <main className={cn(s.content)}>
       <div className={cn(s.content__mainScreen, s.mainScreen)}>

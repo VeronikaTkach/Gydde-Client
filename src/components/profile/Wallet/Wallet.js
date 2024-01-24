@@ -12,16 +12,6 @@ import iconMetamask from '../../../assets/images/metamask.svg';
 import iconEthereum from '../../../assets/images/Ethereum.svg';
 
 export function Wallet() {
-  // const dispatch = useDispatch();
-  // const { staticTextWallet } = useSelector(staticText);
-
-  // useEffect(() => {
-  //   dispatch(getStaticText.basic(TEXT_KEYS.PROFILE_WALLET));
-
-  //   return () => {
-  //     dispatch(removeUnusedStaticText(PageName.ProfileWallet));
-  //   };
-  // }, []);
 
   return (
     <>

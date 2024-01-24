@@ -10,6 +10,7 @@ const initialState = {
   errorMessage: null,
   currentAuthorizationType: AuthorizationType.NotСhosen,
   loading: false,
+  token: localStorage.getItem('AuthorizationToken'),
 };
 
 export const authorizedUser = createAsyncThunk(
@@ -18,9 +19,10 @@ export const authorizedUser = createAsyncThunk(
     try {
       const response = await mainRequest.post('/auth/email', authData);
 
+      localStorage.setItem('AuthorizationToken', response.data.token);
       dispatch(showAuthorizationWindow(false));
 
-      return response.data;
+      return response.data.token;
     } catch (error) {
       // const response = await mainRequest.post('/auth/email', authData);
 
