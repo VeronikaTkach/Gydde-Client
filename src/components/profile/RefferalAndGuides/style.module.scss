@@ -80,6 +80,7 @@
       @include fontStyle(20px, 700, 24px);
       font-style: normal;
       align-self: center;
+      transition: .3s;
       @include themed() {
         @include borderStyle(3px solid t($buttonBackgroundSecondary), $space7);
       }
