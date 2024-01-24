@@ -2,7 +2,7 @@ import cn from 'classnames';
 import s from './style.module.scss';
 import { Button } from '../../ui/buttons/Button';
 import mascot from '../../../assets/images/mascot/mascotGood.png';
-import usa from '../../../assets/images/flagUsa.svg';
+import eng from '../../../assets/images/flag/flagEng.png';
 import { STATIC_TEXT } from '../../../core/constants/staticText';
 import { PageName } from '../../../core/constants/PageNames';
 
@@ -26,7 +26,7 @@ export function AccountSettings({ className, staticTextProfileSettings }) {
               <div className={cn(s.header__language)}>Eng</div>
               <img
                 className={cn(s.header__language_img)}
-                src={usa}
+                src={eng}
                 alt={'Image of current language'}
               />
             </Button>

@@ -1,19 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 import s from './style.module.scss';
-import usa from '../../assets/images/flagUsa.svg';
-import indonesia from '../../assets/images/flagBi.svg';
-import china from '../../assets/images/flagCn.svg';
-import russia from '../../assets/images/flagRu.svg';
-import spain from '../../assets/images/flagEs.svg';
+import { LANGUAGES } from '../../core/constants/languages';
 
-const languages = [
-  { lang: 'English', icon: usa, locale: 'en' },
-  { lang: 'Bahasa Indonesia', icon: indonesia, locale: 'id' },
-  { lang: '中文', icon: china, locale: 'cn' },
-  { lang: 'Русский', icon: russia, locale: 'ru' },
-  { lang: 'Español', icon: spain, locale: 'es' },
-];
 const firstLanguage = 0;
 const step = 1;
 const userLocale = navigator.language.split('-')[firstLanguage];
@@ -25,7 +14,7 @@ export function LanguageList({ className }) {
   const timeRef = useRef(null);
 
   useEffect(() => {
-    if (languages && isLanguageChoosen) {
+    if (LANGUAGES && isLanguageChoosen) {
       setStop(true);
 
       return;
@@ -42,7 +31,7 @@ export function LanguageList({ className }) {
     }
 
     return () => clearInterval(timeRef.current);
-  }, [activeLanguage, stop, languages]);
+  }, [activeLanguage, stop, LANGUAGES]);
 
   function checkLanguage(languages) {
     return languages.some((item, index) => {
@@ -66,7 +55,7 @@ export function LanguageList({ className }) {
   }
 
   function changeLanguage() {
-    if (activeLanguage < languages.length - step) {
+    if (activeLanguage < LANGUAGES.length - step) {
       setActiveLanguage((prev) => ++prev);
     } else {
       setActiveLanguage(firstLanguage);
@@ -77,7 +66,7 @@ export function LanguageList({ className }) {
     setStop(true);
     setIsLanguageChoosen(true);
     setActiveLanguage(index);
-    localStorage.setItem('userLocale', languages[index].locale);
+    localStorage.setItem('userLocale', LANGUAGES[index].locale);
   }
 
   return (
@@ -86,7 +75,7 @@ export function LanguageList({ className }) {
         className={cn(s.languages__list)}
         onMouseEnter={handlePause}
         onMouseLeave={handlePause}>
-        {languages.map((item, index) => {
+        {LANGUAGES.map((item, index) => {
           return (
             <li
               className={
