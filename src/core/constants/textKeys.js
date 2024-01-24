@@ -52,20 +52,14 @@ export const TEXT_KEYS = {
   PROFILE_GUIDES: [
     `${PageName.ProfileGuides}.btnText`,
     `${PageName.ProfileGuides}.rewardsTitle`,
-    `${PageName.ProfileGuides}.rewardsTotal`,
     `${PageName.ProfileGuides}.referalTitle`,
-    `${PageName.ProfileGuides}.referalTotal`,
     `${PageName.ProfileGuides}.earningsTitle`,
-    `${PageName.ProfileGuides}.earningsTotal`,
   ],
   PROFILE_REFERALS: [
     `${PageName.ProfileReferals}.btnText`,
     `${PageName.ProfileReferals}.rewardsTitle`,
-    `${PageName.ProfileReferals}.rewardsTotal`,
     `${PageName.ProfileReferals}.referalTitle`,
-    `${PageName.ProfileReferals}.referalTotal`,
     `${PageName.ProfileReferals}.earningsTitle`,
-    `${PageName.ProfileReferals}.earningsTotal`,
   ],
   PROFILE: [
     `${PageName.Profile}.refferalTab`,

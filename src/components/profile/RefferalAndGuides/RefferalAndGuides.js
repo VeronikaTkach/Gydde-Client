@@ -11,18 +11,18 @@ export function RefferalAndGuides({ className, text }) {
         <div className={s.profile__rewards}>
           <div className={s.profile__unclaimed}>
             <span className={s.profile__title}>{text.rewardsTitle}</span>
-            <p>{text.rewardsTotal}</p>
+            <p className={s.profile__total}>$6.26</p>
           </div>
-          <Button>{text.btnText}</Button>
+          <Button className={s.profile__btn}>{text.btnText}</Button>
         </div>
-        <div>
-          <div>
+        <div className={s.profile__referals}>
+          <div className={s.profile__container}>
             <span className={s.profile__title}>{text.referalTitle}</span>
-            <p>{text.referalTotal}</p>
+            <p className={s.profile__total}>3</p>
           </div>
-          <div>
-            <span className={s.profile__title}>{text.earningssTitle}</span>
-            <p>{text.earningsTotal}</p>
+          <div className={s.profile__container}>
+            <span className={s.profile__title}>{text.earningsTitle}</span>
+            <p className={s.profile__total}>$4.23</p>
           </div>
         </div>
       </div>
