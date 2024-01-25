@@ -7,20 +7,11 @@ import { STATIC_TEXT } from '../../../../core/constants/staticText';
 import { PageName } from '../../../../core/constants/PageNames';
 import ModalWithClose from '../../../ui/modals/Modal/ModalWithClose';
 import ModalWithBorderShadow from '../../../ui/modals/Modal/ModalWithBorder';
-import {
-  showEmailConnectWindow,
-  showUsernameEditingWindow,
-} from '../../../../core/store/slices/modalWindowStateSlice';
+import { showUsernameEditWindow } from '../../../../core/store/slices/modalWindowStateSlice';
 import { Input } from '../../../ui/Input';
-import {
-  mailValidation,
-  passwordValidation,
-} from '../../../Auth/validations/registerValidation';
 import { LoaderForButtons } from '../../../ui/loaders/LoaderForButtons';
-import { SocialButton } from '../../../ui/buttons/SocialButton/SocialButton';
-import google from '../../../../assets/images/google.svg';
 
-export function UsernameEditingPopup({ staticTextProfileSettings }) {
+export function UsernameEditPopup({ staticTextProfileSettings }) {
   const dispatch = useDispatch();
 
   const loading = false; //TODO переделать
@@ -29,7 +20,7 @@ export function UsernameEditingPopup({ staticTextProfileSettings }) {
     maxWidth: 546,
     minHeight: 292,
     padding: '46px 60px',
-    top: 0,
+    top: 4,
   };
 
   const {
@@ -39,9 +30,6 @@ export function UsernameEditingPopup({ staticTextProfileSettings }) {
     formState: { errors },
   } = useForm({
     mode: 'onBlur',
-    defaultValues: {
-      isRemember: false,
-    },
   });
 
   const onSubmit = (data, e) => {
@@ -51,7 +39,7 @@ export function UsernameEditingPopup({ staticTextProfileSettings }) {
   return (
     <ModalWithClose
       Component={ModalWithBorderShadow}
-      onClose={() => dispatch(showUsernameEditingWindow(false))}
+      onClose={() => dispatch(showUsernameEditWindow(false))}
       styles={styles}>
       <div className={cn(s.username)}>
         <div className={cn(s.username__title)}>
@@ -61,18 +49,17 @@ export function UsernameEditingPopup({ staticTextProfileSettings }) {
         <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
           <Input
             className={s.form__input}
-            classError={errors.email} //TODO переделать для юзернейма
+            classError={errors.username} //TODO переделать для юзернейма
             placeholder={
               staticTextProfileSettings?.fieldName ||
               STATIC_TEXT[PageName.ProfileSettings].fieldName
             }
-            name={'email'}
+            name={'username'}
             setValue={setValue}
             register={register}
-            // type={'email'}
-            validation={mailValidation}
+            // validation={nicknameValidation}
           />
-          {errors.email && <p className={s.form__error}>{errors.email.message}</p>}
+          {errors.username && <p className={s.form__error}>{errors.username.message}</p>}
           <ButtonWithBorder
             className={cn(s.form__btn)}
             type={'submit'}

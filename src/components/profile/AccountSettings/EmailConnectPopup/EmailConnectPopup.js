@@ -1,13 +1,12 @@
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import cn from 'classnames';
-import s from './style.module.scss';
-import { ButtonWithBorder } from '../../../ui/buttons/Button';
 import { STATIC_TEXT } from '../../../../core/constants/staticText';
 import { PageName } from '../../../../core/constants/PageNames';
+import { showEmailConnectWindow } from '../../../../core/store/slices/modalWindowStateSlice';
+import { ButtonWithBorder } from '../../../ui/buttons/Button';
 import ModalWithClose from '../../../ui/modals/Modal/ModalWithClose';
 import ModalWithBorderShadow from '../../../ui/modals/Modal/ModalWithBorder';
-import { showEmailConnectWindow } from '../../../../core/store/slices/modalWindowStateSlice';
 import { Input } from '../../../ui/Input';
 import {
   mailValidation,
@@ -16,17 +15,18 @@ import {
 import { LoaderForButtons } from '../../../ui/loaders/LoaderForButtons';
 import { SocialButton } from '../../../ui/buttons/SocialButton/SocialButton';
 import google from '../../../../assets/images/google.svg';
+import s from './style.module.scss';
 
 export function EmailConnectPopup({ staticTextProfileSettings }) {
   const dispatch = useDispatch();
 
-  const loading = false; //TODO переделать
+  const loading = false; //TODO переделать, получать из стора, когда будут запросы на апи
 
   const styles = {
     maxWidth: 748,
     minHeight: 496,
     padding: '36px 60px',
-    top: 0,
+    top: 4,
   };
 
   const {
@@ -36,9 +36,6 @@ export function EmailConnectPopup({ staticTextProfileSettings }) {
     formState: { errors },
   } = useForm({
     mode: 'onBlur',
-    defaultValues: {
-      isRemember: false,
-    },
   });
 
   const onSubmit = (data, e) => {

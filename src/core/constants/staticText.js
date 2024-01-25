@@ -43,4 +43,13 @@ export const STATIC_TEXT = {
     guideRewardTitle: 'Reward',
     guideRewardCount: 'left',
   },
+  [PageName.ProfileWallet]: {
+    formTitle: 'Your wallet address',
+    statusWallet: 'Connected',
+    balanceTitle: 'Balance ETH',
+    balanceValue: '0',
+    networkTitle: 'Connected network',
+    networkName: 'Ethereum',
+    statusForm: 'Disconnect',
+  },
 };
