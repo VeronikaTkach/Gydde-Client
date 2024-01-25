@@ -98,17 +98,5 @@ export const TEXT_KEYS = {
     `${PageName.ProfileWallet}.networkName`,
     `${PageName.ProfileWallet}.statusForm`,
   ],
-  GUIDES_GALLERY: [
-    `${PageName.GuidesGallery}.subtitle`,
-    `${PageName.GuidesGallery}.buttonText`,
-    `${PageName.GuidesGallery}.guideStatus_inProgress`,
-    `${PageName.GuidesGallery}.guideStatus_completed`,
-    `${PageName.GuidesGallery}.guideStatus_new`,
-    `${PageName.GuidesGallery}.guideLevel_beginner`,
-    `${PageName.GuidesGallery}.guideLevel_medium`,
-    `${PageName.GuidesGallery}.guideLevel_advanced`,
-    `${PageName.GuidesGallery}.guideTime`,
-    `${PageName.GuidesGallery}.guideRewardTitle`,
-    `${PageName.GuidesGallery}.guideRewardCount`,
-  ],
+  GUIDES_GALLERY: [`${PageName.GuidesGallery}.voice`],
 };

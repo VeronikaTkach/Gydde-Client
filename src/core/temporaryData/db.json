@@ -84,6 +84,19 @@
 		"ProfileWallet.balanceValue": "0",
 		"ProfileWallet.networkTitle": "Connected network",
 		"ProfileWallet.networkName": "Ethereum",
-		"ProfileWallet.statusForm": "Disconnect"
+		"ProfileWallet.statusForm": "Disconnect",
+
+		"GuidesGallery.subtitle": "Do you know what an exchange is? Don't worry, this is not a test and it g won't affect any result Don't dfhhhdfj Don't worry",
+		"GuidesGallery.buttonText": "Let's go!",
+		"GuidesGallery.guideStatus_inProсess": "in progress",
+		"GuidesGallery.guideStatus_completed": "completed",
+		"GuidesGallery.guideStatus_new": "new",
+		"GuidesGallery.guideLevel_beginner": "beginner",
+		"GuidesGallery.guideLevel_medium": "medium",
+		"GuidesGallery.guideLevel_advanced": "advanced",
+		"GuidesGallery.guideTime": "min",
+		"GuidesGallery.guideRewardTitle": "Reward",
+		"GuidesGallery.guideRewardCount": "left"
+
 	}
 }

@@ -3,9 +3,9 @@ import { Status } from '../../constants/Status';
 import { guideRequest } from './thunk';
 
 const initialState = {
-  guidesGalery: [],
-  statusGuidesGalery: Status.Loading,
-  errorGuidesGalery: null,
+  guidesGallery: [],
+  statusGuidesGallery: Status.Loading,
+  errorGuidesGallery: null,
 };
 
 export const guideSlice = createSlice({
@@ -15,16 +15,16 @@ export const guideSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(guideRequest.guidesGalery.pending, (state) => {
-        state.guidesGalery = Status.Loading;
-        state.errorGuidesGalery = null;
+        state.statusGuidesGallery = Status.Loading;
+        state.errorGuidesGallery = null;
       })
       .addCase(guideRequest.guidesGalery.fulfilled, (state, action) => {
-        state.guidesGalery = Status.Resolved;
-        state.guidesGalery = action.payload;
+        state.statusGuidesGallery = Status.Resolved;
+        state.guidesGallery = action.payload;
       })
       .addCase(guideRequest.guidesGalery.rejected, (state, action) => {
-        state.guidesGalery = Status.Rejected;
-        state.errorGuidesGalery = action.payload.message;
+        state.statusGuidesGallery = Status.Rejected;
+        state.errorGuidesGallery = action.payload.message;
       });
   },
 });

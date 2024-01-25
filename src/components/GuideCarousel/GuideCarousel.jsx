@@ -22,6 +22,7 @@ import {
   CarouselThirdItem,
 } from './CarouselItems';
 import s from './style.module.scss';
+import { Button } from '../ui/buttons/Button';
 
 const guidesArray = [
   {
@@ -78,24 +79,25 @@ const guidesArray = [
 //TODO написать функцию по перемещению цветов по массиву
 const blockClickTime = 300;
 
-export function GuideCarousel({ className }) {
-  const dispath = useDispatch();
+export function GuideCarousel({ className, staticText, guidesGallery }) {
+  const dispatch = useDispatch();
   const { carouselGuidePosition } = useSelector(guidesCarousel);
 
   const moveOffId = useRef(null);
   const [isMove, setIsMove] = useState(false);
   const [colorsImages, setColorsImages] = useState([]);
-  const [guides, setGuides] = useState(guidesArray);
-
+  const [guides, setGuides] = useState(guidesGallery);
+console.log(guides)
   const { data: colorPreviousImg } = useColor(
-    guides[guides.length - Carousel.LastGuide].imgSrc,
+    guides[guides.length - Carousel.LastGuide].image,
     'hex'
   );
-  const { data: colorFirstImg } = useColor(guides[Carousel.FirstGuide].imgSrc, 'hex');
-  const { data: colorSecondImg } = useColor(guides[Carousel.SecondGuide].imgSrc, 'hex');
-  const { data: colorThirdImg } = useColor(guides[Carousel.ThirdGuide].imgSrc, 'hex');
-  const { data: colorNextImg } = useColor(guides[Carousel.NextGuide].imgSrc, 'hex');
+  const { data: colorFirstImg, loading,error } = useColor(guides[Carousel.FirstGuide].image,'jpg','hex');
+  const { data: colorSecondImg } = useColor(guides[Carousel.SecondGuide].image, 'hex');
+  const { data: colorThirdImg } = useColor(guides[Carousel.ThirdGuide].image, 'hex');
+  const { data: colorNextImg } = useColor(guides[Carousel.NextGuide]?.image, 'hex');
 
+    console.log(loading,error)
   useEffect(() => {
     setColorsImages([
       colorFirstImg,
@@ -104,7 +106,7 @@ export function GuideCarousel({ className }) {
       colorNextImg,
       colorPreviousImg,
     ]);
-  }, [colorPreviousImg, colorFirstImg, colorSecondImg, colorThirdImg, colorNextImg]);
+  }, [colorPreviousImg, colorFirstImg, colorSecondImg, colorThirdImg, colorNextImg,loading]);
 
   useEffect(() => {
     if (carouselGuidePosition !== Position.Current) {
@@ -116,7 +118,7 @@ export function GuideCarousel({ className }) {
     if (isMove && carouselGuidePosition === Position.Next) {
       moveOffId.current = setTimeout(() => {
         setIsMove(false);
-        dispath(switchGuides(Position.Current));
+        dispatch(switchGuides(Position.Current));
         setGuides((prev) => {
           return [
             prev[prev.length - Carousel.LastGuide],
@@ -130,7 +132,7 @@ export function GuideCarousel({ className }) {
     } else if (isMove && carouselGuidePosition === Position.Previous) {
       moveOffId.current = setTimeout(() => {
         setIsMove(false);
-        dispath(switchGuides(Position.Current));
+        dispatch(switchGuides(Position.Current));
         setGuides((prev) => {
           return [...prev.slice(Carousel.SecondGuide), prev[Carousel.FirstGuide]];
         });
@@ -146,38 +148,51 @@ export function GuideCarousel({ className }) {
   }, [isMove]);
 
   return (
-    <div className={cn(s.carousel, className)}>
-      <CarouselPreviousItem
-        isMove={isMove}
-        guides={guides}
-        guideMove={carouselGuidePosition}
-        colorImg={colorsImages[colorsImages.length - Carousel.LastGuide]}
+    <>
+      <Button
+        className={cn(s.button, s.button_prev)}
+        onClick={() => dispatch(switchGuides(Position.Next))}
       />
-      <CarouselFirstItem
-        isMove={isMove}
-        guides={guides}
-        guideMove={carouselGuidePosition}
-        colorImg={colorsImages[Carousel.FirstGuide]}
+      <div className={cn(s.carousel, className)}>
+        <CarouselPreviousItem
+          isMove={isMove}
+          guides={guides}
+          guideMove={carouselGuidePosition}
+          colorImg={colorsImages[colorsImages.length - Carousel.LastGuide]}
+        />
+        <CarouselFirstItem
+          isMove={isMove}
+          guides={guides}
+          guideMove={carouselGuidePosition}
+          colorImg={colorsImages[Carousel.FirstGuide]}
+          staticText={staticText}
+        />
+        <CarouselSecondItem
+          isMove={isMove}
+          guides={guides}
+          guideMove={carouselGuidePosition}
+          colorImg={colorsImages[Carousel.SecondGuide]}
+          staticText={staticText}
+        />
+        <CarouselThirdItem
+          isMove={isMove}
+          guides={guides}
+          guideMove={carouselGuidePosition}
+          colorImg={colorsImages[Carousel.ThirdGuide]}
+          staticText={staticText}
+        />
+        <CarouselNextItem
+          isMove={isMove}
+          guides={guides}
+          guideMove={carouselGuidePosition}
+          colorNextImg={colorsImages[Carousel.NextGuide]}
+          colorFirstImg={colorsImages[Carousel.FirstGuide]}
+        />
+      </div>
+      <Button
+        className={cn(s.button, s.button_next)}
+        onClick={() => dispatch(switchGuides(Position.Previous))}
       />
-      <CarouselSecondItem
-        isMove={isMove}
-        guides={guides}
-        guideMove={carouselGuidePosition}
-        colorImg={colorsImages[Carousel.SecondGuide]}
-      />
-      <CarouselThirdItem
-        isMove={isMove}
-        guides={guides}
-        guideMove={carouselGuidePosition}
-        colorImg={colorsImages[Carousel.ThirdGuide]}
-      />
-      <CarouselNextItem
-        isMove={isMove}
-        guides={guides}
-        guideMove={carouselGuidePosition}
-        colorNextImg={colorsImages[Carousel.NextGuide]}
-        colorFirstImg={colorsImages[Carousel.FirstGuide]}
-      />
-    </div>
+    </>
   );
 }

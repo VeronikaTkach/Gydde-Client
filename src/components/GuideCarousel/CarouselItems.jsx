@@ -3,15 +3,20 @@ import { Position } from '../../core/constants/Position';
 import { Carousel } from '../../core/constants/Guide';
 import { Property } from '../../core/constants/Property';
 import s from './style.module.scss';
+import { GUIDE_STATUS } from '../../core/constants/backendEnums';
 
 //TODO переработать и сократить повторяющийся код в свободное время
-export function ItemInfo({ guides, idInfoClose }) {
+export function ItemInfo({ guide, idInfoClose, staticText }) {
+  console.log(guide);
+
   return (
     <div
       className={cn(s.card__info, s.info, {
         [s.info_close]: idInfoClose,
       })}>
-      <div className={cn(s.info__status)}>in process</div>
+      <div className={cn(s.info__status)}>
+        {staticText.guideStatus[GUIDE_STATUS[guide]]}
+      </div>
       <div className={cn(s.info__title)}>
         Web3 Jungle Challenge: Navigate for Riches or Bust!
       </div>
@@ -72,7 +77,7 @@ export function CarouselPreviousItem({ isMove, guides, guideMove, colorImg }) {
   );
 }
 
-export function CarouselFirstItem({ isMove, guides, guideMove, colorImg }) {
+export function CarouselFirstItem({ isMove, guides, guideMove, colorImg, staticText }) {
   return (
     <>
       {!isMove ? (
@@ -117,7 +122,8 @@ export function CarouselFirstItem({ isMove, guides, guideMove, colorImg }) {
             />
           </div>
           <ItemInfo
-            guides={guides}
+            guide={guides[Carousel.FirstGuide]}
+            staticText={staticText}
             idInfoClose={
               guideMove === Position.Current || guideMove === Position.Previous
             }
@@ -128,14 +134,14 @@ export function CarouselFirstItem({ isMove, guides, guideMove, colorImg }) {
   );
 }
 
-export function CarouselSecondItem({ isMove, guides, guideMove, colorImg }) {
+export function CarouselSecondItem({ isMove, guides, guideMove, colorImg, staticText }) {
   return (
     <>
       {!isMove ? (
         <div
           className={cn(s.card, s.carousel__currentCard_center)}
           style={{
-            boxShadow: `0 0 40px ${colorImg}` ,
+            boxShadow: `0 0 40px ${colorImg}`,
           }}>
           <div className={s.card__imageContainer}>
             <div className={cn(s.card__imgBg)}></div>
@@ -145,7 +151,11 @@ export function CarouselSecondItem({ isMove, guides, guideMove, colorImg }) {
               alt={'guide image'}
             />
           </div>
-          <ItemInfo guides={guides} idInfoClose={false} />
+          <ItemInfo
+            guide={guides[Carousel.SecondGuide]}
+            staticText={staticText}
+            idInfoClose={false}
+          />
         </div>
       ) : (
         <div
@@ -176,7 +186,8 @@ export function CarouselSecondItem({ isMove, guides, guideMove, colorImg }) {
             />
           </div>
           <ItemInfo
-            guides={guides}
+            guide={guides[Carousel.SecondGuide]}
+            staticText={staticText}
             idInfoClose={guideMove === Position.Next || guideMove === Position.Previous}
           />
         </div>
@@ -185,7 +196,7 @@ export function CarouselSecondItem({ isMove, guides, guideMove, colorImg }) {
   );
 }
 
-export function CarouselThirdItem({ isMove, guides, guideMove, colorImg }) {
+export function CarouselThirdItem({ isMove, guides, guideMove, colorImg, staticText }) {
   return (
     <>
       {!isMove ? (
@@ -230,7 +241,8 @@ export function CarouselThirdItem({ isMove, guides, guideMove, colorImg }) {
             />
           </div>
           <ItemInfo
-            guides={guides}
+            guide={guides[Carousel.ThirdGuide]}
+            staticText={staticText}
             idInfoClose={guideMove === Position.Next || guideMove === Position.Current}
           />
         </div>

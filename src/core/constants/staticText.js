@@ -23,4 +23,18 @@ export const STATIC_TEXT = {
     socialGoogle: 'Google',
     btnSave: 'Save',
   },
+  [PageName.GuidesGallery]: {
+    subtitle:
+      "Do you know what an exchange is? Don't worry, this is not a test and it g won't affect any result Don't dfhhhdfj Don't worry",
+    buttonText: "Let's go!",
+    guideStatus: {
+      inProgress: 'in progress',
+      completed: 'completed',
+      new: 'new',
+    },
+    guideLevel: { beginner: 'beginner', medium: 'medium', advanced: 'advanced' },
+    guideTime: 'min',
+    guideRewardTitle: 'Reward',
+    guideRewardCount: 'left',
+  },
 };
