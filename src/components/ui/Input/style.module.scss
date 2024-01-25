@@ -23,8 +23,8 @@
 		@include textStyleSecondary1;
 		cursor: text;
 		@include themed() {
-			// color: t($formLabel);
-			// -webkit-text-fill-color: t($formLabel);
+			color: t($formLabel);
+			-webkit-text-fill-color: t($formLabel);
 			text-fill-color: t($formLabel);
 		}
 		// &:disabled{
@@ -35,12 +35,16 @@
 			@include textStyleSecondary1;
 		}
 		&_mail {
+			
 			padding: 14px $space10;
 			color: $colorGray100;
 		}
 		&_search {
 			padding: 0px 12px;
-			color: $colorGray500;
+			@include themed() {
+				color: t($messageLabelGuides);
+				-webkit-text-fill-color: t($messageLabelGuides);
+			}
 		}
 		&_error {
 			@include themed() {
