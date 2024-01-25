@@ -1,3 +1,4 @@
+import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames';
 import s from './style.module.scss';
 import { Button } from '../../ui/buttons/Button';
@@ -5,8 +6,18 @@ import mascot from '../../../assets/images/mascot/mascotGood.png';
 import eng from '../../../assets/images/flag/flagEng.png';
 import { STATIC_TEXT } from '../../../core/constants/staticText';
 import { PageName } from '../../../core/constants/PageNames';
+import { EmailConnectPopup } from './EmailConnectPopup/EmailConnectPopup';
+import {
+  modalWindowState,
+  showEmailConnectWindow,
+  showUsernameEditingWindow,
+} from '../../../core/store/slices/modalWindowStateSlice';
+import { UsernameEditingPopup } from './UsernameEditingPopup/UsernameEditingPopup';
 
 export function AccountSettings({ className, staticTextProfileSettings }) {
+  const { modalEmailConnect, modalUsernameEditing } = useSelector(modalWindowState);
+  const dispatch = useDispatch();
+
   return (
     <>
       <div className={cn(s.settings, className)}>
@@ -20,7 +31,10 @@ export function AccountSettings({ className, staticTextProfileSettings }) {
                 {staticTextProfileSettings?.userNameTitle ||
                   STATIC_TEXT[PageName.ProfileSettings].userNameTitle}
               </div>
-              <div className={cn(s.header__btnEdit, 'iconEdit')}></div>
+              <div
+                className={cn(s.header__btnEdit, 'iconEdit')}
+                onClick={() => dispatch(showUsernameEditingWindow(true))}></div>
+              {modalUsernameEditing && <UsernameEditingPopup />}
             </div>
             <Button className={cn(s.header__langInfo, 'iconDropdownArrow')}>
               <div className={cn(s.header__language)}>Eng</div>
@@ -42,10 +56,12 @@ export function AccountSettings({ className, staticTextProfileSettings }) {
                   s.connections__button_mail,
                   s.connections__button,
                   'iconEmail'
-                )}>
+                )}
+                onClick={() => dispatch(showEmailConnectWindow(true))}>
                 {staticTextProfileSettings?.connectMail ||
                   STATIC_TEXT[PageName.ProfileSettings].connectMail}
               </Button>
+              {modalEmailConnect && <EmailConnectPopup />}
               <Button className={cn(s.connections__button_pass, s.connections__button)}>
                 {staticTextProfileSettings?.setPass ||
                   STATIC_TEXT[PageName.ProfileSettings].setPass}
