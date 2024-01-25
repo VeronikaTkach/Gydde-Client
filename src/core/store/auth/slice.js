@@ -17,11 +17,14 @@ export const authorizationSlice = createSlice({
     setCurrentAuthorizationType: (state, action) => {
       state.currentAuthorizationType = action.payload;
     },
+    clearError: (state) => {
+      state.errorType = null;
+    },
     setAuthorizationToken: (state, action) => {
       state.token = action.payload;
     },
-    clearError: (state) => {
-      state.errorType = null;
+    clearAuthorizationToken: (state) => {
+      state.token = null;
     },
   },
   extraReducers: (builder) => {
@@ -41,8 +44,12 @@ export const authorizationSlice = createSlice({
   },
 });
 
-export const { setCurrentAuthorizationType, setAuthorizationToken, clearError } =
-  authorizationSlice.actions;
+export const {
+  setCurrentAuthorizationType,
+  setAuthorizationToken,
+  clearAuthorizationToken,
+  clearError,
+} = authorizationSlice.actions;
 export const allAuthorization = (state) => state.authorization;
 
 export default authorizationSlice.reducer;

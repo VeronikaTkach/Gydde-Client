@@ -14,8 +14,6 @@ export const authorization = {
 
         return response.data.token;
       } catch (error) {
-        // const response = await mainRequest.post('/auth/email', authData);
-
         return rejectWithValue(error);
       }
     }

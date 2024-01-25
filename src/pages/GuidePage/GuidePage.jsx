@@ -38,19 +38,19 @@ export function GuidePage() {
     };
   }, []);
 
-  const {
-    data: colorSecondImg,
-    loading,
-    error,
-  } = useColor(guidesGallery[0]?.image, 'hex', { crossOrigin: 'anonymus' });
+  // const {
+  //   data: colorSecondImg,
+  //   loading,
+  //   error,
+  // } = useColor(guidesGallery[0]?.image, 'hex', { crossOrigin: 'anonymus' });
 
-  const {
-    data: colorSecondImg2,
-    loading2,
-    error2,
-  } = useColor(guidesGallery[0]?.image, 'hex');
-  console.log('res1', colorSecondImg, error, loading);
-  console.log('res1', colorSecondImg2, error2, loading2);
+  // const {
+  //   data: colorSecondImg2,
+  //   loading2,
+  //   error2,
+  // } = useColor(guidesGallery[0]?.image, 'hex');
+  // console.log('res1', colorSecondImg, error, loading);
+  // console.log('res1', colorSecondImg2, error2, loading2);
   // const [load, setload] = useState(null);
   // console.log(loading);
   // useEffect(() => {

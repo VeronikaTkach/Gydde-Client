@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import modalWindowState from './slices/modalWindowStateSlice';
 import registration from './slices/registrationSlice';
 import authorization from './auth/slice';
-import metamaskAuthorization from './slices/metamaskAuthorizationSlice';
+import metamask from './metamask/slice';
 import soundSettings from './slices/soundSettingsSlice';
 import staticText from './staticText/slice';
 import guidesCarousel from './slices/guidesCarouselSlice';
@@ -13,7 +13,7 @@ export const store = configureStore({
     modalWindowState,
     registration,
     authorization,
-    metamaskAuthorization,
+    metamask,
     staticText,
     soundSettings,
     guidesCarousel,

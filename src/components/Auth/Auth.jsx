@@ -6,7 +6,7 @@ import {
   allAuthorization,
   setCurrentAuthorizationType,
 } from '../../core/store/auth/slice';
-import { setMetamaskConnectionStatus } from '../../core/store/slices/metamaskAuthorizationSlice';
+// import { setMetamaskConnectionStatus } from '../../core/store/slices/metamaskAuthorizationSlice';
 import { MetamaskConnectionStatus, Status } from '../../core/constants/Status';
 import { AuthorizationType } from '../../core/constants/AuthorizationType';
 import { getStaticText } from '../../core/store/staticText/thunk';
@@ -20,6 +20,7 @@ import { MetamaskView } from './Metamask';
 import { AllAuthorizaitions } from './AllAuthorizaitions';
 import { Email } from './Email';
 import s from './style.module.scss';
+import { setMetamaskConnectionStatus } from '../../core/store/metamask/slice';
 
 export function Auth() {
   const dispatch = useDispatch();

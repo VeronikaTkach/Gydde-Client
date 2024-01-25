@@ -14,11 +14,6 @@ import bangOrange from '../../../assets/images/stickers/bangOrange.png';
 import bangWhite from '../../../assets/images/stickers/bangWhite.png';
 import metamaskSmiley from '../../../assets/images/stickers/metamask.png';
 import { StickersSpinner } from '../../../components/ui/loaders/StickersSpinner';
-import {
-  metamaskAuthorization,
-  setFirstHighlightedItem,
-  setMetamaskConnectionStatus,
-} from '../../../core/store/slices/metamaskAuthorizationSlice';
 import { staticTextHelper } from '../../../core/helpers/staticTextHelper';
 import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
 import { getStaticText } from '../../../core/store/staticText/thunk';
@@ -26,6 +21,7 @@ import { TEXT_KEYS } from '../../../core/constants/textKeys';
 import { PageName } from '../../../core/constants/PageNames';
 import { Size } from '../../../core/constants/Size';
 import s from './style.module.scss';
+import { metamask, setFirstHighlightedItem, setMetamaskConnectionStatus } from '../../../core/store/metamask/slice';
 
 const buttonIcon = {
   [MetamaskConnectionStatus.NoWallet]: {
@@ -40,7 +36,7 @@ const firstItem = 0;
 
 export function MetamaskView() {
   const dispatch = useDispatch();
-  const { connectionStatus, firstHighlightedItem } = useSelector(metamaskAuthorization);
+  const { connectionStatus, firstHighlightedItem } = useSelector(metamask);
   const { staticTextMetamask, staticTextStatusMetamask } = useSelector(staticText);
 
   const [currentText, setCurrentText] = useState(null);
