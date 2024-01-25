@@ -18,7 +18,7 @@ import ModalWithClose from '../ui/modals/Modal/ModalWithClose';
 import ModalWithBorderShadow from '../ui/modals/Modal/ModalWithBorder';
 import { MetamaskView } from './Metamask';
 import { AllAuthorizaitions } from './AllAuthorizaitions';
-import { FormAuthorization } from './forms';
+import { Email } from './Email';
 import s from './style.module.scss';
 
 export function Auth() {
@@ -56,9 +56,7 @@ export function Auth() {
           {currentAuthorizationType === AuthorizationType.NotСhosen && (
             <AllAuthorizaitions />
           )}
-          {currentAuthorizationType === AuthorizationType.AuthMail && (
-            <FormAuthorization />
-          )}
+          {currentAuthorizationType === AuthorizationType.AuthMail && <Email />}
           {currentAuthorizationType === AuthorizationType.AuthMetaMask && (
             <MetamaskView />
           )}
