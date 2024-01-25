@@ -26,15 +26,15 @@ import { useColor } from 'color-thief-react';
 export function GuidePage() {
   const dispatch = useDispatch();
   const { guidesGallery, statusGuidesGallery } = useSelector(guide);
-  const { staticTextGuidesGallery, staticTextStatusGuidesGallery } =
-    useSelector(staticText);
+  // const { staticTextGuidesGallery, staticTextStatusGuidesGallery } =
+    // useSelector(staticText);
 
   useEffect(() => {
     dispatch(guideRequest.guidesGalery());
-    dispatch(getStaticText.basic(TEXT_KEYS.GUIDES_GALLERY));
+    // dispatch(getStaticText.basic(TEXT_KEYS.GUIDES_GALLERY));
 
     return () => {
-      dispatch(removeUnusedStaticText(PageName.GuidesGallery));
+      // dispatch(removeUnusedStaticText(PageName.GuidesGallery));
     };
   }, []);
 
@@ -68,38 +68,38 @@ export function GuidePage() {
   // console.log(guidesGalery);
   // console.log(localStorage.getItem('AuthorizationToken'));
   // console.log(statusGuidesGalery)
-  return (
-    <main className={cn(s.content)}>
-      {staticTextStatusGuidesGallery !== Status.Loading &&
-        staticTextStatusGuidesGallery !== undefined && (
-          <div className={cn(s.content__mainScreen, s.mainScreen)}>
-            <div className={cn(s.content__carousel)}>
-              {/* {statusGuidesGallery === Status.Resolved && (
-                <GuideCarousel
-                  guidesGallery={[...guidesGallery, ...guidesGallery, ...guidesGallery]}
-                  staticText={staticTextGuidesGallery}
-                />
-              )} */}
-            </div>
-            <img
-              className={s.content__mascotImg}
-              src={mascotShows}
-              alt={'mascot shows guides'}
-            />
-            <SubtitleWithBorderButton
-              className={s.content__subtitle}
-              sound={true}
-              text={
-                staticTextGuidesGallery.subtitle ||
-                STATIC_TEXT[PageName.GuidesGallery].subtitle
-              }
-              buttonText={staticTextGuidesGallery.buttonText}
-              buttonSticker={smileyEyesStar}
-              buttonOnClick={() => dispatch(switchGuides(Position.Next))}
-              size={Size.L}
-            />
-          </div>
-        )}
-    </main>
+  return (<></>
+    // <main className={cn(s.content)}>
+    //   {staticTextStatusGuidesGallery !== Status.Loading &&
+    //     staticTextStatusGuidesGallery !== undefined && (
+    //       <div className={cn(s.content__mainScreen, s.mainScreen)}>
+    //         <div className={cn(s.content__carousel)}>
+    //           {/* {statusGuidesGallery === Status.Resolved && (
+    //             <GuideCarousel
+    //               guidesGallery={[...guidesGallery, ...guidesGallery, ...guidesGallery]}
+    //               staticText={staticTextGuidesGallery}
+    //             />
+    //           )} */}
+    //         </div>
+    //         <img
+    //           className={s.content__mascotImg}
+    //           src={mascotShows}
+    //           alt={'mascot shows guides'}
+    //         />
+    //         <SubtitleWithBorderButton
+    //           className={s.content__subtitle}
+    //           sound={true}
+    //           text={
+    //             staticTextGuidesGallery.subtitle ||
+    //             STATIC_TEXT[PageName.GuidesGallery].subtitle
+    //           }
+    //           buttonText={staticTextGuidesGallery.buttonText}
+    //           buttonSticker={smileyEyesStar}
+    //           buttonOnClick={() => dispatch(switchGuides(Position.Next))}
+    //           size={Size.L}
+    //         />
+    //       </div>
+    //     )}
+    // </main>
   );
 }
