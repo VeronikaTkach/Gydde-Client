@@ -1,10 +1,14 @@
 import { ErrorType } from './Errors';
 import { PageName } from './PageNames';
 
-export const TEXT_KEYS = {
-  ERROR: {
-    [`AUTH_MAIL_${ErrorType.NotFound}`]: 'ErrorMail.UserNotFound',
-  },
+export const VOICE_KEYS = {
+  GUIDES_GALLERY: [`${PageName.GuidesGallery}.mascotVioce`],
+  HELLO: [`${PageName.Hello}.mascotVioce`],
+  PROFILE_GUIDES: [`${PageName.ProfileGuides}.mascotVioce`],
+  PROFILE_REFERALS: [
+    `${PageName.ProfileReferals}_Refferal.mascotVioce`,
+    `${PageName.ProfileReferals}_NoRefferal.mascotVioce`,
+  ],
   METAMASK_CONNECT: [
     `${PageName.Metamask}_NoWallet.statusText`,
     `${PageName.Metamask}_NoWallet.descriptionTextHighlightedPart1`,
@@ -24,48 +28,6 @@ export const TEXT_KEYS = {
     `${PageName.Metamask}_Sign.descriptionTextHighlightedPart3`,
     `${PageName.Metamask}_Connected.statusText`,
     `${PageName.Metamask}_Connected.descriptionText`,
-  ],
-  AUTH: [
-    `${PageName.Auth}.title`,
-    `${PageName.Auth}.socialsTitle`,
-    `${PageName.Auth}.walletTitle`,
-    `${PageName.Auth}.twitter`,
-    `${PageName.Auth}.google`,
-    `${PageName.Auth}.email`,
-    `${PageName.Auth}.metamask`,
-  ],
-  HELLO: [
-    `${PageName.Hello}.mascotTextHighlightedPart1`,
-    `${PageName.Hello}.mascotTextHighlightedPart2`,
-    `${PageName.Hello}.answerButtonText`,
-  ],
-  MAIL_AUTHORIZATION: [
-    `${PageName.MailAuthorization}.mailLabel`,
-    `${PageName.MailAuthorization}.mailErrorText_pattern`,
-    `${PageName.MailAuthorization}.mailPlaceholder`,
-    `${PageName.MailAuthorization}.passwordLabel`,
-    `${PageName.MailAuthorization}.passwordErrorText`,
-    `${PageName.MailAuthorization}.passwordPlaceholder`,
-    `${PageName.MailAuthorization}.button`,
-  ],
-  HEADER: [`${PageName.Header}.buttonLogin`],
-  PROFILE_GUIDES: [
-    `${PageName.ProfileGuides}.btnText`,
-    `${PageName.ProfileGuides}.rewardsTitle`,
-    `${PageName.ProfileGuides}.referalTitle`,
-    `${PageName.ProfileGuides}.earningsTitle`,
-  ],
-  PROFILE_REFERALS: [
-    `${PageName.ProfileReferals}.btnText`,
-    `${PageName.ProfileReferals}.rewardsTitle`,
-    `${PageName.ProfileReferals}.referalTitle`,
-    `${PageName.ProfileReferals}.earningsTitle`,
-  ],
-  PROFILE: [
-    `${PageName.Profile}.refferalTab`,
-    `${PageName.Profile}.guidesTab`,
-    `${PageName.Profile}.walletTab`,
-    `${PageName.Profile}.settingsTab`,
   ],
   PROFILE_SETTINGS: [
     `${PageName.ProfileSettings}.userNameTitle`,
@@ -98,5 +60,4 @@ export const TEXT_KEYS = {
     `${PageName.ProfileWallet}.networkName`,
     `${PageName.ProfileWallet}.statusForm`,
   ],
-  GUIDES_GALLERY: [`${PageName.GuidesGallery}.voice`],
 };

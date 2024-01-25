@@ -27,6 +27,7 @@
 		@include textCenter;
 		@include fontStyle(16px, 500, 20px);
 		width: 100%;
+		transition: .3s;
 		@include themed() {
 			color: t($buttonLabelDefault);
 		}
@@ -36,6 +37,11 @@
 			font-size: 40px;
 			@include themed() {
 				color: t($surfaceBorderSubtitles);
+			}
+		}
+		&:hover {
+			@include themed() {
+				color: t($buttonBgHover3);
 			}
 		}
 		&_active {

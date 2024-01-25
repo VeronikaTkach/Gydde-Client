@@ -3,15 +3,9 @@
 .profile {
     width: 100%;
     display: flex;
-    border-bottom-left-radius: $space8;
-    border-bottom-right-radius: $space8;
     padding: 57px 120px 0px 43px;
     height: fit-content;
     gap: 64px;
-    @include themed() {
-        background: t($bg);
-        border: 1px solid t($surfaceBorderSubtitles)
-    }
     &__img {
       width: 360px;
       height: 397px;
@@ -26,6 +20,7 @@
     &__rewards {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       width: 100%;
       height: fit-content;
       padding: $space4 $space6;
@@ -72,24 +67,8 @@
       gap: $space11;
     }
     &__btn {
-      background: transparent;
-      height: 41px;
-      padding: 0px $space9;
-      color: var(--Colors-Secondary-Button-button-label-secondary, #A7F67B);
-      text-align: center;
       @include fontStyle(20px, 700, 24px);
-      font-style: normal;
-      align-self: center;
-      transition: .3s;
-      @include themed() {
-        @include borderStyle(3px solid t($buttonBackgroundSecondary), $space7);
-      }
-      &:hover {
-        border-radius: 20px;
-        @include themed() {
-          border: 3px solid t($buttonBgHover3);
-          color: t($buttonBgHover3);
-        }
-      }
+      height: 45px;
+      padding: 0 32px;
     }
 }

@@ -1,6 +1,12 @@
 import { PageName } from './PageNames';
 
 export const STATIC_TEXT = {
+  [PageName.Profile]: {
+    guidesTab: 'Guides reward',
+    refferalTab: 'Referral reward',
+    settingsTab: 'Account settings',
+    walletTab: 'Wallet',
+  },
   [PageName.ProfileSettings]: {
     userNameTitle: 'User name',
     socialTitle: 'Уour social account',

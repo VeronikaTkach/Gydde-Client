@@ -10,6 +10,7 @@ import { PageName } from '../../../core/constants/PageNames';
 import { Status } from '../../../core/constants/Status';
 import { getStaticText } from '../../../core/store/staticText/thunk';
 import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
+import { SubtitleWithAccentButton } from '../../../components/Subtitle';
 
 export function ProfileRefferalPage({ children }) {
   const dispatch = useDispatch();
@@ -27,15 +28,24 @@ export function ProfileRefferalPage({ children }) {
 
   return (
     <>
-      {staticTextStatusProfileReferals === Status.Resolved && (
-        <main className={cn(s.content)}>
-          <div className={cn(s.content__container)}>
-            <ProfileFolder>
-              <RefferalAndGuides text={staticTextProfileReferals} />
-            </ProfileFolder>
-          </div>
-        </main>
-      )}
+      <main className={cn(s.content)}>
+        <div className={cn(s.content__container)}>
+          <ProfileFolder>
+            {(staticTextStatusProfileReferals === Status.Resolved ||
+              staticTextStatusProfileReferals === Status.Rejected) && (
+              <RefferalAndGuides staticText={staticTextProfileReferals} />
+            )}
+          </ProfileFolder>
+        </div>
+        {(staticTextProfileReferals === Status.Resolved ||
+          staticTextProfileReferals === Status.Rejected) && (
+          <SubtitleWithAccentButton
+            className={s.content__subtitle}
+            text={staticTextProfileReferals.subtitle}
+            buttonText={staticTextProfileReferals.buttonText}
+          />
+        )}
+      </main>
     </>
   );
 }

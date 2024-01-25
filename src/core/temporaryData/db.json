@@ -51,11 +51,15 @@
 		"ProfileGuides.rewardsTitle": "Unclaimed rewards",
 		"ProfileGuides.referalTitle": "Referral quest completions",
 		"ProfileGuides.earningsTitle": "Lifetime earnings",
+		"ProfileGuides.subtitle": "Do you know what an exchange is? Don't worry, this is not a test and it g won't affect any result Don't dfhhhdfj Don't worry, this is not a test and it won't affect any result Don't dfhhhdfj Don't worry, this",
+		"ProfileGuides.buttonText": "New guides",
 
 		"ProfileReferals.btnText": "Claim",
 		"ProfileReferals.rewardsTitle": "Unclaimed rewards",
 		"ProfileReferals.referalTitle": "Referral quest completions",
 		"ProfileReferals.earningsTitle": "Total rewards earned",
+		"ProfileReferals_Refferal.subtitle": "If you invite more friends, you will get more rewards!",
+		"ProfileReferals_NoRefferal.subtitle": "Imagine you invite 10 friends who also invite 10 friends and they complete 10 quests each. You will earn 900$. That's AWESOME!",
 
 		"ProfileSettings.userNameTitle": "User name",
 		"ProfileSettings.socialTitle": "Уour social account",

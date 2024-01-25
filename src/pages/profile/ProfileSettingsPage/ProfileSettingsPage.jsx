@@ -23,8 +23,8 @@ export function ProfileSettingsPage({ children }) {
       <main className={cn(s.content)}>
         <div className={cn(s.content__container)}>
           {staticTextStatusProfileSettings !== Status.Loading && (
-            <ProfileFolder staticTextProfile={staticTextProfileSettings}>
-              <AccountSettings staticTextProfileSettings={staticTextProfileSettings} />
+            <ProfileFolder staticText={staticTextProfileSettings}>
+              <AccountSettings staticText={staticTextProfileSettings} />
             </ProfileFolder>
           )}
         </div>

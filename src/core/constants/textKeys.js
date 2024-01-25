@@ -54,6 +54,8 @@ export const TEXT_KEYS = {
     `${PageName.ProfileGuides}.rewardsTitle`,
     `${PageName.ProfileGuides}.referalTitle`,
     `${PageName.ProfileGuides}.earningsTitle`,
+    `${PageName.ProfileGuides}.subtitle`,
+    `${PageName.ProfileGuides}.buttonText`,
   ],
   PROFILE_REFERALS: [
     `${PageName.ProfileReferals}.btnText`,
