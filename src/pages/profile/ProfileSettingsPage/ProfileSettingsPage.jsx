@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import cn from 'classnames';
 import s from './style.module.scss';
 import { ProfileFolder } from '../../../components/profile/ProfileFolder';
-import { AccountSettings } from '../../../components/profile/AccountSettings';
+import { AccountSettings } from '../../../components/profile/AccountSettings/AccountSettings';
 import { getStaticText } from '../../../core/store/staticText/thunk';
 import { TEXT_KEYS } from '../../../core/constants/textKeys';
 import { staticText } from '../../../core/store/staticText/slice';

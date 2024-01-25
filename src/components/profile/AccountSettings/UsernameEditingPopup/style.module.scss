@@ -1,0 +1,34 @@
+@use '../../../../styles/styles.scss' as *;
+
+.username {
+	&__title {
+		// @include textStyleButton2;
+		@include fontStyle(24px, 700, 24px);
+	}
+	// &__info {
+	// 	@include themed() {
+	// 		color: t($textPrimaryMain);
+	// 	}
+	// }
+}
+
+.form {
+	&__input {
+		margin: 32px 0 24px;
+	}
+	&__btn {
+		max-width: 132px;
+		width: 100%;
+		height: $space14;
+		margin-left: auto;
+	}
+}
+
+.social {
+	margin-top: 12px;
+	&__title {
+		margin-bottom: 16px;
+		@include fontStyle(20px, 700, 24px);
+	}
+}
+

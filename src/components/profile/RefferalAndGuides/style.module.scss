@@ -80,15 +80,15 @@
       @include fontStyle(20px, 700, 24px);
       font-style: normal;
       align-self: center;
+      transition: .3s;
       @include themed() {
         @include borderStyle(3px solid t($buttonBackgroundSecondary), $space7);
       }
       &:hover {
         border-radius: 20px;
-        border-style: solid;
-        border-width: 3px;
         @include themed() {
-          border-image: t($gradientButtonHover1) 30;
+          border: 3px solid t($buttonBgHover3);
+          color: t($buttonBgHover3);
         }
       }
     }

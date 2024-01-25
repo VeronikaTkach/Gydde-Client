@@ -63,6 +63,7 @@
 		@include fontRussoOne;
 	}
 	&__btnEdit {
+		cursor: pointer;
 		font-size: 28px;
 		@include themed() {
 			color: t($buttonLabelDefault1);

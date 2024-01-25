@@ -1,0 +1,33 @@
+@use '../../../../styles/styles.scss' as *;
+
+.button {
+	cursor: pointer;
+	@include width-height(100%, 68px);
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: $space4 30px;
+	@include themed() {
+		border-radius: t($radiusSmall);
+		background: t($formBackground);
+	}
+	transition: background 0.3s ease;
+	&:hover {
+		@include themed() {
+			background: t($gradientButtonHover1);
+		}
+	}
+	&__icon {
+		@include width-height(40px, 40px);
+		@include flexCenter;
+	}
+	&__text {
+		display: flex;
+		align-items: center;
+		@include textStyleSecondary1;
+		@include width-height(100%, 100%);
+		@include themed() {
+			color: t($textPrimaryMain);
+		}
+	}
+}
