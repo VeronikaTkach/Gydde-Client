@@ -4,6 +4,8 @@ const initialState = {
   modalAuthorization: false,
   modalQuest: false,
   modalProfile: false,
+  modalEmailConnect: false,
+  modalUsernameEditing: false,
 };
 
 export const modalWindowStateSlice = createSlice({
@@ -19,11 +21,22 @@ export const modalWindowStateSlice = createSlice({
     showProfileWindow: (state, action) => {
       state.modalProfile = action.payload;
     },
+    showEmailConnectWindow: (state, action) => {
+      state.modalEmailConnect = action.payload;
+    },
+    showUsernameEditingWindow: (state, action) => {
+      state.modalUsernameEditing = action.payload;
+    },
   },
 });
 
-export const { showAuthorizationWindow, showQuestWindow, showProfileWindow } =
-  modalWindowStateSlice.actions;
+export const {
+  showAuthorizationWindow,
+  showQuestWindow,
+  showProfileWindow,
+  showEmailConnectWindow,
+  showUsernameEditingWindow,
+} = modalWindowStateSlice.actions;
 export const modalWindowState = (state) => state.modalWindowState;
 
 export default modalWindowStateSlice.reducer;
