@@ -33,6 +33,7 @@
 		&::placeholder{
 			@include textStyleSecondary1;
 			@include themed() {
+				color: t($formLabelPlaceholder);
 				text-fill-color: t($formLabelPlaceholder);
 				-webkit-text-fill-color: t($formLabelPlaceholder);
 			}
