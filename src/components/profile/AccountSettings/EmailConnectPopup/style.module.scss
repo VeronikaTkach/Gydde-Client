@@ -4,7 +4,7 @@
 
 	&__title {
 		// @include textStyleButton2;
-		@include fontStyle(24px, 700, 24px);
+		@include fontStyle(24px, 700, null);
 	}
 	// &__info {
 	// 	@include themed() {
@@ -20,11 +20,17 @@
 		gap: 36px;
 		margin: 40px 0 16px;
 	}
+	&__error {
+		color: $colorRed500;
+		@include fontStyle(13px, 400, normal);
+		margin-top: -13px;
+	}
 	&__btn {
 		max-width: 132px;
 		width: 100%;
 		height: $space14;
 		margin-left: auto;
+		@include fontStyle(20px, 700, 24px);
 	}
 }
 
