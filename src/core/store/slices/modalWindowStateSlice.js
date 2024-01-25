@@ -6,6 +6,8 @@ const initialState = {
   modalProfile: false,
   modalEmailConnect: false,
   modalUsernameEdit: false,
+  modalSetPassword: false,
+  modalChangePassword: false,
 };
 
 export const modalWindowStateSlice = createSlice({
@@ -27,6 +29,12 @@ export const modalWindowStateSlice = createSlice({
     showUsernameEditWindow: (state, action) => {
       state.modalUsernameEdit = action.payload;
     },
+    showSetPasswordWindow: (state, action) => {
+      state.modalSetPassword = action.payload;
+    },
+    showChangePasswordWindow: (state, action) => {
+      state.modalChangePassword = action.payload;
+    },
   },
 });
 
@@ -36,6 +44,8 @@ export const {
   showProfileWindow,
   showEmailConnectWindow,
   showUsernameEditWindow,
+  showSetPasswordWindow,
+  showChangePasswordWindow,
 } = modalWindowStateSlice.actions;
 export const modalWindowState = (state) => state.modalWindowState;
 

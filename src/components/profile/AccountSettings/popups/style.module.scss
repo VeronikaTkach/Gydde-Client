@@ -1,14 +1,24 @@
 @use '../../../../styles/styles.scss' as *;
 
-.username {
-	&__title {
-		@include textStyleButton2;
-	}
+
+.title {
+	@include textStyleButton2;
 }
 
 .form {
+	&__inputs {
+		display: flex;
+		flex-direction: column;
+		gap: 36px;
+		margin: 32px 0 16px;
+	}
 	&__input {
 		margin: 28px 0 24px;
+	}
+	&__error {
+		color: $colorRed500;
+		@include fontStyle(13px, 400, normal);
+		margin-top: -13px;
 	}
 	&__btn {
 		max-width: 132px;

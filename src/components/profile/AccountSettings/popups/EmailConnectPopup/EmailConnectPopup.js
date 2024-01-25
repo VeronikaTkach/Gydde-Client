@@ -1,21 +1,21 @@
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import cn from 'classnames';
-import { STATIC_TEXT } from '../../../../core/constants/staticText';
-import { PageName } from '../../../../core/constants/PageNames';
-import { showEmailConnectWindow } from '../../../../core/store/slices/modalWindowStateSlice';
-import { ButtonWithBorder } from '../../../ui/buttons/Button';
-import ModalWithClose from '../../../ui/modals/Modal/ModalWithClose';
-import ModalWithBorderShadow from '../../../ui/modals/Modal/ModalWithBorder';
-import { Input } from '../../../ui/Input';
+import { STATIC_TEXT } from '../../../../../core/constants/staticText';
+import { PageName } from '../../../../../core/constants/PageNames';
+import { showEmailConnectWindow } from '../../../../../core/store/slices/modalWindowStateSlice';
+import { ButtonWithBorder } from '../../../../ui/buttons/Button';
+import ModalWithClose from '../../../../ui/modals/Modal/ModalWithClose';
+import ModalWithBorderShadow from '../../../../ui/modals/Modal/ModalWithBorder';
+import { Input } from '../../../../ui/Input';
 import {
   mailValidation,
   passwordValidation,
-} from '../../../Auth/validations/registerValidation';
-import { LoaderForButtons } from '../../../ui/loaders/LoaderForButtons';
-import { SocialButton } from '../../../ui/buttons/SocialButton/SocialButton';
-import google from '../../../../assets/images/google.svg';
-import s from './style.module.scss';
+} from '../../../../Auth/validations/registerValidation';
+import { LoaderForButtons } from '../../../../ui/loaders/LoaderForButtons';
+import { SocialButton } from '../../../../ui/buttons/SocialButton/SocialButton';
+import google from '../../../../../assets/images/google.svg';
+import s from '../style.module.scss';
 
 export function EmailConnectPopup({ staticTextProfileSettings }) {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ export function EmailConnectPopup({ staticTextProfileSettings }) {
 
   const styles = {
     maxWidth: 748,
-    minHeight: 496,
+    minHeight: 398,
     padding: '36px 60px',
     top: 4,
   };
@@ -47,8 +47,8 @@ export function EmailConnectPopup({ staticTextProfileSettings }) {
       Component={ModalWithBorderShadow}
       onClose={() => dispatch(showEmailConnectWindow(false))}
       styles={styles}>
-      <div className={cn(s.emailConnect)}>
-        <div className={cn(s.emailConnect__title)}>
+      <div>
+        <div className={cn(s.title)}>
           {staticTextProfileSettings?.editMailTitle ||
             STATIC_TEXT[PageName.ProfileSettings].editMailTitle}
         </div>

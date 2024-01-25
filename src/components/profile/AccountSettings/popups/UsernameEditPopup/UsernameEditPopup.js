@@ -1,15 +1,15 @@
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import cn from 'classnames';
-import s from './style.module.scss';
-import { ButtonWithBorder } from '../../../ui/buttons/Button';
-import { STATIC_TEXT } from '../../../../core/constants/staticText';
-import { PageName } from '../../../../core/constants/PageNames';
-import ModalWithClose from '../../../ui/modals/Modal/ModalWithClose';
-import ModalWithBorderShadow from '../../../ui/modals/Modal/ModalWithBorder';
-import { showUsernameEditWindow } from '../../../../core/store/slices/modalWindowStateSlice';
-import { Input } from '../../../ui/Input';
-import { LoaderForButtons } from '../../../ui/loaders/LoaderForButtons';
+import s from '../style.module.scss';
+import { ButtonWithBorder } from '../../../../ui/buttons/Button';
+import { STATIC_TEXT } from '../../../../../core/constants/staticText';
+import { PageName } from '../../../../../core/constants/PageNames';
+import ModalWithClose from '../../../../ui/modals/Modal/ModalWithClose';
+import ModalWithBorderShadow from '../../../../ui/modals/Modal/ModalWithBorder';
+import { showUsernameEditWindow } from '../../../../../core/store/slices/modalWindowStateSlice';
+import { Input } from '../../../../ui/Input';
+import { LoaderForButtons } from '../../../../ui/loaders/LoaderForButtons';
 
 export function UsernameEditPopup({ staticTextProfileSettings }) {
   const dispatch = useDispatch();
@@ -41,8 +41,8 @@ export function UsernameEditPopup({ staticTextProfileSettings }) {
       Component={ModalWithBorderShadow}
       onClose={() => dispatch(showUsernameEditWindow(false))}
       styles={styles}>
-      <div className={cn(s.username)}>
-        <div className={cn(s.username__title)}>
+      <div>
+        <div className={cn(s.title)}>
           {staticTextProfileSettings?.editNameTitle ||
             STATIC_TEXT[PageName.ProfileSettings].editNameTitle}
         </div>
