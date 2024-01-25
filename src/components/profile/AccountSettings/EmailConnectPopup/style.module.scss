@@ -1,16 +1,9 @@
 @use '../../../../styles/styles.scss' as *;
 
 .emailConnect {
-
 	&__title {
-		// @include textStyleButton2;
-		@include fontStyle(24px, 700, null);
+		@include textStyleButton2;
 	}
-	// &__info {
-	// 	@include themed() {
-	// 		color: t($textPrimaryMain);
-	// 	}
-	// }
 }
 
 .form {
@@ -18,7 +11,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 36px;
-		margin: 40px 0 16px;
+		margin: 32px 0 16px;
 	}
 	&__error {
 		color: $colorRed500;

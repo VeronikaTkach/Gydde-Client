@@ -20,7 +20,7 @@ export function UsernameEditPopup({ staticTextProfileSettings }) {
     maxWidth: 546,
     minHeight: 292,
     padding: '46px 60px',
-    top: 0,
+    top: 4,
   };
 
   const {
