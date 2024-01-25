@@ -20,13 +20,11 @@
 		height: 100%;
 		background-color: $colorGray650;
 		width: 100%;
-		padding: 14px $space10;
-		color: $colorGray100;
 		@include textStyleSecondary1;
 		cursor: text;
 		@include themed() {
-			color: t($formLabel);
-			-webkit-text-fill-color: t($formLabel);
+			// color: t($formLabel);
+			// -webkit-text-fill-color: t($formLabel);
 			text-fill-color: t($formLabel);
 		}
 		// &:disabled{
@@ -35,6 +33,14 @@
 		&::placeholder{
 			color: $colorGray400;
 			@include textStyleSecondary1;
+		}
+		&_mail {
+			padding: 14px $space10;
+			color: $colorGray100;
+		}
+		&_search {
+			padding: 0px 12px;
+			color: $colorGray500;
 		}
 		&_error {
 			@include themed() {

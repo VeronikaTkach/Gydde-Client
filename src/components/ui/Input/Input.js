@@ -26,7 +26,9 @@ export function Input(props) {
     <div className={cn(s.field, { [s.field_error]: props.classError }, props.className)}>
       {!props.format && (
         <input
-          className={cn(s.field__input, { [s.field__input_error]: props.classError })}
+          className={cn(s.field__input, s.field__input_mail, {
+            [s.field__input_error]: props.classError,
+          })}
           type={typeInput || 'text'}
           accept={props.accept}
           placeholder={props.placeholder}

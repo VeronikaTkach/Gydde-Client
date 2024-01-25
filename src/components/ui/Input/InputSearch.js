@@ -12,7 +12,7 @@ export function InputSearch(props) {
     <div className={cn(s.field, s.inputQuest)}>
       {!props.format && (
         <input
-          className={s.field__input}
+          className={cn(s.field__input, s.field__input_search)}
           type={'text'}
           accept={props.accept}
           placeholder={props.placeholder}
