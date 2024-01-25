@@ -42,24 +42,26 @@
 
 		"Header.buttonLogin": "Log in",
 
-		"Profile.refferalTab": "Referral reward",
+		"Profile.ReferralTab": "Referral reward",
 		"Profile.guidesTab": "Guides reward",
 		"Profile.walletTab": "Wallet",
 		"Profile.settingsTab": "Account settings",
 
 		"ProfileGuides.btnText": "Claim",
 		"ProfileGuides.rewardsTitle": "Unclaimed rewards",
-		"ProfileGuides.referalTitle": "Referral quest completions",
+		"ProfileGuides.ReferralTitle": "Referral quest completions",
 		"ProfileGuides.earningsTitle": "Lifetime earnings",
 		"ProfileGuides.subtitle": "Well, if you didn't know, we still have a lot of guides that you haven't completed yet. Go ahead for knowledge!",
 		"ProfileGuides.buttonText": "New guides",
 
-		"ProfileReferals.btnText": "Claim",
-		"ProfileReferals.rewardsTitle": "Unclaimed rewards",
-		"ProfileReferals.referalTitle": "Referral quest completions",
-		"ProfileReferals.earningsTitle": "Total rewards earned",
-		"ProfileReferals_Refferal.subtitle": "If you invite more friends, you will get more rewards!",
-		"ProfileReferals_NoRefferal.subtitle": "Imagine you invite 10 friends who also invite 10 friends and they complete 10 quests each. You will earn 900$. That's AWESOME!",
+		"ProfileReferrals.btnText": "Claim",
+		"ProfileReferrals.rewardsTitle": "Unclaimed rewards",
+		"ProfileReferrals.ReferralTitle": "Referral quest completions",
+		"ProfileReferrals.earningsTitle": "Total rewards earned",
+		"ProfileReferrals_Referral.subtitle": "If you invite more friends, you will get more rewards!",
+		"ProfileReferrals_NoReferral.subtitle": "Imagine you invite 10 friends who also invite 10 friends and they complete 10 quests each. You will earn 900$. That's AWESOME!",
+		"ProfileReferrals.leftButtonText": "How it works?",
+		"ProfileReferrals.rightButtonText": "Invite",
 
 		"ProfileSettings.userNameTitle": "User name",
 		"ProfileSettings.socialTitle": "Уour social account",
@@ -89,7 +91,7 @@
 		"ProfileWallet.networkTitle": "Connected network",
 		"ProfileWallet.networkName": "Ethereum",
 		"ProfileWallet.statusForm": "Disconnect",
-
+		
 		"GuidesGallery.subtitle": "Do you know what an exchange is? Don't worry, this is not a test and it g won't affect any result Don't dfhhhdfj Don't worry",
 		"GuidesGallery.buttonText": "Let's go!",
 		"GuidesGallery.guideStatus_inProсess": "in progress",
@@ -101,6 +103,5 @@
 		"GuidesGallery.guideTime": "min",
 		"GuidesGallery.guideRewardTitle": "Reward",
 		"GuidesGallery.guideRewardCount": "left"
-
 	}
 }

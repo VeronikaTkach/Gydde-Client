@@ -54,7 +54,7 @@ export function Header({ className }) {
 
             {/*TODO ВРЕМЕННО */}
             <button onClick={() => dispatch(showQuestWindow(true))}>quest window</button>
-            <Link to={'profile/refferal'}>profile</Link>
+            <Link to={'profile/Referral'}>profile</Link>
 
             <div className={cn(s.header__auth, s.auth)}>
               {localStorage.authorization ? (

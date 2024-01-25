@@ -5,7 +5,7 @@ export const PageName = {
   MailAuthorization: 'MailAuthorization',
   Header: 'Header',
   Profile: 'Profile',
-  ProfileReferals: 'ProfileReferals',
+  ProfileReferrals: 'ProfileReferrals',
   ProfileGuides: 'ProfileGuides',
   ProfileSettings: 'ProfileSettings',
   ProfileWallet: 'ProfileWallet',

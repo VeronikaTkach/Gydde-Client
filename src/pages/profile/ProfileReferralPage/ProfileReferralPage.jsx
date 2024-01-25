@@ -8,20 +8,20 @@ import { PageName } from '../../../core/constants/PageNames';
 import { Status } from '../../../core/constants/Status';
 import { getStaticText } from '../../../core/store/staticText/thunk';
 import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
-import { STATIC_TEXT } from '../../../core/constants/staticText';
-import { SubtitleWithAccentButton } from '../../../components/Subtitle';
+import { SubtitleWithDifferentButton } from '../../../components/Subtitle';
 import { ReferralAndGuides } from '../../../components/profile/RefferalAndGuides/RefferalAndGuides';
 
-export function ProfileGuidesPage() {
+const hasReferral = 'Referral';
+export function ProfileReferralPage() {
   const dispatch = useDispatch();
-  const { staticTextProfileGuides, staticTextStatusProfileGuides } =
+  const { staticTextProfileReferrals, staticTextStatusProfileReferrals } =
     useSelector(staticText);
 
   useEffect(() => {
-    dispatch(getStaticText.basic(TEXT_KEYS.PROFILE_GUIDES));
+    dispatch(getStaticText.basic(TEXT_KEYS.PROFILE_ReferralS));
 
     return () => {
-      dispatch(removeUnusedStaticText(PageName.ProfileGuides));
+      dispatch(removeUnusedStaticText(PageName.ProfileReferrals));
     };
   }, []);
 
@@ -30,22 +30,19 @@ export function ProfileGuidesPage() {
       <main className={cn(s.content)}>
         <div className={cn(s.content__container)}>
           <ProfileFolder>
-            {(staticTextStatusProfileGuides === Status.Resolved ||
-              staticTextStatusProfileGuides === Status.Rejected) && (
-              <ReferralAndGuides
-                staticText={
-                  staticTextProfileGuides || STATIC_TEXT[PageName.ProfileGuides]
-                }
-              />
+            {(staticTextStatusProfileReferrals === Status.Resolved ||
+              staticTextStatusProfileReferrals === Status.Rejected) && (
+              <ReferralAndGuides staticText={staticTextProfileReferrals} />
             )}
           </ProfileFolder>
         </div>
-        {(staticTextStatusProfileGuides === Status.Resolved ||
-          staticTextStatusProfileGuides === Status.Rejected) && (
-          <SubtitleWithAccentButton
+        {(staticTextStatusProfileReferrals === Status.Resolved ||
+          staticTextStatusProfileReferrals === Status.Rejected) && (
+          <SubtitleWithDifferentButton
             className={s.content__subtitle}
-            text={staticTextProfileGuides.subtitle}
-            buttonText={staticTextProfileGuides.buttonText}
+            text={staticTextProfileReferrals[hasReferral].subtitle}
+            leftButtonText={staticTextProfileReferrals.leftButtonText}
+            rightButtonText={staticTextProfileReferrals.rightButtonText}
             sound={true}
           />
         )}

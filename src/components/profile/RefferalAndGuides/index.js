@@ -1,1 +1,1 @@
-export * from './RefferalAd';
+export * from './ReferralAd';

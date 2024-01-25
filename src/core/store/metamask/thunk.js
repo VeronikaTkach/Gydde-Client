@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import mainRequest from '../../utils/mainRequestUtils';
 import { setAuthorizationToken } from '../auth/slice';
+import { showAuthorizationWindow } from '../slices/modalWindowStateSlice';
 
 export const metamaskRequest = {
   getAccount: createAsyncThunk(
@@ -20,8 +21,8 @@ export const metamaskRequest = {
     'metamask/signMessage',
     async function (web3, { rejectWithValue, getState }) {
       const state = getState();
-      const message = state.metamaskAuthorization.message;
-      const account = state.metamaskAuthorization.account;
+      const message = state.metamask.message;
+      const account = state.metamask.account;
 
       try {
         const result = await mainRequest.get(`/auth/metamask/message/${message}`);
@@ -41,6 +42,7 @@ export const metamaskRequest = {
 
         localStorage.setItem('AuthorizationToken', response.data.token);
         dispatch(setAuthorizationToken(response.data.token));
+        dispatch(showAuthorizationWindow(false));
 
         return response.data;
       } catch (error) {

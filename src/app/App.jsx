@@ -6,10 +6,10 @@ import { HelloPage } from '../pages/HelloPage/HelloPage';
 import { RoutesName } from '../core/constants/Routes';
 import { Socials } from '../core/constants/Socials';
 import './style.scss';
-import { ProfileRefferalPage } from '../pages/profile/ProfileRefferalPage';
 import { ProfileGuidesPage } from '../pages/profile/ProfileGuidesPage';
 import { ProfileWalletPage } from '../pages/profile/ProfileWalletPage/ProfileWalletPage';
 import { ProfileSettingsPage } from '../pages/profile/ProfileSettingsPage';
+import { ProfileReferralPage } from '../pages/profile/ProfileReferralPage/ProfileReferralPage';
 
 export function App() {
   return (
@@ -19,7 +19,7 @@ export function App() {
           <Route path={RoutesName.Root} element={<LayoutMain />}>
             <Route index element={<GuidePage />} />
             <Route path={RoutesName.HelloPage} element={<HelloPage />} />
-            <Route path={RoutesName.ProfileRefferal} element={<ProfileRefferalPage />} />
+            <Route path={RoutesName.ProfileReferral} element={<ProfileReferralPage />} />
             <Route path={RoutesName.ProfileGuides} element={<ProfileGuidesPage />} />
             <Route path={RoutesName.ProfileWallet} element={<ProfileWalletPage />} />
             <Route path={RoutesName.ProfileSettings} element={<ProfileSettingsPage />} />

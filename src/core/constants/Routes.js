@@ -8,7 +8,7 @@ export const RoutesName = {
   MetamaskConnectPage: '/connect/metamask',
   HelloPage: '/hello',
   Profile: '/profile',
-  ProfileRefferal: '/profile/refferal',
+  ProfileReferral: '/profile/referral',
   ProfileGuides: '/profile/guides',
   ProfileWallet: '/profile/wallet',
   ProfileSettings: '/profile/settings',

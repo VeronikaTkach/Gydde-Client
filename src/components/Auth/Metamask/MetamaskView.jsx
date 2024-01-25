@@ -21,7 +21,11 @@ import { TEXT_KEYS } from '../../../core/constants/textKeys';
 import { PageName } from '../../../core/constants/PageNames';
 import { Size } from '../../../core/constants/Size';
 import s from './style.module.scss';
-import { metamask, setFirstHighlightedItem, setMetamaskConnectionStatus } from '../../../core/store/metamask/slice';
+import {
+  metamask,
+  setFirstHighlightedItem,
+  setMetamaskConnectionStatus,
+} from '../../../core/store/metamask/slice';
 
 const buttonIcon = {
   [MetamaskConnectionStatus.NoWallet]: {
@@ -72,40 +76,36 @@ export function MetamaskView() {
       dispatch(setMetamaskConnectionStatus(MetamaskConnectionStatus.Connecting));
     }
   }
+  console.log(currentText);
 
   return (
     <>
-      {staticTextStatusMetamask === Status.Resolved &&
-        connectionStatus &&
-        currentText && (
-          <div className={s.connectWindow}>
-            <div className={cn(s.connectWindow__header, s.header)}>
-              <MetamaskConnection
-                status={connectionStatus}
-                text={currentText.statusText}
-              />
-            </div>
-            <StickersSpinner
-              className={s.connectWindow__spinner}
-              icons={[smiley, ball, bangOrange, metamaskSmiley, bangWhite]}
-            />
-            <div className={cn(s.connectWindow__mascot, s.mascot)}>
-              <img className={s.mascot__body} src={mascotBody} alt={'mascot'} />
-              <img className={s.mascot__hands} src={mascotHands} alt={'mascot'} />
-              <SubtitleWithBorderButton
-                className={cn(s.mascot__text, {
-                  [s.mascot__text_noAnswer]: !currentText.buttonText,
-                })}
-                text={currentText.descriptionText}
-                buttonText={currentText.buttonText}
-                buttonSticker={buttonIcon[connectionStatus]?.buttonSticker}
-                buttonOnClick={handleClick}
-                size={Size.L}
-              />
-            </div>
-            <div className={s.connectWindow__descriptionText}></div>
+      {currentText && (
+        <div className={s.connectWindow}>
+          <div className={cn(s.connectWindow__header, s.header)}>
+            <MetamaskConnection status={connectionStatus} text={currentText.statusText} />
           </div>
-        )}
+          <StickersSpinner
+            className={s.connectWindow__spinner}
+            icons={[smiley, ball, bangOrange, metamaskSmiley, bangWhite]}
+          />
+          <div className={cn(s.connectWindow__mascot, s.mascot)}>
+            <img className={s.mascot__body} src={mascotBody} alt={'mascot'} />
+            <img className={s.mascot__hands} src={mascotHands} alt={'mascot'} />
+            <SubtitleWithBorderButton
+              className={cn(s.mascot__text, {
+                [s.mascot__text_noAnswer]: !currentText.buttonText,
+              })}
+              text={currentText.descriptionText}
+              buttonText={currentText.buttonText}
+              buttonSticker={buttonIcon[connectionStatus]?.buttonSticker}
+              buttonOnClick={handleClick}
+              size={Size.L}
+            />
+          </div>
+          <div className={s.connectWindow__descriptionText}></div>
+        </div>
+      )}
     </>
   );
 }

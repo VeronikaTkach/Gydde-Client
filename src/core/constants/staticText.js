@@ -3,7 +3,7 @@ import { PageName } from './PageNames';
 export const STATIC_TEXT = {
   [PageName.Profile]: {
     guidesTab: 'Guides reward',
-    refferalTab: 'Referral reward',
+    ReferralTab: 'Referral reward',
     settingsTab: 'Account settings',
     walletTab: 'Wallet',
   },

@@ -3,9 +3,16 @@
 .baseSubtitle {
   display: grid;
   width: 100%;
+  grid-template-columns: fit-content(50px) 1fr fit-content(50px);
   grid-template-areas:
     'audio text .'
     'audio .    button';
+  &_noAudio {
+    grid-template-columns: 1fr fit-content(50px);
+    grid-template-areas:
+    'text .'
+    '.    button';
+  }
   &__mascotVoice {
     grid-area: audio;
     display: flex;

@@ -37,7 +37,8 @@ export function GuidePage() {
       // dispatch(removeUnusedStaticText(PageName.GuidesGallery));
     };
   }, []);
-
+// localStorage.clear()
+console.log(localStorage)
   // const {
   //   data: colorSecondImg,
   //   loading,

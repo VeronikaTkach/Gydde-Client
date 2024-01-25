@@ -1,13 +1,12 @@
-import { ErrorType } from './Errors';
 import { PageName } from './PageNames';
 
 export const VOICE_KEYS = {
   GUIDES_GALLERY: [`${PageName.GuidesGallery}.mascotVioce`],
   HELLO: [`${PageName.Hello}.mascotVioce`],
   PROFILE_GUIDES: [`${PageName.ProfileGuides}.mascotVioce`],
-  PROFILE_REFERALS: [
-    `${PageName.ProfileReferals}_Refferal.mascotVioce`,
-    `${PageName.ProfileReferals}_NoRefferal.mascotVioce`,
+  PROFILE_ReferralS: [
+    `${PageName.ProfileReferrals}_Referral.mascotVioce`,
+    `${PageName.ProfileReferrals}_NoReferral.mascotVioce`,
   ],
   METAMASK_CONNECT: [
     `${PageName.Metamask}_NoWallet.statusText`,

@@ -3,7 +3,7 @@ import s from './style.module.scss';
 import mascot from '../../../assets/images/mascot/mascotGood.png';
 import { ButtonWithBorder } from '../../ui/buttons/Button';
 
-export function RefferalAndGuides({ className, staticText }) {
+export function ReferralAndGuides({ className, staticText }) {
   return (
     <div className={cn(s.profile, className)}>
       <img className={s.profile__img} src={mascot} alt={'mascot likes it'} />
@@ -17,9 +17,9 @@ export function RefferalAndGuides({ className, staticText }) {
             {staticText.btnText}
           </ButtonWithBorder>
         </div>
-        <div className={s.profile__referals}>
+        <div className={s.profile__Referrals}>
           <div className={s.profile__container}>
-            <span className={s.profile__title}>{staticText.referalTitle}</span>
+            <span className={s.profile__title}>{staticText.ReferralTitle}</span>
             <p className={s.profile__total}>3</p>
           </div>
           <div className={s.profile__container}>

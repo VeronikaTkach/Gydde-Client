@@ -9,9 +9,10 @@ import { getStaticText } from '../../../core/store/staticText/thunk';
 import { PageName } from '../../../core/constants/PageNames';
 import { Status } from '../../../core/constants/Status';
 import { STATIC_TEXT } from '../../../core/constants/staticText';
+import { RoutesName } from '../../../core/constants/Routes';
 
 // const folderTabs = [
-//   { title: 'Referral program', to: '/profile/refferal' },
+//   { title: 'Referral program', to: '/profile/Referral' },
 //   { title: 'Guides', to: '/profile/guides' },
 //   { title: 'Wallet', to: '/profile/wallet' },
 //   { title: 'Account settings', to: '/profile/settings' },
@@ -23,7 +24,7 @@ export function ProfileFolder({ className, children }) {
   const dispatch = useDispatch();
   const { staticTextProfile, staticTextStatusProfile } = useSelector(staticText);
   const [folderTabs, setFolderTabs] = useState(null);
-  console.log(staticTextProfile);
+
   useEffect(() => {
     dispatch(getStaticText.basic(TEXT_KEYS.PROFILE));
 
@@ -39,20 +40,20 @@ export function ProfileFolder({ className, children }) {
     ) {
       setFolderTabs([
         {
-          title: staticTextProfile.refferalTab || STATIC_TEXT.refferalTab,
-          to: '/profile/refferal',
+          title: staticTextProfile.ReferralTab || STATIC_TEXT.ReferralTab,
+          to: RoutesName.ProfileReferral,
         },
         {
           title: staticTextProfile.guidesTab || STATIC_TEXT.guidesTab,
-          to: '/profile/guides',
+          to: RoutesName.ProfileGuides,
         },
         {
           title: staticTextProfile.walletTab || STATIC_TEXT.walletTab,
-          to: '/profile/wallet',
+          to: RoutesName.ProfileWallet,
         },
         {
           title: staticTextProfile.settingsTab || STATIC_TEXT.settingsTab,
-          to: '/profile/settings',
+          to: RoutesName.ProfileSettings,
         },
       ]);
     }

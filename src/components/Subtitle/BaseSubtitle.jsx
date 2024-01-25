@@ -27,7 +27,7 @@ export function BaseSubtitle({
 
   return (
     <Subtitle
-      className={cn(s.baseSubtitle, className)}
+      className={cn(s.baseSubtitle, { [s.baseSubtitle_noAudio]: !sound }, className)}
       mascotVoice={
         mascotVoice || (
           <>
