@@ -6,16 +6,16 @@ import mascot from '../../../assets/images/mascot/mascotGood.png';
 import eng from '../../../assets/images/flag/flagEng.png';
 import { STATIC_TEXT } from '../../../core/constants/staticText';
 import { PageName } from '../../../core/constants/PageNames';
-import { EmailConnectPopup } from './EmailConnectPopup/EmailConnectPopup';
 import {
   modalWindowState,
   showEmailConnectWindow,
-  showUsernameEditingWindow,
+  showUsernameEditWindow,
 } from '../../../core/store/slices/modalWindowStateSlice';
-import { UsernameEditingPopup } from './UsernameEditingPopup/UsernameEditingPopup';
+import { UsernameEditPopup } from './UsernameEditPopup/UsernameEditPopup';
+import { EmailConnectPopup } from './EmailConnectPopup/EmailConnectPopup';
 
 export function AccountSettings({ className, staticTextProfileSettings }) {
-  const { modalEmailConnect, modalUsernameEditing } = useSelector(modalWindowState);
+  const { modalEmailConnect, modalUsernameEdit } = useSelector(modalWindowState);
   const dispatch = useDispatch();
 
   return (
@@ -33,8 +33,8 @@ export function AccountSettings({ className, staticTextProfileSettings }) {
               </div>
               <div
                 className={cn(s.header__btnEdit, 'iconEdit')}
-                onClick={() => dispatch(showUsernameEditingWindow(true))}></div>
-              {modalUsernameEditing && <UsernameEditingPopup />}
+                onClick={() => dispatch(showUsernameEditWindow(true))}></div>
+              {modalUsernameEdit && <UsernameEditPopup />}
             </div>
             <Button className={cn(s.header__langInfo, 'iconDropdownArrow')}>
               <div className={cn(s.header__language)}>Eng</div>

@@ -3,7 +3,7 @@
 .username {
 	&__title {
 		// @include textStyleButton2;
-		@include fontStyle(24px, 700, 24px);
+		@include fontStyle(24px, 700, null);
 	}
 	// &__info {
 	// 	@include themed() {
@@ -21,6 +21,7 @@
 		width: 100%;
 		height: $space14;
 		margin-left: auto;
+		@include fontStyle(20px, 700, 24px);
 	}
 }
 

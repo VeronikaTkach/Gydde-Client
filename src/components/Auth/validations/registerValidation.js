@@ -12,7 +12,7 @@ export const mailValidation = {
 };
 
 export const nicknameValidation = {
-  required: 'Required!',
+  required: true,
   pattern: {
     value: nicknameRegExp,
   },
@@ -20,5 +20,5 @@ export const nicknameValidation = {
 };
 
 export const passwordValidation = {
-  required: '',
+  required: true,
 };
