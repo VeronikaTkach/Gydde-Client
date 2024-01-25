@@ -31,8 +31,11 @@
 		// 	cursor: default;
 		// }
 		&::placeholder{
-			color: $colorGray400;
 			@include textStyleSecondary1;
+			@include themed() {
+				text-fill-color: t($formLabelPlaceholder);
+				-webkit-text-fill-color: t($formLabelPlaceholder);
+			}
 		}
 		&_mail {
 			
