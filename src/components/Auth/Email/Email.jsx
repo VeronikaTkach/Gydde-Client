@@ -18,7 +18,7 @@ import { TEXT_KEYS } from '../../../core/constants/textKeys';
 import { PageName } from '../../../core/constants/PageNames';
 import { authorization } from '../../../core/store/auth/thunk';
 
-export function FormAuthorization() {
+export function Email() {
   const dispatch = useDispatch();
   const { staticTextMailAuthorization, staticTextStatusMailAuthorization } =
     useSelector(staticText);
