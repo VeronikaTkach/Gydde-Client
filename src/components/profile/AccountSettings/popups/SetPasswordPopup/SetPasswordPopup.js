@@ -52,8 +52,8 @@ export function SetPasswordPopup({ staticTextProfileSettings }) {
             <Input
               classError={errors.password}
               placeholder={
-                staticTextProfileSettings?.fieldPass ||
-                STATIC_TEXT[PageName.ProfileSettings].fieldPass
+                staticTextProfileSettings?.fieldEnterPass ||
+                STATIC_TEXT[PageName.ProfileSettings].fieldEnterPass
               }
               name={'password'}
               setValue={setValue}
@@ -67,8 +67,8 @@ export function SetPasswordPopup({ staticTextProfileSettings }) {
             <Input
               classError={errors.password}
               placeholder={
-                staticTextProfileSettings?.fieldPass ||
-                STATIC_TEXT[PageName.ProfileSettings].fieldPass
+                staticTextProfileSettings?.fieldRepeatPass ||
+                STATIC_TEXT[PageName.ProfileSettings].fieldRepeatPass
               }
               name={'passwordConfirm'}
               setValue={setValue}
@@ -76,8 +76,8 @@ export function SetPasswordPopup({ staticTextProfileSettings }) {
               type={'password'}
               validation={passwordValidation}
             />
-            {errors.passwordValidation && (
-              <p className={s.form__error}>{errors.passwordValidation.message}</p>
+            {errors.passwordConfirm && (
+              <p className={s.form__error}>{errors.passwordConfirm.message}</p>
             )}
           </div>
           <ButtonWithBorder

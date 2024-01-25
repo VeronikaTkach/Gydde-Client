@@ -13,6 +13,7 @@ export const STATIC_TEXT = {
     connectMail: 'Connect Email Address',
     connectTwitter: 'Connect Twitter Account',
     setPass: 'Set password',
+    changePass: 'Change password',
     logout: 'Log out',
     editMailTitle: 'Enter email address',
     editNameTitle: 'Name editing',
