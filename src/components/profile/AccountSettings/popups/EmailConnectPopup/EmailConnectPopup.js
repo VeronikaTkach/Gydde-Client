@@ -1,27 +1,30 @@
-
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import cn from 'classnames';
-import { STATIC_TEXT } from '../../../../../core/constants/staticText';
-import { PageName } from '../../../../../core/constants/PageNames';
 import { showEmailConnectWindow } from '../../../../../core/store/slices/modalWindowStateSlice';
 import { ButtonWithBorder } from '../../../../ui/buttons/Button';
 import ModalWithClose from '../../../../ui/modals/Modal/ModalWithClose';
 import ModalWithBorderShadow from '../../../../ui/modals/Modal/ModalWithBorder';
 import { Input } from '../../../../ui/Input';
 import {
-  mailValidation,
+  mailValidation as mailValidationWithoutMessage,
   passwordValidation,
 } from '../../../../Auth/validations/registerValidation';
-import { LoaderForButtons } from '../../../../ui/loaders/LoaderForButtons';
 import { SocialButton } from '../../../../ui/buttons/SocialButton/SocialButton';
 import google from '../../../../../assets/images/google.svg';
 import s from '../style.module.scss';
+import { allAuth, clearError } from '../../../../../core/store/auth/slice';
+import { Status } from '../../../../../core/constants/Status';
+import { staticTextHelper } from '../../../../../core/helpers/staticTextHelper';
 
-export function EmailConnectPopup({ staticTextProfileSettings }) {
+export function EmailConnectPopup({
+  staticTextProfileSettings,
+  staticTextStatusProfileSettings,
+}) {
   const dispatch = useDispatch();
-
-  const loading = false; //TODO переделать, получать из стора, когда будут запросы на апи
+  const { status, errorType } = useSelector(allAuth);
+  const [mailValidation, setMailValidation] = useState(mailValidationWithoutMessage);
 
   const styles = {
     maxWidth: 748,
@@ -34,14 +37,39 @@ export function EmailConnectPopup({ staticTextProfileSettings }) {
     register,
     setValue,
     handleSubmit,
+    setError,
+    clearErrors,
+    watch,
     formState: { errors },
   } = useForm({
     mode: 'onBlur',
   });
 
+  const [emailWatch, passwordWatch] = watch(['email', 'password']);
+
   const onSubmit = (data, e) => {
     // e.preventDefault();
   };
+
+  useEffect(() => {
+    if (staticTextStatusProfileSettings === Status.Resolved) {
+      const convertedMailValidation = staticTextHelper.convertToValidation(
+        staticTextProfileSettings?.mailErrorText,
+        mailValidationWithoutMessage
+      );
+      setMailValidation(convertedMailValidation);
+    }
+  }, [staticTextStatusProfileSettings]);
+
+  useEffect(() => {
+    if (Object.keys(errors).length && errorType) {
+      clearErrors(['email', 'password']);
+      dispatch(clearError());
+    } else if (errorType) {
+      setError('email');
+      setError('password');
+    }
+  }, [errorType, emailWatch, passwordWatch]);
 
   return (
     <ModalWithClose
@@ -49,68 +77,54 @@ export function EmailConnectPopup({ staticTextProfileSettings }) {
       onClose={() => dispatch(showEmailConnectWindow(false))}
       styles={styles}>
       <div>
-        <div className={cn(s.title)}>
-          {staticTextProfileSettings?.editMailTitle ||
-            STATIC_TEXT[PageName.ProfileSettings].editMailTitle}
-        </div>
+        <div className={cn(s.title)}>{staticTextProfileSettings?.editMailTitle}</div>
         <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
           <div className={s.form__inputs}>
-            <Input
-              classError={errors.email}
-              placeholder={
-                staticTextProfileSettings?.fieldMail ||
-                STATIC_TEXT[PageName.ProfileSettings].fieldMail
-              }
-              name={'email'}
-              setValue={setValue}
-              register={register}
-              type={'email'}
-              validation={mailValidation}
-            />
-            {errors.email && <p className={s.form__error}>{errors.email.message}</p>}
-            <Input
-              classError={errors.password}
-              placeholder={
-                staticTextProfileSettings?.fieldPass ||
-                STATIC_TEXT[PageName.ProfileSettings].fieldPass
-              }
-              name={'password'}
-              setValue={setValue}
-              register={register}
-              type={'password'}
-              validation={passwordValidation}
-            />
-            {errors.password && (
-              <p className={s.form__error}>{errors.password.message}</p>
-            )}
+            <div className={s.form__input}>
+              <Input
+                classError={errors.email}
+                placeholder={staticTextProfileSettings?.fieldMail}
+                name={'email'}
+                setValue={setValue}
+                register={register}
+                type={'email'}
+                validation={mailValidation}
+              />
+              {errors.email && <p className={s.form__error}>{errors.email.message}</p>}
+            </div>
+            <div className={s.form__input}>
+              <Input
+                classError={errors.password}
+                placeholder={staticTextProfileSettings?.fieldPass}
+                name={'password'}
+                setValue={setValue}
+                register={register}
+                type={'password'}
+                validation={passwordValidation}
+              />
+              {errorType && (
+                <p className={s.form__error}>
+                  {staticTextProfileSettings?.passwordErrorText}
+                </p>
+              )}
+            </div>
           </div>
           <ButtonWithBorder
             className={cn(s.form__btn)}
             type={'submit'}
-            disabled={loading}>
-            {loading ? (
-              <LoaderForButtons />
-            ) : (
-              staticTextProfileSettings?.btnSave ||
-              STATIC_TEXT[PageName.ProfileSettings].btnSave
-            )}
+            disabled={status === Status.Loading}
+            isLoading={status === Status.Loading}>
+            {staticTextProfileSettings?.btnSave}
           </ButtonWithBorder>
         </form>
         <div className={cn(s.social)}>
           <div className={cn(s.social__title)}>
-            {staticTextProfileSettings?.connectSocial ||
-              STATIC_TEXT[PageName.ProfileSettings].connectSocial}
+            {staticTextProfileSettings?.connectSocial}
           </div>
           <SocialButton
             iconImg={google}
-            text={
-              staticTextProfileSettings?.socialGoogle ||
-              STATIC_TEXT[PageName.ProfileSettings].socialGoogle
-            }
-            alt={
-              staticTextProfileSettings?.socialGoogle ||
-              STATIC_TEXT[PageName.ProfileSettings].socialGoogle
-            }
+            text={staticTextProfileSettings?.socialGoogle}
+            alt={staticTextProfileSettings?.socialGoogle}
           />
         </div>
       </div>

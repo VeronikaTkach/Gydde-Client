@@ -1,37 +1,45 @@
-import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import cn from 'classnames';
 import s from '../style.module.scss';
 import { ButtonWithBorder } from '../../../../ui/buttons/Button';
-import { STATIC_TEXT } from '../../../../../core/constants/staticText';
-import { PageName } from '../../../../../core/constants/PageNames';
 import ModalWithClose from '../../../../ui/modals/Modal/ModalWithClose';
 import ModalWithBorderShadow from '../../../../ui/modals/Modal/ModalWithBorder';
 import { showChangePasswordWindow } from '../../../../../core/store/slices/modalWindowStateSlice';
 import { Input } from '../../../../ui/Input';
-import { LoaderForButtons } from '../../../../ui/loaders/LoaderForButtons';
 import { passwordValidation } from '../../../../Auth/validations/registerValidation';
+import { styles } from '../SetPasswordPopup';
+import { Status } from '../../../../../core/constants/Status';
+import { allAuth, clearError } from '../../../../../core/store/auth/slice';
 
 export function ChangePasswordPopup({ staticTextProfileSettings }) {
   const dispatch = useDispatch();
-
-  const loading = false; //TODO переделать
-
-  const styles = {
-    maxWidth: 748,
-    minHeight: 298,
-    padding: '36px 60px',
-    top: 4,
-  };
+  const { status, errorType } = useSelector(allAuth);
 
   const {
     register,
     setValue,
     handleSubmit,
+    setError,
+    clearErrors,
+    watch,
     formState: { errors },
   } = useForm({
     mode: 'onBlur',
   });
+
+  const [passwordWatch, passwordNewWatch] = watch(['password', 'passwordNew']);
+
+  useEffect(() => {
+    if (Object.keys(errors).length && errorType) {
+      clearErrors(['password', 'passwordNew']);
+      dispatch(clearError());
+    } else if (errorType) {
+      setError('password');
+      setError('passwordNew');
+    }
+  }, [errorType, passwordWatch, passwordNewWatch]);
 
   const onSubmit = (data, e) => {
     // e.preventDefault();
@@ -43,53 +51,48 @@ export function ChangePasswordPopup({ staticTextProfileSettings }) {
       onClose={() => dispatch(showChangePasswordWindow(false))}
       styles={styles}>
       <div>
-        <div className={cn(s.title)}>
-          {staticTextProfileSettings?.changePassTitle ||
-            STATIC_TEXT[PageName.ProfileSettings].changePassTitle}
-        </div>
+        <div className={cn(s.title)}>{staticTextProfileSettings?.changePassTitle}</div>
         <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
           <div className={s.form__inputs}>
-            <Input
-              classError={errors.password}
-              placeholder={
-                staticTextProfileSettings?.fieldLastPass ||
-                STATIC_TEXT[PageName.ProfileSettings].fieldLastPass
-              }
-              name={'password'}
-              setValue={setValue}
-              register={register}
-              type={'password'}
-              validation={passwordValidation}
-            />
-            {errors.password && (
-              <p className={s.form__error}>{errors.password.message}</p>
-            )}
-            <Input
-              classError={errors.password}
-              placeholder={
-                staticTextProfileSettings?.fieldNewPass ||
-                STATIC_TEXT[PageName.ProfileSettings].fieldNewPass
-              }
-              name={'newPassword'}
-              setValue={setValue}
-              register={register}
-              type={'password'}
-              validation={passwordValidation}
-            />
-            {errors.newPassword && (
-              <p className={s.form__error}>{errors.newPassword.message}</p>
-            )}
+            <div className={s.form__input}>
+              <Input
+                classError={errors.password}
+                placeholder={staticTextProfileSettings?.fieldLastPass}
+                name={'password'}
+                setValue={setValue}
+                register={register}
+                type={'password'}
+                validation={passwordValidation}
+              />
+              {errorType && (
+                <p className={s.form__error}>
+                  {staticTextProfileSettings?.passwordLastErrorText}
+                </p>
+              )}
+            </div>
+            <div className={s.form__input}>
+              <Input
+                classError={errors.password}
+                placeholder={staticTextProfileSettings?.fieldNewPass}
+                name={'passwordNew'}
+                setValue={setValue}
+                register={register}
+                type={'password'}
+                validation={passwordValidation}
+              />
+              {errorType && (
+                <p className={s.form__error}>
+                  {staticTextProfileSettings?.passwordNewErrorText}
+                </p>
+              )}
+            </div>
           </div>
           <ButtonWithBorder
             className={cn(s.form__btn)}
             type={'submit'}
-            disabled={loading}>
-            {loading ? (
-              <LoaderForButtons />
-            ) : (
-              staticTextProfileSettings?.btnSave ||
-              STATIC_TEXT[PageName.ProfileSettings].btnSave
-            )}
+            disabled={status === Status.Loading}
+            isLoading={status === Status.Loading}>
+            {staticTextProfileSettings?.btnSave}
           </ButtonWithBorder>
         </form>
       </div>

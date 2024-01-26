@@ -48,7 +48,7 @@ export function UsernameEditPopup({ staticTextProfileSettings }) {
         </div>
         <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
           <Input
-            className={s.form__input}
+            className={s.input}
             classError={errors.username} //TODO переделать для юзернейма
             placeholder={
               staticTextProfileSettings?.fieldName ||
