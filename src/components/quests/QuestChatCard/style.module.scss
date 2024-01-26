@@ -18,7 +18,7 @@
   }
   &_hover {
     @include questCard(12px);
-    background: $colorGray650; 
+    background: $colorGray650;
     transition: .3s;
   }
   &_active {
@@ -87,6 +87,7 @@
   }
 
   &__progress {
+    white-space: nowrap;
     align-self: flex-end;
     text-align: right;
     @include fontRoboto;

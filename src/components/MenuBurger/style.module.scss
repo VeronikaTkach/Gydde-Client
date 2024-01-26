@@ -1,17 +1,33 @@
 @use '../../styles/styles.scss' as *;
 
-.languages {
-  @include width-height(100%, 360px);
-  padding: $space9 $space7;
-  border-radius: $space8;
-  @include themed() {
-    border: 1px solid t($surfaceBorder1);
-    background: t($surfacePrimary2);
+.menu {
+  position: relative;
+  // @include width-height(100%, 360px);
+  // padding: $space9 $space7;
+  // border-radius: $space8;
+  &:hover {
+    .menu__list {
+      display: flex;
+    }
+  }
+  &__img {
+
   }
   &__list {
-    display: flex;
+    position: absolute;
+    min-width: 284px;
+    top: 53px;
+    right: 0;
+    display: none;
     flex-direction: column;
     gap: 4px;
+    border-radius: 12px 12px 20px 20px;
+    z-index: 50;
+    padding: $space5;
+    @include themed() {
+      border: 1px solid t($surfaceBorderSubtitles);
+      background: t($surfacePrimary2);
+    }
   }
   &__item {
     display: flex;
@@ -25,30 +41,14 @@
     @include themed() {
       color: t($textPrimaryMain);
     }
-    & img {
-      clip-path: circle(50% at 50% 50%);
-      width: 32px;
-    }
-
-    & p {
-      
-    }
-
     &:hover {
       @include themed() {
-        background-color: t($formBackground);
+        background: t($gradientButtonHover1);
       }
       border-radius: $space4;
     }
-
-    &_active {
-      @extend .languages__item;
-      border-radius: $space4;
-      @include themed() {
-        border: 2px solid t($surfacePrimaryAccent);
-        background-color: t($formBackground);
-        color: t($textPrimaryMain);
-      }
-    }
+  }
+  &__title {
+    white-space: nowrap;
   }
 }

@@ -36,50 +36,49 @@ export function GuidePage() {
 
   return (
     <main className={cn(s.content)}>
-      {staticTextStatusGuidesGallery !== Status.Loading &&
-        staticTextStatusGuidesGallery !== undefined && (
-          <div className={cn(s.content__mainScreen, s.mainScreen)}>
-            <div className={cn(s.content__carousel)}>
-              {/* {statusGuidesGallery === Status.Resolved && ( */}
-              <GuideCarousel
-                guidesGallery={[...guidesGallery, ...guidesGallery, ...guidesGallery]}
-                staticText={staticTextGuidesGallery}
-              />
-              {/* )} */}
-              <Button
-                className={cn(
-                  s.content__button,
-                  s.content__button_prev,
-                  'iconArrowMessage'
-                )}
-                onClick={() => dispatch(switchGuides(Position.Next))}
-              />
-              <Button
-                className={cn(
-                  s.content__button,
-                  s.content__button_next,
-                  'iconArrowMessage'
-                )}
-                onClick={() => dispatch(switchGuides(Position.Previous))}
-              />
-            </div>
-            <div className={s.content__mascotImg}>
-              <img src={mascotShows} alt={'mascot shows guides'} />
-            </div>
-            <SubtitleWithBorderButton
-              className={s.content__subtitle}
-              sound={true}
-              text={
-                staticTextGuidesGallery.subtitle ||
-                STATIC_TEXT[PageName.GuidesGallery].subtitle
-              }
-              buttonText={staticTextGuidesGallery.buttonText}
-              buttonSticker={smileyEyesStar}
-              buttonOnClick={() => dispatch(switchGuides(Position.Next))}
-              size={Size.L}
+      {staticTextGuidesGallery && (
+        <div className={cn(s.content__mainScreen, s.mainScreen)}>
+          <div className={cn(s.content__carousel)}>
+            {/* {statusGuidesGallery === Status.Resolved && ( */}
+            <GuideCarousel
+              guidesGallery={[...guidesGallery, ...guidesGallery, ...guidesGallery]}
+              staticText={staticTextGuidesGallery}
+            />
+            {/* )} */}
+            <Button
+              className={cn(
+                s.content__button,
+                s.content__button_prev,
+                'iconArrowMessage'
+              )}
+              onClick={() => dispatch(switchGuides(Position.Next))}
+            />
+            <Button
+              className={cn(
+                s.content__button,
+                s.content__button_next,
+                'iconArrowMessage'
+              )}
+              onClick={() => dispatch(switchGuides(Position.Previous))}
             />
           </div>
-        )}
+          <div className={s.content__mascotImg}>
+            <img src={mascotShows} alt={'mascot shows guides'} />
+          </div>
+          <SubtitleWithBorderButton
+            className={s.content__subtitle}
+            sound={true}
+            text={
+              staticTextGuidesGallery.subtitle ||
+              STATIC_TEXT[PageName.GuidesGallery].subtitle
+            }
+            buttonText={staticTextGuidesGallery.buttonText}
+            buttonSticker={smileyEyesStar}
+            buttonOnClick={() => dispatch(switchGuides(Position.Next))}
+            size={Size.L}
+          />
+        </div>
+      )}
     </main>
   );
 }

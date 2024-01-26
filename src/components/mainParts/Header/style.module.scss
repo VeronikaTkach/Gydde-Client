@@ -3,38 +3,32 @@
 
 .header {
 	display: flex;
-	@include width-height(100%, 56px);
-	&__row {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		width: 100%;
-	}
-}
-
-.navigation {
+	align-items: center;
+	justify-content: space-between;
+	@include width-height(100%, $space15);
 	&__logo {
 		@include themed() {
 			background-image: t($imageLogo);
-			background-position: center;
-			background-size: 143px;
-			@include width-height(125px, 48px);
+			background-position: left center;
+			background-repeat: no-repeat;
+			@include width-height(150px, 100%);
 		}
 	}
 }
 
-.auth {
-	&__button {
+.option {
+	&__menu {
+		height: 56px;
+	}
+	&__login {
 		@include fontStyle(20px, 700, 24px);
 		width: 200px;
 		height: 56px;
 		@include flexCenter;
-		&_login {
-			&:hover {
-				@include themed() {
-					background: t($buttonBgPressed);
-					color: t($buttonLabelPressed);
-				}
+		&:hover {
+			@include themed() {
+				background: t($buttonBgPressed);
+				color: t($buttonLabelPressed);
 			}
 		}
 	}
