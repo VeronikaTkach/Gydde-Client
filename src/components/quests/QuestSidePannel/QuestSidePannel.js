@@ -85,7 +85,9 @@ export function QuestSidePannel({ className }) {
 
   return (
     <div className={cn(s.questSidePannel, className)}>
-      <QuestSearch numberOfCards={card.length} />
+      <div className={s.questSidePannel__search}>
+        <QuestSearch numberOfCards={card.length} />
+      </div>
       <ul>
         {card.map((item, index) => {
           return (

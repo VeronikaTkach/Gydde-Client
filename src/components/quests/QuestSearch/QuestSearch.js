@@ -1,26 +1,26 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import cn from 'classnames';
 import s from './style.module.scss';
 import { Button } from '../../ui/buttons/Button';
 import { InputSearch } from '../../ui/Input/InputSearch';
 
 export function QuestSearch({ numberOfCards }) {
-  const [pageHeight, setPageHeight] = useState(null);
-console.log(numberOfCards)
-  const isScrollVisible = pageHeight < numberOfCards * 100; // высота карточки + расстояние между карточками
-console.log(isScrollVisible)
-  useEffect(() => {
-    const updatePageHeight = () => {
-      const windowHeight = window.innerHeight; // Высота видимой области страницы
-      setPageHeight(windowHeight);
-    };
-    updatePageHeight();
-    window.addEventListener('resize', updatePageHeight);
+  // const [pageHeight, setPageHeight] = useState(null);
+  // const isScrollVisible = pageHeight < numberOfCards * 100; // высота карточки + расстояние между карточками
+  // const updatePageHeight = () => {
+  //   const windowHeight = window.innerHeight; // Высота видимой области страницы
+  //   setPageHeight(windowHeight);
+  // };
+  const cardScrollLimit = 8;
+  const isScrollVisible = numberOfCards > cardScrollLimit;
+  // useEffect(() => {
+  //   updatePageHeight();
+  //   window.addEventListener('resize', updatePageHeight);
 
-    return () => {
-      window.removeEventListener('resize', updatePageHeight);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener('resize', updatePageHeight);
+  //   };
+  // }, []);
 
   return (
     <>

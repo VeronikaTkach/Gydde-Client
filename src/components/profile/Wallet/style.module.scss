@@ -88,10 +88,8 @@
       }
     }
     &_disconnect {
-      display: flex;
+      @include flex-grid(flex, none, flex-end, center);
       width: 520px;
-      justify-content: flex-end;
-      align-items: center;
       gap: 8px;
       &_title {
         white-space: nowrap;
