@@ -13,7 +13,7 @@
       background: t($bg);
       border: 1px solid t($surfaceBorderSubtitles)
   }
-  &__form{
+  &__field {
     @include width-height(562px, 278px);
     @include borderStyle(1px solid $colorGray600, 20px);
     @include flex-grid(flex, column, none, flex-start);
@@ -60,11 +60,11 @@
       gap: 393px;
       border-bottom: 1px solid rgba(134, 134, 134, 0.10); // цвет изменить на тему
     }
-    &_textWhite {
+    &_textActive {
       color: $colorWhite;
       @include fontStyle(20px, 500, 24px);
     }
-    &_textGrey {
+    &_textTitle {
       color: $colorGray400;
       @include fontStyle(20px,500, 24px);
     }
@@ -95,7 +95,7 @@
       gap: 8px;
       &_title {
         white-space: nowrap;
-        width: 105px;
+        // width: 105px;
         flex-shrink: 0;
       }
     }

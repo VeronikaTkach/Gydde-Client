@@ -13,19 +13,19 @@ export function Wallet({ className, staticText }) {
     <>
       <div className={cn(s.wallet, className)}>
         <img className={s.wallet__mascot} src={mascot} alt='mascot likes it' />
-        <div className={s.wallet__form}>
-          <div className={s.wallet__form_title}>
+        <div className={s.wallet__field}>
+          <div className={s.wallet__field_title}>
             {staticText?.title || STATIC_TEXT[PageName.ProfileWallet].title}
           </div>
-          <div className={s.wallet__form_info}>
-            <div className={cn(s.wallet__form_info_number)}>
+          <div className={s.wallet__field_info}>
+            <div className={cn(s.wallet__field_info_number)}>
               <div>number</div>
               <button className={cn(s.wallet__icon, 'iconCopy')} />
               <button className={cn(s.wallet__icon, 'iconLink')} />
             </div>
-            <div className={cn(s.wallet__form_info_status)}>
+            <div className={cn(s.wallet__field_info_status)}>
               <img className={s.wallet__img} src={iconMetamask} alt={'metamask'} />
-              <div className={s.wallet__form_textWhite}>
+              <div className={s.wallet__field_textActive}>
                 {staticText?.statusWallet[ConnectWalletStatus.Connected] ||
                   STATIC_TEXT[PageName.ProfileWallet].statusWallet[
                     ConnectWalletStatus.Connected
@@ -33,22 +33,24 @@ export function Wallet({ className, staticText }) {
               </div>
             </div>
           </div>
-          <div className={s.wallet__form_balance}>
-            <div className={s.wallet__form_textGrey}>
+          <div className={s.wallet__field_balance}>
+            <div className={s.wallet__field_textTitle}>
               {staticText?.balanceTitle ||
                 STATIC_TEXT[PageName.ProfileWallet].balanceTitle}
             </div>
-            <div className={s.wallet__form_textWhite}>
+            <div className={s.wallet__field_textActive}>
               {staticText?.balanceValue ||
                 STATIC_TEXT[PageName.ProfileWallet].balanceValue}{' '}
             </div>
           </div>
-          <div className={s.wallet__form_connect}>
-            <div className={cn(s.wallet__form_textGrey, s.wallet__form_connect_status)}>
+          <div className={s.wallet__field_connect}>
+            <div
+              className={cn(s.wallet__field_textTitle, s.wallet__field_connect_status)}>
               {staticText?.networkTitle ||
                 STATIC_TEXT[PageName.ProfileWallet].networkTitle}
             </div>
-            <div className={cn(s.wallet__form_connect_money, s.wallet__form_textWhite)}>
+            <div
+              className={cn(s.wallet__field_textActive, s.wallet__field_connect_money)}>
               <img src={iconEthereum} alt={'Ethereum'} />
               <div>
                 {staticText?.networkName[NetworkName.Mainnet] ||
@@ -56,8 +58,9 @@ export function Wallet({ className, staticText }) {
               </div>
             </div>
           </div>
-          <div className={s.wallet__form_disconnect}>
-            <div className={cn(s.wallet__form_textGrey, s.wallet__form_disconnect_title)}>
+          <div className={s.wallet__field_disconnect}>
+            <div
+              className={cn(s.wallet__field_textTitle, s.wallet__field_disconnect_title)}>
               {staticText?.connectButton[ConnectWalletStatus.Connected] ||
                 STATIC_TEXT[PageName.ProfileWallet].connectButton[
                   ConnectWalletStatus.Connected
