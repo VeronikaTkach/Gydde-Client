@@ -1,6 +1,13 @@
 import { PageName } from './PageNames';
 
 export const STATIC_TEXT = {
+  [PageName.Header]: {
+    menuGuides: 'Guides',
+    menuReferralRewards: 'Referral rewards',
+    menuGuidesRewards: 'Guides rewards',
+    menuWallet: 'Wallet',
+    menuAccountSettings: 'Account settings',
+  },
   [PageName.Profile]: {
     guidesTab: 'Guides reward',
     ReferralTab: 'Referral reward',

@@ -7,7 +7,7 @@ import {
   mailValidation as mailValidationWithoutMessage,
   passwordValidation,
 } from '../validations/registerValidation';
-import { allAuthorization, clearError } from '../../../core/store/auth/slice';
+import { allAuth, authorization, clearError } from '../../../core/store/auth/slice';
 import cn from 'classnames';
 import s from './style.module.scss';
 import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
@@ -16,13 +16,14 @@ import { Status } from '../../../core/constants/Status';
 import { getStaticText } from '../../../core/store/staticText/thunk';
 import { TEXT_KEYS } from '../../../core/constants/textKeys';
 import { PageName } from '../../../core/constants/PageNames';
-import { authorization } from '../../../core/store/auth/thunk';
+import { authRequest } from '../../../core/store/auth/thunk';
+// import { authorization } from '../../../core/store/auth/thunk';
 
 export function Email() {
   const dispatch = useDispatch();
   const { staticTextMailAuthorization, staticTextStatusMailAuthorization } =
     useSelector(staticText);
-  const { status, errorType } = useSelector(allAuthorization);
+  const { status, errorType } = useSelector(allAuth);
   const [mailValidation, setMailValidation] = useState(mailValidationWithoutMessage);
 
   const {
@@ -69,7 +70,7 @@ export function Email() {
 
   const onSubmit = (data, e) => {
     e.preventDefault();
-    dispatch(authorization.mail(data));
+    dispatch(authRequest.mail(data));
   };
 
   return (

@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import mainRequest from '../../utils/mainRequestUtils';
 import { showAuthorizationWindow } from '../slices/modalWindowStateSlice';
 
-export const authorization = {
+export const authRequest = {
   mail: createAsyncThunk(
     'authorization/mail',
     async function (authData, { rejectWithValue, dispatch }) {

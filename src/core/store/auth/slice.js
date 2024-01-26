@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { Status } from '../../constants/Status';
 import { AuthorizationType } from '../../constants/AuthorizationType';
-import { authorization } from './thunk';
+import { authRequest } from './thunk';
 
 const initialState = {
   status: null,
@@ -29,15 +29,15 @@ export const authorizationSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(authorization.mail.pending, (state) => {
+      .addCase(authRequest.mail.pending, (state) => {
         state.status = Status.Loading;
         state.errorType = null;
       })
-      .addCase(authorization.mail.fulfilled, (state, action) => {
+      .addCase(authRequest.mail.fulfilled, (state, action) => {
         state.status = Status.Resolved;
         state.token = action.payload;
       })
-      .addCase(authorization.mail.rejected, (state, action) => {
+      .addCase(authRequest.mail.rejected, (state, action) => {
         state.status = Status.Rejected;
         state.errorType = action.payload.response?.data?.state?.type;
       });
@@ -50,6 +50,6 @@ export const {
   clearAuthorizationToken,
   clearError,
 } = authorizationSlice.actions;
-export const allAuthorization = (state) => state.authorization;
+export const allAuth = (state) => state.authorization;
 
 export default authorizationSlice.reducer;

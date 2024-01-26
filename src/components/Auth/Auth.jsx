@@ -2,10 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import cn from 'classnames';
 import { showAuthorizationWindow } from '../../core/store/slices/modalWindowStateSlice';
-import {
-  allAuthorization,
-  setCurrentAuthorizationType,
-} from '../../core/store/auth/slice';
+import { allAuth, authorization, setCurrentAuthorizationType } from '../../core/store/auth/slice';
 // import { setMetamaskConnectionStatus } from '../../core/store/slices/metamaskAuthorizationSlice';
 import { MetamaskConnectionStatus, Status } from '../../core/constants/Status';
 import { AuthorizationType } from '../../core/constants/AuthorizationType';
@@ -24,7 +21,7 @@ import { setMetamaskConnectionStatus } from '../../core/store/metamask/slice';
 
 export function Auth() {
   const dispatch = useDispatch();
-  const { currentAuthorizationType } = useSelector(allAuthorization);
+  const { currentAuthorizationType } = useSelector(allAuth);
   const { staticTextAuth, staticTextStatusAuth } = useSelector(staticText);
 
   useEffect(() => {

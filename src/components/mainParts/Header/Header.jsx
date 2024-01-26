@@ -18,12 +18,14 @@ import { Auth } from '../../Auth';
 import s from './style.module.scss';
 import { RoutesName } from '../../../core/constants/Routes';
 import { QuestWindow } from '../../quests/QuestWindow';
+import { allAuth } from '../../../core/store/auth/slice';
 
 export function Header({ className }) {
   const dispatch = useDispatch();
   const { modalAuthorization, modalQuest } = useSelector(modalWindowState);
   const { staticTextHeader, staticTextStatusHeader } = useSelector(staticText);
-
+  const { token } = useSelector(allAuth);
+console.log(token)
   useEffect(() => {
     dispatch(getStaticText.basic(TEXT_KEYS.HEADER));
 
@@ -57,7 +59,7 @@ export function Header({ className }) {
             <Link to={'profile/Referral'}>profile</Link>
 
             <div className={cn(s.header__auth, s.auth)}>
-              {localStorage.authorization ? (
+              {token ? (
                 <Link to={'/'} className={cn(s.auth__button, s.auth__button_login)}>
                   Profile
                 </Link>

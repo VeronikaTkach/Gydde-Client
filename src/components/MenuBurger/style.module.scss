@@ -1,0 +1,54 @@
+@use '../../styles/styles.scss' as *;
+
+.languages {
+  @include width-height(100%, 360px);
+  padding: $space9 $space7;
+  border-radius: $space8;
+  @include themed() {
+    border: 1px solid t($surfaceBorder1);
+    background: t($surfacePrimary2);
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  &__item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    @include width-height(100%, 56px);
+    padding: 0 15px;
+    gap: 12px;
+    cursor: pointer;
+    @include fontStyle(20px, 500, 24px);
+    @include themed() {
+      color: t($textPrimaryMain);
+    }
+    & img {
+      clip-path: circle(50% at 50% 50%);
+      width: 32px;
+    }
+
+    & p {
+      
+    }
+
+    &:hover {
+      @include themed() {
+        background-color: t($formBackground);
+      }
+      border-radius: $space4;
+    }
+
+    &_active {
+      @extend .languages__item;
+      border-radius: $space4;
+      @include themed() {
+        border: 2px solid t($surfacePrimaryAccent);
+        background-color: t($formBackground);
+        color: t($textPrimaryMain);
+      }
+    }
+  }
+}
