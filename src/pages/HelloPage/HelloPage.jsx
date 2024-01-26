@@ -12,7 +12,6 @@ import { getStaticText } from '../../core/store/staticText/thunk';
 import { removeUnusedStaticText, staticText } from '../../core/store/staticText/slice';
 import { PageName } from '../../core/constants/PageNames';
 import s from './style.module.scss';
-import audioHello from '../../assets/audio/olivia-russian.mp3';
 import { Size } from '../../core/constants/Size';
 
 const highlightedItemIndex = 1;
@@ -52,7 +51,7 @@ export function HelloPage() {
           </div>
           <SubtitleWithAccentButton
             className={s.content__subtitle}
-            sound={audioHello}
+            sound={true}
             text={currentText.mascotText}
             buttonText={currentText.answerButtonText}
             buttonSticker={helloSticker}

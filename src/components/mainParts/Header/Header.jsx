@@ -12,7 +12,7 @@ import { getStaticText } from '../../../core/store/staticText/thunk';
 import { TEXT_KEYS } from '../../../core/constants/textKeys';
 import { PageName } from '../../../core/constants/PageNames';
 import { Status } from '../../../core/constants/Status';
-import { ButtonWithBorder } from '../../ui/buttons/Button';
+import { Button, ButtonWithBorder } from '../../ui/buttons/Button';
 import { NavigationLink } from '../../ui/Navlink';
 import { Auth } from '../../Auth';
 import s from './style.module.scss';
@@ -20,6 +20,7 @@ import { RoutesName } from '../../../core/constants/Routes';
 import { QuestWindow } from '../../quests/QuestWindow';
 import { allAuth } from '../../../core/store/auth/slice';
 import { MenuBurger } from '../../MenuBurger';
+import chat from '../../../assets/images/chat.png';
 
 export function Header({ className }) {
   const dispatch = useDispatch();
@@ -35,12 +36,14 @@ export function Header({ className }) {
     };
   }, []);
 
+  // localStorage.clear()
+
   return (
     <>
       {staticTextStatusHeader === Status.Resolved && (
         <header className={cn(s.header, className)}>
-          {/* {modalQuest && <QuestWindow />} */}
-          <QuestWindow />
+          {modalQuest && <QuestWindow />}
+          {/* <QuestWindow /> */}
           <NavigationLink
             className={s.header__logo}
             activeClassName={s.navigation__link_active}
@@ -49,7 +52,14 @@ export function Header({ className }) {
           </NavigationLink>
           <div className={cn(s.header__option, s.option)}>
             {token ? (
-              <MenuBurger className={s.option__menu} />
+              <>
+                <Button
+                  className={s.option__chat}
+                  onClick={() => dispatch(showQuestWindow(true))}>
+                  <img src={chat} alt={'chat icon'} />
+                </Button>
+                <MenuBurger className={s.option__menu} />
+              </>
             ) : (
               <>
                 <ButtonWithBorder

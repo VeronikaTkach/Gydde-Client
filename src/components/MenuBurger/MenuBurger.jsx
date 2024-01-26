@@ -49,7 +49,10 @@ export function MenuBurger({ className }) {
 
   return (
     <div className={cn(s.menu, className)}>
-      <img className={cn(s.menu__img, className)} src={menuImg} alt={'menu image'} />
+      <div className={cn(s.menu__img, className)}>
+        <img src={menuImg} alt={'menu image'} />
+      </div>
+
       {menuLink && (
         <ul className={cn(s.menu__list)}>
           {menuLink.map((item, index) => {

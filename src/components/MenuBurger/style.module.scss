@@ -2,21 +2,21 @@
 
 .menu {
   position: relative;
-  // @include width-height(100%, 360px);
-  // padding: $space9 $space7;
-  // border-radius: $space8;
   &:hover {
     .menu__list {
       display: flex;
     }
   }
   &__img {
+    height: 100%;
+    & img {
 
+    }
   }
   &__list {
     position: absolute;
     min-width: 284px;
-    top: 53px;
+    top: 56px;
     right: 0;
     display: none;
     flex-direction: column;

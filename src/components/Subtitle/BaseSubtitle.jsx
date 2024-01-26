@@ -1,17 +1,19 @@
 import { Howl } from 'howler';
 import cn from 'classnames';
-import voice from '../../assets/audio/olivia-russian.mp3';
 import { SubtitleBlock } from '../ui/tags/SubtitleBlock';
 import { TextWithBorder } from '../ui/tags/TextWithBorder';
 import { PlayButton } from '../soundControls/PlayButton/PlayButton';
 import s from './style.module.scss';
 import { AudioRate } from '../soundControls/AudioRate';
 import { usePlayer } from '../../core/hooks/player';
+import voice from '../../assets/images/temp/descriptionText.mp3';
+import { useEffect, useRef } from 'react';
 
-export const audio = new Howl({
-  src: voice,
+// export
+const audio = new Howl({
+  src: voice, //sound из пропсов, так как это создаётся обьект, наверно его не стоит пихать в компонент, иначе он будет пересоздаваться при ререндере, может аудио генерировать в юзеффекте конкретного компонента сохранять в стор ссылку на него, а тут только контроль оставить уже. Можно также попробовать в хук вынести ( не помню перерендериваются ли кастомные хуки, вроде не должны)
   html5: true,
-  autoplay: true,
+  autoplay: true, //из стора должно браться состояние (отдельно для квестов, отдельно для страниц)
 });
 
 export function BaseSubtitle({
@@ -22,7 +24,6 @@ export function BaseSubtitle({
   sound,
   text,
 }) {
-  //console.log(sound) сюда приходит звук
   const { soundSwitch, switchAudio } = usePlayer(audio);
 
   return (

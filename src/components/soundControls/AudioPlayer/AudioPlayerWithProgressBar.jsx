@@ -1,6 +1,6 @@
 import { Howl } from 'howler';
 import cn from 'classnames';
-import audio from '../../../assets/audio/olivia-russian.mp3';
+import audio from '../../../assets/images/temp/descriptionText.mp3';
 import { SoundSwitchStatus } from '../../../core/constants/SoundSwitchStatus';
 import { usePlayer } from '../../../core/hooks/player';
 import { PlayButton } from '../PlayButton/PlayButton';

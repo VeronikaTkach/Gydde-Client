@@ -17,6 +17,11 @@
 }
 
 .option {
+	display: flex;
+	gap: 20px;
+	&__chat {
+		background-color: transparent;
+	}
 	&__menu {
 		height: 56px;
 	}
