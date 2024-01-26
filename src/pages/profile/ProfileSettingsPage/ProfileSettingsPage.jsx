@@ -6,27 +6,33 @@ import { ProfileFolder } from '../../../components/profile/ProfileFolder';
 import { AccountSettings } from '../../../components/profile/AccountSettings/AccountSettings';
 import { getStaticText } from '../../../core/store/staticText/thunk';
 import { TEXT_KEYS } from '../../../core/constants/textKeys';
-import { staticText } from '../../../core/store/staticText/slice';
+import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
 import { Status } from '../../../core/constants/Status';
+import { PageName } from '../../../core/constants/PageNames';
 
-export function ProfileSettingsPage({ children }) {
+export function ProfileSettingsPage() {
   const dispatch = useDispatch();
   const { staticTextProfileSettings, staticTextStatusProfileSettings } =
     useSelector(staticText);
 
   useEffect(() => {
-    dispatch(getStaticText.basic([...TEXT_KEYS.PROFILE_SETTINGS, ...TEXT_KEYS.PROFILE]));
+    dispatch(getStaticText.basic(TEXT_KEYS.PROFILE_SETTINGS));
+
+    return () => {
+      dispatch(removeUnusedStaticText(PageName.ProfileSettings));
+    };
   }, []);
 
   return (
     <>
       <main className={cn(s.content)}>
         <div className={cn(s.content__container)}>
-          {staticTextStatusProfileSettings !== Status.Loading && (
-            <ProfileFolder staticText={staticTextProfileSettings}>
+          <ProfileFolder>
+            {(staticTextStatusProfileSettings === Status.Resolved ||
+              staticTextStatusProfileSettings === Status.Rejected) && (
               <AccountSettings staticText={staticTextProfileSettings} />
-            </ProfileFolder>
-          )}
+            )}
+          </ProfileFolder>
         </div>
       </main>
     </>

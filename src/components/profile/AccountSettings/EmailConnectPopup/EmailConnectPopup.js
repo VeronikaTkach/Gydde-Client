@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import cn from 'classnames';
-import { STATIC_TEXT } from '../../../../core/constants/staticText';
+import { STATIC_TEXT } from '../../../../core/constants/staticTex';
 import { PageName } from '../../../../core/constants/PageNames';
 import { showEmailConnectWindow } from '../../../../core/store/slices/modalWindowStateSlice';
 import { ButtonWithBorder } from '../../../ui/buttons/Button';

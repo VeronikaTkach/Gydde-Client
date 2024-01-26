@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import cn from 'classnames';
 import s from './style.module.scss';
 import { ButtonWithBorder } from '../../../ui/buttons/Button';
-import { STATIC_TEXT } from '../../../../core/constants/staticText';
+import { STATIC_TEXT } from '../../../../core/constants/staticTex';
 import { PageName } from '../../../../core/constants/PageNames';
 import ModalWithClose from '../../../ui/modals/Modal/ModalWithClose';
 import ModalWithBorderShadow from '../../../ui/modals/Modal/ModalWithBorder';

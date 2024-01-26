@@ -21,6 +21,12 @@ export const MetamaskConnectionStatus = {
   Finish: 'Finish',
 };
 
+export const ConnectWalletStatus = {
+  Connected: 'connected',
+  Disonnected: 'disconnected',
+};
+
 Object.freeze(StatusCode);
 Object.freeze(Status);
 Object.freeze(MetamaskConnectionStatus);
+Object.freeze(ConnectWalletStatus);

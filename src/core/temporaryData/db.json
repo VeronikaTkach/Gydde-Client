@@ -84,14 +84,17 @@
 		"ProfileSettings.socialGoogle": "Google",
 		"ProfileSettings.btnSave": "Save",
 
-		"ProfileWallet.formTitle": "Your wallet address",
-		"ProfileWallet.statusWallet": "Connected",
+		"ProfileWallet.title": "Your wallet address",
+		"ProfileWallet.statusWallet_connected": "Connected",
+		"ProfileWallet.statusWallet_disconnected": "Disconnected",
 		"ProfileWallet.balanceTitle": "Balance ETH",
 		"ProfileWallet.balanceValue": "0",
 		"ProfileWallet.networkTitle": "Connected network",
-		"ProfileWallet.networkName": "Ethereum",
-		"ProfileWallet.statusForm": "Disconnect",
-		
+		"ProfileWallet.networkName_mainnet": "Ethereum",
+		"ProfileWallet.connectButton_connected": "Connect wallet",
+		"ProfileWallet.connectButton_disconnected": "Disconnect",
+		"ProfileWallet.subtitle": "Disconnect",
+
 		"GuidesGallery.subtitle": "Do you know what an exchange is? Don't worry, this is not a test and it g won't affect any result Don't dfhhhdfj Don't worry",
 		"GuidesGallery.buttonText": "Let's go!",
 		"GuidesGallery.guideStatus_inProсess": "in progress",

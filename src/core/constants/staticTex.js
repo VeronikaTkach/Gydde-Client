@@ -44,12 +44,12 @@ export const STATIC_TEXT = {
     guideRewardCount: 'left',
   },
   [PageName.ProfileWallet]: {
-    formTitle: 'Your wallet address',
-    statusWallet: 'Connected',
+    title: 'Your wallet address',
+    statusWallet: { connected: 'Connected', disconnected: 'Disconnect' },
     balanceTitle: 'Balance ETH',
     balanceValue: '0',
     networkTitle: 'Connected network',
     networkName: 'Ethereum',
-    statusForm: 'Disconnect',
+    connectButton: { connected: 'Disconnect', disconnected: 'Disconnect' },
   },
 };

@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { getStaticText } from '../../../core/store/staticText/thunk';
 import { PageName } from '../../../core/constants/PageNames';
 import { Status } from '../../../core/constants/Status';
-import { STATIC_TEXT } from '../../../core/constants/staticText';
+import { STATIC_TEXT } from '../../../core/constants/staticTex';
 import { RoutesName } from '../../../core/constants/Routes';
 
 // const folderTabs = [

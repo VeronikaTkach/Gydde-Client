@@ -20,14 +20,14 @@ import { PageName } from '../../core/constants/PageNames';
 import { Size } from '../../core/constants/Size';
 import { Status } from '../../core/constants/Status';
 import smileyEyesStar from '../../assets/images/stickers/smileyEyesStar.png';
-import { STATIC_TEXT } from '../../core/constants/staticText';
+import { STATIC_TEXT } from '../../core/constants/staticTex';
 import { useColor } from 'color-thief-react';
 
 export function GuidePage() {
   const dispatch = useDispatch();
   const { guidesGallery, statusGuidesGallery } = useSelector(guide);
   // const { staticTextGuidesGallery, staticTextStatusGuidesGallery } =
-    // useSelector(staticText);
+  // useSelector(staticText);
 
   useEffect(() => {
     dispatch(guideRequest.guidesGalery());
@@ -37,8 +37,8 @@ export function GuidePage() {
       // dispatch(removeUnusedStaticText(PageName.GuidesGallery));
     };
   }, []);
-// localStorage.clear()
-console.log(localStorage)
+  // localStorage.clear()
+  console.log(localStorage);
   // const {
   //   data: colorSecondImg,
   //   loading,
@@ -76,7 +76,8 @@ console.log(localStorage)
   // console.log(guidesGalery);
   // console.log(localStorage.getItem('AuthorizationToken'));
   // console.log(statusGuidesGalery)
-  return (<></>
+  return (
+    <></>
     // <main className={cn(s.content)}>
     //   {staticTextStatusGuidesGallery !== Status.Loading &&
     //     staticTextStatusGuidesGallery !== undefined && (

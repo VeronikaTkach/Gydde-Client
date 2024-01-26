@@ -4,7 +4,7 @@ import s from './style.module.scss';
 import { Button } from '../../ui/buttons/Button';
 import mascot from '../../../assets/images/mascot/mascotGood.png';
 import eng from '../../../assets/images/flag/flagEng.png';
-import { STATIC_TEXT } from '../../../core/constants/staticText';
+import { STATIC_TEXT } from '../../../core/constants/staticTex';
 import { PageName } from '../../../core/constants/PageNames';
 import {
   modalWindowState,
