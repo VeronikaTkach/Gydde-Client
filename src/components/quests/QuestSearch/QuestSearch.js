@@ -1,30 +1,32 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import cn from 'classnames';
 import s from './style.module.scss';
 import { Button } from '../../ui/buttons/Button';
 import { InputSearch } from '../../ui/Input/InputSearch';
 
-export function QuestSearch(numberOfCards) {
-  // useEffect(() => {}, []);
-  const [isSearchVisible, setSearchVisible] = useState(false);
-  const [isTitleVisible, setTitleVisible] = useState(true);
+export function QuestSearch({ numberOfCards }) {
+  const [pageHeight, setPageHeight] = useState(null);
 
-  // const isScroll = 600 - numberOfCards * 92;
-  // const isScroll = numberOfCards;
+  const isScrollVisible = pageHeight < numberOfCards * 100; // высота карточки + расстояние между карточками
 
-  // if (isScroll < 6) {
-  //   setTitleVisible(true);
-  //   setSearchVisible(false);
-  // } else {
-  //   setSearchVisible(true);
-  //   setTitleVisible(false);
-  // }
+  useEffect(() => {
+    const updatePageHeight = () => {
+      const windowHeight = window.innerHeight; // Высота видимой области страницы
+      setPageHeight(windowHeight);
+    };
+    updatePageHeight();
+    window.addEventListener('resize', updatePageHeight);
+
+    return () => {
+      window.removeEventListener('resize', updatePageHeight);
+    };
+  }, []);
 
   return (
     <>
-      {isSearchVisible && (
+      {isScrollVisible && (
         <div className={cn(s.questSearch)}>
-          <InputSearch className={s.questSearch__input}/>
+          <InputSearch className={s.questSearch__input} />
           <Button
             className={cn(s.field__btn, s.field__btn__search, 'iconSearch')}
             type={'button'}
@@ -32,7 +34,7 @@ export function QuestSearch(numberOfCards) {
           />
         </div>
       )}
-      {isTitleVisible && (
+      {!isScrollVisible && (
         <div className={s.questSearch__title}>
           <InputSearch placeholder={'My guides'} disabled={true} />
         </div>

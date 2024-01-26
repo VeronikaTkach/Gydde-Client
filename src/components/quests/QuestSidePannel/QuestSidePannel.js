@@ -38,7 +38,6 @@ const card = [
 ];
 
 const firstItem = 0;
-const numberOfCards = card.length;
 
 export function QuestSidePannel({ className }) {
   const [activeQuest, setActiveQuest] = useState(firstItem);
@@ -58,7 +57,7 @@ export function QuestSidePannel({ className }) {
 
   return (
     <div className={cn(s.questSidePannel, className)}>
-      <QuestSearch numberOfCards={numberOfCards} />
+      <QuestSearch numberOfCards={card.length} />
       <ul>
         {card.map((item, index) => {
           return (
