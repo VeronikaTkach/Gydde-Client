@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import s from './style.module.scss';
-import { STATIC_TEXT } from '../../../core/constants/staticTex';
+import { STATIC_TEXT } from '../../../core/constants/staticText';
 import { PageName } from '../../../core/constants/PageNames';
 import mascot from '../../../assets/images/mascot/mascotGood.png';
 import iconMetamask from '../../../assets/images/metamask.svg';

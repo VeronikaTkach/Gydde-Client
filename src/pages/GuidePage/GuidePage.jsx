@@ -20,7 +20,7 @@ import { PageName } from '../../core/constants/PageNames';
 import { Size } from '../../core/constants/Size';
 import { Status } from '../../core/constants/Status';
 import smileyEyesStar from '../../assets/images/stickers/smileyEyesStar.png';
-import { STATIC_TEXT } from '../../core/constants/staticTex';
+import { STATIC_TEXT } from '../../core/constants/staticText';
 import { useColor } from 'color-thief-react';
 
 export function GuidePage() {

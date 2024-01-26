@@ -8,7 +8,7 @@ import { PageName } from '../../../core/constants/PageNames';
 import { Status } from '../../../core/constants/Status';
 import { getStaticText } from '../../../core/store/staticText/thunk';
 import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
-import { STATIC_TEXT } from '../../../core/constants/staticTex';
+import { STATIC_TEXT } from '../../../core/constants/staticText';
 import { SubtitleWithAccentButton } from '../../../components/Subtitle';
 import { ReferralAndGuides } from '../../../components/profile/RefferalAndGuides/RefferalAndGuides';
 

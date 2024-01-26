@@ -13,6 +13,7 @@ export const STATIC_TEXT = {
     connectMail: 'Connect Email Address',
     connectTwitter: 'Connect Twitter Account',
     setPass: 'Set password',
+    changePass: 'Change password',
     logout: 'Log out',
     editMailTitle: 'Enter email address',
     editNameTitle: 'Name editing',
@@ -51,5 +52,6 @@ export const STATIC_TEXT = {
     networkTitle: 'Connected network',
     networkName: 'Ethereum',
     connectButton: { connected: 'Disconnect', disconnected: 'Disconnect' },
+    subtitle: 'Every time I transfer a reward to your wallet, I write it down for you. So, nothing will be lost :)',
   },
 };

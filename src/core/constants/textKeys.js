@@ -104,6 +104,8 @@ export const TEXT_KEYS = {
     `${PageName.ProfileWallet}.networkName_mainnet`,
     `${PageName.ProfileWallet}.connectButton_connected`,
     `${PageName.ProfileWallet}.connectButton_disconnected`,
+    `${PageName.ProfileWallet}.subtitle`,
+    `${PageName.ProfileWallet}.buttonText`,
   ],
   GUIDES_GALLERY: [
     `${PageName.GuidesGallery}.subtitle`,

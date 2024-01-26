@@ -4,18 +4,31 @@ import s from './style.module.scss';
 import { Button } from '../../ui/buttons/Button';
 import mascot from '../../../assets/images/mascot/mascotGood.png';
 import eng from '../../../assets/images/flag/flagEng.png';
-import { STATIC_TEXT } from '../../../core/constants/staticTex';
+import { STATIC_TEXT } from '../../../core/constants/staticText';
 import { PageName } from '../../../core/constants/PageNames';
 import {
   modalWindowState,
+  showChangePasswordWindow,
   showEmailConnectWindow,
+  showSetPasswordWindow,
   showUsernameEditWindow,
 } from '../../../core/store/slices/modalWindowStateSlice';
-import { UsernameEditPopup } from './UsernameEditPopup/UsernameEditPopup';
-import { EmailConnectPopup } from './EmailConnectPopup/EmailConnectPopup';
+import {
+  EmailConnectPopup,
+  UsernameEditPopup,
+  SetPasswordPopup,
+  ChangePasswordPopup,
+} from './popups';
+// import {
+//   EmailConnectPopup,
+//   UsernameEditPopup,
+//   SetPasswordPopup,
+//   ChangePasswordPopup,
+// } from './popups';
 
 export function AccountSettings({ className, staticTextProfileSettings }) {
-  const { modalEmailConnect, modalUsernameEdit } = useSelector(modalWindowState);
+  const { modalEmailConnect, modalUsernameEdit, modalSetPassword, modalChangePassword } =
+    useSelector(modalWindowState);
   const dispatch = useDispatch();
 
   return (
@@ -62,10 +75,20 @@ export function AccountSettings({ className, staticTextProfileSettings }) {
                   STATIC_TEXT[PageName.ProfileSettings].connectMail}
               </Button>
               {modalEmailConnect && <EmailConnectPopup />}
-              <Button className={cn(s.connections__button_pass, s.connections__button)}>
+              <Button
+                className={cn(s.connections__button_pass, s.connections__button)}
+                onClick={() => dispatch(showSetPasswordWindow(true))}>
                 {staticTextProfileSettings?.setPass ||
                   STATIC_TEXT[PageName.ProfileSettings].setPass}
               </Button>
+              {modalSetPassword && <SetPasswordPopup />}
+              <Button
+                className={cn(s.connections__button_pass, s.connections__button)}
+                onClick={() => dispatch(showChangePasswordWindow(true))}>
+                {staticTextProfileSettings?.changePass ||
+                  STATIC_TEXT[PageName.ProfileSettings].changePass}
+              </Button>
+              {modalChangePassword && <ChangePasswordPopup />}
             </div>
             <div className={cn(s.connections__socials)}>
               <Button

@@ -35,16 +35,15 @@ export function ProfileWalletPage() {
             </ProfileFolder>
           )}
         </div>
-        {/* {(staticTextStatusProfileWallet === Status.Resolved ||
+        {(staticTextStatusProfileWallet === Status.Resolved ||
           staticTextStatusProfileWallet === Status.Rejected) && (
           <SubtitleWithAccentButton
             className={s.content__subtitle}
             text={staticTextProfileWallet.subtitle}
-            leftButtonText={staticTextProfileWallet.leftButtonText}
-            rightButtonText={staticTextProfileWallet.rightButtonText}
+            buttonText={staticTextProfileWallet.buttonText}
             sound={true}
           />
-        )} */}
+        )}
       </main>
     </>
   );
