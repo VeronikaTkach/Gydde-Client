@@ -35,6 +35,34 @@ const card = [
     notification: 1,
     id: 3,
   },
+  {
+    title: 'The Great Battle',
+    author: 'PancakeSwaper',
+    progress: 'In progress',
+    notification: 0,
+    id: 0,
+  },
+  {
+    title: 'The Great Battle',
+    author: 'PancakeSwaper',
+    progress: 'In progress',
+    notification: 1,
+    id: 1,
+  },
+  {
+    title: 'The Great Battle',
+    author: 'PancakeSwaper',
+    progress: 'Completed',
+    notification: 0,
+    id: 2,
+  },
+  {
+    title: 'The Great Battle',
+    author: 'PancakeSwaper',
+    progress: 'Completed',
+    notification: 1,
+    id: 3,
+  },
 ];
 
 const firstItem = 0;
@@ -62,7 +90,7 @@ export function QuestSidePannel({ className }) {
         {card.map((item, index) => {
           return (
             <li
-              key={item.id} 
+              key={index}
               onClick={() => handleClick(index)}
               onMouseEnter={() => handleHover(index)}
               onMouseLeave={() => handleHover(false)}>

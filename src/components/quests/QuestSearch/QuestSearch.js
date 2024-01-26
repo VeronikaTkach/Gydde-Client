@@ -6,9 +6,9 @@ import { InputSearch } from '../../ui/Input/InputSearch';
 
 export function QuestSearch({ numberOfCards }) {
   const [pageHeight, setPageHeight] = useState(null);
-
+console.log(numberOfCards)
   const isScrollVisible = pageHeight < numberOfCards * 100; // высота карточки + расстояние между карточками
-
+console.log(isScrollVisible)
   useEffect(() => {
     const updatePageHeight = () => {
       const windowHeight = window.innerHeight; // Высота видимой области страницы

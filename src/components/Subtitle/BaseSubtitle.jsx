@@ -7,7 +7,6 @@ import s from './style.module.scss';
 import { AudioRate } from '../soundControls/AudioRate';
 import { usePlayer } from '../../core/hooks/player';
 import voice from '../../assets/images/temp/descriptionText.mp3';
-import { useEffect, useRef } from 'react';
 
 // export
 const audio = new Howl({
