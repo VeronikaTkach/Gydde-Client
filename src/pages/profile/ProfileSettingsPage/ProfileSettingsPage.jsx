@@ -30,7 +30,10 @@ export function ProfileSettingsPage() {
           <ProfileFolder>
             {(staticTextStatusProfileSettings === Status.Resolved ||
               staticTextStatusProfileSettings === Status.Rejected) && (
-              <AccountSettings staticText={staticTextProfileSettings} />
+              <AccountSettings
+                staticTextProfileSettings={staticTextProfileSettings}
+                staticTextStatusProfileSettings={staticTextStatusProfileSettings}
+              />
             )}
           </ProfileFolder>
         </div>

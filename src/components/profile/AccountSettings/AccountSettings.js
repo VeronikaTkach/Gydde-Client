@@ -20,7 +20,11 @@ import {
   ChangePasswordPopup,
 } from './popups';
 
-export function AccountSettings({ className, staticTextProfileSettings }) {
+export function AccountSettings({
+  className,
+  staticTextProfileSettings,
+  staticTextStatusProfileSettings,
+}) {
   const { modalEmailConnect, modalUsernameEdit, modalSetPassword, modalChangePassword } =
     useSelector(modalWindowState);
   const dispatch = useDispatch();
@@ -41,7 +45,12 @@ export function AccountSettings({ className, staticTextProfileSettings }) {
               <div
                 className={cn(s.header__btnEdit, 'iconEdit')}
                 onClick={() => dispatch(showUsernameEditWindow(true))}></div>
-              {modalUsernameEdit && <UsernameEditPopup />}
+              {modalUsernameEdit && (
+                <UsernameEditPopup
+                  staticTextProfileSettings={staticTextProfileSettings}
+                  staticTextStatusProfileSettings={staticTextStatusProfileSettings}
+                />
+              )}
             </div>
             <Button className={cn(s.header__langInfo, 'iconDropdownArrow')}>
               <div className={cn(s.header__language)}>Eng</div>
@@ -68,21 +77,36 @@ export function AccountSettings({ className, staticTextProfileSettings }) {
                 {staticTextProfileSettings?.connectMail ||
                   STATIC_TEXT[PageName.ProfileSettings].connectMail}
               </Button>
-              {modalEmailConnect && <EmailConnectPopup />}
+              {modalEmailConnect && (
+                <EmailConnectPopup
+                  staticTextProfileSettings={staticTextProfileSettings}
+                  staticTextStatusProfileSettings={staticTextStatusProfileSettings}
+                />
+              )}
               <Button
                 className={cn(s.connections__button_pass, s.connections__button)}
                 onClick={() => dispatch(showSetPasswordWindow(true))}>
                 {staticTextProfileSettings?.setPass ||
                   STATIC_TEXT[PageName.ProfileSettings].setPass}
               </Button>
-              {modalSetPassword && <SetPasswordPopup />}
+              {modalSetPassword && (
+                <SetPasswordPopup
+                  staticTextProfileSettings={staticTextProfileSettings}
+                  staticTextStatusProfileSettings={staticTextStatusProfileSettings}
+                />
+              )}
               <Button
                 className={cn(s.connections__button_pass, s.connections__button)}
                 onClick={() => dispatch(showChangePasswordWindow(true))}>
                 {staticTextProfileSettings?.changePass ||
                   STATIC_TEXT[PageName.ProfileSettings].changePass}
               </Button>
-              {modalChangePassword && <ChangePasswordPopup />}
+              {modalChangePassword && (
+                <ChangePasswordPopup
+                  staticTextProfileSettings={staticTextProfileSettings}
+                  staticTextStatusProfileSettings={staticTextStatusProfileSettings}
+                />
+              )}
             </div>
             <div className={cn(s.connections__socials)}>
               <Button
