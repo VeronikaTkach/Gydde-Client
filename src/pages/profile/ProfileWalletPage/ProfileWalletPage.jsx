@@ -23,7 +23,6 @@ export function ProfileWalletPage() {
       dispatch(removeUnusedStaticText(PageName.ProfileWallet));
     };
   }, []);
-  console.log(staticTextProfileWallet);
 
   return (
     <>

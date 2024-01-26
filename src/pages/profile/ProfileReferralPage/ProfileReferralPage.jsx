@@ -10,6 +10,10 @@ import { getStaticText } from '../../../core/store/staticText/thunk';
 import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
 import { SubtitleWithDifferentButton } from '../../../components/Subtitle';
 import { ReferralAndGuides } from '../../../components/profile/RefferalAndGuides/RefferalAndGuides';
+import { ReferralAd } from '../../../components/profile/RefferalAd/RefferalAd';
+
+//TODO ВРЕМЕННАЯ ПЕРЕМЕННАЯ
+const noRefferal = false;
 
 const hasReferral = 'Referral';
 export function ProfileReferralPage() {
@@ -18,7 +22,7 @@ export function ProfileReferralPage() {
     useSelector(staticText);
 
   useEffect(() => {
-    dispatch(getStaticText.basic(TEXT_KEYS.PROFILE_ReferralS));
+    dispatch(getStaticText.basic(TEXT_KEYS.PROFILE_REFERRALS));
 
     return () => {
       dispatch(removeUnusedStaticText(PageName.ProfileReferrals));
@@ -30,9 +34,15 @@ export function ProfileReferralPage() {
       <main className={cn(s.content)}>
         <div className={cn(s.content__container)}>
           <ProfileFolder>
-            {(staticTextStatusProfileReferrals === Status.Resolved ||
-              staticTextStatusProfileReferrals === Status.Rejected) && (
-              <ReferralAndGuides staticText={staticTextProfileReferrals} />
+            {noRefferal ? (
+              <ReferralAd staticText={staticTextProfileReferrals} />
+            ) : (
+              <>
+                {(staticTextStatusProfileReferrals === Status.Resolved ||
+                  staticTextStatusProfileReferrals === Status.Rejected) && (
+                  <ReferralAndGuides staticText={staticTextProfileReferrals} />
+                )}
+              </>
             )}
           </ProfileFolder>
         </div>

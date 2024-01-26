@@ -6,5 +6,7 @@ import { Button } from '../../ui/buttons/Button';
 export function ReferralAd({ className }) {
   useEffect(() => {}, []);
 
-  return <div className={cn(s.Referral, className)}></div>;
+  return <div className={cn(s.Referral, className)}>
+    
+  </div>;
 }
