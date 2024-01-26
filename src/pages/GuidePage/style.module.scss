@@ -6,11 +6,47 @@
 		padding: 12px 0;
 	}
 	&__carousel {
+		position: relative;
 		padding: 0 120px;
+
+	}
+	&__button {
+		position: absolute;
+		top: 0;
+		height: 100%;
+		background-color: transparent;
+		font-size: 96px;
+		z-index: 5;
+		@include themed() {
+			color: t($buttonBgActive);
+		}
+		&:hover {
+			@include themed() {
+				color: t($buttonBgHover3);
+			}
+		}
+		&_prev {
+			padding-right: 89px;
+			left: 0;
+		}
+		&_next {
+			rotate: 180deg;
+			padding-right: 89px;
+			right: 0;
+		}
 	}
 	&__mascotImg {
-		position: absolute;
-		bottom: 40px;
+		position: relative;
+		width: 340px;
+		display: flex;
+		bottom: 0;
+		margin-top: -300px;
+		z-index: 2;
+		& img {
+			display: block;
+			@include width-height(100%);
+			object-fit: cover;
+		}
 	}
 	&__subtitle {
 		position: absolute;
@@ -18,7 +54,8 @@
 		@include fontStyle(28px, 700, 40px);
 		grid-template-columns: $space14 1fr fit-content(50px);
 		grid-template-rows: 1fr 68px;
-		gap: $space7;
+		column-gap: $space7;
 		padding: $space8;
+		z-index: 10;
 	}
 }

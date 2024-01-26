@@ -9,11 +9,6 @@ import { ConnectWalletStatus } from '../../../core/constants/Status';
 import { NetworkName } from '../../../core/constants/NetworkName';
 
 export function Wallet({ className, staticText }) {
-  console.log(
-    staticText?.statusWallet[ConnectWalletStatus.Connected],
-    STATIC_TEXT[PageName.ProfileWallet].statusWallet[ConnectWalletStatus.Connected]
-  );
-
   return (
     <>
       <div className={cn(s.wallet, className)}>

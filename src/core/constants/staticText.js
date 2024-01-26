@@ -51,7 +51,8 @@ export const STATIC_TEXT = {
     balanceValue: '0',
     networkTitle: 'Connected network',
     networkName: 'Ethereum',
+    subtitle:
+      'Every time I transfer a reward to your wallet, I write it down for you. So, nothing will be lost :)',
     connectButton: { connected: 'Disconnect', disconnected: 'Disconnect' },
-    subtitle: 'Every time I transfer a reward to your wallet, I write it down for you. So, nothing will be lost :)',
   },
 };

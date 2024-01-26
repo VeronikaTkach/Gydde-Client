@@ -19,12 +19,6 @@ import {
   SetPasswordPopup,
   ChangePasswordPopup,
 } from './popups';
-// import {
-//   EmailConnectPopup,
-//   UsernameEditPopup,
-//   SetPasswordPopup,
-//   ChangePasswordPopup,
-// } from './popups';
 
 export function AccountSettings({ className, staticTextProfileSettings }) {
   const { modalEmailConnect, modalUsernameEdit, modalSetPassword, modalChangePassword } =

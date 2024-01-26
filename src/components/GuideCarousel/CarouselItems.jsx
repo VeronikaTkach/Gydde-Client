@@ -7,15 +7,14 @@ import { GUIDE_STATUS } from '../../core/constants/backendEnums';
 
 //TODO переработать и сократить повторяющийся код в свободное время
 export function ItemInfo({ guide, idInfoClose, staticText }) {
-  console.log(guide);
-
   return (
     <div
       className={cn(s.card__info, s.info, {
         [s.info_close]: idInfoClose,
       })}>
       <div className={cn(s.info__status)}>
-        {staticText.guideStatus[GUIDE_STATUS[guide]]}
+        {/* {staticText.guideStatus[GUIDE_STATUS[guide]]} */}
+        in progress
       </div>
       <div className={cn(s.info__title)}>
         Web3 Jungle Challenge: Navigate for Riches or Bust!
@@ -49,7 +48,7 @@ export function CarouselPreviousItem({ isMove, guides, guideMove, colorImg }) {
               }}></div>
             <img
               className={s.card__img}
-              src={guides[guides.length - Carousel.LastGuide].imgSrc}
+              src={guides[guides.length - Carousel.LastGuide].image}
               alt=''
             />
           </div>
@@ -67,7 +66,7 @@ export function CarouselPreviousItem({ isMove, guides, guideMove, colorImg }) {
               }}></div>
             <img
               className={s.card__img}
-              src={guides[guides.length - Carousel.LastGuide].imgSrc}
+              src={guides[guides.length - Carousel.LastGuide].image}
               alt=''
             />
           </div>
@@ -92,7 +91,7 @@ export function CarouselFirstItem({ isMove, guides, guideMove, colorImg, staticT
               }}></div>
             <img
               className={s.card__img}
-              src={guides[Carousel.FirstGuide].imgSrc}
+              src={guides[Carousel.FirstGuide].image}
               alt={'guide image'}
             />
           </div>
@@ -117,7 +116,7 @@ export function CarouselFirstItem({ isMove, guides, guideMove, colorImg, staticT
               }}></div>
             <img
               className={s.card__img}
-              src={guides[Carousel.FirstGuide].imgSrc}
+              src={guides[Carousel.FirstGuide].image}
               alt={'guide image'}
             />
           </div>
@@ -147,7 +146,7 @@ export function CarouselSecondItem({ isMove, guides, guideMove, colorImg, static
             <div className={cn(s.card__imgBg)}></div>
             <img
               className={s.card__img}
-              src={guides[Carousel.SecondGuide].imgSrc}
+              src={guides[Carousel.SecondGuide].image}
               alt={'guide image'}
             />
           </div>
@@ -181,7 +180,7 @@ export function CarouselSecondItem({ isMove, guides, guideMove, colorImg, static
               }}></div>
             <img
               className={s.card__img}
-              src={guides[Carousel.SecondGuide].imgSrc}
+              src={guides[Carousel.SecondGuide].image}
               alt={'guide image'}
             />
           </div>
@@ -211,7 +210,7 @@ export function CarouselThirdItem({ isMove, guides, guideMove, colorImg, staticT
               }}></div>
             <img
               className={s.card__img}
-              src={guides[Carousel.ThirdGuide].imgSrc}
+              src={guides[Carousel.ThirdGuide].image}
               alt={'guide image'}
             />
           </div>
@@ -236,7 +235,7 @@ export function CarouselThirdItem({ isMove, guides, guideMove, colorImg, staticT
               }}></div>
             <img
               className={s.card__img}
-              src={guides[Carousel.ThirdGuide].imgSrc}
+              src={guides[Carousel.ThirdGuide].image}
               alt={'guide image'}
             />
           </div>
@@ -278,7 +277,7 @@ export function CarouselNextItem({
               }}></div>
             <img
               className={s.card__img}
-              src={guides[Carousel.ThirdGuide].imgSrc}
+              src={guides[Carousel.ThirdGuide].image}
               alt={'guide image'}
             />
           </div>
@@ -299,7 +298,7 @@ export function CarouselNextItem({
               }}></div>
             <img
               className={s.card__img}
-              src={guides[Carousel.NextGuide || Carousel.FirstGuide].imgSrc}
+              src={guides[Carousel.NextGuide || Carousel.FirstGuide].image}
               alt=''
             />
           </div>

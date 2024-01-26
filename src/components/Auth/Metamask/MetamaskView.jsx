@@ -76,7 +76,6 @@ export function MetamaskView() {
       dispatch(setMetamaskConnectionStatus(MetamaskConnectionStatus.Connecting));
     }
   }
-  console.log(currentText);
 
   return (
     <>
