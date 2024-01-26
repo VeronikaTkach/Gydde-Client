@@ -1,12 +1,23 @@
 @use '../../../styles/styles.scss' as *;
 
 .questSidePannel {
-    display: flex;
-    gap: $space3;
-    flex-direction: column;
-    & ul {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
+  display: flex;
+  gap: $space3;
+  flex-direction: column;
+  height: calc(100vh - 140px);
+  overflow-y: scroll;
+  padding-right: 3px;
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+  &::-webkit-scrollbar-thumb {
+    @include themed() {
+      background-color: t($surfaceBorderSubtitles);
     }
+  }
+  & ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
 }

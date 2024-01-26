@@ -146,6 +146,11 @@
     content: $iconDropdownArrow;
   }
 }
+.iconDropdownArrow_after {
+  &:after {
+    content: $iconDropdownArrow;
+  }
+}
 .iconDisconnect {
   &:before {
     content: $iconDisconnect;

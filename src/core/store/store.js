@@ -6,6 +6,7 @@ import soundSettings from './slices/soundSettingsSlice';
 import staticText from './staticText/slice';
 import guidesCarousel from './slices/guidesCarouselSlice';
 import guide from './guide/slice';
+import language from './language/slice';
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
     soundSettings,
     guidesCarousel,
     guide,
+    language,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
 });

@@ -12,6 +12,7 @@ import reward from '../../assets/images/menu/reward.png';
 import settings from '../../assets/images/menu/settings.png';
 import globe from '../../assets/images/menu/globe.png';
 import { Link } from 'react-router-dom';
+import { LANGUAGES } from '../../core/constants/languages';
 
 export function MenuBurger({ className }) {
   // const [activeLanguage, setActiveLanguage] = useState('');
@@ -52,22 +53,44 @@ export function MenuBurger({ className }) {
       <div className={cn(s.menu__img, className)}>
         <img src={menuImg} alt={'menu image'} />
       </div>
-
       {menuLink && (
         <ul className={cn(s.menu__list)}>
-          {menuLink.map((item, index) => {
-            return (
-              <li
-                key={index}
-                // onClick={() => chooseLanguage(index)}
-              >
-                <Link className={s.menu__item} to={item.to}>
-                  <img className={s.menu__icon} src={item.icon} alt='country flag' />
-                  <div className={s.menu__title}>{item.title}</div>
-                </Link>
-              </li>
-            );
-          })}
+          {menuLink.map((item, index) => (
+            <li key={index}>
+              <Link className={cn(s.menu__item, s.item)} to={item.to}>
+                <div className={s.item__icon}>
+                  <img src={item.icon} alt='menu icon' />
+                </div>
+                <div className={s.item__title}>{item.title}</div>
+              </Link>
+            </li>
+          ))}
+          <li className={cn(s.menu__item, s.menu__item_submenu, s.item)}>
+            {/* <div className={cn(s.menu__item)}> */}
+            <img className={s.item__icon} src={globe} alt='menu icon' />
+            <div
+              className={cn(
+                s.item__title,
+                // s.menu__submenu,
+                // s.menu__submenu_open,
+                'iconDropdownArrow_after'
+              )}>
+              {'Eng'}
+            </div>
+            {/* </div> */}
+            <ul className={cn(s.menu__sublist)}>
+              {LANGUAGES.map((item, index) => (
+                <li className={cn(s.menu__item, s.item, s.item_subitem)} key={index}>
+                  <img
+                    className={cn(s.item__icon, s.item__icon_flag)}
+                    src={item.icon}
+                    alt={'menu icon'}
+                  />
+                  <div className={s.item__title}>{item.lang}</div>
+                </li>
+              ))}
+            </ul>
+          </li>
         </ul>
       )}
     </div>
