@@ -13,11 +13,15 @@ import settings from '../../assets/images/menu/settings.png';
 import globe from '../../assets/images/menu/globe.png';
 import { Link } from 'react-router-dom';
 import { LANGUAGES } from '../../core/constants/languages';
+import { useDispatch, useSelector } from 'react-redux';
+import { languageRequest } from '../../core/store/language/thunk';
+import { language } from '../../core/store/language/slice';
 
 export function MenuBurger({ className }) {
-  // const [activeLanguage, setActiveLanguage] = useState('');
+  const dispatch = useDispatch();
+  const { currentLanguage } = useSelector(language);
   const [menuLink, setMenuLink] = useState(false);
-
+  console.log(currentLanguage);
   useEffect(() => {
     setMenuLink([
       {
@@ -65,26 +69,25 @@ export function MenuBurger({ className }) {
               </Link>
             </li>
           ))}
-          <li className={cn(s.menu__item, s.menu__item_submenu, s.item)}>
-            {/* <div className={cn(s.menu__item)}> */}
-            <img className={s.item__icon} src={globe} alt='menu icon' />
-            <div
-              className={cn(
-                s.item__title,
-                // s.menu__submenu,
-                // s.menu__submenu_open,
-                'iconDropdownArrow_after'
-              )}>
-              {'Eng'}
+          <li className={cn(s.menu__submenu)}>
+            <div className={cn(s.menu__item, s.item)}>
+              <img className={s.item__icon} src={globe} alt='menu icon' />
+              {currentLanguage && (
+                <div className={cn(s.item__title, 'iconDropdownArrow_after')}>
+                  {currentLanguage}
+                </div>
+              )}
             </div>
-            {/* </div> */}
             <ul className={cn(s.menu__sublist)}>
               {LANGUAGES.map((item, index) => (
-                <li className={cn(s.menu__item, s.item, s.item_subitem)} key={index}>
+                <li
+                  className={cn(s.menu__item, s.item, s.item_subitem)}
+                  key={index}
+                  onClick={() => dispatch(languageRequest.change())}>
                   <img
                     className={cn(s.item__icon, s.item__icon_flag)}
                     src={item.icon}
-                    alt={'menu icon'}
+                    alt={'language flag'}
                   />
                   <div className={s.item__title}>{item.lang}</div>
                 </li>

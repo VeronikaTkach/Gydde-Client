@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { Status } from '../../constants/Status';
+import { getStaticText } from './thunk';
 
 const initialState = {
   savedStaticText: [],
@@ -25,6 +26,21 @@ export const staticTextSlice = createSlice({
     const firstItem = 0;
 
     builder
+      //get hello page
+      .addCase(getStaticText.hello.pending, (state) => {
+        // state.error = null;
+      })
+      .addCase(getStaticText.hello.fulfilled, (state) => {
+        // state.connectionStatus = MetamaskConnectionStatus.Finish;
+        // state.account = null;
+        // state.message = null;
+        // state.signedMessage = null;
+      })
+      .addCase(getStaticText.hello.rejected, (state, action) => {
+        // state.connectionStatus = MetamaskConnectionStatus.Error;
+        // state.error = action.payload;
+      })
+
       .addMatcher(
         (action) => /staticText\/.*\/pending$/.test(action.type),
         (state, action) => {

@@ -107,5 +107,14 @@
 		"GuidesGallery.guideTime": "min",
 		"GuidesGallery.guideRewardTitle": "Reward",
 		"GuidesGallery.guideRewardCount": "left"
+	},
+	"getVoice": {
+		"GuidesGallery.mascotVoice": "Ready to turn your drawings into digital gold? Don't miss out on this incredible journey! Your artistic destiny awaits.",
+		"Hello.mascotVoice": "Hello! I'm Gydde",
+		"ProfileGuides.mascotVoice": "Well, if you didn't know, we still have a lot of guides that you haven't completed yet. Go ahead for knowledge!",
+		"ProfileReferrals_Referral.mascotVoice": "If you invite more friends, you will get more rewards!",
+		"ProfileReferrals_NoReferral.mascotVoice": "Imagine you invite 10 friends who also invite 10 friends and they complete 10 quests each. You will earn 900$. That's AWESOME!",
+		"ProfileWallet.mascotVoice": "Every time I transfer a reward to your wallet, I write it down for you. So, nothing will be lost :)",
+		"ProfileWallet_NoWallet.mascotVoice": "Well, you don’t have a wallet connected. If you don’t know how to connect a wallet just tell me and I will show you how to do it :)"
 	}
 }
