@@ -12,6 +12,8 @@ import { passwordValidation } from '../../../../Auth/validations/registerValidat
 import { styles } from '../SetPasswordPopup';
 import { Status } from '../../../../../core/constants/Status';
 import { allAuth, clearError } from '../../../../../core/store/auth/slice';
+import { STATIC_TEXT } from '../../../../../core/constants/staticText';
+import { PageName } from '../../../../../core/constants/PageNames';
 
 export function ChangePasswordPopup({ staticTextProfileSettings }) {
   const dispatch = useDispatch();
@@ -51,13 +53,19 @@ export function ChangePasswordPopup({ staticTextProfileSettings }) {
       onClose={() => dispatch(showChangePasswordWindow(false))}
       styles={styles}>
       <div>
-        <div className={cn(s.title)}>{staticTextProfileSettings?.changePassTitle}</div>
+        <div className={cn(s.title)}>
+          {staticTextProfileSettings?.changePassTitle ||
+            STATIC_TEXT[PageName.ProfileSettings].changePassTitle}
+        </div>
         <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
           <div className={s.form__inputs}>
             <div className={s.form__input}>
               <Input
                 classError={errors.password}
-                placeholder={staticTextProfileSettings?.fieldLastPass}
+                placeholder={
+                  staticTextProfileSettings?.fieldLastPass ||
+                  STATIC_TEXT[PageName.ProfileSettings].fieldLastPass
+                }
                 name={'password'}
                 setValue={setValue}
                 register={register}
@@ -66,14 +74,18 @@ export function ChangePasswordPopup({ staticTextProfileSettings }) {
               />
               {errorType && (
                 <p className={s.form__error}>
-                  {staticTextProfileSettings?.passwordLastErrorText}
+                  {staticTextProfileSettings?.passwordLastErrorText ||
+                    STATIC_TEXT[PageName.ProfileSettings].passwordLastErrorText}
                 </p>
               )}
             </div>
             <div className={s.form__input}>
               <Input
                 classError={errors.password}
-                placeholder={staticTextProfileSettings?.fieldNewPass}
+                placeholder={
+                  staticTextProfileSettings?.fieldNewPass ||
+                  STATIC_TEXT[PageName.ProfileSettings].fieldNewPass
+                }
                 name={'passwordNew'}
                 setValue={setValue}
                 register={register}
@@ -82,7 +94,8 @@ export function ChangePasswordPopup({ staticTextProfileSettings }) {
               />
               {errorType && (
                 <p className={s.form__error}>
-                  {staticTextProfileSettings?.passwordNewErrorText}
+                  {staticTextProfileSettings?.passwordNewErrorText ||
+                    STATIC_TEXT[PageName.ProfileSettings].passwordNewErrorText}
                 </p>
               )}
             </div>
@@ -92,7 +105,8 @@ export function ChangePasswordPopup({ staticTextProfileSettings }) {
             type={'submit'}
             disabled={status === Status.Loading}
             isLoading={status === Status.Loading}>
-            {staticTextProfileSettings?.btnSave}
+            {staticTextProfileSettings?.btnSave ||
+              STATIC_TEXT[PageName.ProfileSettings].btnSave}
           </ButtonWithBorder>
         </form>
       </div>

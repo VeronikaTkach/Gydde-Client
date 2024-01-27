@@ -17,6 +17,8 @@ import s from '../style.module.scss';
 import { allAuth, clearError } from '../../../../../core/store/auth/slice';
 import { Status } from '../../../../../core/constants/Status';
 import { staticTextHelper } from '../../../../../core/helpers/staticTextHelper';
+import { STATIC_TEXT } from '../../../../../core/constants/staticText';
+import { PageName } from '../../../../../core/constants/PageNames';
 
 export function EmailConnectPopup({
   staticTextProfileSettings,
@@ -54,7 +56,8 @@ export function EmailConnectPopup({
   useEffect(() => {
     if (staticTextStatusProfileSettings === Status.Resolved) {
       const convertedMailValidation = staticTextHelper.convertToValidation(
-        staticTextProfileSettings?.mailErrorText,
+        staticTextProfileSettings?.mailErrorText ||
+          STATIC_TEXT[PageName.ProfileSettings].mailErrorText,
         mailValidationWithoutMessage
       );
       setMailValidation(convertedMailValidation);
@@ -77,13 +80,19 @@ export function EmailConnectPopup({
       onClose={() => dispatch(showEmailConnectWindow(false))}
       styles={styles}>
       <div>
-        <div className={cn(s.title)}>{staticTextProfileSettings?.editMailTitle}</div>
+        <div className={cn(s.title)}>
+          {staticTextProfileSettings?.editMailTitle ||
+            STATIC_TEXT[PageName.ProfileSettings].editMailTitle}
+        </div>
         <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
           <div className={s.form__inputs}>
             <div className={s.form__input}>
               <Input
                 classError={errors.email}
-                placeholder={staticTextProfileSettings?.fieldMail}
+                placeholder={
+                  staticTextProfileSettings?.fieldMail ||
+                  STATIC_TEXT[PageName.ProfileSettings].fieldMail
+                }
                 name={'email'}
                 setValue={setValue}
                 register={register}
@@ -95,7 +104,10 @@ export function EmailConnectPopup({
             <div className={s.form__input}>
               <Input
                 classError={errors.password}
-                placeholder={staticTextProfileSettings?.fieldPass}
+                placeholder={
+                  staticTextProfileSettings?.fieldPass ||
+                  STATIC_TEXT[PageName.ProfileSettings].fieldPass
+                }
                 name={'password'}
                 setValue={setValue}
                 register={register}
@@ -104,7 +116,8 @@ export function EmailConnectPopup({
               />
               {errorType && (
                 <p className={s.form__error}>
-                  {staticTextProfileSettings?.passwordErrorText}
+                  {staticTextProfileSettings?.passwordErrorText ||
+                    STATIC_TEXT[PageName.ProfileSettings].passwordErrorText}
                 </p>
               )}
             </div>
@@ -114,17 +127,25 @@ export function EmailConnectPopup({
             type={'submit'}
             disabled={status === Status.Loading}
             isLoading={status === Status.Loading}>
-            {staticTextProfileSettings?.btnSave}
+            {staticTextProfileSettings?.btnSave ||
+              STATIC_TEXT[PageName.ProfileSettings].btnSave}
           </ButtonWithBorder>
         </form>
         <div className={cn(s.social)}>
           <div className={cn(s.social__title)}>
-            {staticTextProfileSettings?.connectSocial}
+            {staticTextProfileSettings?.connectSocial ||
+              STATIC_TEXT[PageName.ProfileSettings].connectSocial}
           </div>
           <SocialButton
             iconImg={google}
-            text={staticTextProfileSettings?.socialGoogle}
-            alt={staticTextProfileSettings?.socialGoogle}
+            text={
+              staticTextProfileSettings?.socialGoogle ||
+              STATIC_TEXT[PageName.ProfileSettings].socialGoogle
+            }
+            alt={
+              staticTextProfileSettings?.socialGoogle ||
+              STATIC_TEXT[PageName.ProfileSettings].socialGoogle
+            }
           />
         </div>
       </div>
