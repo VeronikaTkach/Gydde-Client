@@ -28,11 +28,20 @@ export const STATIC_TEXT = {
     changePassTitle: 'Change password',
     fieldName: 'Enter your name',
     fieldMail: 'Enter email address',
+    mailErrorText_pattern: 'Please enter a valid email address',
     fieldPass: 'Enter password',
+    passwordErrorText:
+      'Password must be at least 8 characters (latin letters, numbers or symbols)',
     fieldEnterPass: 'Enter password',
+    passwordSetErrorText:
+      'Password must be at least 8 characters (latin letters, numbers or symbols)',
     fieldRepeatPass: 'Repeat password',
+    passwordRepeatErrorText: 'Passwords must be identical',
     fieldLastPass: 'Enter last password',
+    passwordLastErrorText: 'Invalid password',
     fieldNewPass: 'Enter new password',
+    passwordNewErrorText:
+      'Password must be at least 8 characters (latin letters, numbers or symbols)',
     connectSocial: 'Connect with social account',
     socialGoogle: 'Google',
     btnSave: 'Save',

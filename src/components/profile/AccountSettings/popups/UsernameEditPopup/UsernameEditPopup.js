@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import cn from 'classnames';
 import s from '../style.module.scss';
@@ -10,11 +10,12 @@ import ModalWithBorderShadow from '../../../../ui/modals/Modal/ModalWithBorder';
 import { showUsernameEditWindow } from '../../../../../core/store/slices/modalWindowStateSlice';
 import { Input } from '../../../../ui/Input';
 import { LoaderForButtons } from '../../../../ui/loaders/LoaderForButtons';
+import { Status } from '../../../../../core/constants/Status';
+import { allAuth } from '../../../../../core/store/auth/slice';
 
 export function UsernameEditPopup({ staticTextProfileSettings }) {
   const dispatch = useDispatch();
-
-  const loading = false; //TODO переделать
+  const { status } = useSelector(allAuth);
 
   const styles = {
     maxWidth: 546,
@@ -48,7 +49,7 @@ export function UsernameEditPopup({ staticTextProfileSettings }) {
         </div>
         <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
           <Input
-            className={s.form__input}
+            className={s.input}
             classError={errors.username} //TODO переделать для юзернейма
             placeholder={
               staticTextProfileSettings?.fieldName ||
@@ -63,13 +64,10 @@ export function UsernameEditPopup({ staticTextProfileSettings }) {
           <ButtonWithBorder
             className={cn(s.form__btn)}
             type={'submit'}
-            disabled={loading}>
-            {loading ? (
-              <LoaderForButtons />
-            ) : (
-              staticTextProfileSettings?.btnSave ||
-              STATIC_TEXT[PageName.ProfileSettings].btnSave
-            )}
+            disabled={status === Status.Loading}
+            isLoading={status === Status.Loading}>
+            {staticTextProfileSettings?.btnSave ||
+              STATIC_TEXT[PageName.ProfileSettings].btnSave}
           </ButtonWithBorder>
         </form>
       </div>

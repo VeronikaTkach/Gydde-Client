@@ -2,7 +2,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import cn from 'classnames';
 import { showAuthorizationWindow } from '../../core/store/slices/modalWindowStateSlice';
-import { allAuth, authorization, setCurrentAuthorizationType } from '../../core/store/auth/slice';
+import {
+  allAuth,
+  authorization,
+  setCurrentAuthorizationType,
+} from '../../core/store/auth/slice';
 // import { setMetamaskConnectionStatus } from '../../core/store/slices/metamaskAuthorizationSlice';
 import { MetamaskConnectionStatus, Status } from '../../core/constants/Status';
 import { AuthorizationType } from '../../core/constants/AuthorizationType';
@@ -15,7 +19,7 @@ import ModalWithClose from '../ui/modals/Modal/ModalWithClose';
 import ModalWithBorderShadow from '../ui/modals/Modal/ModalWithBorder';
 import { MetamaskView } from './Metamask';
 import { AllAuthorizaitions } from './AllAuthorizaitions';
-import { Email } from './Email';
+import { Email } from './Email/Email';
 import s from './style.module.scss';
 import { setMetamaskConnectionStatus } from '../../core/store/metamask/slice';
 
