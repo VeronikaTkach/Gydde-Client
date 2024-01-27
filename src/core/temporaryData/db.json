@@ -62,6 +62,10 @@
 		"ProfileReferrals_NoReferral.subtitle": "Imagine you invite 10 friends who also invite 10 friends and they complete 10 quests each. You will earn 900$. That's AWESOME!",
 		"ProfileReferrals.leftButtonText": "How it works?",
 		"ProfileReferrals.rightButtonText": "Invite",
+		"ProfileReferrals.adTitle": "Invite friends and earn together",
+		"ProfileReferrals.rewardForCompletion": "Reward for Guide completion",
+		"ProfileReferrals.referralReward": "50% for each referral reward",
+		"ProfileReferrals.friendReward": "25% for each referral’s friend reward",
 
 		"ProfileSettings.userNameTitle": "User name",
 		"ProfileSettings.socialTitle": "Уour social account",

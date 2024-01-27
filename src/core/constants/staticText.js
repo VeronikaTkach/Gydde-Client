@@ -46,6 +46,12 @@ export const STATIC_TEXT = {
     socialGoogle: 'Google',
     btnSave: 'Save',
   },
+  [PageName.ProfileReferrals]: {
+    adTitle: 'Invite friends and earn together',
+    rewardForCompletion: 'Reward for Guide completion',
+    referralReward: '50% for each referral reward',
+    friendReward: '25% for each referral’s friend reward',
+  },
   [PageName.GuidesGallery]: {
     subtitle:
       "Do you know what an exchange is? Don't worry, this is not a test and it g won't affect any result Don't dfhhhdfj Don't worry",
