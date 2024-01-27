@@ -69,7 +69,6 @@ const firstItem = 0;
 
 export function QuestSidePannel({ className }) {
   const [activeQuest, setActiveQuest] = useState(firstItem);
-  const [hoverQuest, setHoverQuest] = useState(null);
   // useEffect(() => {
 
   // }, []);
@@ -78,24 +77,14 @@ export function QuestSidePannel({ className }) {
     setActiveQuest(index);
   }
 
-  function handleHover(e) {
-    if (e === false) return;
-    setHoverQuest(e);
-  }
-
   return (
     <div className={cn(s.questSidePannel, className)}>
       <QuestSearch numberOfCards={card.length} />
       <ul>
         {card.map((item, index) => {
           return (
-            <li
-              key={index}
-              onClick={() => handleClick(index)}
-              onMouseEnter={() => handleHover(index)}
-              onMouseLeave={() => handleHover(false)}>
+            <li key={index} onClick={() => handleClick(index)}>
               <QuestChatCard
-                isHover={hoverQuest === index}
                 isActive={activeQuest === index}
                 text={item}
                 img={questImage}
