@@ -27,7 +27,7 @@ export function Header({ className }) {
   const { modalAuthorization, modalQuest } = useSelector(modalWindowState);
   const { staticTextHeader, staticTextStatusHeader } = useSelector(staticText);
   const { token } = useSelector(allAuth);
-  console.log(token);
+  // console.log(token);
   useEffect(() => {
     dispatch(getStaticText.basic(TEXT_KEYS.HEADER));
 

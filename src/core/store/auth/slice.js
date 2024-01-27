@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { Status } from '../../constants/Status';
-import { AuthorizationType } from '../../constants/AuthorizationType';
+import { AuthorizationType } from '../../constants/AuthorizationType'
 import { authRequest } from './thunk';
 
 const initialState = {

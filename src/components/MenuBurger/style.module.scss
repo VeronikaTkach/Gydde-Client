@@ -38,9 +38,6 @@
       background-position: center;
     }
   }
-  &__item {
-
-  }
   &__icon {
     @include flexCenter;
     width: 24px;
@@ -49,20 +46,23 @@
     }
   }
   &__sublist {
+    position: relative;
     display: none;
-  }
-  &__title {
-    white-space: nowrap;
+    flex-direction: column;
   }
   &__submenu {
-    @include flexCenter;
-    gap: 12px;
-    &::after {
-      font-size: 8px;
-      rotate: 270deg;
-    }
-    &_open {
-
+    display: flex;
+    flex-direction: column;
+    &:hover {
+      .menu__sublist {
+        display: flex;
+      }
+      .item .item__title {
+        @include flexCenter;
+        &::after {
+          rotate: 0deg;
+        }
+      }
     }
   }
 }
@@ -86,9 +86,16 @@
   }
   &_subitem {
     @include fontStyle(18px, 500, 22px);
-    padding: $space4 $space13;
+    padding: $space4 $space4 $space4 $space13;
   }
-  &__icon {
-
+  &__title {
+    display: flex;
+    gap: 12px;
+    white-space: nowrap;
+    &::after {
+      @include flexCenter;
+      font-size: 6px;
+      rotate: 270deg;
+    }
   }
 }

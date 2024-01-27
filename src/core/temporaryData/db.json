@@ -68,6 +68,7 @@
 		"ProfileSettings.connectMail": "Connect Email Address",
 		"ProfileSettings.connectTwitter": "Connect Twitter Account",
 		"ProfileSettings.setPass": "Set password",
+		"ProfileSettings.changePass": "Change password",
 		"ProfileSettings.logout": "Log out",
 		"ProfileSettings.editMailTitle": "Enter email address",
 		"ProfileSettings.editNameTitle": "Name editing",
@@ -75,11 +76,17 @@
 		"ProfileSettings.changePassTitle": "Change password",
 		"ProfileSettings.fieldName": "Enter your name",
 		"ProfileSettings.fieldMail": "Enter email address",
+		"ProfileSettings.mailErrorText_pattern": "Please enter a valid email address",
 		"ProfileSettings.fieldPass": "Enter password",
+		"ProfileSettings.passwordErrorText": "Password must be at least 8 characters (latin letters, numbers or symbols)",
 		"ProfileSettings.fieldEnterPass": "Enter password",
+		"ProfileSettings.passwordSetErrorText": "Password must be at least 8 characters (latin letters, numbers or symbols)",
 		"ProfileSettings.fieldRepeatPass": "Repeat password",
+		"ProfileSettings.passwordRepeatErrorText": "Passwords must be identical",
 		"ProfileSettings.fieldLastPass": "Enter last password",
+		"ProfileSettings.passwordLastErrorText": "Invalid password",
 		"ProfileSettings.fieldNewPass": "Enter new password",
+		"ProfileSettings.passwordNewErrorText": "Password must be at least 8 characters (latin letters, numbers or symbols)",
 		"ProfileSettings.connectSocial": "Connect with social account",
 		"ProfileSettings.socialGoogle": "Google",
 		"ProfileSettings.btnSave": "Save",
@@ -107,5 +114,14 @@
 		"GuidesGallery.guideTime": "min",
 		"GuidesGallery.guideRewardTitle": "Reward",
 		"GuidesGallery.guideRewardCount": "left"
+	},
+	"getVoice": {
+		"GuidesGallery.mascotVoice": "Ready to turn your drawings into digital gold? Don't miss out on this incredible journey! Your artistic destiny awaits.",
+		"Hello.mascotVoice": "Hello! I'm Gydde",
+		"ProfileGuides.mascotVoice": "Well, if you didn't know, we still have a lot of guides that you haven't completed yet. Go ahead for knowledge!",
+		"ProfileReferrals_Referral.mascotVoice": "If you invite more friends, you will get more rewards!",
+		"ProfileReferrals_NoReferral.mascotVoice": "Imagine you invite 10 friends who also invite 10 friends and they complete 10 quests each. You will earn 900$. That's AWESOME!",
+		"ProfileWallet.mascotVoice": "Every time I transfer a reward to your wallet, I write it down for you. So, nothing will be lost :)",
+		"ProfileWallet_NoWallet.mascotVoice": "Well, you don’t have a wallet connected. If you don’t know how to connect a wallet just tell me and I will show you how to do it :)"
 	}
 }

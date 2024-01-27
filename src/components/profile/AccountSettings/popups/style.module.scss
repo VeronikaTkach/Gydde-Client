@@ -9,16 +9,18 @@
 	&__inputs {
 		display: flex;
 		flex-direction: column;
-		gap: 36px;
-		margin: 32px 0 16px;
+		gap: 8px;
+		margin-top: 32px;
 	}
 	&__input {
-		margin: 28px 0 24px;
+		height: 92px;
 	}
 	&__error {
-		color: $colorRed500;
-		@include fontStyle(13px, 400, normal);
-		margin-top: -13px;
+		@include themed {
+			color: t($buttonPlaceholderError);
+		}
+		@include fontStyle(13px, 400, 16px);
+		margin-top: 8px;
 	}
 	&__btn {
 		max-width: 132px;
@@ -27,6 +29,10 @@
 		margin-left: auto;
 		@include fontStyle(20px, 700, 24px);
 	}
+}
+
+.input {
+	margin: 28px 0 24px;
 }
 
 .social {

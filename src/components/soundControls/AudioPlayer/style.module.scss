@@ -33,31 +33,11 @@
 }
 
 .audio {
-    //TODO поправить стили
     display: flex;
     gap: 12px;
     &__btn {
-        border-radius: 50%;
         font-size: 20px;
         @include width-height(44px);
-        @include flexCenter;
-        &::before {
-            margin-left: 2px;
-        }
-        &:hover {
-            transition: .3s;
-            @include themed() {
-                background: t($buttonBgHover3);
-            }
-        }
-    }
-    &__off {
-        &::before {
-            margin-left: 0px;
-        }
-        @include themed() {
-            background: t($buttonBgActive);
-        }
     }
     &__right {
         @include flex-grid(flex, column, space-between, null);

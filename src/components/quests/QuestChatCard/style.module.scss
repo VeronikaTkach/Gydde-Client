@@ -16,39 +16,36 @@
   @include themed() {
     background: t($surfacePrimary2);
   }
-  &_hover {
+  &:hover {
     @include questCard(12px);
-    background: $colorGray650;
     transition: .3s;
+    @include themed() {
+      background: t($formBackground);
+    }
   }
   &_active {
     @include questCard(11px);
-    border: 1px solid $colorGray600;
-    background: $colorGray650;
+    @include themed() {
+      background: t($formBackground);
+      border: 1px solid t($surfaceBorderSubtitles);
+    }
   }
   &__img {
     border-radius: $space6;
+    height: 68px;
   }
 
   &__info {
     display: flex;
-    flex-direction: row;
-  }
-
-  &__text {
-    display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 139px;
+    width: 100%;
     gap: 5px;
   }
-
-  &__desc {
+  &__header {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: flex-start;
-    gap: 22px;
+    justify-content: space-between;
   }
 
   &__notification {
@@ -63,9 +60,9 @@
     font-weight: 500;
     line-height: 22px;
     border-radius: $space6;
+    align-self: flex-start;
 
     &_blank {
-      height: 22px;
     }
   }
 
@@ -80,7 +77,9 @@
   }
 
   &__author {
-    color: $colorGray400;
+    @include themed() {
+      color: t($formLabelPlaceholder);
+    }
     @include fontRoboto;
     @include fontStyle(16px, 500, 20px);
     font-style: normal;
@@ -107,8 +106,10 @@
       @include fontRoboto;
       @include fontStyle(16px, 500, 20px);
       font-style: normal;
-      justify-self: flex-end;
-      color: $colorGray300;
+      align-self: flex-end;
+      @include themed() {
+        color: t($messageLabelGuides);
+      }
     }
   }
 }
