@@ -28,7 +28,6 @@ export function SetPasswordPopup({ staticTextProfileSettings }) {
   const {
     register,
     setValue,
-    getValues,
     handleSubmit,
     setError,
     clearErrors,
@@ -40,10 +39,12 @@ export function SetPasswordPopup({ staticTextProfileSettings }) {
 
   const [passwordWatch, passwordRepeatWatch] = watch(['password', 'passwordRepeat']);
 
-  passwordValidation.validate = (value) => {
-    value === getValues('password') ||
+  const passwordRepeatValidation = {
+    required: true,
+    validate: (value) =>
+      value === passwordWatch ||
       staticTextProfileSettings?.passwordRepeatErrorText ||
-      STATIC_TEXT[PageName.ProfileSettings].passwordRepeatErrorText;
+      STATIC_TEXT[PageName.ProfileSettings].passwordRepeatErrorText,
   };
 
   useEffect(() => {
@@ -88,7 +89,7 @@ export function SetPasswordPopup({ staticTextProfileSettings }) {
             </div>
             <div className={s.form__input}>
               <Input
-                classError={errors.password}
+                classError={errors.passwordRepeat}
                 placeholder={
                   staticTextProfileSettings?.fieldRepeatPass ||
                   STATIC_TEXT[PageName.ProfileSettings].fieldRepeatPass
@@ -97,7 +98,7 @@ export function SetPasswordPopup({ staticTextProfileSettings }) {
                 setValue={setValue}
                 register={register}
                 type={'password'}
-                validation={passwordValidation}
+                validation={passwordRepeatValidation}
               />
               {(errors.passwordRepeat || errorType) && (
                 <p className={s.form__error}>
