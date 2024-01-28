@@ -1,64 +1,64 @@
 @use '../../../styles/styles.scss' as *;
 
-.Referral {
-    width: 100%;
+.referral {
+  width: 100%;
+  @include flex-grid(flex, column, none, none);
+  padding: 48px 95px 0px 80px;
+  height: fit-content;
+  &__adTitle {
+    @include width-height(919px, auto);
+    @include flex-grid (flex, none, none, center);
+    padding: 10px 0px 10px 40px;
+    gap: 10px;
+  }
+  &__textTitle {
+      @include fontRussoOne;
+      @include fontStyle(32px, 400, 44px);
+      @include themed() {
+        color: t($textPrimaryMain);
+      }
+  }
+  &__field {
+    display: flex;
+  }
+  &__img {
+    padding: 23px 12px 0px 0px;
+  }
+  &__info {
     @include flex-grid(flex, column, none, none);
-    padding: 48px 95px 0px 80px;
-    height: fit-content;
-    &__adTitle {
-        @include width-height(919px, auto);
-        @include flex-grid (flex, none, none, center);
-        padding: 10px 0px 10px 40px;
-        gap: 10px;
+    padding-top: 30px;
+    gap: 16px;
+  }
+  &__container {
+    @include flex-grid(flex, none, none, center);
+    gap: 16px;
+    height: 62px;
+    padding: 0px 36px 0px 36px;
+  }
+  &__icon {
+    height: 40px;
+    &_frame {
+      height: 50px;
     }
-    &__textTitle {
-        @include fontRussoOne;
-        @include fontStyle(32px, 400, 44px);
-        @include themed() {
-            color: t($textPrimaryMain);
-        }
+    &_geo {
+      padding: 0px 8px 0px 8px;
     }
-    &__field {
-        display: flex; 
-    }
-    &__img {
-        padding: 23px 12px 0px 0px;
-    }
-    &__info {
-        @include flex-grid(flex, column,none, none);
-        padding-top: 30px;
-        gap: 16px;
-    }
-    &__container {
-        @include flex-grid(flex, none, none, center);
-        gap: 16px;
-        height: 62px;
-        padding: 0px 36px 0px 36px;
-    }
-    &__icon {
-        height: 40px;
-        &_frame {
-            height: 50px;
-        }
-        &_geo {
-            padding: 0px 8px 0px 8px;
-        }
-    }
-    &__text {
-        @include themed() {
-            color: t($textPrimaryMain);
-            // -webkit-text-stroke-width: 2.0991196632385254px;
-            // -webkit-text-stroke-color: t(bg);
-        }
-        @include fontRoboto;
-        @include fontStyle(20px, 500, 24px);
-        font-style: normal;
-    }
-    &__cost {
-        color: $colorOrange400;
-        @include fontRussoOne;
-        @include fontStyle(32px, 400, normal);
-        font-style: normal;
-        text-transform: lowercase;
-    }
+  }
+  &__text {
+    @include themed() {
+      color: t($textPrimaryMain);
+      // -webkit-text-stroke-width: 2.0991196632385254px;
+      // -webkit-text-stroke-color: t(bg);
+      }
+    @include fontRoboto;
+    @include fontStyle(20px, 500, 24px);
+      font-style: normal;
+  }
+  &__cost {
+    color: $colorOrange400;
+    @include fontRussoOne;
+    @include fontStyle(32px, 400, normal);
+    font-style: normal;
+    text-transform: lowercase;
+  }
 }
