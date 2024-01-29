@@ -8,6 +8,8 @@ const initialState = {
   soundRate: SoundRate.Normal,
   audioVolume: AudioVolume.On,
   soundSwitch: SoundSwitchStatus.On,
+  soundId: null,
+  soundIds: [],
 };
 
 export const soundSettingsSlice = createSlice({
@@ -26,11 +28,23 @@ export const soundSettingsSlice = createSlice({
     switchSound: (state, action) => {
       state.soundSwitch = action.payload;
     },
+    setSoundId: (state, action) => {
+      state.soundId = action.payload;
+    },
+    addSoundIds: (state, action) => {
+      state.soundIds.push(action.payload);
+    },
   },
 });
 
-export const { setSoundVolume, setSoundRate, setAudioVolume, switchSound } =
-  soundSettingsSlice.actions;
+export const {
+  setSoundVolume,
+  setSoundRate,
+  setAudioVolume,
+  switchSound,
+  setSoundId,
+  addSoundIds,
+} = soundSettingsSlice.actions;
 export const soundSettings = (state) => state.soundSettings;
 
 export default soundSettingsSlice.reducer;

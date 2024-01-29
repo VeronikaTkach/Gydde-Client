@@ -10,6 +10,7 @@ export function ChatMessage({ className }) {
   return (
     <div className={cn(s.chatMessage, className)}>
       <AudioPlayerWithProgressBar />
+      <AudioPlayerWithProgressBar />
       <div className={cn(s.chatMessage__time)}></div>
     </div>
   );

@@ -1,15 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Howler } from 'howler';
 import { formatTimeFromSeconds } from '../helpers/formatTimeFromSeconds';
-import { soundSettings, switchSound } from '../store/slices/soundSettingsSlice';
+import {
+  setSoundId,
+  soundSettings,
+  switchSound,
+} from '../store/slices/soundSettingsSlice';
 import { SoundSwitchStatus } from '../constants/SoundSwitchStatus';
 
-export function usePlayer(sound) {
+export function usePlayer(sound, id) {
   const dispatch = useDispatch();
-  const { soundRate, audioVolume, soundSwitch } = useSelector(soundSettings);
-  const [switchStatus, setSwitchStatus] = useState(soundSwitch);
-  const [progress, setProgress] = useState(sound.seek());
-  const [duration, setDuration] = useState(formatTimeFromSeconds(sound.duration()));
+  const { soundIds, soundRate, audioVolume, soundSwitch } = useSelector(soundSettings);
+  const [switchStatus, setSwitchStatus] = useState(SoundSwitchStatus.On);
+  const [progress, setProgress] = useState(sound?.seek());
+  const [duration, setDuration] = useState(formatTimeFromSeconds(sound?.duration()));
+  // const soundId = useRef(null);
+
+  // useEffect(() => {
+  //   soundId.current = sound.play();
+  // }, []);
 
   useEffect(() => {
     dispatch(switchSound(switchStatus));
@@ -19,50 +29,145 @@ export function usePlayer(sound) {
   const timeout = 300;
   const minPercent = 0;
   const maxPercent = 100;
+  const step = 1;
   let timer;
 
-  sound.rate(soundRate);
-  sound.volume(audioVolume);
+  if (sound) {
+    sound.rate(soundRate);
+    sound.volume(audioVolume);
 
-  sound.once('load', () => {
-    setDuration(formatTimeFromSeconds(sound.duration()));
-  });
+    sound.once(
+      'load',
+      () => {
+        setDuration(formatTimeFromSeconds(sound.duration()));
+      },
+      id
+    );
 
-  sound.once('play', () => {
-    timer = setInterval(() => {
-      setProgress(Math.ceil((sound.seek() / sound.duration()) * maxPercent));
-    }, interval);
-    setSwitchStatus(SoundSwitchStatus.Off);
-    // dispatch(switchSound(SoundSwitchStatus.Off));
-  });
+    sound.once(
+      'play',
+      () => {
+        timer = setInterval(() => {
+          setProgress(Math.ceil((sound.seek() / sound.duration()) * maxPercent));
+        }, interval);
+        setSwitchStatus(SoundSwitchStatus.Off);
 
-  sound.once('pause', () => {
-    clearInterval(timer);
-    setSwitchStatus(SoundSwitchStatus.On);
-    // dispatch(switchSound(SoundSwitchStatus.On));
-  });
+        // dispatch(switchSound(SoundSwitchStatus.Off));
+      },
+      id
+    );
 
-  sound.once('end', () => {
-    setSwitchStatus(SoundSwitchStatus.On);
-    clearInterval(timer);
-    setProgress(maxPercent);
-    setTimeout(() => {
-      setProgress(minPercent);
-    }, timeout);
-  });
+    sound.once(
+      'pause',
+      () => {
+        clearInterval(timer);
+        setSwitchStatus(SoundSwitchStatus.On);
+        // dispatch(switchSound(SoundSwitchStatus.On));
+      },
+      id
+    );
+
+    sound.once(
+      'end',
+      () => {
+        setSwitchStatus(SoundSwitchStatus.On);
+        dispatch(setSoundId(null));
+        clearInterval(timer);
+        setProgress(maxPercent);
+        setTimeout(() => {
+          setProgress(minPercent);
+        }, timeout);
+      },
+      id
+    );
+
+    sound.once(
+      'stop',
+      () => {
+        setSwitchStatus(SoundSwitchStatus.On);
+        clearInterval(timer);
+      },
+      id
+    );
+  }
 
   const switchAudio = () => {
-    if (soundSwitch) {
-      sound.play();
-      dispatch(switchSound(SoundSwitchStatus.Off));
-      //   console.log('in switchAudio if');
+    if (switchStatus) {
+      if (sound) {
+        if (sound.playing()) {
+          Howler.stop();
+        }
+        dispatch(setSoundId(id));
+        sound.play(id);
+        dispatch(switchSound(SoundSwitchStatus.Off));
+        setSwitchStatus(SoundSwitchStatus.Off);
+      }
     } else {
-      sound.pause();
-      dispatch(switchSound(SoundSwitchStatus.On));
-      clearInterval(timer);
-      //   console.log('in switchAudio else');
+      if (sound) {
+        sound.pause(id);
+        dispatch(switchSound(SoundSwitchStatus.On));
+        setSwitchStatus(SoundSwitchStatus.On);
+        clearInterval(timer);
+      }
     }
   };
 
-  return { soundSwitch, progress, duration, switchAudio };
+  const switchRemoteAudio = () => {
+    if (sound && id) {
+      if (soundSwitch) {
+        dispatch(setSoundId(id));
+        sound.play(id);
+        dispatch(switchSound(SoundSwitchStatus.Off));
+        setSwitchStatus(SoundSwitchStatus.Off);
+      } else {
+        sound.pause(id);
+        dispatch(switchSound(SoundSwitchStatus.On));
+        setSwitchStatus(SoundSwitchStatus.On);
+        clearInterval(timer);
+      }
+    }
+  };
+
+  const maxNum = Math.max(...soundIds);
+  const minNum = Math.min(...soundIds);
+
+  const switchToPrev = () => {
+    if (sound && id && id > minNum) {
+      if (sound.playing()) {
+        Howler.stop();
+      }
+      dispatch(setSoundId(id - step));
+      sound.play(id - step);
+      dispatch(switchSound(SoundSwitchStatus.Off));
+      setSwitchStatus(SoundSwitchStatus.Off);
+    }
+  };
+
+  const switchToNext = () => {
+    if (sound && id && id < maxNum) {
+      if (sound.playing()) {
+        Howler.stop();
+      }
+      dispatch(setSoundId(id + step));
+      sound.play(id + step);
+      dispatch(switchSound(SoundSwitchStatus.Off));
+      setSwitchStatus(SoundSwitchStatus.Off);
+    }
+  };
+
+  // console.log('sound', sound);
+  // console.log('soundId', soundId);
+  // console.log('soundIdRef', soundIdRef);
+  // console.log('playing', sound.playing());
+
+  return {
+    soundSwitch,
+    switchStatus,
+    progress,
+    duration,
+    switchAudio,
+    switchRemoteAudio,
+    switchToPrev,
+    switchToNext,
+  };
 }
