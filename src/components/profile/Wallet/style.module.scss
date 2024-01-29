@@ -114,17 +114,17 @@
     font-size: 20px;
     cursor: pointer;
     @include themed() {
-      color: t($formLabelPlaceholder)
+      color: t($formLabelPlaceholder);
     }
     &:hover {
       transition: .3s;
       @include themed() {
-        color: t($messageLabelGuides)
+        color: t($messageLabelGuides);
       }
     }
     &:active {
       @include themed() {
-        color: t($buttonLabelHover1)
+        color: t($buttonBorderHovers);
       }
     }
   }
