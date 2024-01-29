@@ -2,7 +2,7 @@
 
 .questSidePannel {
   display: flex;
-  gap: $space3;
+  // gap: $space3;
   flex-direction: column;
   height: calc(100vh - 140px);
   overflow-y: scroll;
@@ -25,5 +25,9 @@
     position: sticky;
     top: 0;
     z-index: 10;
+    padding: 0 0 10px;
+    @include themed() {
+      background-color: t($bg);
+    }
   }
 }

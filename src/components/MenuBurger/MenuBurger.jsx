@@ -21,7 +21,7 @@ export function MenuBurger({ className }) {
   const dispatch = useDispatch();
   const { currentLanguage } = useSelector(language);
   const [menuLink, setMenuLink] = useState(false);
-  console.log(currentLanguage);
+  // console.log(currentLanguage);
   useEffect(() => {
     setMenuLink([
       {

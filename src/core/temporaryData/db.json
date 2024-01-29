@@ -117,7 +117,13 @@
 		"GuidesGallery.guideLevel_advanced": "advanced",
 		"GuidesGallery.guideTime": "min",
 		"GuidesGallery.guideRewardTitle": "Reward",
-		"GuidesGallery.guideRewardCount": "left"
+		"GuidesGallery.guideRewardCount": "left",
+
+		"GuidesChat.guideStatus_inProgress": "In Progress",
+		"GuidesChat.guideStatus_completed": "Completed",
+		"GuidesChat.actionText_next": "Next",
+		"GuidesChat.actionText_select": "Select an option",
+		"GuidesChat.inputPlaceholder": "Enter a text"
 	},
 	"getVoice": {
 		"GuidesGallery.mascotVoice": "Ready to turn your drawings into digital gold? Don't miss out on this incredible journey! Your artistic destiny awaits.",

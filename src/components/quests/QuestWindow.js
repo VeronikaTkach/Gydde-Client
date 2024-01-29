@@ -1,12 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 import s from './style.module.scss';
-import logo from '../../assets/images/logo.png';
-import ModalWithClose from '../ui/modals/Modal/ModalWithClose';
 import Modal from '../ui/modals/Modal/Modal';
 import { Button } from '../ui/buttons/Button';
 import { QuestSidePannel } from './QuestSidePannel';
-import { QuestChatBottomPannel } from './QuestChatBottomPannel';
 import { QuestChat } from './QuestChat';
 import { useDispatch } from 'react-redux';
 import { showQuestWindow } from '../../core/store/slices/modalWindowStateSlice';

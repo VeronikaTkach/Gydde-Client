@@ -13,7 +13,7 @@ import { ReferralAndGuides } from '../../../components/profile/RefferalAndGuides
 import { ReferralAd } from '../../../components/profile/RefferalAd/RefferalAd';
 
 //TODO ВРЕМЕННАЯ ПЕРЕМЕННАЯ
-const noRefferal = false;
+const noRefferal = true;
 
 const hasReferral = 'Referral';
 export function ProfileReferralPage() {

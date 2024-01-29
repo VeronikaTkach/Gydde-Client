@@ -1,77 +1,33 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import cn from 'classnames';
 import s from './style.module.scss';
-import { Button } from '../../ui/buttons/Button';
 import { QuestSearch } from '../QuestSearch';
 import { QuestChatCard } from '../QuestChatCard';
-import questImage from '../../../assets/images/questImage.png';
-
-const card = [
-  {
-    title: 'The Great Battle',
-    author: 'PancakeSwaper',
-    progress: 'In progress',
-    notification: 0,
-    id: 0,
-  },
-  {
-    title: 'The Great Battle',
-    author: 'PancakeSwaper',
-    progress: 'In progress',
-    notification: 1,
-    id: 1,
-  },
-  {
-    title: 'The Great Battle',
-    author: 'PancakeSwaper',
-    progress: 'Completed',
-    notification: 0,
-    id: 2,
-  },
-  {
-    title: 'The Great Battle',
-    author: 'PancakeSwaper',
-    progress: 'Completed',
-    notification: 1,
-    id: 3,
-  },
-  {
-    title: 'The Great Battle',
-    author: 'PancakeSwaper',
-    progress: 'In progress',
-    notification: 0,
-    id: 0,
-  },
-  {
-    title: 'The Great Battle',
-    author: 'PancakeSwaper',
-    progress: 'In progress',
-    notification: 1,
-    id: 1,
-  },
-  {
-    title: 'The Great Battle',
-    author: 'PancakeSwaper',
-    progress: 'Completed',
-    notification: 0,
-    id: 2,
-  },
-  {
-    title: 'The Great Battle',
-    author: 'PancakeSwaper',
-    progress: 'Completed',
-    notification: 1,
-    id: 3,
-  },
-];
+import { guideRequest } from '../../../core/store/guide/thunk';
+import { useDispatch, useSelector } from 'react-redux';
+import { guide } from '../../../core/store/guide/slice';
+import { getStaticText } from '../../../core/store/staticText/thunk';
+import { TEXT_KEYS } from '../../../core/constants/textKeys';
+import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
+import { PageName } from '../../../core/constants/PageNames';
+import { Status } from '../../../core/constants/Status';
 
 const firstItem = 0;
 
 export function QuestSidePannel({ className }) {
+  const dispatch = useDispatch();
+  const { guidesPreview, statusGuidesPreview } = useSelector(guide);
+  const { staticTextGuidesChat, staticTextStatusGuidesChat } = useSelector(staticText);
   const [activeQuest, setActiveQuest] = useState(firstItem);
-  // useEffect(() => {
 
-  // }, []);
+  useEffect(() => {
+    dispatch(guideRequest.guidesPreview());
+    dispatch(getStaticText.basic(TEXT_KEYS.GUIDES_CHAT));
+
+    return () => {
+      dispatch(removeUnusedStaticText(PageName.GuidesChat));
+    };
+  }, []);
 
   function handleClick(index) {
     setActiveQuest(index);
@@ -80,20 +36,22 @@ export function QuestSidePannel({ className }) {
   return (
     <div className={cn(s.questSidePannel, className)}>
       <div className={s.questSidePannel__search}>
-        <QuestSearch numberOfCards={card.length} />
+        <QuestSearch cardsCount={guidesPreview?.length} />
       </div>
       <ul>
-        {card.map((item, index) => {
-          return (
-            <li key={index} onClick={() => handleClick(index)}>
-              <QuestChatCard
-                isActive={activeQuest === index}
-                text={item}
-                img={questImage}
-              />
-            </li>
-          );
-        })}
+        {staticTextStatusGuidesChat === Status.Resolved &&
+          statusGuidesPreview === Status.Resolved &&
+          guidesPreview.map((item, index) => {
+            return (
+              <li key={item.id} onClick={() => handleClick(index)}>
+                <QuestChatCard
+                  isActive={activeQuest === index}
+                  guideData={item}
+                  staticText={staticTextGuidesChat}
+                />
+              </li>
+            );
+          })}
       </ul>
     </div>
   );

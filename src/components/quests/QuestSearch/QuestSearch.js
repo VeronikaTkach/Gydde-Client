@@ -4,7 +4,7 @@ import s from './style.module.scss';
 import { Button } from '../../ui/buttons/Button';
 import { InputSearch } from '../../ui/Input/InputSearch';
 
-export function QuestSearch({ numberOfCards }) {
+export function QuestSearch({ cardsCount }) {
   // const [pageHeight, setPageHeight] = useState(null);
   // const isScrollVisible = pageHeight < numberOfCards * 100; // высота карточки + расстояние между карточками
   // const updatePageHeight = () => {
@@ -12,7 +12,7 @@ export function QuestSearch({ numberOfCards }) {
   //   setPageHeight(windowHeight);
   // };
   const cardScrollLimit = 8;
-  const isScrollVisible = numberOfCards > cardScrollLimit;
+  const isScrollVisible = cardsCount > cardScrollLimit;
   // useEffect(() => {
   //   updatePageHeight();
   //   window.addEventListener('resize', updatePageHeight);
@@ -35,7 +35,7 @@ export function QuestSearch({ numberOfCards }) {
         </div>
       )}
       {!isScrollVisible && (
-        <div className={s.questSearch__title}>
+        <div className={cn(s.questSearch, s.questSearch__title)}>
           <InputSearch placeholder={'My guides'} disabled={true} />
         </div>
       )}

@@ -1,9 +1,13 @@
 import cn from 'classnames';
 import s from './style.module.scss';
+import { GUIDE_STATUS } from '../../../core/constants/backendEnums';
 
 const zeroNotifications = 0;
 
-export function QuestChatCard({ className, text, img, isActive }) {
+export function QuestChatCard({ className, guideData, staticText, isActive }) {
+  console.log(GUIDE_STATUS[guideData.status]);
+  console.log(staticText);
+
   return (
     <div
       className={cn(
@@ -14,24 +18,19 @@ export function QuestChatCard({ className, text, img, isActive }) {
             : s.questCard_hover,
         className
       )}>
-      <img className={s.questCard__img} src={img} alt='image of guide' />
+      <img className={s.questCard__img} src={guideData.image} alt='image of guide' />
       <div className={cn(s.questCard__info)}>
         <div className={s.questCard__header}>
-          <h4 className={s.questCard__title}>{text.title}</h4>
-          {text.notification !== zeroNotifications ? (
-            <p className={s.questCard__notification}>{text.notification}</p>
+          <h4 className={s.questCard__title}>{guideData.description}</h4>
+          {guideData.notification !== zeroNotifications ? (
+            <p className={s.questCard__notification}>{guideData.notification}</p>
           ) : (
             <div className={s.questCard__notification_blank}></div>
           )}
         </div>
-        <p className={s.questCard__author}>{text.author}</p>
-        <p
-          className={cn(
-            text.progress === 'Completed'
-              ? s.questCard__progress_ready
-              : s.questCard__progress
-          )}>
-          {text.progress}
+        <p className={s.questCard__author}>{guideData.partner}</p>
+        <p className={cn(s[`questCard__${GUIDE_STATUS[guideData.status]}`])}>
+          {staticText.guideStatus[GUIDE_STATUS[guideData.status]]}
         </p>
       </div>
     </div>

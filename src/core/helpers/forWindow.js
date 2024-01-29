@@ -1,5 +1,5 @@
 export function setWindowOptions(width, height, left, top) {
-  const widthDefault = 400;
+  const widthDefault = 450;
   const heightDefault = 600;
   const widthWindow = width || widthDefault;
   const heightWindow = height || heightDefault;

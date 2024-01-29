@@ -4,7 +4,7 @@ import { languageRequest } from './thunk';
 
 const initialState = {
   status: Status.Loading,
-  currentLanguage: null,
+  currentLanguage: 'Eng',
   error: null,
 };
 

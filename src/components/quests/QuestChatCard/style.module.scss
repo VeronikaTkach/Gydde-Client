@@ -32,7 +32,9 @@
   }
   &__img {
     border-radius: $space6;
+    width: 68px;
     height: 68px;
+    object-fit: cover;
   }
 
   &__info {
@@ -62,8 +64,8 @@
     border-radius: $space6;
     align-self: flex-start;
 
-    &_blank {
-    }
+    // &_blank {
+    // }
   }
 
   &__title {
@@ -85,7 +87,7 @@
     font-style: normal;
   }
 
-  &__progress {
+  &__inProgress {
     white-space: nowrap;
     align-self: flex-end;
     text-align: right;
@@ -93,23 +95,22 @@
     @include fontStyle(16px, 500, 20px);
     font-style: normal;
     justify-self: flex-end;
-
     @include themed() {
       background: t($gradientQuestProgress);
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-
-    &_ready {
-      text-align: right;
-      @include fontRoboto;
-      @include fontStyle(16px, 500, 20px);
-      font-style: normal;
-      align-self: flex-end;
-      @include themed() {
-        color: t($messageLabelGuides);
-      }
+  }
+  
+  &__completed {
+    text-align: right;
+    @include fontRoboto;
+    @include fontStyle(16px, 500, 20px);
+    font-style: normal;
+    align-self: flex-end;
+    @include themed() {
+      color: t($messageLabelGuides);
     }
   }
 }

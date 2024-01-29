@@ -24,22 +24,23 @@ export function Twitter({ className, children }) {
   }, [isAuthorizationDone]);
 
   function redirectToTwitterAuthorization() {
-    const params = {
-      response_type: 'code',
-      client_id: 'Y1hITTU4c0RvamtyNVBQamhEcGk6MTpjaQ',
-      // client_id: atob(process.env.REACT_APP_TWITTER_CLIENT_ID),//todo обновить ключи когда будут на беке
-      redirect_uri: process.env.REACT_APP_TWITTER_REDIRECT_URI,
-      scope: 'offline.access',
-      state: 'state',
-      code_challenge: 'challenge',
-      code_challenge_method: 'plain',
-    };
+    // const params = {
+    //   response_type: 'code',
+    //   client_id: 'Y1hITTU4c0RvamtyNVBQamhEcGk6MTpjaQ',
+    //   // client_id: atob(process.env.REACT_APP_TWITTER_CLIENT_ID),//todo обновить ключи когда будут на беке
+    //   redirect_uri: process.env.REACT_APP_TWITTER_REDIRECT_URI,
+    //   scope: 'offline.access',
+    //   state: 'state',
+    //   code_challenge: 'challenge',
+    //   code_challenge_method: 'plain',
+    // };
 
-    const searchParams = new URLSearchParams(params);
+    // const searchParams = new URLSearchParams(params);
     const windowOptions = setWindowOptions();
 
     window.open(
-      `${process.env.REACT_APP_TWITTER_CONFIRM_URL}?${searchParams}`,
+      // `${process.env.REACT_APP_TWITTER_CONFIRM_URL}?${searchParams}`,
+      `${process.env.REACT_APP_BASE_URL}/oauth2/authorization/twitter`,
       '_blank',
       windowOptions
     );

@@ -10,6 +10,7 @@ export const PageName = {
   ProfileSettings: 'ProfileSettings',
   ProfileWallet: 'ProfileWallet',
   GuidesGallery: 'GuidesGallery',
+  GuidesChat: 'GuidesChat',
 };
 
 Object.freeze(PageName);

@@ -10,7 +10,7 @@ export const guideRequest = {
       const token = state.authorization.token;
       // console.log(token);
       try {
-        const response = await mainRequest.get('/quest/available', {
+        const response = await mainRequest.get('/quest/user', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

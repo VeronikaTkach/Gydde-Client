@@ -6,6 +6,9 @@ const initialState = {
   guidesGallery: [],
   statusGuidesGallery: Status.Loading,
   errorGuidesGallery: null,
+  guidesPreview: [],
+  statusGuidesPreview: Status.Loading,
+  errorGuidesPreview: null,
 };
 
 export const guideSlice = createSlice({
@@ -25,6 +28,19 @@ export const guideSlice = createSlice({
       .addCase(guideRequest.guidesGalery.rejected, (state, action) => {
         state.statusGuidesGallery = Status.Rejected;
         state.errorGuidesGallery = action.payload.message;
+      })
+
+      .addCase(guideRequest.guidesPreview.pending, (state) => {
+        state.statusGuidesPreview = Status.Loading;
+        state.errorGuidesPreview = null;
+      })
+      .addCase(guideRequest.guidesPreview.fulfilled, (state, action) => {
+        state.statusGuidesPreview = Status.Resolved;
+        state.guidesPreview = action.payload;
+      })
+      .addCase(guideRequest.guidesPreview.rejected, (state, action) => {
+        state.statusGuidesPreview = Status.Rejected;
+        state.errorGuidesPreview = action.payload.message;
       });
   },
 });

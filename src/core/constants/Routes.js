@@ -4,7 +4,7 @@ export const RoutesName = {
   AuthPage: '/auth',
   MailAuthPage: '/mailauth',
   GoogleOauthPage: '/oauth',
-  TwitterOauthPage: '/oauth/twitter',
+  TwitterOauthPage: '/auth/callback/twitter',
   MetamaskConnectPage: '/connect/metamask',
   HelloPage: '/hello',
   Profile: '/profile',

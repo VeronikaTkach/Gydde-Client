@@ -127,4 +127,11 @@ export const TEXT_KEYS = {
     `${PageName.GuidesGallery}.guideRewardTitle`,
     `${PageName.GuidesGallery}.guideRewardCount`,
   ],
+  GUIDES_CHAT: [
+    `${PageName.GuidesChat}.guideStatus_inProgress`,
+    `${PageName.GuidesChat}.guideStatus_completed`,
+    `${PageName.GuidesChat}.actionText_next`,
+    `${PageName.GuidesChat}.actionText_select`,
+    `${PageName.GuidesChat}.inputPlaceholder`,
+  ],
 };

@@ -1,5 +1,5 @@
 export const LocalStorageItems = {
-  JwtToken: 'authorizationJwtToken',
+  AuthorizationToken: 'AuthorizationToken',
   AuthorizationDone: 'authorizationDone',
 };
 
