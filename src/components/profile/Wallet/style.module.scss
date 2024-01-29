@@ -124,7 +124,7 @@
     }
     &:active {
       @include themed() {
-        color: t($buttonBorderHovers);
+        color: t($buttonBorderHover);
       }
     }
   }
