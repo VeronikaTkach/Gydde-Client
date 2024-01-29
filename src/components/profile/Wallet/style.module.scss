@@ -99,7 +99,8 @@
     }
   }
   &__img {
-    padding: 0px 64px 0px 43px;
+    width: 28px;
+    height: 26px;
   }
   &__mascot {
     width: 360px;
@@ -111,5 +112,6 @@
     background: transparent;
     color: $colorGray400;
     font-size: 20px;
+    cursor: pointer;
   }
 }
