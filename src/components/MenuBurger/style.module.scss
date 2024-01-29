@@ -38,21 +38,19 @@
       background-position: center;
     }
   }
-  &__icon {
-    @include flexCenter;
-    width: 24px;
-    &_flag {
-      @include width-height(24px);
-    }
-  }
   &__sublist {
     position: relative;
     display: none;
     flex-direction: column;
   }
+  &__item {
+    &_main {
+      @include flex-grid(flex, row, none, none);
+      gap: 12px;
+    }  
+  }
   &__submenu {
-    display: flex;
-    flex-direction: column;
+    @include flex-grid(flex, column, none, none);
     &:hover {
       .menu__sublist {
         display: flex;
@@ -68,9 +66,9 @@
 }
 
 .item {
-  display: flex;
-  align-items: center;
-  @include width-height(100%, 56px);
+  @include flex-grid(flex, none, space-between, center);
+  align-self: stretch;
+  @include width-height(100%, 58px);
   padding: $space4;
   gap: 12px;
   cursor: pointer;
@@ -90,12 +88,35 @@
   }
   &__title {
     display: flex;
-    gap: 12px;
+    // gap: 12px;
     white-space: nowrap;
     &::after {
       @include flexCenter;
       font-size: 6px;
       rotate: 270deg;
     }
+  }
+  &__icon {
+    @include flexCenter;
+    width: 24px;
+    &_flag {
+      @include width-height(24px);
+    }
+  }
+  &__notification {
+    @include flex-grid(flex, column, center, center);
+    @include width-height(20px, 20px);
+    padding: var(--Spacing-0, 0px);
+    gap: var(--Spacing-Space-spacing-none, 0px);
+    flex-shrink: 0;
+    text-align: center;
+    @include themed() {
+      border-radius: t($radiusMedium);
+      background: t($buttonBgActive);
+      color: t($buttonLabelActive);
+    }
+    @include fontRoboto;
+    @include fontStyle(14px, 500, 10px);
+    font-style: normal;
   }
 }

@@ -22,26 +22,36 @@ export function MenuBurger({ className }) {
   const { currentLanguage } = useSelector(language);
   const [menuLink, setMenuLink] = useState(false);
   // console.log(currentLanguage);
+  const notificationCount = 1;
+  const notificationNull = 0;
+  // const [notificationCount, setNotificationCount] = useState(null);
+  // const updateNotificationCount = (newCount) => {
+  //   setNotificationCount(newCount);
+  // };
   useEffect(() => {
     setMenuLink([
       {
         title: STATIC_TEXT[PageName.Header].menuGuides,
         icon: geo,
+        notification: notificationCount,
         to: RoutesName.Root,
       },
       {
         title: STATIC_TEXT[PageName.Header].menuReferralRewards,
         icon: people,
+        notification: notificationNull,
         to: RoutesName.ProfileReferral,
       },
       {
         title: STATIC_TEXT[PageName.Header].menuGuidesRewards,
         icon: reward,
+        notification: notificationCount,
         to: RoutesName.ProfileGuides,
       },
       {
         title: STATIC_TEXT[PageName.Header].menuWallet,
         icon: wallet,
+        notification: notificationNull,
         to: RoutesName.ProfileWallet,
       },
       {
@@ -62,10 +72,15 @@ export function MenuBurger({ className }) {
           {menuLink.map((item, index) => (
             <li key={index}>
               <Link className={cn(s.menu__item, s.item)} to={item.to}>
-                <div className={s.item__icon}>
-                  <img src={item.icon} alt='menu icon' />
+                <div className={s.menu__item_main}>
+                  <div className={s.item__icon}>
+                    <img src={item.icon} alt='menu icon' />
+                  </div>
+                  <div className={s.item__title}>{item.title}</div>
                 </div>
-                <div className={s.item__title}>{item.title}</div>
+                {item.notification > 0 && (
+                  <div className={s.item__notification}>{item.notification}</div>
+                )}
               </Link>
             </li>
           ))}
