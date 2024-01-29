@@ -20,18 +20,12 @@ export const getStaticText = {
       return rejectWithValue(error.message);
     }
   }),
-  hello: createAsyncThunk('staticText/hello', async function (keys, { rejectWithValue }) {
+  hello: createAsyncThunk('staticText/hello', async function (_, { rejectWithValue }) {
     try {
       const response = await mainRequestTS.get('/getHelloPage'); //TODO mainRequest?? когда будет бек
-console.log(response)
-      // return staticTextHelper.convertKeys(response.data); //TODO раскомментировать когда будет бек
+      console.log(response);
 
-      //TODO удалить когда будет бек
-      const data = keys.map((item) => {
-        return { [item]: response.data[item] };
-      });
-
-      return staticTextHelper.convertKeys(data);
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
     }

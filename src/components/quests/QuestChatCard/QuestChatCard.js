@@ -5,9 +5,6 @@ import { GUIDE_STATUS } from '../../../core/constants/backendEnums';
 const zeroNotifications = 0;
 
 export function QuestChatCard({ className, guideData, staticText, isActive }) {
-  console.log(GUIDE_STATUS[guideData.status]);
-  console.log(staticText);
-
   return (
     <div
       className={cn(

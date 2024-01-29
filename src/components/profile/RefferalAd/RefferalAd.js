@@ -9,7 +9,6 @@ import geo from '../../../assets/images/menu/geo.png';
 import friend from '../../../assets/images/menu/friend.png';
 import people from '../../../assets/images/menu/people.png';
 
-
 export function ReferralAd({ className, staticTextProfileReferrals }) {
   // useEffect(() => {}, []);
 

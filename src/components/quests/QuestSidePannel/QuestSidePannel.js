@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
 import cn from 'classnames';
-import s from './style.module.scss';
-import { QuestSearch } from '../QuestSearch';
-import { QuestChatCard } from '../QuestChatCard';
-import { guideRequest } from '../../../core/store/guide/thunk';
 import { useDispatch, useSelector } from 'react-redux';
+import { guideRequest } from '../../../core/store/guide/thunk';
 import { guide } from '../../../core/store/guide/slice';
 import { getStaticText } from '../../../core/store/staticText/thunk';
 import { TEXT_KEYS } from '../../../core/constants/textKeys';
 import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
 import { PageName } from '../../../core/constants/PageNames';
 import { Status } from '../../../core/constants/Status';
+import { QuestSearch } from '../QuestSearch';
+import { QuestChatCard } from '../QuestChatCard';
+import s from './style.module.scss';
 
 const firstItem = 0;
 

@@ -1,17 +1,27 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 import cn from 'classnames';
-import s from './style.module.scss';
+import { useDispatch } from 'react-redux';
+import { showQuestWindow } from '../../core/store/slices/modalWindowStateSlice';
+import { getStaticText } from '../../core/store/staticText/thunk';
+import { TEXT_KEYS } from '../../core/constants/textKeys';
+import { PageName } from '../../core/constants/PageNames';
+import { removeUnusedStaticText } from '../../core/store/staticText/slice';
 import Modal from '../ui/modals/Modal/Modal';
 import { Button } from '../ui/buttons/Button';
 import { QuestSidePannel } from './QuestSidePannel';
 import { QuestChat } from './QuestChat';
-import { useDispatch } from 'react-redux';
-import { showQuestWindow } from '../../core/store/slices/modalWindowStateSlice';
+import s from './style.module.scss';
 
 export function QuestWindow({ className }) {
   const dispatch = useDispatch();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    dispatch(getStaticText.basic(TEXT_KEYS.GUIDES_CHAT));
+
+    return () => {
+      dispatch(removeUnusedStaticText(PageName.GuidesChat));
+    };
+  }, []);
 
   return (
     <Modal className={cn(s.questWindow, className)}>

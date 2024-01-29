@@ -17,6 +17,7 @@ export const guideSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      //guides gallery in Home page
       .addCase(guideRequest.guidesGalery.pending, (state) => {
         state.statusGuidesGallery = Status.Loading;
         state.errorGuidesGallery = null;
@@ -30,6 +31,7 @@ export const guideSlice = createSlice({
         state.errorGuidesGallery = action.payload.message;
       })
 
+      //preview cards in guides chat
       .addCase(guideRequest.guidesPreview.pending, (state) => {
         state.statusGuidesPreview = Status.Loading;
         state.errorGuidesPreview = null;

@@ -22,7 +22,6 @@ import {
   CarouselThirdItem,
 } from './CarouselItems';
 import s from './style.module.scss';
-import { Button } from '../ui/buttons/Button';
 
 const guidesArray = [
   {
