@@ -5,8 +5,9 @@ import { TextWithBorder } from '../ui/tags/TextWithBorder';
 import { PlayButton } from '../soundControls/PlayButton/PlayButton';
 import s from './style.module.scss';
 import { AudioRate } from '../soundControls/AudioRate';
-import { usePlayer } from '../../core/hooks/player';
 import voice from '../../assets/images/temp/descriptionText.mp3';
+import { usePlayer } from '../../core/hooks/player';
+import { usePlayerWithHowl } from '../../core/hooks/playerWithHowl';
 
 // export
 const audio = new Howl({
@@ -23,7 +24,7 @@ export function BaseSubtitle({
   sound,
   text,
 }) {
-  const { soundSwitch, switchAudio } = usePlayer(audio);
+  const { soundSwitch, switchAudio } = usePlayerWithHowl(voice);
 
   return (
     <Subtitle
