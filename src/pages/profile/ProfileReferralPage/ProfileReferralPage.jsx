@@ -11,6 +11,11 @@ import { removeUnusedStaticText, staticText } from '../../../core/store/staticTe
 import { SubtitleWithDifferentButton } from '../../../components/Subtitle';
 import { ReferralAndGuides } from '../../../components/profile/RefferalAndGuides/RefferalAndGuides';
 import { ReferralAd } from '../../../components/profile/RefferalAd/RefferalAd';
+import {
+  modalWindowState,
+  showReferralLinkWindow,
+} from '../../../core/store/slices/modalWindowStateSlice';
+import { ReferralLinkPopup } from './ReferralLinkPopup/ReferralLinkPopup';
 
 //TODO ВРЕМЕННАЯ ПЕРЕМЕННАЯ
 const noRefferal = true;
@@ -20,6 +25,7 @@ export function ProfileReferralPage() {
   const dispatch = useDispatch();
   const { staticTextProfileReferrals, staticTextStatusProfileReferrals } =
     useSelector(staticText);
+  const { modalReferralLink } = useSelector(modalWindowState);
 
   useEffect(() => {
     dispatch(getStaticText.basic(TEXT_KEYS.PROFILE_REFERRALS));
@@ -54,7 +60,11 @@ export function ProfileReferralPage() {
             leftButtonText={staticTextProfileReferrals.leftButtonText}
             rightButtonText={staticTextProfileReferrals.rightButtonText}
             sound={true}
+            rightButtonOnClick={() => dispatch(showReferralLinkWindow(true))}
           />
+        )}
+        {modalReferralLink && (
+          <ReferralLinkPopup staticText={staticTextProfileReferrals} />
         )}
       </main>
     </>
