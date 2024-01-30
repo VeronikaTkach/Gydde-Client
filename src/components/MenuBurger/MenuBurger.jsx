@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import cn from 'classnames';
 import s from './style.module.scss';
 import menuImg from '../../assets/images/menuImg.png';
@@ -21,13 +21,23 @@ export function MenuBurger({ className }) {
   const dispatch = useDispatch();
   const { currentLanguage } = useSelector(language);
   const [menuLink, setMenuLink] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleClickOutside = (event) => {
+    if (menuRef.current && !menuRef.current.contains(event.target)) {
+      setIsMenuOpen(false);
+    }
+  };
+
   // console.log(currentLanguage);
   const notificationCount = 1;
   const notificationNull = 0;
-  // const [notificationCount, setNotificationCount] = useState(null);
-  // const updateNotificationCount = (newCount) => {
-  //   setNotificationCount(newCount);
-  // };
+
   useEffect(() => {
     setMenuLink([
       {
@@ -60,14 +70,20 @@ export function MenuBurger({ className }) {
         to: RoutesName.ProfileSettings,
       },
     ]);
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
   }, []);
 
   return (
-    <div className={cn(s.menu, className)}>
-      <div className={cn(s.menu__img, className)}>
+    <div ref={menuRef} className={cn(s.menu, className)}>
+      <div className={cn(s.menu__img, className)} onClick={toggleMenu}>
         <img src={menuImg} alt={'menu image'} />
       </div>
-      {menuLink && (
+      {isMenuOpen && (
         <ul className={cn(s.menu__list)}>
           {menuLink.map((item, index) => (
             <li key={index}>

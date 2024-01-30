@@ -2,19 +2,14 @@
 
 .menu {
   position: relative;
-  &:hover {
-    .menu__list {
-      display: flex;
-    }
-  }
   &__img {
-    position: relative;
+    cursor: pointer;
   }
   &__list {
     position: absolute;
     min-width: 284px;
     right: 0;
-    display: none;
+    display: flex;
     flex-direction: column;
     border-radius: 12px 12px 20px 20px;
     z-index: 50;
