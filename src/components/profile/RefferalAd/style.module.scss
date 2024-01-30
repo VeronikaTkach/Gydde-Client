@@ -22,7 +22,7 @@
     display: flex;
   }
   &__img {
-    padding: 23px 12px 0px 0px;
+    padding: 23px 10px 0px 0px;
   }
   &__info {
     @include flex-grid(flex, column, none, none);
