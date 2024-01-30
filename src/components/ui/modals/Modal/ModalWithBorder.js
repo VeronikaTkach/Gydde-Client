@@ -9,7 +9,9 @@ const ModalWithBorderShadow = ({ children, className, styles }) => {
   return (
     <Modal className={className}>
       <div className={s.modal}>
-        <div className={s.modal__container} style={{ maxWidth: widthWithPaddings }}>
+        <div
+          className={s.modal__container}
+          style={{ maxWidth: widthWithPaddings ? widthWithPaddings : '' }}>
           <div
             className={s.modal__wrapper}
             style={{ minHeight: styles?.minHeight, padding: styles?.padding }}>
