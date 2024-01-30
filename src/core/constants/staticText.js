@@ -9,8 +9,8 @@ export const STATIC_TEXT = {
     menuAccountSettings: 'Account settings',
   },
   [PageName.Profile]: {
-    guidesTab: 'Guides reward',
-    ReferralTab: 'Referral reward',
+    guidesTab: 'Guides rewards',
+    ReferralTab: 'Referral rewards',
     settingsTab: 'Account settings',
     walletTab: 'Wallet',
   },
@@ -50,7 +50,16 @@ export const STATIC_TEXT = {
     adTitle: 'Invite friends and earn together',
     rewardForCompletion: 'Reward for Guide completion',
     referralReward: '50% for each referral reward',
-    friendReward: '25% for each referral’s friend reward',
+    friendReward: "25% for each referral's friend reward",
+  },
+  [PageName.ProfileGuides]: {
+    btnText: 'Claim',
+    rewardsTitle: 'Unclaimed rewards',
+    ReferralTitle: 'Referal quest completions',
+    earningsTitle: 'Lifetime earnings',
+    subtitle:
+      "Well, if you didn't know, we still have a lot of guides that you haven't completed yet. Go ahead for knowledge!",
+    'ProfileGuides.buttonText': 'New guides',
   },
   [PageName.GuidesGallery]: {
     subtitle:

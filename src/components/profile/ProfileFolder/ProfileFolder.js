@@ -11,13 +11,6 @@ import { Status } from '../../../core/constants/Status';
 import { STATIC_TEXT } from '../../../core/constants/staticText';
 import { RoutesName } from '../../../core/constants/Routes';
 
-// const folderTabs = [
-//   { title: 'Referral program', to: '/profile/Referral' },
-//   { title: 'Guides', to: '/profile/guides' },
-//   { title: 'Wallet', to: '/profile/wallet' },
-//   { title: 'Account settings', to: '/profile/settings' },
-// ];
-
 const firstItem = 0;
 
 export function ProfileFolder({ className, children }) {
@@ -40,19 +33,21 @@ export function ProfileFolder({ className, children }) {
     ) {
       setFolderTabs([
         {
-          title: staticTextProfile.ReferralTab || STATIC_TEXT.ReferralTab,
+          title:
+            staticTextProfile?.ReferralTab || STATIC_TEXT[PageName.Profile].ReferralTab,
           to: RoutesName.ProfileReferral,
         },
         {
-          title: staticTextProfile.guidesTab || STATIC_TEXT.guidesTab,
+          title: staticTextProfile?.guidesTab || STATIC_TEXT[PageName.Profile].guidesTab,
           to: RoutesName.ProfileGuides,
         },
         {
-          title: staticTextProfile.walletTab || STATIC_TEXT.walletTab,
+          title: staticTextProfile?.walletTab || STATIC_TEXT[PageName.Profile].walletTab,
           to: RoutesName.ProfileWallet,
         },
         {
-          title: staticTextProfile.settingsTab || STATIC_TEXT.settingsTab,
+          title:
+            staticTextProfile?.settingsTab || STATIC_TEXT[PageName.Profile].settingsTab,
           to: RoutesName.ProfileSettings,
         },
       ]);

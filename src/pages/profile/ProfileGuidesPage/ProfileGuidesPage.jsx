@@ -24,6 +24,7 @@ export function ProfileGuidesPage() {
       dispatch(removeUnusedStaticText(PageName.ProfileGuides));
     };
   }, []);
+  console.log(STATIC_TEXT[PageName.ProfileGuides].subtitle);
 
   return (
     <>
@@ -44,8 +45,14 @@ export function ProfileGuidesPage() {
           staticTextStatusProfileGuides === Status.Rejected) && (
           <SubtitleWithAccentButton
             className={s.content__subtitle}
-            text={staticTextProfileGuides.subtitle}
-            buttonText={staticTextProfileGuides.buttonText}
+            text={
+              staticTextProfileGuides?.subtitle ||
+              STATIC_TEXT[PageName.ProfileGuides].subtitle
+            }
+            buttonText={
+              staticTextProfileGuides?.buttonText ||
+              STATIC_TEXT[PageName.ProfileGuides].buttonText
+            }
             sound={true}
           />
         )}
