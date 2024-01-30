@@ -15,13 +15,15 @@
   }
   &__field {
     @include width-height(562px, 278px);
-    @include borderStyle(1px solid $colorGray600, 20px);
     @include flex-grid(flex, column, none, flex-start);
     padding: 20px;
     gap: 12px;
     flex-shrink: 0;
-    background: $colorGray650;
-    // backdrop-filter: blur(26px);
+    backdrop-filter: blur(26px);
+    @include themed() {
+      background: t($formBackground);
+      @include borderStyle(1px solid t($surfaceBorder1), 20px);
+    }
     &_title {
       @include fontRoboto;
       @include width-height(100%, auto);
@@ -29,8 +31,10 @@
       align-items: center;
       gap: 70px;
       align-self: stretch;
-      color: $colorGray400;
       @include fontStyle(16px, 500, 20px);
+      @include themed() {
+        color: t($formLabelPlaceholder);
+      }
     }
     &_info {
       @include width-height(520px, auto);
@@ -42,8 +46,10 @@
         width: 232px;
         gap: 12px;
         flex-shrink: 0;
-        color: $colorGray100;
         @include fontStyle(20px, 500, 24px);
+        @include themed() {
+          color: t($textPrimaryMain);
+        }
       }
       &_status {
         @include flex-grid(flex, none, flex-end, center);
@@ -61,8 +67,10 @@
       border-bottom: 1px solid rgba(134, 134, 134, 0.10); // цвет изменить на тему
     }
     &_textActive {
-      color: $colorWhite;
       @include fontStyle(20px, 500, 24px);
+      @include themed() {
+        color: t($textPrimaryMain);
+      }
     }
     &_textTitle {
       color: $colorGray400;
@@ -110,14 +118,13 @@
   }
   &__icon {
     background: transparent;
-    color: $colorGray400;
     font-size: 20px;
+    transition: .3s;
     cursor: pointer;
     @include themed() {
       color: t($formLabelPlaceholder);
     }
     &:hover {
-      transition: .3s;
       @include themed() {
         color: t($messageLabelGuides);
       }
