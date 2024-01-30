@@ -13,10 +13,12 @@ export function SocialButton({
 }) {
   return (
     <button className={cn(s.button, className)} onClick={onClick} {...props}>
-      <div className={cn(s.button__icon, iconFont)}>
-        {iconImg && <img src={iconImg} alt={alt} />}
-      </div>
-      <div className={cn(s.button__text)}>{text}</div>
+      {(iconImg || iconFont) && (
+        <div className={cn(s.button__icon, iconFont)}>
+          {iconImg && <img src={iconImg} alt={alt} />}
+        </div>
+      )}
+      {text && <div className={cn(s.button__text)}>{text}</div>}
       {children}
     </button>
   );
