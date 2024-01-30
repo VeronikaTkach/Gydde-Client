@@ -48,7 +48,7 @@ export function CarouselPreviousItem({ isMove, guides, guideMove, colorImg }) {
               }}></div>
             <img
               className={s.card__img}
-              src={guides[guides.length - Carousel.LastGuide].image}
+              src={guides[guides.length - Carousel.PrevLastGuide].image}
               alt=''
             />
           </div>
@@ -66,7 +66,7 @@ export function CarouselPreviousItem({ isMove, guides, guideMove, colorImg }) {
               }}></div>
             <img
               className={s.card__img}
-              src={guides[guides.length - Carousel.LastGuide].image}
+              src={guides[guides.length - Carousel.PrevLastGuide].image}
               alt=''
             />
           </div>
@@ -91,7 +91,7 @@ export function CarouselFirstItem({ isMove, guides, guideMove, colorImg, staticT
               }}></div>
             <img
               className={s.card__img}
-              src={guides[Carousel.FirstGuide].image}
+              src={guides[guides.length - Carousel.LastGuide].image}
               alt={'guide image'}
             />
           </div>
@@ -116,12 +116,12 @@ export function CarouselFirstItem({ isMove, guides, guideMove, colorImg, staticT
               }}></div>
             <img
               className={s.card__img}
-              src={guides[Carousel.FirstGuide].image}
+              src={guides[guides.length - Carousel.LastGuide].image}
               alt={'guide image'}
             />
           </div>
           <ItemInfo
-            guide={guides[Carousel.FirstGuide]}
+            guide={guides[guides.length - Carousel.LastGuide]}
             staticText={staticText}
             idInfoClose={
               guideMove === Position.Current || guideMove === Position.Previous
@@ -146,12 +146,12 @@ export function CarouselSecondItem({ isMove, guides, guideMove, colorImg, static
             <div className={cn(s.card__imgBg)}></div>
             <img
               className={s.card__img}
-              src={guides[Carousel.SecondGuide].image}
+              src={guides[Carousel.FirstGuide].image}
               alt={'guide image'}
             />
           </div>
           <ItemInfo
-            guide={guides[Carousel.SecondGuide]}
+            guide={guides[Carousel.FirstGuide]}
             staticText={staticText}
             idInfoClose={false}
           />
@@ -180,12 +180,12 @@ export function CarouselSecondItem({ isMove, guides, guideMove, colorImg, static
               }}></div>
             <img
               className={s.card__img}
-              src={guides[Carousel.SecondGuide].image}
+              src={guides[Carousel.FirstGuide].image}
               alt={'guide image'}
             />
           </div>
           <ItemInfo
-            guide={guides[Carousel.SecondGuide]}
+            guide={guides[Carousel.FirstGuide]}
             staticText={staticText}
             idInfoClose={guideMove === Position.Next || guideMove === Position.Previous}
           />
@@ -210,7 +210,7 @@ export function CarouselThirdItem({ isMove, guides, guideMove, colorImg, staticT
               }}></div>
             <img
               className={s.card__img}
-              src={guides[Carousel.ThirdGuide].image}
+              src={guides[Carousel.SecondGuide].image}
               alt={'guide image'}
             />
           </div>
@@ -235,12 +235,12 @@ export function CarouselThirdItem({ isMove, guides, guideMove, colorImg, staticT
               }}></div>
             <img
               className={s.card__img}
-              src={guides[Carousel.ThirdGuide].image}
+              src={guides[Carousel.SecondGuide].image}
               alt={'guide image'}
             />
           </div>
           <ItemInfo
-            guide={guides[Carousel.ThirdGuide]}
+            guide={guides[Carousel.SecondGuide]}
             staticText={staticText}
             idInfoClose={guideMove === Position.Next || guideMove === Position.Current}
           />
@@ -250,13 +250,7 @@ export function CarouselThirdItem({ isMove, guides, guideMove, colorImg, staticT
   );
 }
 
-export function CarouselNextItem({
-  isMove,
-  guides,
-  guideMove,
-  colorNextImg,
-  colorFirstImg,
-}) {
+export function CarouselNextItem({ isMove, guides, guideMove, colorImg }) {
   return (
     <>
       {!isMove ? (
@@ -269,15 +263,11 @@ export function CarouselNextItem({
               className={cn(s.card__imgBg)}
               style={{
                 boxShadow:
-                  guideMove === Position.Previous
-                    ? `-20px -20px 120px ${
-                        Carousel.NextGuide ? colorNextImg : colorFirstImg
-                      }`
-                    : '',
+                  guideMove === Position.Previous ? `-20px -20px 120px ${colorImg}` : '',
               }}></div>
             <img
               className={s.card__img}
-              src={guides[Carousel.ThirdGuide].image}
+              src={guides[Carousel.SecondGuide].image}
               alt={'guide image'}
             />
           </div>
@@ -292,15 +282,9 @@ export function CarouselNextItem({
               className={cn(s.card__imgBg)}
               style={{
                 opacity: 1,
-                boxShadow: `-20px -20px 120px ${
-                  Carousel.NextGuide ? colorNextImg : colorFirstImg
-                }`,
+                boxShadow: `-20px -20px 120px ${colorImg}`,
               }}></div>
-            <img
-              className={s.card__img}
-              src={guides[Carousel.NextGuide || Carousel.FirstGuide].image}
-              alt=''
-            />
+            <img className={s.card__img} src={guides[Carousel.ThirdGuide].image} alt='' />
           </div>
         </div>
       )}

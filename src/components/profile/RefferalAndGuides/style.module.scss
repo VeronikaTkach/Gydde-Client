@@ -67,7 +67,7 @@
       gap: $space11;
     }
     &__btn {
-      @include fontStyle(20px, 700, 24px);
+      @include fontStyle(20px, 700);
       height: 45px;
       padding: 0 32px;
     }
