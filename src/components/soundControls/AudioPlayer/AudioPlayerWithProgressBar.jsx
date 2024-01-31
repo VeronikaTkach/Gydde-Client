@@ -1,13 +1,17 @@
 import { useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import cn from 'classnames';
-import { Howl } from 'howler';
+import { Howl, Howler } from 'howler';
 import audio from '../../../assets/images/temp/descriptionText.mp3';
 import { SoundSwitchStatus } from '../../../core/constants/SoundSwitchStatus';
 import { usePlayer } from '../../../core/hooks/player';
 import { PlayButton } from '../PlayButton/PlayButton';
 import s from './style.module.scss';
-import { addSoundIds, setSoundId } from '../../../core/store/slices/soundSettingsSlice';
+import {
+  addSoundIds,
+  clearSoundIds,
+  setSoundId,
+} from '../../../core/store/slices/soundSettingsSlice';
 
 export const sound = new Howl({
   src: audio, //sound из пропсов, так как это создаётся обьект, наверно его не стоит пихать в компонент, иначе он будет пересоздаваться при ререндере, может аудио генерировать в юзеффекте конкретного компонента сохранять в стор ссылку на него, а тут только контроль оставить уже. Можно также попробовать в хук вынести ( не помню перерендериваются ли кастомные хуки, вроде не должны)
@@ -26,8 +30,14 @@ export const AudioPlayerWithProgressBar = () => {
   useEffect(() => {
     soundIdRef.current = sound.play();
     sound.stop(soundIdRef.current);
-    dispatch(setSoundId(soundIdRef.current));
+    // dispatch(setSoundId(soundIdRef.current));
     dispatch(addSoundIds(soundIdRef.current));
+
+    return () => {
+      Howler.unload();
+      dispatch(setSoundId(null));
+      dispatch(clearSoundIds());
+    };
   }, []);
 
   const classes = cn(s.audio__btn, {
