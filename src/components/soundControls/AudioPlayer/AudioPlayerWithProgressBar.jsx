@@ -25,6 +25,7 @@ export const AudioPlayerWithProgressBar = () => {
 
   useEffect(() => {
     soundIdRef.current = sound.play();
+    sound.stop(soundIdRef.current);
     dispatch(setSoundId(soundIdRef.current));
     dispatch(addSoundIds(soundIdRef.current));
   }, []);
