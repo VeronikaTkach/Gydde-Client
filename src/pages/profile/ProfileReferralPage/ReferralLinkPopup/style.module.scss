@@ -1,11 +1,7 @@
 @use '../../../../styles/styles.scss' as *;
 
-.referralLink {
-    &__title {
-        @include textStyleButton2;
-    }
-    &__socials {
-    }
+.title {
+    @include textStyleButton2;
 }
 
 .link {
@@ -48,7 +44,7 @@
     @include flex-grid(flex, null, space-between, center);
     &__link {
         border-radius: 50%;
-        font-size: 40px;
+        font-size: 28px;
         @include width-height(56px);
         @include flexCenter;
         @include themed() {

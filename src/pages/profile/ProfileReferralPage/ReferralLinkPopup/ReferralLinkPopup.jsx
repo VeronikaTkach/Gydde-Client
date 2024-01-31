@@ -12,14 +12,6 @@ export function ReferralLinkPopup({ staticText }) {
   const dispatch = useDispatch();
   const link = 'http://gyddy.com?REFERRALCODE=yourlink'; //TODO получать с сервера
 
-  const socialIcons = [
-    'iconTelegram',
-    'iconDiscord',
-    'iconTwitter',
-    'iconLinkedin',
-    'iconFacebook',
-  ];
-
   const styles = {
     maxWidth: 546,
     minHeight: 292,
@@ -27,13 +19,21 @@ export function ReferralLinkPopup({ staticText }) {
     top: 4,
   };
 
+  const socials = [
+    { name: 'iconTelegram', size: 23 },
+    { name: 'iconDiscord' },
+    { name: 'iconTwitter', size: 40 },
+    { name: 'iconLinkedin' },
+    { name: 'iconFacebook' },
+  ];
+
   return (
     <ModalWithClose
       Component={ModalWithBorderShadow}
       onClose={() => dispatch(showReferralLinkWindow(false))}
       styles={styles}>
-      <div className={cn(s.referralLink)}>
-        <div className={cn(s.referralLink__title)}>
+      <div>
+        <div className={cn(s.title)}>
           {staticText?.referralLinkTitle ||
             STATIC_TEXT[PageName.ProfileReferrals].referralLinkTitle}
         </div>
@@ -44,8 +44,14 @@ export function ReferralLinkPopup({ staticText }) {
             onClick={() => copyText(link)}></button>
         </div>
         <div className={cn(s.socials)}>
-          {socialIcons.map((item) => {
-            return <a href='#' className={cn(s.socials__link, item)} key={item}></a>; // эти ссылки тоже с сервера получать?
+          {socials.map((item) => {
+            return (
+              <a
+                href='#'
+                className={cn(s.socials__link, item.name)}
+                key={item.name}
+                style={{ fontSize: item?.size }}></a>
+            ); // эти ссылки тоже с сервера получать?
           })}
         </div>
       </div>
