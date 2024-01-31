@@ -10,11 +10,17 @@ import { removeUnusedStaticText, staticText } from '../../../core/store/staticTe
 import { PageName } from '../../../core/constants/PageNames';
 import { Status } from '../../../core/constants/Status';
 import { SubtitleWithAccentButton } from '../../../components/Subtitle';
+import {
+  modalWindowState,
+  showHistoryWindow,
+} from '../../../core/store/slices/modalWindowStateSlice';
+import { HistoryPopup } from './HistoryPopup/HistoryPopup';
 
 export function ProfileWalletPage() {
   const dispatch = useDispatch();
   const { staticTextProfileWallet, staticTextStatusProfileWallet } =
     useSelector(staticText);
+  const { modalHistory } = useSelector(modalWindowState);
 
   useEffect(() => {
     dispatch(getStaticText.basic(TEXT_KEYS.PROFILE_WALLET));
@@ -41,8 +47,10 @@ export function ProfileWalletPage() {
             text={staticTextProfileWallet.subtitle}
             buttonText={staticTextProfileWallet.buttonText}
             sound={true}
+            buttonOnClick={() => dispatch(showHistoryWindow(true))}
           />
         )}
+        {modalHistory && <HistoryPopup staticText={staticTextProfileWallet} />}
       </main>
     </>
   );
