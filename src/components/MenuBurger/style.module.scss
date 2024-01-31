@@ -61,7 +61,7 @@
 }
 
 .item {
-  @include flex-grid(flex, none, space-between, center);
+  @include flex-grid(flex, none, none, center);
   align-self: stretch;
   @include width-height(100%, 58px);
   padding: $space4;
@@ -70,6 +70,9 @@
   @include fontStyle(20px, 500, 24px);
   @include themed() {
     color: t($textPrimaryMain);
+  }
+  &__row {
+    justify-content: space-between;
   }
   &:hover {
     @include themed() {

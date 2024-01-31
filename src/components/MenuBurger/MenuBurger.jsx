@@ -87,7 +87,7 @@ export function MenuBurger({ className }) {
         <ul className={cn(s.menu__list)}>
           {menuLink.map((item, index) => (
             <li key={index} onClick={toggleMenu}>
-              <Link className={cn(s.menu__item, s.item)} to={item.to}>
+              <Link className={cn(s.menu__item, s.item, s.item__row)} to={item.to}>
                 <div className={s.menu__item_main}>
                   <div className={s.item__icon}>
                     <img src={item.icon} alt='menu icon' />
