@@ -124,7 +124,15 @@
 		"GuidesChat.guideStatus_completed": "Completed",
 		"GuidesChat.actionText_next": "Next",
 		"GuidesChat.actionText_select": "Select an option",
-		"GuidesChat.inputPlaceholder": "Enter a text"
+		"GuidesChat.inputPlaceholder": "Enter a text",
+
+		"Claim.title": "Claim amount",
+		"Claim.titleAccent": "~ $100",
+		"Claim.transactionText": "Transaction fee compensation",
+		"Claim.geoText": "What is commission paid for?",
+		"Claim.feeAmount": "$0",
+		"Claim.payFeeFrom": "Pay transaction fee from my wallet",
+		"Claim.btnText": "Claim"
 	},
 	"getVoice": {
 		"GuidesGallery.mascotVoice": "Ready to turn your drawings into digital gold? Don't miss out on this incredible journey! Your artistic destiny awaits.",
@@ -135,4 +143,5 @@
 		"ProfileWallet.mascotVoice": "Every time I transfer a reward to your wallet, I write it down for you. So, nothing will be lost :)",
 		"ProfileWallet_NoWallet.mascotVoice": "Well, you don’t have a wallet connected. If you don’t know how to connect a wallet just tell me and I will show you how to do it :)"
 	}
+
 }

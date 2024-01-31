@@ -135,4 +135,13 @@ export const TEXT_KEYS = {
     `${PageName.GuidesChat}.actionText_select`,
     `${PageName.GuidesChat}.inputPlaceholder`,
   ],
+  CLAIM: [
+    `${PageName.Claim}.title`,
+    `${PageName.Claim}.titleAccent`,
+    `${PageName.Claim}.transactionText`,
+    `${PageName.Claim}.geoText`,
+    `${PageName.Claim}.feeAmount`,
+    `${PageName.Claim}.payFeeFrom`,
+    `${PageName.Claim}.btnText`,
+  ],
 };

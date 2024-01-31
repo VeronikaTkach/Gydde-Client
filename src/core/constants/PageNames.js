@@ -11,6 +11,7 @@ export const PageName = {
   ProfileWallet: 'ProfileWallet',
   GuidesGallery: 'GuidesGallery',
   GuidesChat: 'GuidesChat',
+  Claim: 'Claim',
 };
 
 Object.freeze(PageName);
