@@ -16,7 +16,7 @@ export const guideRequest = {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log(response);
+        // console.log(response);
 
         return response.data;
       } catch (error) {

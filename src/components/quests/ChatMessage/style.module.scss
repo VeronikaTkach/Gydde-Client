@@ -1,5 +1,19 @@
 @use '../../../styles/styles.scss' as *;
 
-.questSidePannel {
-
+.chatMessage {
+	display: grid;
+	column-gap: 12px;
+	row-gap: 8px;
+	&_gydde {
+		grid-template-columns: 40px 3fr 2fr;
+		grid-template-areas:
+			'icon gydde .';
+		grid-area: gydde;
+	}
+	&_user {
+		grid-template-columns: 40px 3fr 2fr;
+		grid-template-areas:
+			'. . user';
+		grid-area: user;
+	}
 }

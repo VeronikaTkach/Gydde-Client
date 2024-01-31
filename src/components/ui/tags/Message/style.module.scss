@@ -1,0 +1,28 @@
+@use '../../../../styles/styles.scss' as *;
+
+.message {
+	width: fit-content;
+	padding: $space5 $space5 12px;
+	&_first {
+		border-radius: 20px 20px 20px 12px;
+	}
+	&_middle {
+		border-radius: 12px 20px 20px 12px;
+	}
+	&_last {
+		border-radius: 12px 20px 20px 0;
+	}
+	&_single {
+		border-radius: 20px 20px 20px 0;
+	}
+	&_gydde {
+		@include themed() {
+			background-color: t($surfacePrimary);
+		}
+	}
+	&_user {
+		@include themed() {
+			background-color: t($buttonBgActive);
+		}
+	}
+}

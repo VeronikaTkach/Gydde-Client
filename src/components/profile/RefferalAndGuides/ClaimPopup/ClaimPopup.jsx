@@ -13,7 +13,7 @@ export function ClaimPopup({ staticText }) {
 
   const styles = {
     minHeight: 452,
-    padding: '36px 40px',
+    padding: '36px 40px 0 0',
     top: 0,
   };
 

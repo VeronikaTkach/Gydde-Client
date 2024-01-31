@@ -1,17 +1,20 @@
-import { useEffect, useRef, useState } from 'react';
+// import { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 import s from './style.module.scss';
-import { Button } from '../../ui/buttons/Button';
 import { AudioPlayerWithProgressBar } from '../../soundControls/AudioPlayer/AudioPlayerWithProgressBar';
+import { GyddeMessage, UserMessage } from '../../ui/tags/Message';
 
 export function ChatMessage({ className }) {
-  useEffect(() => {}, []);
+  // useEffect(() => {}, []);
 
   return (
     <div className={cn(s.chatMessage, className)}>
-      <AudioPlayerWithProgressBar />
-      <AudioPlayerWithProgressBar />
-      <div className={cn(s.chatMessage__time)}></div>
+      <GyddeMessage>
+        <AudioPlayerWithProgressBar />
+      </GyddeMessage>
+      <UserMessage>
+        <AudioPlayerWithProgressBar />
+      </UserMessage>
     </div>
   );
 }

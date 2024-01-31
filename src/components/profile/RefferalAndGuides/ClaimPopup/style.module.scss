@@ -4,7 +4,7 @@
     display: flex;
     width: 100%;
   &__img {
-    margin-bottom: -36px;
+    margin-top: -36px;
   }
   &__container {
     width: 100%;
@@ -13,6 +13,7 @@
     align-items: center;
     justify-content: flex-end;
     gap: $space13;
+    padding-bottom: 36px;
   }
   &__text {
     display: flex;
@@ -138,7 +139,7 @@
       @include themed() {
         box-shadow: inset 28px -4px 0px 0px t($formLabelPlaceholder);
       }
-    }  
+    }
   }
 }
 input ~ .claim__slider {
