@@ -81,11 +81,17 @@ const blockClickTime = 300;
 export function GuideCarousel({ className, staticText, guidesGallery }) {
   const dispatch = useDispatch();
   const { carouselGuidePosition } = useSelector(guidesCarousel);
-
+  // console.log(guidesGallery)
   const moveOffId = useRef(null);
   const [isMove, setIsMove] = useState(false);
   const [colorsImages, setColorsImages] = useState([]);
-  const [guides, setGuides] = useState(guidesArray);
+  const [guides, setGuides] = useState(
+    guidesArray.length === Carousel.ThirdGuide
+      ? [...guidesArray, guidesArray[Carousel.SecondGuide]]
+      : guidesArray.length === Carousel.SecondGuide
+        ? [...guidesArray, ...guidesArray, ...guidesArray]
+        : guidesArray
+  );
 
   const { data: colorPreviousImg } = useColor(
     guides[guides.length - Carousel.LastGuide].image,
@@ -155,35 +161,34 @@ export function GuideCarousel({ className, staticText, guidesGallery }) {
         isMove={isMove}
         guides={guides}
         guideMove={carouselGuidePosition}
-        colorImg={colorsImages[colorsImages.length - Carousel.LastGuide]}
+        colorImg={colorsImages[colorsImages.length - Carousel.PrevLastGuide]}
       />
       <CarouselFirstItem
         isMove={isMove}
         guides={guides}
         guideMove={carouselGuidePosition}
-        colorImg={colorsImages[Carousel.FirstGuide]}
+        colorImg={colorsImages[colorsImages.length - Carousel.LastGuide]}
         staticText={staticText}
       />
       <CarouselSecondItem
         isMove={isMove}
         guides={guides}
         guideMove={carouselGuidePosition}
-        colorImg={colorsImages[Carousel.SecondGuide]}
+        colorImg={colorsImages[Carousel.FirstGuide]}
         staticText={staticText}
       />
       <CarouselThirdItem
         isMove={isMove}
         guides={guides}
         guideMove={carouselGuidePosition}
-        colorImg={colorsImages[Carousel.ThirdGuide]}
+        colorImg={colorsImages[Carousel.SecondGuide]}
         staticText={staticText}
       />
       <CarouselNextItem
         isMove={isMove}
         guides={guides}
         guideMove={carouselGuidePosition}
-        colorNextImg={colorsImages[Carousel.NextGuide]}
-        colorFirstImg={colorsImages[Carousel.FirstGuide]}
+        colorImg={colorsImages[Carousel.ThirdGuide]}
       />
     </div>
   );

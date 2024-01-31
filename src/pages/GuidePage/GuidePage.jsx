@@ -26,9 +26,8 @@ export function GuidePage() {
     useSelector(staticText);
 
   useEffect(() => {
-    dispatch(guideRequest.guidesGalery());
+    // dispatch(guideRequest.guidesGalery());
     dispatch(getStaticText.basic(TEXT_KEYS.GUIDES_GALLERY));
-    // console.log(staticTextGuidesGallery);
 
     // dispatch(getStaticText.hello())
     return () => {

@@ -11,7 +11,17 @@
 
 	&__chat {
 		position: relative;
-
+		max-height: calc(100vh - 246px);
+		overflow-y: scroll;
+		padding: 16px;
+		&::-webkit-scrollbar {
+			width: 3px;
+		}
+		&::-webkit-scrollbar-thumb {
+			@include themed() {
+				background-color: t($surfaceBorderSubtitles);
+			}
+		}
 	}
 	&__scrollDown {
 		position: absolute;

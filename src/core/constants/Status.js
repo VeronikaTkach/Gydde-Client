@@ -4,6 +4,8 @@ export const StatusCode = {
   Redirection: 300,
   ClientError: 400,
   ServerError: 500,
+  Unauthorized: 401,
+  Forbidden: 403,
 };
 
 export const Status = {

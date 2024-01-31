@@ -4,6 +4,7 @@ export const Carousel = {
   ThirdGuide: 2,
   NextGuide: 3,
   LastGuide: 1,
+  PrevLastGuide: 2,
 };
 
 Object.freeze(Carousel);

@@ -51,6 +51,7 @@ export const STATIC_TEXT = {
     rewardForCompletion: 'Reward for Guide completion',
     referralReward: '50% for each referral reward',
     friendReward: "25% for each referral's friend reward",
+    referralLinkTitle: 'Share referral link',
   },
   [PageName.ProfileGuides]: {
     btnText: 'Claim',

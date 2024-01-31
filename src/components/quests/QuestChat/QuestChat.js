@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+// import { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 import s from './style.module.scss';
 import { Button } from '../../ui/buttons/Button';
@@ -7,7 +7,7 @@ import { QuestChatTopPannel } from '../QuestChatTopPannel/QuestChatTopPannel';
 import { QuestChatBottomPannel } from '../QuestChatBottomPannel';
 
 export function QuestChat({ className }) {
-  useEffect(() => {}, []);
+  // useEffect(() => {}, []);
 
   return (
     <div className={cn(s.questChat, className)}>

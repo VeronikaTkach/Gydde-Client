@@ -66,6 +66,7 @@ export const TEXT_KEYS = {
     `${PageName.ProfileReferrals}_NoReferral.subtitle`,
     `${PageName.ProfileReferrals}.leftButtonText`,
     `${PageName.ProfileReferrals}.rightButtonText`,
+    `${PageName.ProfileReferrals}.referralLinkTitle`,
   ],
   PROFILE: [
     `${PageName.Profile}.ReferralTab`,

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import cn from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
-import { guideRequest } from '../../../core/store/guide/thunk';
+// import { guideRequest } from '../../../core/store/guide/thunk';
 import { guide } from '../../../core/store/guide/slice';
 import { getStaticText } from '../../../core/store/staticText/thunk';
 import { TEXT_KEYS } from '../../../core/constants/textKeys';
@@ -21,7 +21,7 @@ export function QuestSidePannel({ className }) {
   const [activeQuest, setActiveQuest] = useState(firstItem);
 
   useEffect(() => {
-    dispatch(guideRequest.guidesPreview());
+    // dispatch(guideRequest.guidesPreview());
     dispatch(getStaticText.basic(TEXT_KEYS.GUIDES_CHAT));
 
     return () => {

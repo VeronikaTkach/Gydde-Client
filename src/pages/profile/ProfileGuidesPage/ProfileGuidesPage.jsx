@@ -24,7 +24,6 @@ export function ProfileGuidesPage() {
       dispatch(removeUnusedStaticText(PageName.ProfileGuides));
     };
   }, []);
-  console.log(STATIC_TEXT[PageName.ProfileGuides].subtitle);
 
   return (
     <>

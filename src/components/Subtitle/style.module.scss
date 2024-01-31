@@ -40,12 +40,12 @@
   grid-area: button;
   gap: 20px;
   &__button {
-    @include fontStyle(20px, 700, 24px);
+    @include fontStyle(20px, 700);
     min-width: 160px;
     height: 100%;
     &_size {
       &_l {
-        @include fontStyle(24px, 700, 32px);
+        @include fontStyle(24px, 700);
         padding: 0 32px;
       }
     }
