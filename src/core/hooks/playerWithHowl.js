@@ -74,13 +74,11 @@ export function usePlayerWithHowl(src) {
         setProgress(Math.ceil((sound.seek() / sound.duration()) * maxPercent));
       }, interval);
       setSwitchStatus(SoundSwitchStatus.Off);
-      // dispatch(switchSound(SoundSwitchStatus.Off));
     });
 
     sound.once('pause', () => {
       clearInterval(timer);
       setSwitchStatus(SoundSwitchStatus.On);
-      // dispatch(switchSound(SoundSwitchStatus.On));
     });
 
     sound.once('end', () => {
@@ -107,10 +105,6 @@ export function usePlayerWithHowl(src) {
       }
     }
   };
-
-  // console.log('sound', sound);
-  // console.log('HowlConstructor', HowlConstructor);
-  // console.log('isMounted', isMounted);
 
   return { sound, soundSwitch, progress, duration, switchAudio };
 }
