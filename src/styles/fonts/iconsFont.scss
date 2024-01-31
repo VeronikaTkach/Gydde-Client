@@ -171,3 +171,23 @@
     content: $iconSeparator;
   }
 }
+.iconFacebook {
+  &:before {
+    content: $iconFacebook;
+  }
+}
+.iconLinkedin {
+  &:before {
+    content: $iconLinkedin;
+  }
+}
+.iconDiscord {
+  &:before {
+    content: $iconDiscord;
+  }
+}
+.iconTelegram {
+  &:before {
+    content: $iconTelegram;
+  }
+}
