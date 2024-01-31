@@ -1,7 +1,6 @@
 import cn from 'classnames';
 import { Button } from '../../ui/buttons/Button';
 import { PlayButton } from '../PlayButton/PlayButton';
-import audio from '../../../assets/images/temp/descriptionText.mp3';
 import s from './style.module.scss';
 import { usePlayer } from '../../../core/hooks/player';
 import { sound } from './AudioPlayerWithProgressBar';
