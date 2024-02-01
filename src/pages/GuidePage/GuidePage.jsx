@@ -1,23 +1,23 @@
 import cn from 'classnames';
-import s from './style.module.scss';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import mascotShows from '../../assets/images/mascot/mascotShows.png';
+import smileyEyesStar from '../../assets/images/stickers/smileyEyesStar.png';
 import { GuideCarousel } from '../../components/GuideCarousel';
 import { SubtitleWithBorderButton } from '../../components/Subtitle';
-import { useDispatch, useSelector } from 'react-redux';
-import { switchGuides } from '../../core/store/slices/guidesCarouselSlice';
-import { Position } from '../../core/constants/Position';
-import mascotShows from '../../assets/images/mascot/mascotShows.png';
-import { useEffect } from 'react';
-import { guideRequest } from '../../core/store/guide/thunk';
-import { guide } from '../../core/store/guide/slice';
-import { getStaticText } from '../../core/store/staticText/thunk';
-import { TEXT_KEYS } from '../../core/constants/textKeys';
-import { removeUnusedStaticText, staticText } from '../../core/store/staticText/slice';
+import { Button } from '../../components/ui/buttons/Button';
 import { PageName } from '../../core/constants/PageNames';
+import { Position } from '../../core/constants/Position';
 import { Size } from '../../core/constants/Size';
 import { Status } from '../../core/constants/Status';
-import smileyEyesStar from '../../assets/images/stickers/smileyEyesStar.png';
 import { STATIC_TEXT } from '../../core/constants/staticText';
-import { Button } from '../../components/ui/buttons/Button';
+import { TEXT_KEYS } from '../../core/constants/textKeys';
+import { guide } from '../../core/store/guide/slice';
+import { guideRequest } from '../../core/store/guide/thunk';
+import { switchGuides } from '../../core/store/slices/guidesCarouselSlice';
+import { removeUnusedStaticText, staticText } from '../../core/store/staticText/slice';
+import { getStaticText } from '../../core/store/staticText/thunk';
+import s from './style.module.scss';
 
 export function GuidePage() {
   const dispatch = useDispatch();
@@ -37,7 +37,8 @@ export function GuidePage() {
 
   return (
     <main className={cn(s.content)}>
-      {staticTextGuidesGallery && (
+      {(staticTextStatusGuidesGallery === Status.Resolved ||
+        staticTextStatusGuidesGallery === Status.Rejected) && (
         <div className={cn(s.content__mainScreen, s.mainScreen)}>
           <div className={cn(s.content__carousel)}>
             {/* {statusGuidesGallery === Status.Resolved && ( */}
@@ -70,10 +71,13 @@ export function GuidePage() {
             className={s.content__subtitle}
             sound={true}
             text={
-              staticTextGuidesGallery.subtitle ||
+              staticTextGuidesGallery?.subtitle ||
               STATIC_TEXT[PageName.GuidesGallery].subtitle
             }
-            buttonText={staticTextGuidesGallery.buttonText}
+            buttonText={
+              staticTextGuidesGallery?.buttonText ||
+              STATIC_TEXT[PageName.GuidesGallery].buttonText
+            }
             buttonSticker={smileyEyesStar}
             buttonOnClick={() => dispatch(switchGuides(Position.Next))}
             size={Size.L}

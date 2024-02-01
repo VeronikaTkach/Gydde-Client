@@ -48,7 +48,14 @@ export const TEXT_KEYS = {
     `${PageName.MailAuthorization}.passwordPlaceholder`,
     `${PageName.MailAuthorization}.button`,
   ],
-  HEADER: [`${PageName.Header}.buttonLogin`],
+  HEADER: [
+    `${PageName.Header}.buttonLogin`,
+    `${PageName.Header}.menuGuides`,
+    `${PageName.Header}.menuReferralRewards`,
+    `${PageName.Header}.menuGuidesRewards`,
+    `${PageName.Header}.menuWallet`,
+    `${PageName.Header}.menuAccountSettings`,
+  ],
   PROFILE_GUIDES: [
     `${PageName.ProfileGuides}.btnText`,
     `${PageName.ProfileGuides}.rewardsTitle`,

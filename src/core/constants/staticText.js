@@ -1,7 +1,13 @@
 import { PageName } from './PageNames';
 
 export const STATIC_TEXT = {
+  [PageName.Hello]: {
+    mascotTextHighlightedPart1: "Hello! I'm",
+    mascotTextHighlightedPart2: 'Gydde',
+    answerButtonText: 'Hi, Gydde!',
+  },
   [PageName.Header]: {
+    buttonLogin: 'Log in',
     menuGuides: 'Guides',
     menuReferralRewards: 'Referral rewards',
     menuGuidesRewards: 'Guides rewards',

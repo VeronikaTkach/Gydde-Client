@@ -26,8 +26,22 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', '@stylistic/js'],
+  plugins: ['react', '@stylistic/js', 'eslint-plugin-import'],
   rules: {
+    'import/order': [
+      'warn',
+      {
+        groups: ['builtin', 'external', 'parent', 'sibling', 'index', 'object', 'type'],
+        pathGroups: [
+          {
+            pattern: '@/**/**',
+            group: 'parent',
+            position: 'before',
+          },
+        ],
+        alphabetize: { order: 'asc' },
+      },
+    ],
     'react/no-children-prop': 'off',
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',

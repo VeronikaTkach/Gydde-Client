@@ -41,6 +41,11 @@
 		"MailAuthorization.button": "Log in",
 
 		"Header.buttonLogin": "Log in",
+    "Header.menuGuides": "Guides",
+    "Header.menuReferralRewards": "Referral rewards",
+    "Header.menuGuidesRewards": "Guides rewards",
+    "Header.menuWallet": "Wallet",
+    "Header.menuAccountSettings": "Account settings",
 
 		"Profile.ReferralTab": "Referral reward",
 		"Profile.guidesTab": "Guides reward",
