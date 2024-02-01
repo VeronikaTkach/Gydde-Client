@@ -130,7 +130,7 @@
     &::before {
       content: "";
       position: absolute;
-      top: 3.5px;
+      top: 3px;
       left: 5px;
       width: 14px;
       height: 14px;
@@ -154,7 +154,7 @@ input:checked ~ .claim__slider {
   }
 }
 input:checked ~ .claim__slider::before {
-  transform: translateX(18px);
+  transform: translateX(16px);
   box-shadow: none;
   @include themed() {
     background-color: t($surfacePrimaryAccent);

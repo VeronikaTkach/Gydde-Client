@@ -1,8 +1,9 @@
 // import { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
-import s from './style.module.scss';
 import { AudioPlayerWithProgressBar } from '../../soundControls/AudioPlayer/AudioPlayerWithProgressBar';
+// import Radio from '../../ui/Radio/Radio';
 import { GyddeMessage, UserMessage } from '../../ui/tags/Message';
+import s from './style.module.scss';
 
 export function ChatMessage({ className }) {
   // useEffect(() => {}, []);
@@ -15,6 +16,7 @@ export function ChatMessage({ className }) {
       <UserMessage>
         <AudioPlayerWithProgressBar />
       </UserMessage>
+      {/* <Radio /> */}
     </div>
   );
 }

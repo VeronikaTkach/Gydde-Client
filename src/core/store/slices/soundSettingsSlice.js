@@ -34,6 +34,9 @@ export const soundSettingsSlice = createSlice({
     addSoundIds: (state, action) => {
       state.soundIds.push(action.payload);
     },
+    clearSoundIds: (state) => {
+      state.soundIds = [];
+    },
   },
 });
 
@@ -44,6 +47,7 @@ export const {
   switchSound,
   setSoundId,
   addSoundIds,
+  clearSoundIds,
 } = soundSettingsSlice.actions;
 export const soundSettings = (state) => state.soundSettings;
 

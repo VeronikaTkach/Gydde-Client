@@ -171,3 +171,38 @@
     content: $iconSeparator;
   }
 }
+.iconFacebook {
+  &:before {
+    content: $iconFacebook;
+  }
+}
+.iconLinkedin {
+  &:before {
+    content: $iconLinkedin;
+  }
+}
+.iconDiscord {
+  &:before {
+    content: $iconDiscord;
+  }
+}
+.iconTelegram {
+  &:before {
+    content: $iconTelegram;
+  }
+}
+.iconDone {
+  &:before {
+    content: $iconDone;
+  }
+}
+.iconRadioUnchecked {
+  &:before {
+    content: $iconRadioUnchecked;
+  }
+}
+.iconRadioChecked {
+  &:before {
+    content: $iconRadioChecked;
+  }
+}

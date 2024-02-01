@@ -1,32 +1,29 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import cn from 'classnames';
-import { showAuthorizationWindow } from '../../core/store/slices/modalWindowStateSlice';
-import {
-  allAuth,
-  authorization,
-  setCurrentAuthorizationType,
-} from '../../core/store/auth/slice';
-// import { setMetamaskConnectionStatus } from '../../core/store/slices/metamaskAuthorizationSlice';
-import { MetamaskConnectionStatus, Status } from '../../core/constants/Status';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { AuthorizationType } from '../../core/constants/AuthorizationType';
-import { getStaticText } from '../../core/store/staticText/thunk';
-import { TEXT_KEYS } from '../../core/constants/textKeys';
 import { PageName } from '../../core/constants/PageNames';
-import { removeUnusedStaticText, staticText } from '../../core/store/staticText/slice';
+import { MetamaskConnectionStatus } from '../../core/constants/Status';
+import { STATIC_TEXT } from '../../core/constants/staticText';
+import { TEXT_KEYS } from '../../core/constants/textKeys';
+import { useStaticText } from '../../core/hooks/useStaticText';
+import { allAuth, setCurrentAuthorizationType } from '../../core/store/auth/slice';
+import { setMetamaskConnectionStatus } from '../../core/store/metamask/slice';
+import { showAuthorizationWindow } from '../../core/store/slices/modalWindowStateSlice';
+import { removeUnusedStaticText } from '../../core/store/staticText/slice';
+import { getStaticText } from '../../core/store/staticText/thunk';
 import { Button } from '../ui/buttons/Button';
-import ModalWithClose from '../ui/modals/Modal/ModalWithClose';
 import ModalWithBorderShadow from '../ui/modals/Modal/ModalWithBorder';
-import { MetamaskView } from './Metamask';
+import ModalWithClose from '../ui/modals/Modal/ModalWithClose';
 import { AllAuthorizaitions } from './AllAuthorizaitions';
 import { Email } from './Email/Email';
+import { MetamaskView } from './Metamask';
 import s from './style.module.scss';
-import { setMetamaskConnectionStatus } from '../../core/store/metamask/slice';
 
 export function Auth() {
   const dispatch = useDispatch();
+  const { text } = useStaticText(PageName.Auth);
   const { currentAuthorizationType } = useSelector(allAuth);
-  const { staticTextAuth, staticTextStatusAuth } = useSelector(staticText);
 
   useEffect(() => {
     dispatch(getStaticText.basic(TEXT_KEYS.AUTH));
@@ -46,14 +43,11 @@ export function Auth() {
 
   return (
     <ModalWithClose Component={ModalWithBorderShadow} onClose={onClose}>
-      {staticTextStatusAuth === Status.Resolved && (
+      {text && (
         <>
           {(currentAuthorizationType === AuthorizationType.NotСhosen ||
             currentAuthorizationType === AuthorizationType.AuthMail) && (
-            <AuthHeader
-              staticTextAuth={staticTextAuth}
-              currentAuthorizationType={currentAuthorizationType}
-            />
+            <AuthHeader text={text} currentAuthorizationType={currentAuthorizationType} />
           )}
           {currentAuthorizationType === AuthorizationType.NotСhosen && (
             <AllAuthorizaitions />
@@ -68,7 +62,7 @@ export function Auth() {
   );
 }
 
-export function AuthHeader({ currentAuthorizationType, staticTextAuth }) {
+export function AuthHeader({ currentAuthorizationType, text }) {
   const dispatch = useDispatch();
 
   return (
@@ -80,9 +74,12 @@ export function AuthHeader({ currentAuthorizationType, staticTextAuth }) {
               className={cn(s.auth__back, 'iconArrowBack')}
               onClick={() => {
                 dispatch(setCurrentAuthorizationType(AuthorizationType.NotСhosen));
-              }}></Button>
+              }}
+            />
           )}
-          <div className={s.auth__title}>{staticTextAuth.title}</div>
+          <div className={s.auth__title}>
+            {text.title || STATIC_TEXT[PageName.Auth].title}
+          </div>
         </div>
       </div>
     </>

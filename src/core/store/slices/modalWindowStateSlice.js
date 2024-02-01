@@ -10,6 +10,7 @@ const initialState = {
   modalChangePassword: false,
   modalClaim: false,
   modalReferralLink: false,
+  modalHistory: false,
 };
 
 export const modalWindowStateSlice = createSlice({
@@ -43,6 +44,9 @@ export const modalWindowStateSlice = createSlice({
     showReferralLinkWindow: (state, action) => {
       state.modalReferralLink = action.payload;
     },
+    showHistoryWindow: (state, action) => {
+      state.modalHistory = action.payload;
+    },
   },
 });
 
@@ -56,6 +60,7 @@ export const {
   showChangePasswordWindow,
   showClaimWindow,
   showReferralLinkWindow,
+  showHistoryWindow,
 } = modalWindowStateSlice.actions;
 export const modalWindowState = (state) => state.modalWindowState;
 

@@ -1,19 +1,18 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useForm } from 'react-hook-form';
 import cn from 'classnames';
-import s from '../style.module.scss';
-import { ButtonWithBorder } from '../../../../ui/buttons/Button';
-import { STATIC_TEXT } from '../../../../../core/constants/staticText';
+import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
 import { PageName } from '../../../../../core/constants/PageNames';
-import ModalWithClose from '../../../../ui/modals/Modal/ModalWithClose';
-import ModalWithBorderShadow from '../../../../ui/modals/Modal/ModalWithBorder';
+import { Status } from '../../../../../core/constants/Status';
+import { STATIC_TEXT } from '../../../../../core/constants/staticText';
+import { allAuth } from '../../../../../core/store/auth/slice';
 import { showUsernameEditWindow } from '../../../../../core/store/slices/modalWindowStateSlice';
 import { Input } from '../../../../ui/Input';
-import { LoaderForButtons } from '../../../../ui/loaders/LoaderForButtons';
-import { Status } from '../../../../../core/constants/Status';
-import { allAuth } from '../../../../../core/store/auth/slice';
+import { ButtonWithBorder } from '../../../../ui/buttons/Button';
+import ModalWithBorderShadow from '../../../../ui/modals/Modal/ModalWithBorder';
+import ModalWithClose from '../../../../ui/modals/Modal/ModalWithClose';
+import s from '../style.module.scss';
 
-export function UsernameEditPopup({ staticTextProfileSettings }) {
+export function UsernameEditPopup({ text }) {
   const dispatch = useDispatch();
   const { status } = useSelector(allAuth);
 
@@ -34,7 +33,7 @@ export function UsernameEditPopup({ staticTextProfileSettings }) {
   });
 
   const onSubmit = (data, e) => {
-    // e.preventDefault();
+    e.preventDefault();
   };
 
   return (
@@ -44,16 +43,14 @@ export function UsernameEditPopup({ staticTextProfileSettings }) {
       styles={styles}>
       <div>
         <div className={cn(s.title)}>
-          {staticTextProfileSettings?.editNameTitle ||
-            STATIC_TEXT[PageName.ProfileSettings].editNameTitle}
+          {text?.editNameTitle || STATIC_TEXT[PageName.ProfileSettings].editNameTitle}
         </div>
         <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
           <Input
             className={s.input}
             classError={errors.username} //TODO переделать для юзернейма
             placeholder={
-              staticTextProfileSettings?.fieldName ||
-              STATIC_TEXT[PageName.ProfileSettings].fieldName
+              text?.fieldName || STATIC_TEXT[PageName.ProfileSettings].fieldName
             }
             name={'username'}
             setValue={setValue}
@@ -66,8 +63,7 @@ export function UsernameEditPopup({ staticTextProfileSettings }) {
             type={'submit'}
             disabled={status === Status.Loading}
             isLoading={status === Status.Loading}>
-            {staticTextProfileSettings?.btnSave ||
-              STATIC_TEXT[PageName.ProfileSettings].btnSave}
+            {text?.btnSave || STATIC_TEXT[PageName.ProfileSettings].btnSave}
           </ButtonWithBorder>
         </form>
       </div>

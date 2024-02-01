@@ -1,19 +1,18 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import cn from 'classnames';
-import s from './style.module.scss';
-import { ProfileFolder } from '../../../components/profile/ProfileFolder';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { AccountSettings } from '../../../components/profile/AccountSettings/AccountSettings';
-import { getStaticText } from '../../../core/store/staticText/thunk';
-import { TEXT_KEYS } from '../../../core/constants/textKeys';
-import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
-import { Status } from '../../../core/constants/Status';
+import { ProfileFolder } from '../../../components/profile/ProfileFolder';
 import { PageName } from '../../../core/constants/PageNames';
+import { TEXT_KEYS } from '../../../core/constants/textKeys';
+import { useStaticText } from '../../../core/hooks/useStaticText';
+import { removeUnusedStaticText } from '../../../core/store/staticText/slice';
+import { getStaticText } from '../../../core/store/staticText/thunk';
+import s from './style.module.scss';
 
 export function ProfileSettingsPage() {
   const dispatch = useDispatch();
-  const { staticTextProfileSettings, staticTextStatusProfileSettings } =
-    useSelector(staticText);
+  const { text } = useStaticText(PageName.ProfileSettings);
 
   useEffect(() => {
     dispatch(getStaticText.basic(TEXT_KEYS.PROFILE_SETTINGS));
@@ -27,15 +26,7 @@ export function ProfileSettingsPage() {
     <>
       <main className={cn(s.content)}>
         <div className={cn(s.content__container)}>
-          <ProfileFolder>
-            {(staticTextStatusProfileSettings === Status.Resolved ||
-              staticTextStatusProfileSettings === Status.Rejected) && (
-              <AccountSettings
-                staticTextProfileSettings={staticTextProfileSettings}
-                staticTextStatusProfileSettings={staticTextStatusProfileSettings}
-              />
-            )}
-          </ProfileFolder>
+          <ProfileFolder>{text && <AccountSettings text={text} />}</ProfileFolder>
         </div>
       </main>
     </>

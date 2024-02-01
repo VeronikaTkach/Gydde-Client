@@ -1,23 +1,21 @@
-// import { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
-import s from './style.module.scss';
-// import { Button } from '../../ui/buttons/Button';
 import mascotFriend from '../../../assets/images/mascot/mascotFriend.png';
-import { STATIC_TEXT } from '../../../core/constants/staticText';
-import { PageName } from '../../../core/constants/PageNames';
-import geo from '../../../assets/images/menu/geo.png';
 import friend from '../../../assets/images/menu/friend.png';
+import geo from '../../../assets/images/menu/geo.png';
 import people from '../../../assets/images/menu/people.png';
+import { PageName } from '../../../core/constants/PageNames';
+import { STATIC_TEXT } from '../../../core/constants/staticText';
+import { useStaticText } from '../../../core/hooks/useStaticText';
+import s from './style.module.scss';
 
-export function ReferralAd({ className, staticTextProfileReferrals }) {
-  // useEffect(() => {}, []);
+export function ReferralAd({ className }) {
+  const { text } = useStaticText(PageName.ProfileReferrals);
 
   return (
     <div className={cn(s.referral, className)}>
       <div className={s.referral__adTitle}>
         <span className={s.referral__textTitle}>
-          {staticTextProfileReferrals?.adTitle ||
-            STATIC_TEXT[PageName.ProfileReferrals].adTitle}
+          {text?.adTitle || STATIC_TEXT[PageName.ProfileReferrals].adTitle}
         </span>
       </div>
       <div className={s.referral__field}>
@@ -32,7 +30,7 @@ export function ReferralAd({ className, staticTextProfileReferrals }) {
               />
             </div>
             <span className={s.referral__text}>
-              {staticTextProfileReferrals?.rewardForCompletion ||
+              {text?.rewardForCompletion ||
                 STATIC_TEXT[PageName.ProfileReferrals].rewardForCompletion}
             </span>
             <span className={s.referral__text}>~</span>
@@ -43,7 +41,7 @@ export function ReferralAd({ className, staticTextProfileReferrals }) {
               <img className={s.referral__icon_frame} src={friend} alt={'friend'} />
             </div>
             <span className={s.referral__text}>
-              {staticTextProfileReferrals?.referralReward ||
+              {text?.referralReward ||
                 STATIC_TEXT[PageName.ProfileReferrals].referralReward}
             </span>
             <span className={s.referral__text}>~</span>
@@ -54,8 +52,7 @@ export function ReferralAd({ className, staticTextProfileReferrals }) {
               <img className={s.referral__icon} src={people} alt={'people'} />
             </div>
             <span className={s.referral__text}>
-              {staticTextProfileReferrals?.friendReward ||
-                STATIC_TEXT[PageName.ProfileReferrals].friendReward}
+              {text?.friendReward || STATIC_TEXT[PageName.ProfileReferrals].friendReward}
             </span>
             <span className={s.referral__text}>~</span>
             <span className={s.referral__cost}>$0.75</span>

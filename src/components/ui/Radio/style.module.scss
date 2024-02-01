@@ -1,11 +1,10 @@
-@import '../../../styles/variables';
+@use '../../../styles/styles.scss' as *;
 
 .radio {
 	@include width-height(100%, 100%);
 	@include flex-grid(flex, null, center, center);
-	&:hover &__label::before {
-		color: $fillBlue;
-	}
+	// &:hover &__label::before {
+	// }
 	&__input {
 		position: absolute;
 		z-index: -1;
@@ -17,22 +16,23 @@
 	&__input + &__label {
 		@include flex-grid(flex, null, null, center);
 		cursor: pointer;
-		// user-select: none;
 	}
 	&__label::before {
 		font-family: 'iconsFont';
-		content: '\e917';
+		content: '\e920';
 		@include width-height(16px);
 		margin: 0 16px;
+		@include themed() {
+			background-image: t($gradientImage);
+		}
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
 	}
 	&__input:not(:checked) + &__label:hover::before {
-		border-color: $strokeBlue;
-		transition: .2s;
+		transition: .3s;
 	}
 	&__input:checked + &__label::before {
-		content:"\e919";
-		color: $strokeBlue;
-		border-color: $strokeBlue;
-		@include flex-grid(flex, null, center, center);
+		content:"\e921";
 	}
 }

@@ -10,8 +10,8 @@
   height: fit-content;
   gap: 64px;
   @include themed() {
-      background: t($bg);
-      border: 1px solid t($surfaceBorderSubtitles)
+    background: t($bg);
+    border: 1px solid t($surfaceBorderSubtitles);
   }
   &__field {
     @include width-height(562px, 278px);
@@ -19,7 +19,6 @@
     padding: 20px;
     gap: 12px;
     flex-shrink: 0;
-    backdrop-filter: blur(26px);
     @include themed() {
       background: t($formBackground);
       @include borderStyle(1px solid t($surfaceBorder1), 20px);

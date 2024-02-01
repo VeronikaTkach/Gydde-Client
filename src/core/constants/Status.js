@@ -28,7 +28,13 @@ export const ConnectWalletStatus = {
   Disonnected: 'disconnected',
 };
 
+export const UserReferralStatus = {
+  Referral: 'Referral',
+  NoReferral: 'NoReferral',
+};
+
 Object.freeze(StatusCode);
 Object.freeze(Status);
 Object.freeze(MetamaskConnectionStatus);
 Object.freeze(ConnectWalletStatus);
+Object.freeze(UserReferralStatus);

@@ -1,11 +1,11 @@
 import cn from 'classnames';
 import { useEffect, useRef, useState } from 'react';
-import { setWindowOptions } from '../../../core/helpers/forWindow';
+import { useDispatch } from 'react-redux';
 import { LocalStorageItems } from '../../../core/constants/LocalStorageItems';
+import { setWindowOptions } from '../../../core/helpers/forWindow';
+import { showAuthorizationWindow } from '../../../core/store/slices/modalWindowStateSlice';
 import { Button } from '../../ui/buttons/Button';
 import s from './style.module.scss';
-import { useDispatch } from 'react-redux';
-import { showAuthorizationWindow } from '../../../core/store/slices/modalWindowStateSlice';
 
 export function Google({ className, children }) {
   const dispatch = useDispatch();

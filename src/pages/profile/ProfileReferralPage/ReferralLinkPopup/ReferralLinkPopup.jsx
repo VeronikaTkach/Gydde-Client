@@ -1,24 +1,16 @@
-import { useDispatch } from 'react-redux';
 import cn from 'classnames';
-import { showReferralLinkWindow } from '../../../../core/store/slices/modalWindowStateSlice';
-import ModalWithClose from '../../../../components/ui/modals/Modal/ModalWithClose';
+import { useDispatch } from 'react-redux';
 import ModalWithBorderShadow from '../../../../components/ui/modals/Modal/ModalWithBorder';
-import s from './style.module.scss';
+import ModalWithClose from '../../../../components/ui/modals/Modal/ModalWithClose';
 import { PageName } from '../../../../core/constants/PageNames';
 import { STATIC_TEXT } from '../../../../core/constants/staticText';
 import copyText from '../../../../core/helpers/copyText';
+import { showReferralLinkWindow } from '../../../../core/store/slices/modalWindowStateSlice';
+import s from './style.module.scss';
 
-export function ReferralLinkPopup({ staticText }) {
+export function ReferralLinkPopup({ text }) {
   const dispatch = useDispatch();
   const link = 'http://gyddy.com?REFERRALCODE=yourlink'; //TODO получать с сервера
-
-  const socialIcons = [
-    'iconTelegram',
-    'iconDiscord',
-    'iconTwitter',
-    'iconLinkedin',
-    'iconFacebook',
-  ];
 
   const styles = {
     maxWidth: 546,
@@ -27,14 +19,22 @@ export function ReferralLinkPopup({ staticText }) {
     top: 4,
   };
 
+  const socials = [
+    { name: 'iconTelegram', size: 23 },
+    { name: 'iconDiscord' },
+    { name: 'iconTwitter', size: 40 },
+    { name: 'iconLinkedin' },
+    { name: 'iconFacebook' },
+  ];
+
   return (
     <ModalWithClose
       Component={ModalWithBorderShadow}
       onClose={() => dispatch(showReferralLinkWindow(false))}
       styles={styles}>
-      <div className={cn(s.referralLink)}>
-        <div className={cn(s.referralLink__title)}>
-          {staticText?.referralLinkTitle ||
+      <div>
+        <div className={cn(s.title)}>
+          {text?.referralLinkTitle ||
             STATIC_TEXT[PageName.ProfileReferrals].referralLinkTitle}
         </div>
         <div className={cn(s.link)}>
@@ -44,9 +44,13 @@ export function ReferralLinkPopup({ staticText }) {
             onClick={() => copyText(link)}></button>
         </div>
         <div className={cn(s.socials)}>
-          {socialIcons.map((item) => {
-            return <a href='#' className={cn(s.socials__link, item)} key={item}></a>; // эти ссылки тоже с сервера получать?
-          })}
+          {socials.map((item) => (
+            <a
+              href='#'
+              className={cn(s.socials__link, item.name)}
+              key={item.name}
+              style={{ fontSize: item?.size }}></a>
+          ))}
         </div>
       </div>
     </ModalWithClose>

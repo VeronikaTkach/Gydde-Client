@@ -1,26 +1,29 @@
-import { useEffect, useState, useRef } from 'react';
 import cn from 'classnames';
-import s from './style.module.scss';
-import menuImg from '../../assets/images/menuImg.png';
-import { STATIC_TEXT } from '../../core/constants/staticText';
-import { PageName } from '../../core/constants/PageNames';
-import { RoutesName } from '../../core/constants/Routes';
+import { useEffect, useState, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import geo from '../../assets/images/menu/geo.png';
-import wallet from '../../assets/images/menu/wallet.png';
+import globe from '../../assets/images/menu/globe.png';
 import people from '../../assets/images/menu/people.png';
 import reward from '../../assets/images/menu/reward.png';
 import settings from '../../assets/images/menu/settings.png';
-import globe from '../../assets/images/menu/globe.png';
-import { Link } from 'react-router-dom';
+import wallet from '../../assets/images/menu/wallet.png';
+import menuImg from '../../assets/images/menuImg.png';
+import { PageName } from '../../core/constants/PageNames';
+import { RoutesName } from '../../core/constants/Routes';
 import { LANGUAGES } from '../../core/constants/languages';
-import { useDispatch, useSelector } from 'react-redux';
-import { languageRequest } from '../../core/store/language/thunk';
+import { STATIC_TEXT } from '../../core/constants/staticText';
 import { language } from '../../core/store/language/slice';
+import { languageRequest } from '../../core/store/language/thunk';
+import s from './style.module.scss';
 
-export function MenuBurger({ className }) {
+const notificationCount = 1;
+const notificationNull = 0;
+
+export function MenuBurger({ className, text }) {
   const dispatch = useDispatch();
   const { currentLanguage } = useSelector(language);
-  const [menuLink, setMenuLink] = useState(false);
+  const [menuLink, setMenuLink] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
 
@@ -34,49 +37,52 @@ export function MenuBurger({ className }) {
     }
   };
 
-  // console.log(currentLanguage);
-  const notificationCount = 1;
-  const notificationNull = 0;
-
   useEffect(() => {
-    setMenuLink([
-      {
-        title: STATIC_TEXT[PageName.Header].menuGuides,
-        icon: geo,
-        notification: notificationCount,
-        to: RoutesName.Root,
-      },
-      {
-        title: STATIC_TEXT[PageName.Header].menuReferralRewards,
-        icon: people,
-        notification: notificationNull,
-        to: RoutesName.ProfileReferral,
-      },
-      {
-        title: STATIC_TEXT[PageName.Header].menuGuidesRewards,
-        icon: reward,
-        notification: notificationCount,
-        to: RoutesName.ProfileGuides,
-      },
-      {
-        title: STATIC_TEXT[PageName.Header].menuWallet,
-        icon: wallet,
-        notification: notificationNull,
-        to: RoutesName.ProfileWallet,
-      },
-      {
-        title: STATIC_TEXT[PageName.Header].menuAccountSettings,
-        icon: settings,
-        to: RoutesName.ProfileSettings,
-      },
-    ]);
-
     document.addEventListener('click', handleClickOutside);
 
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
   }, []);
+
+  useEffect(() => {
+    if (text) {
+      setMenuLink([
+        {
+          title: text?.menuGuides || STATIC_TEXT[PageName.Header].menuGuides,
+          icon: geo,
+          notification: notificationCount,
+          to: RoutesName.Root,
+        },
+        {
+          title:
+            text?.menuReferralRewards || STATIC_TEXT[PageName.Header].menuReferralRewards,
+          icon: people,
+          notification: notificationNull,
+          to: RoutesName.ProfileReferral,
+        },
+        {
+          title:
+            text?.menuGuidesRewards || STATIC_TEXT[PageName.Header].menuGuidesRewards,
+          icon: reward,
+          notification: notificationCount,
+          to: RoutesName.ProfileGuides,
+        },
+        {
+          title: text?.menuWallet || STATIC_TEXT[PageName.Header].menuWallet,
+          icon: wallet,
+          notification: notificationNull,
+          to: RoutesName.ProfileWallet,
+        },
+        {
+          title:
+            text?.menuAccountSettings || STATIC_TEXT[PageName.Header].menuAccountSettings,
+          icon: settings,
+          to: RoutesName.ProfileSettings,
+        },
+      ]);
+    }
+  }, [text]);
 
   return (
     <div ref={menuRef} className={cn(s.menu, className)}>
@@ -94,7 +100,7 @@ export function MenuBurger({ className }) {
                   </div>
                   <div className={s.item__title}>{item.title}</div>
                 </div>
-                {item.notification > 0 && (
+                {item.notification > notificationNull && (
                   <div className={s.item__notification}>{item.notification}</div>
                 )}
               </Link>

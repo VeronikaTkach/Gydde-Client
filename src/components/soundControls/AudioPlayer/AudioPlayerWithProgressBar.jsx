@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import cn from 'classnames';
-import { Howl } from 'howler';
+import { Howl, Howler } from 'howler';
 import audio from '../../../assets/images/temp/descriptionText.mp3';
 import { SoundSwitchStatus } from '../../../core/constants/SoundSwitchStatus';
 import { usePlayer } from '../../../core/hooks/player';
@@ -9,8 +9,8 @@ import { PlayButton } from '../PlayButton/PlayButton';
 import s from './style.module.scss';
 import {
   addSoundIds,
+  clearSoundIds,
   setSoundId,
-  soundSettings,
 } from '../../../core/store/slices/soundSettingsSlice';
 
 export const sound = new Howl({
@@ -22,7 +22,6 @@ export const sound = new Howl({
 export const AudioPlayerWithProgressBar = () => {
   const dispatch = useDispatch();
   const soundIdRef = useRef(null);
-  const { soundId } = useSelector(soundSettings);
   const { switchStatus, progress, duration, switchAudio } = usePlayer(
     sound,
     soundIdRef.current
@@ -30,11 +29,16 @@ export const AudioPlayerWithProgressBar = () => {
 
   useEffect(() => {
     soundIdRef.current = sound.play();
-    dispatch(setSoundId(soundIdRef.current));
+    sound.stop(soundIdRef.current);
+    // dispatch(setSoundId(soundIdRef.current));
     dispatch(addSoundIds(soundIdRef.current));
-  }, []);
 
-  // console.log('soundId.current', soundId.current);
+    return () => {
+      Howler.unload();
+      dispatch(setSoundId(null));
+      dispatch(clearSoundIds());
+    };
+  }, []);
 
   const classes = cn(s.audio__btn, {
     [s.audio__off]: switchStatus === SoundSwitchStatus.Off,

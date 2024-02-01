@@ -1,0 +1,59 @@
+@use '../../../../styles/styles.scss' as *;
+
+.referralLink {
+    &__title {
+        @include textStyleButton2;
+    }
+    &__socials {
+    }
+}
+
+.link {
+    @include width-height(100%, 68px);
+    @include flex-grid(flex, null, space-between, center);
+    gap: 16px;
+    padding: 18px $space10;
+    margin: 24px 0 20px;
+    @include themed() {
+        border: 1px solid t($surfaceBorder1);
+        border-radius: t($radiusSmall);
+        background: t($formBackground);
+    }
+    &__text {
+        @include fontStyle(20px, 400, 24px);
+        max-width: 306px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    &__copy {
+        cursor: pointer;
+        background-color: transparent;
+        font-size: 26px;
+        @include width-height(32px);
+        @include flexCenter;
+        @include themed() {
+            color: t($buttonBorderHover);
+        }
+        &:hover {
+            transition: .3s;
+            @include themed() {
+              color: t($messageLabelGuides);
+            }
+          }
+    }
+}
+
+.socials {
+    @include flex-grid(flex, null, space-between, center);
+    &__link {
+        border-radius: 50%;
+        font-size: 40px;
+        @include width-height(56px);
+        @include flexCenter;
+        @include themed() {
+            color: t($bgSecondary);
+            background-color: t($surfacePrimary2);
+        }
+    }
+}

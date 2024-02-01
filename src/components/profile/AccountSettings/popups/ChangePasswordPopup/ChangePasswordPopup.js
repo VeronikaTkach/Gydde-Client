@@ -1,21 +1,21 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useForm } from 'react-hook-form';
 import cn from 'classnames';
-import s from '../style.module.scss';
-import { ButtonWithBorder } from '../../../../ui/buttons/Button';
-import ModalWithClose from '../../../../ui/modals/Modal/ModalWithClose';
-import ModalWithBorderShadow from '../../../../ui/modals/Modal/ModalWithBorder';
-import { showChangePasswordWindow } from '../../../../../core/store/slices/modalWindowStateSlice';
-import { Input } from '../../../../ui/Input';
-import { passwordValidation } from '../../../../Auth/validations/registerValidation';
-import { styles } from '../SetPasswordPopup';
-import { Status } from '../../../../../core/constants/Status';
-import { allAuth, clearError } from '../../../../../core/store/auth/slice';
-import { STATIC_TEXT } from '../../../../../core/constants/staticText';
+import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
 import { PageName } from '../../../../../core/constants/PageNames';
+import { Status } from '../../../../../core/constants/Status';
+import { STATIC_TEXT } from '../../../../../core/constants/staticText';
+import { allAuth, clearError } from '../../../../../core/store/auth/slice';
+import { showChangePasswordWindow } from '../../../../../core/store/slices/modalWindowStateSlice';
+import { passwordValidation } from '../../../../Auth/validations/registerValidation';
+import { Input } from '../../../../ui/Input';
+import { ButtonWithBorder } from '../../../../ui/buttons/Button';
+import ModalWithBorderShadow from '../../../../ui/modals/Modal/ModalWithBorder';
+import ModalWithClose from '../../../../ui/modals/Modal/ModalWithClose';
+import { styles } from '../SetPasswordPopup';
+import s from '../style.module.scss';
 
-export function ChangePasswordPopup({ staticTextProfileSettings }) {
+export function ChangePasswordPopup({ text }) {
   const dispatch = useDispatch();
   const { status, errorType } = useSelector(allAuth);
 
@@ -44,7 +44,7 @@ export function ChangePasswordPopup({ staticTextProfileSettings }) {
   }, [errorType, passwordWatch, passwordNewWatch]);
 
   const onSubmit = (data, e) => {
-    // e.preventDefault();
+    e.preventDefault();
   };
 
   return (
@@ -54,8 +54,7 @@ export function ChangePasswordPopup({ staticTextProfileSettings }) {
       styles={styles}>
       <div>
         <div className={cn(s.title)}>
-          {staticTextProfileSettings?.changePassTitle ||
-            STATIC_TEXT[PageName.ProfileSettings].changePassTitle}
+          {text?.changePassTitle || STATIC_TEXT[PageName.ProfileSettings].changePassTitle}
         </div>
         <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
           <div className={s.form__inputs}>
@@ -63,7 +62,7 @@ export function ChangePasswordPopup({ staticTextProfileSettings }) {
               <Input
                 classError={errors.password}
                 placeholder={
-                  staticTextProfileSettings?.fieldLastPass ||
+                  text?.fieldLastPass ||
                   STATIC_TEXT[PageName.ProfileSettings].fieldLastPass
                 }
                 name={'password'}
@@ -74,7 +73,7 @@ export function ChangePasswordPopup({ staticTextProfileSettings }) {
               />
               {errorType && (
                 <p className={s.form__error}>
-                  {staticTextProfileSettings?.passwordLastErrorText ||
+                  {text?.passwordLastErrorText ||
                     STATIC_TEXT[PageName.ProfileSettings].passwordLastErrorText}
                 </p>
               )}
@@ -83,8 +82,7 @@ export function ChangePasswordPopup({ staticTextProfileSettings }) {
               <Input
                 classError={errors.password}
                 placeholder={
-                  staticTextProfileSettings?.fieldNewPass ||
-                  STATIC_TEXT[PageName.ProfileSettings].fieldNewPass
+                  text?.fieldNewPass || STATIC_TEXT[PageName.ProfileSettings].fieldNewPass
                 }
                 name={'passwordNew'}
                 setValue={setValue}
@@ -94,7 +92,7 @@ export function ChangePasswordPopup({ staticTextProfileSettings }) {
               />
               {errorType && (
                 <p className={s.form__error}>
-                  {staticTextProfileSettings?.passwordNewErrorText ||
+                  {text?.passwordNewErrorText ||
                     STATIC_TEXT[PageName.ProfileSettings].passwordNewErrorText}
                 </p>
               )}
@@ -105,8 +103,7 @@ export function ChangePasswordPopup({ staticTextProfileSettings }) {
             type={'submit'}
             disabled={status === Status.Loading}
             isLoading={status === Status.Loading}>
-            {staticTextProfileSettings?.btnSave ||
-              STATIC_TEXT[PageName.ProfileSettings].btnSave}
+            {text?.btnSave || STATIC_TEXT[PageName.ProfileSettings].btnSave}
           </ButtonWithBorder>
         </form>
       </div>

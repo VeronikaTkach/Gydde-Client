@@ -1,14 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
-import s from './style.module.scss';
-import { Button } from '../../ui/buttons/Button';
-import { QuestProgressBar } from '../QuestProgressBar';
+// import { useEffect, useRef, useState } from 'react';
+import { AudioPlayer } from '../../soundControls/AudioPlayer';
 import { AudioRate } from '../../soundControls/AudioRate';
 import { SoundVolume } from '../../soundControls/SoundVolume/SoundVolume';
-import { AudioPlayer } from '../../soundControls/AudioPlayer';
+import { QuestProgressBar } from '../QuestProgressBar';
+import s from './style.module.scss';
 
 export function QuestChatTopPannel({ className }) {
-  useEffect(() => {}, []);
+  // useEffect(() => {}, []);
 
   return (
     <div className={cn(s.questChatHeader, className)}>

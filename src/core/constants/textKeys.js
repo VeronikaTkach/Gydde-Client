@@ -1,10 +1,6 @@
-import { ErrorType } from './Errors';
 import { PageName } from './PageNames';
 
 export const TEXT_KEYS = {
-  ERROR: {
-    [`AUTH_MAIL_${ErrorType.NotFound}`]: 'ErrorMail.UserNotFound',
-  },
   METAMASK_CONNECT: [
     `${PageName.Metamask}_NoWallet.statusText`,
     `${PageName.Metamask}_NoWallet.descriptionTextHighlightedPart1`,
@@ -48,7 +44,14 @@ export const TEXT_KEYS = {
     `${PageName.MailAuthorization}.passwordPlaceholder`,
     `${PageName.MailAuthorization}.button`,
   ],
-  HEADER: [`${PageName.Header}.buttonLogin`],
+  HEADER: [
+    `${PageName.Header}.buttonLogin`,
+    `${PageName.Header}.menuGuides`,
+    `${PageName.Header}.menuReferralRewards`,
+    `${PageName.Header}.menuGuidesRewards`,
+    `${PageName.Header}.menuWallet`,
+    `${PageName.Header}.menuAccountSettings`,
+  ],
   PROFILE_GUIDES: [
     `${PageName.ProfileGuides}.btnText`,
     `${PageName.ProfileGuides}.rewardsTitle`,
@@ -67,6 +70,7 @@ export const TEXT_KEYS = {
     `${PageName.ProfileReferrals}.leftButtonText`,
     `${PageName.ProfileReferrals}.rightButtonText`,
     `${PageName.ProfileReferrals}.referralLinkTitle`,
+    `${PageName.ProfileReferrals}.adTitle`,
   ],
   PROFILE: [
     `${PageName.Profile}.ReferralTab`,
@@ -131,8 +135,20 @@ export const TEXT_KEYS = {
   GUIDES_CHAT: [
     `${PageName.GuidesChat}.guideStatus_inProgress`,
     `${PageName.GuidesChat}.guideStatus_completed`,
+    `${PageName.GuidesChat}.guideStatus_new`,
     `${PageName.GuidesChat}.actionText_next`,
     `${PageName.GuidesChat}.actionText_select`,
     `${PageName.GuidesChat}.inputPlaceholder`,
+    `${PageName.GuidesChat}.searchPlaceholder`,
+    `${PageName.GuidesChat}.searchTitle`,
+  ],
+  CLAIM: [
+    `${PageName.Claim}.title`,
+    `${PageName.Claim}.titleAccent`,
+    `${PageName.Claim}.transactionText`,
+    `${PageName.Claim}.geoText`,
+    `${PageName.Claim}.feeAmount`,
+    `${PageName.Claim}.payFeeFrom`,
+    `${PageName.Claim}.btnText`,
   ],
 };
