@@ -1,11 +1,11 @@
-import { useDispatch } from 'react-redux';
 import cn from 'classnames';
-import ModalWithClose from '../../../../components/ui/modals/Modal/ModalWithClose';
+import { useDispatch } from 'react-redux';
 import ModalWithBorderShadow from '../../../../components/ui/modals/Modal/ModalWithBorder';
-import s from './style.module.scss';
+import ModalWithClose from '../../../../components/ui/modals/Modal/ModalWithClose';
 import { showHistoryWindow } from '../../../../core/store/slices/modalWindowStateSlice';
+import s from './style.module.scss';
 
-export function HistoryPopup({ staticText }) {
+export function HistoryPopup({ text }) {
   const dispatch = useDispatch();
 
   const styles = {
