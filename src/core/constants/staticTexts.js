@@ -58,6 +58,15 @@ export const STATIC_TEXT = {
     referralReward: '50% for each referral reward',
     friendReward: "25% for each referral's friend reward",
     referralLinkTitle: 'Share referral link',
+    leftButtonText: 'How it works?',
+    rightButtonText: 'Invite',
+    Referral: {
+      subtitle: 'If you invite more friends, you will get more rewards!',
+    },
+    NoReferral: {
+      subtitle:
+        "Imagine you invite 10 friends who also invite 10 friends and they complete 10 quests each. You will earn 900$. That's AWESOME!",
+    },
   },
   [PageName.ProfileGuides]: {
     btnText: 'Claim',

@@ -74,6 +74,7 @@ export const TEXT_KEYS = {
     `${PageName.ProfileReferrals}.leftButtonText`,
     `${PageName.ProfileReferrals}.rightButtonText`,
     `${PageName.ProfileReferrals}.referralLinkTitle`,
+    `${PageName.ProfileReferrals}.adTitle`,
   ],
   PROFILE: [
     `${PageName.Profile}.ReferralTab`,

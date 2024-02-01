@@ -45,7 +45,7 @@ export function MenuBurger({ className, staticText, statusText }) {
       document.removeEventListener('click', handleClickOutside);
     };
   }, []);
-console.log(statusText,staticText?.menuGuides)
+
   useEffect(() => {
     if (statusText === Status.Resolved || statusText === Status.Rejected) {
       setMenuLink([
@@ -104,7 +104,7 @@ console.log(statusText,staticText?.menuGuides)
                   </div>
                   <div className={s.item__title}>{item.title}</div>
                 </div>
-                {item.notification > 0 && (
+                {item.notification > notificationNull && (
                   <div className={s.item__notification}>{item.notification}</div>
                 )}
               </Link>

@@ -1,15 +1,15 @@
 import cn from 'classnames';
-import s from './style.module.scss';
-import { NavigationLink } from '../../ui/Navlink';
-import { useDispatch, useSelector } from 'react-redux';
-import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
-import { TEXT_KEYS } from '../../../core/constants/textKeys';
 import { useEffect, useState } from 'react';
-import { getStaticText } from '../../../core/store/staticText/thunk';
+import { useDispatch, useSelector } from 'react-redux';
 import { PageName } from '../../../core/constants/PageNames';
-import { Status } from '../../../core/constants/Status';
-import { STATIC_TEXT } from '../../../core/constants/staticText';
 import { RoutesName } from '../../../core/constants/Routes';
+import { Status } from '../../../core/constants/Status';
+import { STATIC_TEXT } from '../../../core/constants/staticTexts';
+import { TEXT_KEYS } from '../../../core/constants/textKeys';
+import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
+import { getStaticText } from '../../../core/store/staticText/thunk';
+import { NavigationLink } from '../../ui/Navlink';
+import s from './style.module.scss';
 
 const firstItem = 0;
 

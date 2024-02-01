@@ -23,7 +23,7 @@ export const getStaticText = {
   hello: createAsyncThunk('staticText/hello', async function (_, { rejectWithValue }) {
     try {
       const response = await mainRequestTS.get('/getHelloPage'); //TODO mainRequest?? когда будет бек
-      console.log(response);
+      // console.log(response);
 
       return response.data;
     } catch (error) {

@@ -1,34 +1,43 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames';
-import s from './style.module.scss';
-import ModalWithClose from '../../../ui/modals/Modal/ModalWithClose';
-import ModalWithBorderShadow from '../../../ui/modals/Modal/ModalWithBorder';
-import { showClaimWindow } from '../../../../core/store/slices/modalWindowStateSlice';
-import { getStaticText } from '../../../../core/store/staticText/thunk';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import mascot from '../../../../assets/images/mascot/mascotBucks.png';
+import geo from '../../../../assets/images/menu/geo.png';
+import { PageName } from '../../../../core/constants/PageNames';
+import { Status } from '../../../../core/constants/Status';
+import { STATIC_TEXT } from '../../../../core/constants/staticTexts';
 import { TEXT_KEYS } from '../../../../core/constants/textKeys';
+import { showClaimWindow } from '../../../../core/store/slices/modalWindowStateSlice';
 import {
   removeUnusedStaticText,
   staticText,
 } from '../../../../core/store/staticText/slice';
-import { Status } from '../../../../core/constants/Status';
-import { PageName } from '../../../../core/constants/PageNames';
-import mascot from '../../../../assets/images/mascot/mascotBucks.png';
+import { getStaticText } from '../../../../core/store/staticText/thunk';
 import { AccentButton } from '../../../ui/buttons/Button';
-import geo from '../../../../assets/images/menu/geo.png';
+import ModalWithBorderShadow from '../../../ui/modals/Modal/ModalWithBorder';
+import ModalWithClose from '../../../ui/modals/Modal/ModalWithClose';
+import s from './style.module.scss';
 
 export function ClaimPopup() {
   const dispatch = useDispatch();
-
   const { staticTextClaim, staticTextStatusClaim } = useSelector(staticText);
 
   useEffect(() => {
     dispatch(getStaticText.basic(TEXT_KEYS.CLAIM));
+    const [text, setText] = useState(null);
 
     return () => {
       dispatch(removeUnusedStaticText(PageName.Claim));
     };
   }, []);
+
+  useEffect(() => {
+    if (staticTextStatusClaim === Status.Resolved) {
+      setText(staticTextClaim);
+    } else if (staticTextStatusClaim === Status.Rejected) {
+      setText(STATIC_TEXT[PageName.Claim]);
+    }
+  }, [staticTextStatusClaim]);
 
   const styles = {
     minHeight: 452,
@@ -41,7 +50,7 @@ export function ClaimPopup() {
       Component={ModalWithBorderShadow}
       onClose={() => dispatch(showClaimWindow(false))}
       styles={styles}>
-      {staticTextStatusClaim === Status.Resolved && (
+      {text && (
         <div className={cn(s.claim)}>
           <img
             className={s.claim__img}
@@ -50,24 +59,34 @@ export function ClaimPopup() {
           />
           <div className={s.claim__container}>
             <div className={s.claim__text}>
-              <h2 className={s.claim__title}>{staticTextClaim.title}</h2>
-              <h3 className={s.claim__title_accent}>{staticTextClaim.titleAccent}</h3>
+              <h2 className={s.claim__title}>
+                {text?.title || STATIC_TEXT[PageName.Claim].title}
+              </h2>
+              <h3 className={s.claim__title_accent}>
+                {text?.titleAccent || STATIC_TEXT[PageName.Claim].titleAccent}
+              </h3>
             </div>
             <div className={s.claim__desc}>
               <div className={s.claim__fee}>
                 <div>
                   <p className={s.claim__transaction}>
-                    {staticTextClaim.transactionText}
+                    {text?.transactionText || STATIC_TEXT[PageName.Claim].transactionText}
                   </p>
                   <div className={s.claim__faq}>
                     <img src={geo} alt='icon geo' />
-                    <span className={s.claim__answer}>{staticTextClaim.geoText}</span>
+                    <span className={s.claim__answer}>
+                      {text?.geoText || STATIC_TEXT[PageName.Claim].geoText}
+                    </span>
                   </div>
                 </div>
-                <h4 className={s.claim__total}>{staticTextClaim.feeAmount}</h4>
+                <h4 className={s.claim__total}>
+                  {text?.feeAmount || STATIC_TEXT[PageName.Claim].feeAmount}
+                </h4>
               </div>
               <div className={s.claim__choice}>
-                <p className={s.claim__from}>{staticTextClaim.payFeeFrom}</p>
+                <p className={s.claim__from}>
+                  {text?.payFeeFrom || STATIC_TEXT[PageName.Claim].payFeeFrom}
+                </p>
                 <div className={s.claim__toggle}>
                   <label>
                     <input type='checkbox' />
@@ -76,7 +95,7 @@ export function ClaimPopup() {
                 </div>
               </div>
               <AccentButton className={s.claim__btn}>
-                {staticTextClaim.btnText}
+                {text?.btnText || STATIC_TEXT[PageName.Claim].btnText}
               </AccentButton>
             </div>
           </div>

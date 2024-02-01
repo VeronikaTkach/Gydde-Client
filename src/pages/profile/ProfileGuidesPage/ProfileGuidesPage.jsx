@@ -1,21 +1,22 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import cn from 'classnames';
-import s from './style.module.scss';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { SubtitleWithAccentButton } from '../../../components/Subtitle';
 import { ProfileFolder } from '../../../components/profile/ProfileFolder';
-import { TEXT_KEYS } from '../../../core/constants/textKeys';
+import { ReferralAndGuides } from '../../../components/profile/RefferalAndGuides/RefferalAndGuides';
 import { PageName } from '../../../core/constants/PageNames';
 import { Status } from '../../../core/constants/Status';
-import { getStaticText } from '../../../core/store/staticText/thunk';
+import { STATIC_TEXT } from '../../../core/constants/staticTexts';
+import { TEXT_KEYS } from '../../../core/constants/textKeys';
 import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
-import { STATIC_TEXT } from '../../../core/constants/staticText';
-import { SubtitleWithAccentButton } from '../../../components/Subtitle';
-import { ReferralAndGuides } from '../../../components/profile/RefferalAndGuides/RefferalAndGuides';
+import { getStaticText } from '../../../core/store/staticText/thunk';
+import s from './style.module.scss';
 
 export function ProfileGuidesPage() {
   const dispatch = useDispatch();
   const { staticTextProfileGuides, staticTextStatusProfileGuides } =
     useSelector(staticText);
+  const [text, setText] = useState(null);
 
   useEffect(() => {
     dispatch(getStaticText.basic(TEXT_KEYS.PROFILE_GUIDES));
@@ -25,32 +26,31 @@ export function ProfileGuidesPage() {
     };
   }, []);
 
+  useEffect(() => {
+    if (staticTextStatusProfileGuides === Status.Resolved) {
+      setText(staticTextProfileGuides);
+    } else if (staticTextStatusProfileGuides === Status.Rejected) {
+      setText(STATIC_TEXT[PageName.ProfileGuides]);
+    }
+  }, [staticTextStatusProfileGuides]);
+  console.log(PageName.ProfileGuides);
+
   return (
     <>
       <main className={cn(s.content)}>
         <div className={cn(s.content__container)}>
           <ProfileFolder>
-            {(staticTextStatusProfileGuides === Status.Resolved ||
-              staticTextStatusProfileGuides === Status.Rejected) && (
-              <ReferralAndGuides
-                staticText={
-                  staticTextProfileGuides || STATIC_TEXT[PageName.ProfileGuides]
-                }
-              />
+            {text && (
+              <ReferralAndGuides staticText={text} pageName={PageName.ProfileGuides} />
             )}
           </ProfileFolder>
         </div>
-        {(staticTextStatusProfileGuides === Status.Resolved ||
-          staticTextStatusProfileGuides === Status.Rejected) && (
+        {text && (
           <SubtitleWithAccentButton
             className={s.content__subtitle}
-            text={
-              staticTextProfileGuides?.subtitle ||
-              STATIC_TEXT[PageName.ProfileGuides].subtitle
-            }
+            text={text?.subtitle || STATIC_TEXT[PageName.ProfileGuides].subtitle}
             buttonText={
-              staticTextProfileGuides?.buttonText ||
-              STATIC_TEXT[PageName.ProfileGuides].buttonText
+              text?.buttonText || STATIC_TEXT[PageName.ProfileGuides].buttonText
             }
             sound={true}
           />
