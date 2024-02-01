@@ -36,7 +36,6 @@
 		"MailAuthorization.mailPlaceholder": "Enter email address",
 		"MailAuthorization.passwordLabel": "Password",
 		"MailAuthorization.passwordErrorText": "Incorrect email or password",
-		"MailAuthorization.passwordErrorText_minLength": "Password must be at least 8 characters (latin letters, numbers or symbols)",
 		"MailAuthorization.passwordPlaceholder": "Enter password",
 		"MailAuthorization.button": "Log in",
 

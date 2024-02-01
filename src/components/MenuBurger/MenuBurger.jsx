@@ -11,7 +11,6 @@ import wallet from '../../assets/images/menu/wallet.png';
 import menuImg from '../../assets/images/menuImg.png';
 import { PageName } from '../../core/constants/PageNames';
 import { RoutesName } from '../../core/constants/Routes';
-import { Status } from '../../core/constants/Status';
 import { LANGUAGES } from '../../core/constants/languages';
 import { STATIC_TEXT } from '../../core/constants/staticText';
 import { language } from '../../core/store/language/slice';
@@ -21,10 +20,10 @@ import s from './style.module.scss';
 const notificationCount = 1;
 const notificationNull = 0;
 
-export function MenuBurger({ className, staticText, statusText }) {
+export function MenuBurger({ className, text }) {
   const dispatch = useDispatch();
   const { currentLanguage } = useSelector(language);
-  const [menuLink, setMenuLink] = useState(false);
+  const [menuLink, setMenuLink] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
 
@@ -47,46 +46,43 @@ export function MenuBurger({ className, staticText, statusText }) {
   }, []);
 
   useEffect(() => {
-    if (statusText === Status.Resolved || statusText === Status.Rejected) {
+    if (text) {
       setMenuLink([
         {
-          title: staticText?.menuGuides || STATIC_TEXT[PageName.Header].menuGuides,
+          title: text?.menuGuides || STATIC_TEXT[PageName.Header].menuGuides,
           icon: geo,
           notification: notificationCount,
           to: RoutesName.Root,
         },
         {
           title:
-            staticText?.menuReferralRewards ||
-            STATIC_TEXT[PageName.Header].menuReferralRewards,
+            text?.menuReferralRewards || STATIC_TEXT[PageName.Header].menuReferralRewards,
           icon: people,
           notification: notificationNull,
           to: RoutesName.ProfileReferral,
         },
         {
           title:
-            staticText?.menuGuidesRewards ||
-            STATIC_TEXT[PageName.Header].menuGuidesRewards,
+            text?.menuGuidesRewards || STATIC_TEXT[PageName.Header].menuGuidesRewards,
           icon: reward,
           notification: notificationCount,
           to: RoutesName.ProfileGuides,
         },
         {
-          title: staticText?.menuWallet || STATIC_TEXT[PageName.Header].menuWallet,
+          title: text?.menuWallet || STATIC_TEXT[PageName.Header].menuWallet,
           icon: wallet,
           notification: notificationNull,
           to: RoutesName.ProfileWallet,
         },
         {
           title:
-            staticText?.menuAccountSettings ||
-            STATIC_TEXT[PageName.Header].menuAccountSettings,
+            text?.menuAccountSettings || STATIC_TEXT[PageName.Header].menuAccountSettings,
           icon: settings,
           to: RoutesName.ProfileSettings,
         },
       ]);
     }
-  }, [statusText]);
+  }, [text]);
 
   return (
     <div ref={menuRef} className={cn(s.menu, className)}>

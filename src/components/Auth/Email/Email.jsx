@@ -1,28 +1,28 @@
+import cn from 'classnames';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { ButtonWithBorder } from '../../ui/buttons/Button';
+import { useDispatch, useSelector } from 'react-redux';
+import { PageName } from '../../../core/constants/PageNames';
+import { Status } from '../../../core/constants/Status';
+import { STATIC_TEXT } from '../../../core/constants/staticText';
+import { TEXT_KEYS } from '../../../core/constants/textKeys';
+import { staticTextHelper } from '../../../core/helpers/staticTextHelper';
+import { useStaticText } from '../../../core/hooks/useStaticText';
+import { allAuth, clearError } from '../../../core/store/auth/slice';
+import { authRequest } from '../../../core/store/auth/thunk';
+import { removeUnusedStaticText } from '../../../core/store/staticText/slice';
+import { getStaticText } from '../../../core/store/staticText/thunk';
 import { Input } from '../../ui/Input';
+import { ButtonWithBorder } from '../../ui/buttons/Button';
 import {
   mailValidation as mailValidationWithoutMessage,
   passwordValidation,
 } from '../validations/registerValidation';
-import { allAuth, authorization, clearError } from '../../../core/store/auth/slice';
-import cn from 'classnames';
 import s from './style.module.scss';
-import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
-import { staticTextHelper } from '../../../core/helpers/staticTextHelper';
-import { Status } from '../../../core/constants/Status';
-import { getStaticText } from '../../../core/store/staticText/thunk';
-import { TEXT_KEYS } from '../../../core/constants/textKeys';
-import { PageName } from '../../../core/constants/PageNames';
-import { authRequest } from '../../../core/store/auth/thunk';
-// import { authorization } from '../../../core/store/auth/thunk';
 
 export function Email() {
   const dispatch = useDispatch();
-  const { staticTextMailAuthorization, staticTextStatusMailAuthorization } =
-    useSelector(staticText);
+  const { text } = useStaticText(PageName.MailAuthorization);
   const { status, errorType } = useSelector(allAuth);
   const [mailValidation, setMailValidation] = useState(mailValidationWithoutMessage);
 
@@ -48,15 +48,15 @@ export function Email() {
   }, []);
 
   useEffect(() => {
-    if (staticTextStatusMailAuthorization === Status.Resolved) {
+    if (text) {
       const convertedMailValidation = staticTextHelper.convertToValidation(
-        staticTextMailAuthorization.mailErrorText,
+        text.mailErrorText,
         mailValidationWithoutMessage
       );
 
       setMailValidation(convertedMailValidation);
     }
-  }, [staticTextStatusMailAuthorization]);
+  }, [text]);
 
   useEffect(() => {
     if (Object.keys(errors).length && errorType) {
@@ -75,16 +75,19 @@ export function Email() {
 
   return (
     <>
-      {staticTextMailAuthorization && (
+      {text && (
         <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
           <div className={s.form__block}>
             <div className={cn(s.input__title)}>
-              {staticTextMailAuthorization.mailLabel}
+              {text.mailLabel || STATIC_TEXT[PageName.MailAuthorization].mailLabel}
             </div>
             <div className={s.input__block}>
               <Input
                 classError={errors.email}
-                placeholder={staticTextMailAuthorization.mailPlaceholder}
+                placeholder={
+                  text.mailPlaceholder ||
+                  STATIC_TEXT[PageName.MailAuthorization].mailPlaceholder
+                }
                 name={'email'}
                 setValue={setValue}
                 register={register}
@@ -96,12 +99,16 @@ export function Email() {
           </div>
           <div className={s.form__block}>
             <div className={cn(s.input__title)}>
-              {staticTextMailAuthorization.passwordLabel}
+              {text.passwordLabel ||
+                STATIC_TEXT[PageName.MailAuthorization].passwordLabel}
             </div>
             <div className={s.input__block}>
               <Input
                 classError={errors.password}
-                placeholder={staticTextMailAuthorization.passwordPlaceholder}
+                placeholder={
+                  text.passwordPlaceholder ||
+                  STATIC_TEXT[PageName.MailAuthorization].passwordPlaceholder
+                }
                 name={'password'}
                 setValue={setValue}
                 register={register}
@@ -110,7 +117,8 @@ export function Email() {
               />
               {errorType && (
                 <p className={s.form__error}>
-                  {staticTextMailAuthorization.passwordErrorText}
+                  {text.passwordErrorText ||
+                    STATIC_TEXT[PageName.MailAuthorization].passwordErrorText}
                 </p>
               )}
             </div>
@@ -121,7 +129,7 @@ export function Email() {
               type={'submit'}
               disabled={status === Status.Loading}
               isLoading={status === Status.Loading}>
-              {staticTextMailAuthorization.button}
+              {text.button || STATIC_TEXT[PageName.MailAuthorization].button}
             </ButtonWithBorder>
           </div>
         </form>

@@ -1,10 +1,6 @@
-import { ErrorType } from './Errors';
 import { PageName } from './PageNames';
 
 export const TEXT_KEYS = {
-  ERROR: {
-    [`AUTH_MAIL_${ErrorType.NotFound}`]: 'ErrorMail.UserNotFound',
-  },
   METAMASK_CONNECT: [
     `${PageName.Metamask}_NoWallet.statusText`,
     `${PageName.Metamask}_NoWallet.descriptionTextHighlightedPart1`,

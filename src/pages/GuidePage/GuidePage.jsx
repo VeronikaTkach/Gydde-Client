@@ -12,18 +12,18 @@ import { Size } from '../../core/constants/Size';
 import { Status } from '../../core/constants/Status';
 import { STATIC_TEXT } from '../../core/constants/staticText';
 import { TEXT_KEYS } from '../../core/constants/textKeys';
+import { useStaticText } from '../../core/hooks/useStaticText';
 import { guide } from '../../core/store/guide/slice';
 import { guideRequest } from '../../core/store/guide/thunk';
 import { switchGuides } from '../../core/store/slices/guidesCarouselSlice';
-import { removeUnusedStaticText, staticText } from '../../core/store/staticText/slice';
+import { removeUnusedStaticText } from '../../core/store/staticText/slice';
 import { getStaticText } from '../../core/store/staticText/thunk';
 import s from './style.module.scss';
 
 export function GuidePage() {
   const dispatch = useDispatch();
+  const { text } = useStaticText(PageName.GuidesGallery);
   const { guidesGallery, statusGuidesGallery } = useSelector(guide);
-  const { staticTextGuidesGallery, staticTextStatusGuidesGallery } =
-    useSelector(staticText);
 
   useEffect(() => {
     // dispatch(guideRequest.guidesGalery());
@@ -37,14 +37,13 @@ export function GuidePage() {
 
   return (
     <main className={cn(s.content)}>
-      {(staticTextStatusGuidesGallery === Status.Resolved ||
-        staticTextStatusGuidesGallery === Status.Rejected) && (
+      {text && (
         <div className={cn(s.content__mainScreen, s.mainScreen)}>
           <div className={cn(s.content__carousel)}>
             {/* {statusGuidesGallery === Status.Resolved && ( */}
             <GuideCarousel
               guidesGallery={[...guidesGallery, ...guidesGallery, ...guidesGallery]}
-              staticText={staticTextGuidesGallery}
+              staticText={text}
             />
             {/* )} */}
             <Button
@@ -70,13 +69,9 @@ export function GuidePage() {
           <SubtitleWithBorderButton
             className={s.content__subtitle}
             sound={true}
-            text={
-              staticTextGuidesGallery?.subtitle ||
-              STATIC_TEXT[PageName.GuidesGallery].subtitle
-            }
+            text={text?.subtitle || STATIC_TEXT[PageName.GuidesGallery].subtitle}
             buttonText={
-              staticTextGuidesGallery?.buttonText ||
-              STATIC_TEXT[PageName.GuidesGallery].buttonText
+              text?.buttonText || STATIC_TEXT[PageName.GuidesGallery].buttonText
             }
             buttonSticker={smileyEyesStar}
             buttonOnClick={() => dispatch(switchGuides(Position.Next))}

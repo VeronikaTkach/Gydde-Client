@@ -6,13 +6,14 @@ import { PageName } from '../../../core/constants/PageNames';
 import { RoutesName } from '../../../core/constants/Routes';
 import { STATIC_TEXT } from '../../../core/constants/staticText';
 import { TEXT_KEYS } from '../../../core/constants/textKeys';
+import { useStaticText } from '../../../core/hooks/useStaticText';
 import { allAuth } from '../../../core/store/auth/slice';
 import {
   modalWindowState,
   showAuthorizationWindow,
   showQuestWindow,
 } from '../../../core/store/slices/modalWindowStateSlice';
-import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
+import { removeUnusedStaticText } from '../../../core/store/staticText/slice';
 import { getStaticText } from '../../../core/store/staticText/thunk';
 import { Auth } from '../../Auth';
 import { MenuBurger } from '../../MenuBurger';
@@ -23,10 +24,10 @@ import s from './style.module.scss';
 
 export function Header({ className }) {
   const dispatch = useDispatch();
+  const { text } = useStaticText(PageName.Header);
   const { modalAuthorization, modalQuest } = useSelector(modalWindowState);
-  const { staticTextHeader, staticTextStatusHeader } = useSelector(staticText);
   const { token } = useSelector(allAuth);
-  // console.log(token);
+  // console.log(token); eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyLWlkIjoxLCJzdWIiOiJ1c2VybmFtZSIsImlhdCI6MTcwNjYzNTUwNywiZXhwIjoxNzA2NzIxOTA3fQ.5SDmdTlMEfrYlPwoRuRMxdaHtxIt-mMDYK8A9yf-x_M
   useEffect(() => {
     dispatch(getStaticText.basic(TEXT_KEYS.HEADER));
 
@@ -56,18 +57,14 @@ export function Header({ className }) {
               onClick={() => dispatch(showQuestWindow(true))}>
               <img src={chat} alt={'chat icon'} />
             </Button>
-            <MenuBurger
-              className={s.option__menu}
-              staticText={staticTextHeader}
-              statusText={staticTextStatusHeader}
-            />
+            <MenuBurger className={s.option__menu} text={text} />
           </>
         ) : (
           <>
             <ButtonWithBorder
               className={cn(s.option__login)}
               onClick={() => dispatch(showAuthorizationWindow(true))}>
-              {staticTextHeader?.buttonLogin || STATIC_TEXT[PageName.Header].buttonLogin}
+              {text?.buttonLogin || STATIC_TEXT[PageName.Header].buttonLogin}
             </ButtonWithBorder>
             {modalAuthorization && <Auth />}
           </>

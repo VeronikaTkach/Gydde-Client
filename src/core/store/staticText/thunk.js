@@ -6,7 +6,7 @@ import mainRequestTS from '../../utils/mainRequestTSUtils';
 export const getStaticText = {
   basic: createAsyncThunk('staticText/basic', async function (keys, { rejectWithValue }) {
     try {
-      const response = await mainRequestTS.get('/getText', { keys: keys }); //TODO mainRequest?? когда будет бек
+      const response = await mainRequestTS.get('/getTex', { keys: keys }); //TODO mainRequest?? когда будет бек
 
       // return staticTextHelper.convertKeys(response.data); //TODO раскомментировать когда будет бек
 

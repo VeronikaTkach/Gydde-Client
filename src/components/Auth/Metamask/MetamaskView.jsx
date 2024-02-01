@@ -1,31 +1,32 @@
 import cn from 'classnames';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { MetamaskConnection } from '../../../components/Auth/Metamask';
-import { SubtitleWithBorderButton } from '../../../components/Subtitle';
 import mascotBody from '../../../assets/images/mascot/mascotBodyStands.png';
 import mascotHands from '../../../assets/images/mascot/mascotHandsStands.png';
-import thumbUp from '../../../assets/images/stickers/thumbUp.png';
-import smileyEyesStar from '../../../assets/images/stickers/smileyEyesStar.png';
-import { MetamaskConnectionStatus, Status } from '../../../core/constants/Status';
-import smiley from '../../../assets/images/stickers/smiley.png';
 import ball from '../../../assets/images/stickers/ball.png';
 import bangOrange from '../../../assets/images/stickers/bangOrange.png';
 import bangWhite from '../../../assets/images/stickers/bangWhite.png';
 import metamaskSmiley from '../../../assets/images/stickers/metamask.png';
+import smiley from '../../../assets/images/stickers/smiley.png';
+import smileyEyesStar from '../../../assets/images/stickers/smileyEyesStar.png';
+import thumbUp from '../../../assets/images/stickers/thumbUp.png';
+import { MetamaskConnection } from '../../../components/Auth/Metamask';
+import { SubtitleWithBorderButton } from '../../../components/Subtitle';
 import { StickersSpinner } from '../../../components/ui/loaders/StickersSpinner';
-import { staticTextHelper } from '../../../core/helpers/staticTextHelper';
-import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
-import { getStaticText } from '../../../core/store/staticText/thunk';
-import { TEXT_KEYS } from '../../../core/constants/textKeys';
 import { PageName } from '../../../core/constants/PageNames';
 import { Size } from '../../../core/constants/Size';
-import s from './style.module.scss';
+import { MetamaskConnectionStatus } from '../../../core/constants/Status';
+import { TEXT_KEYS } from '../../../core/constants/textKeys';
+import { staticTextHelper } from '../../../core/helpers/staticTextHelper';
+import { useStaticText } from '../../../core/hooks/useStaticText';
 import {
   metamask,
   setFirstHighlightedItem,
   setMetamaskConnectionStatus,
 } from '../../../core/store/metamask/slice';
+import { removeUnusedStaticText } from '../../../core/store/staticText/slice';
+import { getStaticText } from '../../../core/store/staticText/thunk';
+import s from './style.module.scss';
 
 const buttonIcon = {
   [MetamaskConnectionStatus.NoWallet]: {
@@ -40,8 +41,8 @@ const firstItem = 0;
 
 export function MetamaskView() {
   const dispatch = useDispatch();
+  const { text } = useStaticText(PageName.Metamask);
   const { connectionStatus, firstHighlightedItem } = useSelector(metamask);
-  const { staticTextMetamask, staticTextStatusMetamask } = useSelector(staticText);
 
   const [currentText, setCurrentText] = useState(null);
   useEffect(() => {
@@ -53,14 +54,14 @@ export function MetamaskView() {
   }, []);
 
   useEffect(() => {
-    if (connectionStatus && staticTextStatusMetamask === Status.Resolved) {
+    if (text) {
       const highlightedText = staticTextHelper.setHighlightedText(
-        staticTextMetamask[connectionStatus],
+        text[connectionStatus],
         firstHighlightedItem
       );
       setCurrentText(highlightedText);
     }
-  }, [connectionStatus, staticTextStatusMetamask]);
+  }, [connectionStatus, text]);
 
   if (connectionStatus !== MetamaskConnectionStatus.NoWallet && !window.ethereum) {
     dispatch(setMetamaskConnectionStatus(MetamaskConnectionStatus.NoWallet));
