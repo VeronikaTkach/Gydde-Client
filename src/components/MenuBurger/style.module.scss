@@ -87,7 +87,7 @@
   }
   &__title {
     display: flex;
-    // gap: 12px;
+    gap: 12px;
     white-space: nowrap;
     &::after {
       @include flexCenter;

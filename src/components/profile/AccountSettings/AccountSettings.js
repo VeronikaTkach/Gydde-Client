@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import eng from '../../../assets/images/flag/flagEng.png';
 import mascot from '../../../assets/images/mascot/mascotGood.png';
 import { PageName } from '../../../core/constants/PageNames';
+import { LANGUAGES } from '../../../core/constants/languages';
 import { STATIC_TEXT } from '../../../core/constants/staticText';
 import { useStaticText } from '../../../core/hooks/useStaticText';
-import { LANGUAGES } from '../../../core/constants/languages';
-import { languageRequest } from '../../../core/store/language/thunk';
 import { language } from '../../../core/store/language/slice';
+import { languageRequest } from '../../../core/store/language/thunk';
 import {
   modalWindowState,
   showChangePasswordWindow,
