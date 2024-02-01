@@ -41,7 +41,7 @@ export function Header({ className }) {
   return (
     <header className={cn(s.header, className)}>
       {modalQuest && <QuestWindow />}
-      <QuestWindow />
+      {/* <QuestWindow /> */}
       <NavigationLink
         className={s.header__logo}
         activeClassName={s.navigation__link_active}
