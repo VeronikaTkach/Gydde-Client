@@ -1,15 +1,15 @@
-import { useEffect } from 'react';
 import cn from 'classnames';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { showQuestWindow } from '../../core/store/slices/modalWindowStateSlice';
-import { getStaticText } from '../../core/store/staticText/thunk';
-import { TEXT_KEYS } from '../../core/constants/textKeys';
 import { PageName } from '../../core/constants/PageNames';
+import { TEXT_KEYS } from '../../core/constants/textKeys';
+import { showQuestWindow } from '../../core/store/slices/modalWindowStateSlice';
 import { removeUnusedStaticText } from '../../core/store/staticText/slice';
-import Modal from '../ui/modals/Modal/Modal';
+import { getStaticText } from '../../core/store/staticText/thunk';
 import { Button } from '../ui/buttons/Button';
-import { QuestSidePannel } from './QuestSidePannel';
+import Modal from '../ui/modals/Modal/Modal';
 import { QuestChat } from './QuestChat';
+import { QuestSidePannel } from './QuestSidePannel';
 import s from './style.module.scss';
 
 export function QuestWindow({ className }) {

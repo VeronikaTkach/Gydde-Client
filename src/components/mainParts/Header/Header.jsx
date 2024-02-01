@@ -27,7 +27,7 @@ export function Header({ className }) {
   const { text } = useStaticText(PageName.Header);
   const { modalAuthorization, modalQuest } = useSelector(modalWindowState);
   const { token } = useSelector(allAuth);
-  // console.log(token); eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyLWlkIjoxLCJzdWIiOiJ1c2VybmFtZSIsImlhdCI6MTcwNjYzNTUwNywiZXhwIjoxNzA2NzIxOTA3fQ.5SDmdTlMEfrYlPwoRuRMxdaHtxIt-mMDYK8A9yf-x_M
+  // console.log(token);
   useEffect(() => {
     dispatch(getStaticText.basic(TEXT_KEYS.HEADER));
 
@@ -35,13 +35,13 @@ export function Header({ className }) {
       dispatch(removeUnusedStaticText(PageName.Header));
     };
   }, []);
-
+  // localStorage.setItem(LocalStorageItems.AuthorizationToken,'token')
   // localStorage.clear()
 
   return (
     <header className={cn(s.header, className)}>
       {modalQuest && <QuestWindow />}
-      {/* <QuestWindow /> */}
+      <QuestWindow />
       <NavigationLink
         className={s.header__logo}
         activeClassName={s.navigation__link_active}

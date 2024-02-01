@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import cn from 'classnames';
+import { useEffect, useState } from 'react';
 import s from './style.module.scss';
 
 const steps = [

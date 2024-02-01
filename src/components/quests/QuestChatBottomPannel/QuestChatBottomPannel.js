@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef } from 'react';
 import cn from 'classnames';
-import s from './style.module.scss';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '../../ui/buttons/Button';
+import s from './style.module.scss';
 
 const placeholder = 'Enter a text';
 const guideAnswers = {

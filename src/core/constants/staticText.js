@@ -37,6 +37,13 @@ export const STATIC_TEXT = {
     guideRewardTitle: 'Reward',
     guideRewardCount: 'left',
   },
+  [PageName.GuidesChat]: {
+    guideStatus: { inProgress: 'In Progress', completed: 'Completed', new: 'New' },
+    actionText: { next: 'Next', select: 'Select an option' },
+    inputPlaceholder: 'Enter a text',
+    searchPlaceholder: 'Enter a text',
+    searchTitle: 'My guides',
+  },
   [PageName.MailAuthorization]: {
     mailLabel: 'Email address',
     mailErrorText_pattern: 'Please enter a valid email address',

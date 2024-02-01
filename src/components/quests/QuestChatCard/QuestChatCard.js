@@ -1,10 +1,11 @@
 import cn from 'classnames';
-import s from './style.module.scss';
 import { GUIDE_STATUS } from '../../../core/constants/backendEnums';
+import { STATIC_TEXT } from '../../../core/constants/staticText';
+import s from './style.module.scss';
 
 const zeroNotifications = 0;
 
-export function QuestChatCard({ className, guideData, staticText, isActive }) {
+export function QuestChatCard({ className, guideData, text, isActive }) {
   return (
     <div
       className={cn(
@@ -27,7 +28,8 @@ export function QuestChatCard({ className, guideData, staticText, isActive }) {
         </div>
         <p className={s.questCard__author}>{guideData.partner}</p>
         <p className={cn(s[`questCard__${GUIDE_STATUS[guideData.status]}`])}>
-          {staticText.guideStatus[GUIDE_STATUS[guideData.status]]}
+          {text.guideStatus[GUIDE_STATUS[guideData.status]] ||
+            STATIC_TEXT.guideStatus[GUIDE_STATUS[guideData.status]]}
         </p>
       </div>
     </div>

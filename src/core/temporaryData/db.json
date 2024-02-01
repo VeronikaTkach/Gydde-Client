@@ -69,7 +69,7 @@
 		"ProfileReferrals.adTitle": "Invite friends and earn together",
 		"ProfileReferrals.rewardForCompletion": "Reward for Guide completion",
 		"ProfileReferrals.referralReward": "50% for each referral reward",
-		"ProfileReferrals.friendReward": "25% for each referral’s friend reward",
+		"ProfileReferrals.friendReward": "25% for each referral's friend reward",
 		"ProfileReferrals.referralLinkTitle": "Share referral link",
 
 		"ProfileSettings.userNameTitle": "User name",
@@ -104,7 +104,6 @@
 		"ProfileWallet.statusWallet_connected": "Connected",
 		"ProfileWallet.statusWallet_disconnected": "Disconnected",
 		"ProfileWallet.balanceTitle": "Balance ETH",
-		"ProfileWallet.balanceValue": "0",
 		"ProfileWallet.networkTitle": "Connected network",
 		"ProfileWallet.networkName_mainnet": "Ethereum",
 		"ProfileWallet.connectButton_connected": "Connect wallet",
@@ -126,15 +125,16 @@
 
 		"GuidesChat.guideStatus_inProgress": "In Progress",
 		"GuidesChat.guideStatus_completed": "Completed",
+		"GuidesChat.guideStatus_new": "New",
 		"GuidesChat.actionText_next": "Next",
 		"GuidesChat.actionText_select": "Select an option",
 		"GuidesChat.inputPlaceholder": "Enter a text",
+		"GuidesChat.searchPlaceholder": "Enter a text",
+		"GuidesChat.searchTitle": "My guides",
 
 		"Claim.title": "Claim amount",
-		"Claim.titleAccent": "~ $100",
 		"Claim.transactionText": "Transaction fee compensation",
 		"Claim.geoText": "What is commission paid for?",
-		"Claim.feeAmount": "$0",
 		"Claim.payFeeFrom": "Pay transaction fee from my wallet",
 		"Claim.btnText": "Claim"
 	},
@@ -145,7 +145,6 @@
 		"ProfileReferrals_Referral.mascotVoice": "If you invite more friends, you will get more rewards!",
 		"ProfileReferrals_NoReferral.mascotVoice": "Imagine you invite 10 friends who also invite 10 friends and they complete 10 quests each. You will earn 900$. That's AWESOME!",
 		"ProfileWallet.mascotVoice": "Every time I transfer a reward to your wallet, I write it down for you. So, nothing will be lost :)",
-		"ProfileWallet_NoWallet.mascotVoice": "Well, you don’t have a wallet connected. If you don’t know how to connect a wallet just tell me and I will show you how to do it :)"
+		"ProfileWallet_NoWallet.mascotVoice": "Well, you don't have a wallet connected. If you don't know how to connect a wallet just tell me and I will show you how to do it :)"
 	}
-
 }

@@ -1,10 +1,12 @@
 // import { useState, useEffect } from 'react';
 import cn from 'classnames';
-import s from './style.module.scss';
-import { Button } from '../../ui/buttons/Button';
+import { PageName } from '../../../core/constants/PageNames';
+import { STATIC_TEXT } from '../../../core/constants/staticText';
 import { InputSearch } from '../../ui/Input/InputSearch';
+import { Button } from '../../ui/buttons/Button';
+import s from './style.module.scss';
 
-export function QuestSearch({ cardsCount }) {
+export function QuestSearch({ text, cardsCount }) {
   // const [pageHeight, setPageHeight] = useState(null);
   // const isScrollVisible = pageHeight < numberOfCards * 100; // высота карточки + расстояние между карточками
   // const updatePageHeight = () => {
@@ -26,7 +28,13 @@ export function QuestSearch({ cardsCount }) {
     <>
       {isScrollVisible && (
         <div className={cn(s.questSearch)}>
-          <InputSearch className={s.questSearch__input} />
+          <InputSearch
+            className={s.questSearch__input}
+            placeholder={
+              text?.searchPlaceholder ||
+              STATIC_TEXT[PageName.GuidesChat].searchPlaceholder
+            }
+          />
           <Button
             className={cn(s.field__btn, s.field__btn__search, 'iconSearch')}
             type={'button'}
@@ -36,7 +44,12 @@ export function QuestSearch({ cardsCount }) {
       )}
       {!isScrollVisible && (
         <div className={cn(s.questSearch, s.questSearch__title)}>
-          <InputSearch placeholder={'My guides'} disabled={true} />
+          <InputSearch
+            placeholder={
+              text?.searchTitle || STATIC_TEXT[PageName.GuidesChat].searchTitle
+            }
+            disabled={true}
+          />
         </div>
       )}
     </>

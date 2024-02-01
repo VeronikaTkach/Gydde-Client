@@ -191,3 +191,18 @@
     content: $iconTelegram;
   }
 }
+.iconDone {
+  &:before {
+    content: $iconDone;
+  }
+}
+.iconRadioUnchecked {
+  &:before {
+    content: $iconRadioUnchecked;
+  }
+}
+.iconRadioChecked {
+  &:before {
+    content: $iconRadioChecked;
+  }
+}

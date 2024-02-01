@@ -135,9 +135,12 @@ export const TEXT_KEYS = {
   GUIDES_CHAT: [
     `${PageName.GuidesChat}.guideStatus_inProgress`,
     `${PageName.GuidesChat}.guideStatus_completed`,
+    `${PageName.GuidesChat}.guideStatus_new`,
     `${PageName.GuidesChat}.actionText_next`,
     `${PageName.GuidesChat}.actionText_select`,
     `${PageName.GuidesChat}.inputPlaceholder`,
+    `${PageName.GuidesChat}.searchPlaceholder`,
+    `${PageName.GuidesChat}.searchTitle`,
   ],
   CLAIM: [
     `${PageName.Claim}.title`,

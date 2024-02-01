@@ -1,10 +1,10 @@
 // import { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
-import s from './style.module.scss';
 import { Button } from '../../ui/buttons/Button';
 import { ChatMessage } from '../ChatMessage';
-import { QuestChatTopPannel } from '../QuestChatTopPannel/QuestChatTopPannel';
 import { QuestChatBottomPannel } from '../QuestChatBottomPannel';
+import { QuestChatTopPannel } from '../QuestChatTopPannel/QuestChatTopPannel';
+import s from './style.module.scss';
 
 export function QuestChat({ className }) {
   // useEffect(() => {}, []);
