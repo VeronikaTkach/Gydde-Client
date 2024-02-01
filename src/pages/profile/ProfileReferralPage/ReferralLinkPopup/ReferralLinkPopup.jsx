@@ -1,12 +1,12 @@
-import { useDispatch } from 'react-redux';
 import cn from 'classnames';
-import { showReferralLinkWindow } from '../../../../core/store/slices/modalWindowStateSlice';
-import ModalWithClose from '../../../../components/ui/modals/Modal/ModalWithClose';
+import { useDispatch } from 'react-redux';
 import ModalWithBorderShadow from '../../../../components/ui/modals/Modal/ModalWithBorder';
-import s from './style.module.scss';
+import ModalWithClose from '../../../../components/ui/modals/Modal/ModalWithClose';
 import { PageName } from '../../../../core/constants/PageNames';
 import { STATIC_TEXT } from '../../../../core/constants/staticText';
 import copyText from '../../../../core/helpers/copyText';
+import { showReferralLinkWindow } from '../../../../core/store/slices/modalWindowStateSlice';
+import s from './style.module.scss';
 
 export function ReferralLinkPopup({ staticText }) {
   const dispatch = useDispatch();
@@ -44,15 +44,13 @@ export function ReferralLinkPopup({ staticText }) {
             onClick={() => copyText(link)}></button>
         </div>
         <div className={cn(s.socials)}>
-          {socials.map((item) => {
-            return (
-              <a
-                href='#'
-                className={cn(s.socials__link, item.name)}
-                key={item.name}
-                style={{ fontSize: item?.size }}></a>
-            ); // эти ссылки тоже с сервера получать?
-          })}
+          {socials.map((item) => (
+            <a
+              href='#'
+              className={cn(s.socials__link, item.name)}
+              key={item.name}
+              style={{ fontSize: item?.size }}></a>
+          ))}
         </div>
       </div>
     </ModalWithClose>
