@@ -7,7 +7,7 @@ import geo from '../../../assets/images/menu/geo.png';
 import people from '../../../assets/images/menu/people.png';
 import { PageName } from '../../../core/constants/PageNames';
 import { Status } from '../../../core/constants/Status';
-import { STATIC_TEXT } from '../../../core/constants/staticTexts';
+import { STATIC_TEXT } from '../../../core/constants/staticText';
 import { staticText } from '../../../core/store/staticText/slice';
 import s from './style.module.scss';
 

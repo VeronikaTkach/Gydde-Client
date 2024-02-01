@@ -6,7 +6,7 @@ import { ProfileFolder } from '../../../components/profile/ProfileFolder';
 import { ReferralAndGuides } from '../../../components/profile/RefferalAndGuides/RefferalAndGuides';
 import { PageName } from '../../../core/constants/PageNames';
 import { Status } from '../../../core/constants/Status';
-import { STATIC_TEXT } from '../../../core/constants/staticTexts';
+import { STATIC_TEXT } from '../../../core/constants/staticText';
 import { TEXT_KEYS } from '../../../core/constants/textKeys';
 import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
 import { getStaticText } from '../../../core/store/staticText/thunk';
@@ -33,7 +33,6 @@ export function ProfileGuidesPage() {
       setText(STATIC_TEXT[PageName.ProfileGuides]);
     }
   }, [staticTextStatusProfileGuides]);
-  console.log(PageName.ProfileGuides);
 
   return (
     <>

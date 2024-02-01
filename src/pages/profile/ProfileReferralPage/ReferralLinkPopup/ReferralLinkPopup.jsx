@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import ModalWithBorderShadow from '../../../../components/ui/modals/Modal/ModalWithBorder';
 import ModalWithClose from '../../../../components/ui/modals/Modal/ModalWithClose';
 import { PageName } from '../../../../core/constants/PageNames';
-import { STATIC_TEXT } from '../../../../core/constants/staticTexts';
+import { STATIC_TEXT } from '../../../../core/constants/staticText';
 import copyText from '../../../../core/helpers/copyText';
 import { showReferralLinkWindow } from '../../../../core/store/slices/modalWindowStateSlice';
 import s from './style.module.scss';

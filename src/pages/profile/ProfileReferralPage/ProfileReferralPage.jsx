@@ -7,7 +7,7 @@ import { ReferralAd } from '../../../components/profile/RefferalAd/RefferalAd';
 import { ReferralAndGuides } from '../../../components/profile/RefferalAndGuides/RefferalAndGuides';
 import { PageName } from '../../../core/constants/PageNames';
 import { Status } from '../../../core/constants/Status';
-import { STATIC_TEXT } from '../../../core/constants/staticTexts';
+import { STATIC_TEXT } from '../../../core/constants/staticText';
 import { TEXT_KEYS } from '../../../core/constants/textKeys';
 import {
   modalWindowState,

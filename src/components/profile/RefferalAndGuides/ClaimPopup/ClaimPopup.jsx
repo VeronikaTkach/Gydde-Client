@@ -5,7 +5,7 @@ import mascot from '../../../../assets/images/mascot/mascotBucks.png';
 import geo from '../../../../assets/images/menu/geo.png';
 import { PageName } from '../../../../core/constants/PageNames';
 import { Status } from '../../../../core/constants/Status';
-import { STATIC_TEXT } from '../../../../core/constants/staticTexts';
+import { STATIC_TEXT } from '../../../../core/constants/staticText';
 import { TEXT_KEYS } from '../../../../core/constants/textKeys';
 import { showClaimWindow } from '../../../../core/store/slices/modalWindowStateSlice';
 import {
@@ -33,9 +33,9 @@ export function ClaimPopup() {
 
   useEffect(() => {
     if (staticTextStatusClaim === Status.Resolved) {
-      setText(staticTextClaim);
+      // setText(staticTextClaim);
     } else if (staticTextStatusClaim === Status.Rejected) {
-      setText(STATIC_TEXT[PageName.Claim]);
+      // setText(STATIC_TEXT[PageName.Claim]);
     }
   }, [staticTextStatusClaim]);
 

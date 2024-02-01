@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { PageName } from '../../../core/constants/PageNames';
 import { RoutesName } from '../../../core/constants/Routes';
 import { Status } from '../../../core/constants/Status';
-import { STATIC_TEXT } from '../../../core/constants/staticTexts';
+import { STATIC_TEXT } from '../../../core/constants/staticText';
 import { TEXT_KEYS } from '../../../core/constants/textKeys';
 import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
 import { getStaticText } from '../../../core/store/staticText/thunk';

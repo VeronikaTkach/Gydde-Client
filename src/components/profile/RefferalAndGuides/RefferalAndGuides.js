@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import mascot from '../../../assets/images/mascot/mascotGood.png';
 import { Status } from '../../../core/constants/Status';
-import { STATIC_TEXT } from '../../../core/constants/staticTexts';
+import { STATIC_TEXT } from '../../../core/constants/staticText';
 import {
   modalWindowState,
   showClaimWindow,
