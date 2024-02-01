@@ -1,26 +1,15 @@
 import cn from 'classnames';
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import mascotFriend from '../../../assets/images/mascot/mascotFriend.png';
 import friend from '../../../assets/images/menu/friend.png';
 import geo from '../../../assets/images/menu/geo.png';
 import people from '../../../assets/images/menu/people.png';
 import { PageName } from '../../../core/constants/PageNames';
-import { Status } from '../../../core/constants/Status';
 import { STATIC_TEXT } from '../../../core/constants/staticText';
-import { staticText } from '../../../core/store/staticText/slice';
+import { useStaticText } from '../../../core/hooks/useStaticText';
 import s from './style.module.scss';
 
 export function ReferralAd({ className }) {
-  const { staticTextProfileReferrals, staticTextStatusProfileReferrals } =
-    useSelector(staticText);
-  const [text, setText] = useState(null);
-
-  useEffect(() => {
-    if (staticTextStatusProfileReferrals === Status.Resolved) {
-      setText(staticTextProfileReferrals);
-    }
-  }, [staticTextStatusProfileReferrals]);
+  const { text } = useStaticText(PageName.ProfileReferrals);
 
   return (
     <div className={cn(s.referral, className)}>

@@ -8,7 +8,7 @@ import copyText from '../../../../core/helpers/copyText';
 import { showReferralLinkWindow } from '../../../../core/store/slices/modalWindowStateSlice';
 import s from './style.module.scss';
 
-export function ReferralLinkPopup({ staticText }) {
+export function ReferralLinkPopup({ text }) {
   const dispatch = useDispatch();
   const link = 'http://gyddy.com?REFERRALCODE=yourlink'; //TODO получать с сервера
 
@@ -34,7 +34,7 @@ export function ReferralLinkPopup({ staticText }) {
       styles={styles}>
       <div>
         <div className={cn(s.title)}>
-          {staticText?.referralLinkTitle ||
+          {text?.referralLinkTitle ||
             STATIC_TEXT[PageName.ProfileReferrals].referralLinkTitle}
         </div>
         <div className={cn(s.link)}>

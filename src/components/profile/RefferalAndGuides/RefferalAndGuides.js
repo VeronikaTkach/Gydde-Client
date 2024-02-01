@@ -1,14 +1,11 @@
 import cn from 'classnames';
-import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import mascot from '../../../assets/images/mascot/mascotGood.png';
-import { Status } from '../../../core/constants/Status';
 import { STATIC_TEXT } from '../../../core/constants/staticText';
 import {
   modalWindowState,
   showClaimWindow,
 } from '../../../core/store/slices/modalWindowStateSlice';
-import { staticText } from '../../../core/store/staticText/slice';
 import { ButtonWithBorder } from '../../ui/buttons/Button';
 import { ClaimPopup } from './ClaimPopup/ClaimPopup';
 import s from './style.module.scss';
@@ -16,15 +13,6 @@ import s from './style.module.scss';
 export function ReferralAndGuides({ className, text, pageName }) {
   const dispatch = useDispatch();
   const { modalClaim } = useSelector(modalWindowState);
-  const { staticTextProfileReferrals, staticTextStatusProfileReferrals } =
-    useSelector(staticText);
-  // const [text, setText] = useState(null);
-
-  // useEffect(() => {
-  //   if (staticTextStatusProfileReferrals === Status.Resolved) {
-  //     setText(staticTextProfileReferrals);
-  //   }
-  // }, [staticTextStatusProfileReferrals]);
 
   return (
     <div className={cn(s.profile, className)}>
@@ -42,7 +30,7 @@ export function ReferralAndGuides({ className, text, pageName }) {
             onClick={() => dispatch(showClaimWindow(true))}>
             {text?.btnText || STATIC_TEXT[pageName].btnText}
           </ButtonWithBorder>
-          {modalClaim && <ClaimPopup staticText={text} />}
+          {modalClaim && <ClaimPopup />}
         </div>
         <div className={s.profile__Referrals}>
           <div className={s.profile__container}>

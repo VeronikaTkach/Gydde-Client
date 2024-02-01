@@ -1,17 +1,14 @@
 import cn from 'classnames';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import mascot from '../../../../assets/images/mascot/mascotBucks.png';
 import geo from '../../../../assets/images/menu/geo.png';
 import { PageName } from '../../../../core/constants/PageNames';
-import { Status } from '../../../../core/constants/Status';
 import { STATIC_TEXT } from '../../../../core/constants/staticText';
 import { TEXT_KEYS } from '../../../../core/constants/textKeys';
+import { useStaticText } from '../../../../core/hooks/useStaticText';
 import { showClaimWindow } from '../../../../core/store/slices/modalWindowStateSlice';
-import {
-  removeUnusedStaticText,
-  staticText,
-} from '../../../../core/store/staticText/slice';
+import { removeUnusedStaticText } from '../../../../core/store/staticText/slice';
 import { getStaticText } from '../../../../core/store/staticText/thunk';
 import { AccentButton } from '../../../ui/buttons/Button';
 import ModalWithBorderShadow from '../../../ui/modals/Modal/ModalWithBorder';
@@ -20,24 +17,15 @@ import s from './style.module.scss';
 
 export function ClaimPopup() {
   const dispatch = useDispatch();
-  const { staticTextClaim, staticTextStatusClaim } = useSelector(staticText);
+  const { text } = useStaticText(PageName.Claim);
 
   useEffect(() => {
     dispatch(getStaticText.basic(TEXT_KEYS.CLAIM));
-    const [text, setText] = useState(null);
 
     return () => {
       dispatch(removeUnusedStaticText(PageName.Claim));
     };
   }, []);
-
-  useEffect(() => {
-    if (staticTextStatusClaim === Status.Resolved) {
-      // setText(staticTextClaim);
-    } else if (staticTextStatusClaim === Status.Rejected) {
-      // setText(STATIC_TEXT[PageName.Claim]);
-    }
-  }, [staticTextStatusClaim]);
 
   const styles = {
     minHeight: 452,

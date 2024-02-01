@@ -1,11 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames';
-import s from './style.module.scss';
-import { Button } from '../../ui/buttons/Button';
-import mascot from '../../../assets/images/mascot/mascotGood.png';
+import { useDispatch, useSelector } from 'react-redux';
 import eng from '../../../assets/images/flag/flagEng.png';
-import { STATIC_TEXT } from '../../../core/constants/staticText';
+import mascot from '../../../assets/images/mascot/mascotGood.png';
 import { PageName } from '../../../core/constants/PageNames';
+import { STATIC_TEXT } from '../../../core/constants/staticText';
+import { useStaticText } from '../../../core/hooks/useStaticText';
 import {
   modalWindowState,
   showChangePasswordWindow,
@@ -13,44 +12,38 @@ import {
   showSetPasswordWindow,
   showUsernameEditWindow,
 } from '../../../core/store/slices/modalWindowStateSlice';
+import { Button } from '../../ui/buttons/Button';
 import {
   EmailConnectPopup,
   UsernameEditPopup,
   SetPasswordPopup,
   ChangePasswordPopup,
 } from './popups';
+import s from './style.module.scss';
 
-export function AccountSettings({
-  className,
-  staticTextProfileSettings,
-  staticTextStatusProfileSettings,
-}) {
+export function AccountSettings({ className }) {
+  const { text } = useStaticText(PageName.ProfileSettings);
   const { modalEmailConnect, modalUsernameEdit, modalSetPassword, modalChangePassword } =
     useSelector(modalWindowState);
   const dispatch = useDispatch();
 
   return (
-    <>
-      <div className={cn(s.settings, className)}>
-        <div className={cn(s.settings__mascot)}>
-          <img className={cn(s.settings__mascot_img)} src={mascot} alt={'Gydde'} />
-        </div>
+    <div className={cn(s.settings, className)}>
+      <div className={cn(s.settings__mascot)}>
+        <img className={cn(s.settings__mascot_img)} src={mascot} alt={'Gydde'} />
+      </div>
+      {text && (
         <div className={cn(s.settings__info, s.info)}>
           <div className={cn(s.info__header, s.header)}>
             <div className={cn(s.header__userInfo)}>
               <div className={cn(s.header__userName)}>
-                {staticTextProfileSettings?.userNameTitle ||
+                {text?.userNameTitle ||
                   STATIC_TEXT[PageName.ProfileSettings].userNameTitle}
               </div>
               <div
                 className={cn(s.header__btnEdit, 'iconEdit')}
                 onClick={() => dispatch(showUsernameEditWindow(true))}></div>
-              {modalUsernameEdit && (
-                <UsernameEditPopup
-                  staticTextProfileSettings={staticTextProfileSettings}
-                  staticTextStatusProfileSettings={staticTextStatusProfileSettings}
-                />
-              )}
+              {modalUsernameEdit && <UsernameEditPopup text={text} />}
             </div>
             <Button className={cn(s.header__langInfo, 'iconDropdownArrow')}>
               <div className={cn(s.header__language)}>Eng</div>
@@ -63,8 +56,7 @@ export function AccountSettings({
           </div>
           <div className={cn(s.info__connections, s.connections)}>
             <div className={cn(s.connections__title)}>
-              {staticTextProfileSettings?.socialTitle ||
-                STATIC_TEXT[PageName.ProfileSettings].socialTitle}
+              {text?.socialTitle || STATIC_TEXT[PageName.ProfileSettings].socialTitle}
             </div>
             <div className={cn(s.connections__socials)}>
               <Button
@@ -74,39 +66,21 @@ export function AccountSettings({
                   'iconEmail'
                 )}
                 onClick={() => dispatch(showEmailConnectWindow(true))}>
-                {staticTextProfileSettings?.connectMail ||
-                  STATIC_TEXT[PageName.ProfileSettings].connectMail}
+                {text?.connectMail || STATIC_TEXT[PageName.ProfileSettings].connectMail}
               </Button>
-              {modalEmailConnect && (
-                <EmailConnectPopup
-                  staticTextProfileSettings={staticTextProfileSettings}
-                  staticTextStatusProfileSettings={staticTextStatusProfileSettings}
-                />
-              )}
+              {modalEmailConnect && <EmailConnectPopup text={text} />}
               <Button
                 className={cn(s.connections__button_pass, s.connections__button)}
                 onClick={() => dispatch(showSetPasswordWindow(true))}>
-                {staticTextProfileSettings?.setPass ||
-                  STATIC_TEXT[PageName.ProfileSettings].setPass}
+                {text?.setPass || STATIC_TEXT[PageName.ProfileSettings].setPass}
               </Button>
-              {modalSetPassword && (
-                <SetPasswordPopup
-                  staticTextProfileSettings={staticTextProfileSettings}
-                  staticTextStatusProfileSettings={staticTextStatusProfileSettings}
-                />
-              )}
+              {modalSetPassword && <SetPasswordPopup text={text} />}
               <Button
                 className={cn(s.connections__button_pass, s.connections__button)}
                 onClick={() => dispatch(showChangePasswordWindow(true))}>
-                {staticTextProfileSettings?.changePass ||
-                  STATIC_TEXT[PageName.ProfileSettings].changePass}
+                {text?.changePass || STATIC_TEXT[PageName.ProfileSettings].changePass}
               </Button>
-              {modalChangePassword && (
-                <ChangePasswordPopup
-                  staticTextProfileSettings={staticTextProfileSettings}
-                  staticTextStatusProfileSettings={staticTextStatusProfileSettings}
-                />
-              )}
+              {modalChangePassword && <ChangePasswordPopup text={text} />}
             </div>
             <div className={cn(s.connections__socials)}>
               <Button
@@ -115,17 +89,16 @@ export function AccountSettings({
                   s.connections__button,
                   'iconTwitter'
                 )}>
-                {staticTextProfileSettings?.connectTwitter ||
+                {text?.connectTwitter ||
                   STATIC_TEXT[PageName.ProfileSettings].connectTwitter}
               </Button>
             </div>
           </div>
           <Button className={cn(s.info__logout, 'iconLogout_after')}>
-            {staticTextProfileSettings?.logout ||
-              STATIC_TEXT[PageName.ProfileSettings].logout}
+            {text?.logout || STATIC_TEXT[PageName.ProfileSettings].logout}
           </Button>
         </div>
-      </div>
-    </>
+      )}
+    </div>
   );
 }

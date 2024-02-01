@@ -25,7 +25,6 @@
       height: fit-content;
       padding: $space4 $space6;
       border-radius: 20px;
-      backdrop-filter: blur(26px);
       @include themed() {
         background: t($formBackground);
       }
@@ -57,7 +56,6 @@
       gap: $space4;
       padding: $space5 $space6;
       border-radius: 20px;
-      backdrop-filter: blur(26px);
       @include themed() {
         background: t($formBackground);
       }

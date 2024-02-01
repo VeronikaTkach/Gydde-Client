@@ -1,29 +1,26 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useForm } from 'react-hook-form';
 import cn from 'classnames';
+import { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import google from '../../../../../assets/images/google.svg';
+import { PageName } from '../../../../../core/constants/PageNames';
+import { Status } from '../../../../../core/constants/Status';
+import { STATIC_TEXT } from '../../../../../core/constants/staticText';
+import { staticTextHelper } from '../../../../../core/helpers/staticTextHelper';
+import { allAuth, clearError } from '../../../../../core/store/auth/slice';
 import { showEmailConnectWindow } from '../../../../../core/store/slices/modalWindowStateSlice';
-import { ButtonWithBorder } from '../../../../ui/buttons/Button';
-import ModalWithClose from '../../../../ui/modals/Modal/ModalWithClose';
-import ModalWithBorderShadow from '../../../../ui/modals/Modal/ModalWithBorder';
-import { Input } from '../../../../ui/Input';
 import {
   mailValidation as mailValidationWithoutMessage,
   passwordValidation,
 } from '../../../../Auth/validations/registerValidation';
+import { Input } from '../../../../ui/Input';
+import { ButtonWithBorder } from '../../../../ui/buttons/Button';
 import { SocialButton } from '../../../../ui/buttons/SocialButton/SocialButton';
-import google from '../../../../../assets/images/google.svg';
+import ModalWithBorderShadow from '../../../../ui/modals/Modal/ModalWithBorder';
+import ModalWithClose from '../../../../ui/modals/Modal/ModalWithClose';
 import s from '../style.module.scss';
-import { allAuth, clearError } from '../../../../../core/store/auth/slice';
-import { Status } from '../../../../../core/constants/Status';
-import { staticTextHelper } from '../../../../../core/helpers/staticTextHelper';
-import { STATIC_TEXT } from '../../../../../core/constants/staticText';
-import { PageName } from '../../../../../core/constants/PageNames';
 
-export function EmailConnectPopup({
-  staticTextProfileSettings,
-  staticTextStatusProfileSettings,
-}) {
+export function EmailConnectPopup({ text }) {
   const dispatch = useDispatch();
   const { status, errorType } = useSelector(allAuth);
   const [mailValidation, setMailValidation] = useState(mailValidationWithoutMessage);
@@ -50,19 +47,18 @@ export function EmailConnectPopup({
   const [emailWatch, passwordWatch] = watch(['email', 'password']);
 
   const onSubmit = (data, e) => {
-    // e.preventDefault();
+    e.preventDefault();
   };
 
   useEffect(() => {
-    if (staticTextStatusProfileSettings === Status.Resolved) {
+    if (text) {
       const convertedMailValidation = staticTextHelper.convertToValidation(
-        staticTextProfileSettings?.mailErrorText ||
-          STATIC_TEXT[PageName.ProfileSettings].mailErrorText,
+        text?.mailErrorText || STATIC_TEXT[PageName.ProfileSettings].mailErrorText,
         mailValidationWithoutMessage
       );
       setMailValidation(convertedMailValidation);
     }
-  }, [staticTextStatusProfileSettings]);
+  }, [text]);
 
   useEffect(() => {
     if (Object.keys(errors).length && errorType) {
@@ -81,8 +77,7 @@ export function EmailConnectPopup({
       styles={styles}>
       <div>
         <div className={cn(s.title)}>
-          {staticTextProfileSettings?.editMailTitle ||
-            STATIC_TEXT[PageName.ProfileSettings].editMailTitle}
+          {text?.editMailTitle || STATIC_TEXT[PageName.ProfileSettings].editMailTitle}
         </div>
         <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
           <div className={s.form__inputs}>
@@ -90,8 +85,7 @@ export function EmailConnectPopup({
               <Input
                 classError={errors.email}
                 placeholder={
-                  staticTextProfileSettings?.fieldMail ||
-                  STATIC_TEXT[PageName.ProfileSettings].fieldMail
+                  text?.fieldMail || STATIC_TEXT[PageName.ProfileSettings].fieldMail
                 }
                 name={'email'}
                 setValue={setValue}
@@ -105,8 +99,7 @@ export function EmailConnectPopup({
               <Input
                 classError={errors.password}
                 placeholder={
-                  staticTextProfileSettings?.fieldPass ||
-                  STATIC_TEXT[PageName.ProfileSettings].fieldPass
+                  text?.fieldPass || STATIC_TEXT[PageName.ProfileSettings].fieldPass
                 }
                 name={'password'}
                 setValue={setValue}
@@ -116,7 +109,7 @@ export function EmailConnectPopup({
               />
               {errorType && (
                 <p className={s.form__error}>
-                  {staticTextProfileSettings?.passwordErrorText ||
+                  {text?.passwordErrorText ||
                     STATIC_TEXT[PageName.ProfileSettings].passwordErrorText}
                 </p>
               )}
@@ -127,25 +120,19 @@ export function EmailConnectPopup({
             type={'submit'}
             disabled={status === Status.Loading}
             isLoading={status === Status.Loading}>
-            {staticTextProfileSettings?.btnSave ||
-              STATIC_TEXT[PageName.ProfileSettings].btnSave}
+            {text?.btnSave || STATIC_TEXT[PageName.ProfileSettings].btnSave}
           </ButtonWithBorder>
         </form>
         <div className={cn(s.social)}>
           <div className={cn(s.social__title)}>
-            {staticTextProfileSettings?.connectSocial ||
-              STATIC_TEXT[PageName.ProfileSettings].connectSocial}
+            {text?.connectSocial || STATIC_TEXT[PageName.ProfileSettings].connectSocial}
           </div>
           <SocialButton
             iconImg={google}
             text={
-              staticTextProfileSettings?.socialGoogle ||
-              STATIC_TEXT[PageName.ProfileSettings].socialGoogle
+              text?.socialGoogle || STATIC_TEXT[PageName.ProfileSettings].socialGoogle
             }
-            alt={
-              staticTextProfileSettings?.socialGoogle ||
-              STATIC_TEXT[PageName.ProfileSettings].socialGoogle
-            }
+            alt={text?.socialGoogle || STATIC_TEXT[PageName.ProfileSettings].socialGoogle}
           />
         </div>
       </div>

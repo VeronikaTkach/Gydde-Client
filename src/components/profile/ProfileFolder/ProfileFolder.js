@@ -1,12 +1,12 @@
 import cn from 'classnames';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { PageName } from '../../../core/constants/PageNames';
 import { RoutesName } from '../../../core/constants/Routes';
-import { Status } from '../../../core/constants/Status';
 import { STATIC_TEXT } from '../../../core/constants/staticText';
 import { TEXT_KEYS } from '../../../core/constants/textKeys';
-import { removeUnusedStaticText, staticText } from '../../../core/store/staticText/slice';
+import { useStaticText } from '../../../core/hooks/useStaticText';
+import { removeUnusedStaticText } from '../../../core/store/staticText/slice';
 import { getStaticText } from '../../../core/store/staticText/thunk';
 import { NavigationLink } from '../../ui/Navlink';
 import s from './style.module.scss';
@@ -15,7 +15,7 @@ const firstItem = 0;
 
 export function ProfileFolder({ className, children }) {
   const dispatch = useDispatch();
-  const { staticTextProfile, staticTextStatusProfile } = useSelector(staticText);
+  const { text } = useStaticText(PageName.Profile);
   const [folderTabs, setFolderTabs] = useState(null);
 
   useEffect(() => {
@@ -27,32 +27,27 @@ export function ProfileFolder({ className, children }) {
   }, []);
 
   useEffect(() => {
-    if (
-      staticTextStatusProfile === Status.Resolved ||
-      staticTextStatusProfile === Status.Rejected
-    ) {
+    if (text) {
       setFolderTabs([
         {
-          title:
-            staticTextProfile?.ReferralTab || STATIC_TEXT[PageName.Profile].ReferralTab,
+          title: text?.ReferralTab || STATIC_TEXT[PageName.Profile].ReferralTab,
           to: RoutesName.ProfileReferral,
         },
         {
-          title: staticTextProfile?.guidesTab || STATIC_TEXT[PageName.Profile].guidesTab,
+          title: text?.guidesTab || STATIC_TEXT[PageName.Profile].guidesTab,
           to: RoutesName.ProfileGuides,
         },
         {
-          title: staticTextProfile?.walletTab || STATIC_TEXT[PageName.Profile].walletTab,
+          title: text?.walletTab || STATIC_TEXT[PageName.Profile].walletTab,
           to: RoutesName.ProfileWallet,
         },
         {
-          title:
-            staticTextProfile?.settingsTab || STATIC_TEXT[PageName.Profile].settingsTab,
+          title: text?.settingsTab || STATIC_TEXT[PageName.Profile].settingsTab,
           to: RoutesName.ProfileSettings,
         },
       ]);
     }
-  }, [staticTextStatusProfile]);
+  }, [text]);
 
   return (
     <div className={cn(s.folder, className)}>
