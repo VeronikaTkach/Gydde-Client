@@ -10,8 +10,7 @@ import { showChangePasswordWindow } from '../../../../../core/store/slices/modal
 import { passwordValidation } from '../../../../Auth/validations/registerValidation';
 import { Input } from '../../../../ui/Input';
 import { ButtonWithBorder } from '../../../../ui/buttons/Button';
-import ModalWithBorderShadow from '../../../../ui/modals/Modal/ModalWithBorder';
-import ModalWithClose from '../../../../ui/modals/Modal/ModalWithClose';
+import { ModalWithClose, ModalWithBorderShadow } from '../../../../ui/modals/windows';
 import { styles } from '../SetPasswordPopup';
 import s from '../style.module.scss';
 

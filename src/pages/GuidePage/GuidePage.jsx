@@ -9,30 +9,20 @@ import { Button } from '../../components/ui/buttons/Button';
 import { PageName } from '../../core/constants/PageNames';
 import { Position } from '../../core/constants/Position';
 import { Size } from '../../core/constants/Size';
-import { Status } from '../../core/constants/Status';
 import { STATIC_TEXT } from '../../core/constants/staticText';
-import { TEXT_KEYS } from '../../core/constants/textKeys';
-import { useStaticText } from '../../core/hooks/useStaticText';
+import { useRequestStaticText } from '../../core/hooks/useRequestStaticText';
 import { guide } from '../../core/store/guide/slice';
-import { guideRequest } from '../../core/store/guide/thunk';
 import { switchGuides } from '../../core/store/slices/guidesCarouselSlice';
-import { removeUnusedStaticText } from '../../core/store/staticText/slice';
-import { getStaticText } from '../../core/store/staticText/thunk';
 import s from './style.module.scss';
 
 export function GuidePage() {
   const dispatch = useDispatch();
-  const { text } = useStaticText(PageName.GuidesGallery);
+  const { text } = useRequestStaticText(PageName.GuidesGallery);
   const { guidesGallery, statusGuidesGallery } = useSelector(guide);
 
   useEffect(() => {
     // dispatch(guideRequest.guidesGalery());
-    dispatch(getStaticText.basic(TEXT_KEYS.GUIDES_GALLERY));
-
     // dispatch(getStaticText.hello())
-    return () => {
-      dispatch(removeUnusedStaticText(PageName.GuidesGallery));
-    };
   }, []);
 
   return (

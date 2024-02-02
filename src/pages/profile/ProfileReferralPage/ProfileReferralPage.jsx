@@ -1,5 +1,4 @@
 import cn from 'classnames';
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { SubtitleWithDifferentButton } from '../../../components/Subtitle';
 import { ProfileFolder } from '../../../components/profile/ProfileFolder';
@@ -8,31 +7,20 @@ import { ReferralAndGuides } from '../../../components/profile/RefferalAndGuides
 import { PageName } from '../../../core/constants/PageNames';
 import { UserReferralStatus } from '../../../core/constants/Status';
 import { STATIC_TEXT } from '../../../core/constants/staticText';
-import { TEXT_KEYS } from '../../../core/constants/textKeys';
-import { useStaticText } from '../../../core/hooks/useStaticText';
+import { useRequestStaticText } from '../../../core/hooks/useRequestStaticText';
 import {
   modalWindowState,
   showReferralLinkWindow,
 } from '../../../core/store/slices/modalWindowStateSlice';
-import { removeUnusedStaticText } from '../../../core/store/staticText/slice';
-import { getStaticText } from '../../../core/store/staticText/thunk';
 import { userStore } from '../../../core/store/user/slice';
 import { ReferralLinkPopup } from './ReferralLinkPopup/ReferralLinkPopup';
 import s from './style.module.scss';
 
 export function ProfileReferralPage() {
   const dispatch = useDispatch();
+  const { text } = useRequestStaticText(PageName.ProfileReferrals);
   const { userReferral } = useSelector(userStore);
   const { modalReferralLink } = useSelector(modalWindowState);
-  const { text } = useStaticText(PageName.ProfileReferrals);
-
-  useEffect(() => {
-    dispatch(getStaticText.basic(TEXT_KEYS.PROFILE_REFERRALS));
-
-    return () => {
-      dispatch(removeUnusedStaticText(PageName.ProfileReferrals));
-    };
-  }, []);
 
   return (
     <>
@@ -41,7 +29,7 @@ export function ProfileReferralPage() {
           <div className={cn(s.content__container)}>
             <ProfileFolder>
               {userReferral === UserReferralStatus.NoReferral ? (
-                <ReferralAd />
+                <ReferralAd text={text} />
               ) : userReferral === UserReferralStatus.Referral ? (
                 <ReferralAndGuides text={text} pageName={PageName.ProfileReferrals} />
               ) : null}

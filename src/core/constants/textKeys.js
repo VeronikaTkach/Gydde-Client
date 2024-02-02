@@ -1,7 +1,7 @@
 import { PageName } from './PageNames';
 
 export const TEXT_KEYS = {
-  METAMASK_CONNECT: [
+  [PageName.Metamask]: [
     `${PageName.Metamask}_NoWallet.statusText`,
     `${PageName.Metamask}_NoWallet.descriptionTextHighlightedPart1`,
     `${PageName.Metamask}_NoWallet.descriptionTextHighlightedPart2`,
@@ -21,7 +21,7 @@ export const TEXT_KEYS = {
     `${PageName.Metamask}_Connected.statusText`,
     `${PageName.Metamask}_Connected.descriptionText`,
   ],
-  AUTH: [
+  [PageName.Auth]: [
     `${PageName.Auth}.title`,
     `${PageName.Auth}.socialsTitle`,
     `${PageName.Auth}.walletTitle`,
@@ -30,12 +30,12 @@ export const TEXT_KEYS = {
     `${PageName.Auth}.email`,
     `${PageName.Auth}.metamask`,
   ],
-  HELLO: [
+  [PageName.Hello]: [
     `${PageName.Hello}.mascotTextHighlightedPart1`,
     `${PageName.Hello}.mascotTextHighlightedPart2`,
     `${PageName.Hello}.answerButtonText`,
   ],
-  MAIL_AUTHORIZATION: [
+  [PageName.MailAuthorization]: [
     `${PageName.MailAuthorization}.mailLabel`,
     `${PageName.MailAuthorization}.mailErrorText_pattern`,
     `${PageName.MailAuthorization}.mailPlaceholder`,
@@ -44,7 +44,7 @@ export const TEXT_KEYS = {
     `${PageName.MailAuthorization}.passwordPlaceholder`,
     `${PageName.MailAuthorization}.button`,
   ],
-  HEADER: [
+  [PageName.Header]: [
     `${PageName.Header}.buttonLogin`,
     `${PageName.Header}.menuGuides`,
     `${PageName.Header}.menuReferralRewards`,
@@ -52,7 +52,7 @@ export const TEXT_KEYS = {
     `${PageName.Header}.menuWallet`,
     `${PageName.Header}.menuAccountSettings`,
   ],
-  PROFILE_GUIDES: [
+  [PageName.ProfileGuides]: [
     `${PageName.ProfileGuides}.btnText`,
     `${PageName.ProfileGuides}.rewardsTitle`,
     `${PageName.ProfileGuides}.ReferralTitle`,
@@ -60,7 +60,7 @@ export const TEXT_KEYS = {
     `${PageName.ProfileGuides}.subtitle`,
     `${PageName.ProfileGuides}.buttonText`,
   ],
-  PROFILE_REFERRALS: [
+  [PageName.ProfileReferrals]: [
     `${PageName.ProfileReferrals}.btnText`,
     `${PageName.ProfileReferrals}.rewardsTitle`,
     `${PageName.ProfileReferrals}.ReferralTitle`,
@@ -72,13 +72,13 @@ export const TEXT_KEYS = {
     `${PageName.ProfileReferrals}.referralLinkTitle`,
     `${PageName.ProfileReferrals}.adTitle`,
   ],
-  PROFILE: [
+  [PageName.Profile]: [
     `${PageName.Profile}.ReferralTab`,
     `${PageName.Profile}.guidesTab`,
     `${PageName.Profile}.walletTab`,
     `${PageName.Profile}.settingsTab`,
   ],
-  PROFILE_SETTINGS: [
+  [PageName.ProfileSettings]: [
     `${PageName.ProfileSettings}.userNameTitle`,
     `${PageName.ProfileSettings}.socialTitle`,
     `${PageName.ProfileSettings}.connectMail`,
@@ -107,7 +107,7 @@ export const TEXT_KEYS = {
     `${PageName.ProfileSettings}.socialGoogle`,
     `${PageName.ProfileSettings}.btnSave`,
   ],
-  PROFILE_WALLET: [
+  [PageName.ProfileWallet]: [
     `${PageName.ProfileWallet}.title`,
     `${PageName.ProfileWallet}.balanceTitle`,
     `${PageName.ProfileWallet}.statusWallet_connected`,
@@ -119,7 +119,7 @@ export const TEXT_KEYS = {
     `${PageName.ProfileWallet}.subtitle`,
     `${PageName.ProfileWallet}.buttonText`,
   ],
-  GUIDES_GALLERY: [
+  [PageName.GuidesGallery]: [
     `${PageName.GuidesGallery}.subtitle`,
     `${PageName.GuidesGallery}.buttonText`,
     `${PageName.GuidesGallery}.guideStatus_inProgress`,
@@ -132,7 +132,7 @@ export const TEXT_KEYS = {
     `${PageName.GuidesGallery}.guideRewardTitle`,
     `${PageName.GuidesGallery}.guideRewardCount`,
   ],
-  GUIDES_CHAT: [
+  [PageName.GuidesChat]: [
     `${PageName.GuidesChat}.guideStatus_inProgress`,
     `${PageName.GuidesChat}.guideStatus_completed`,
     `${PageName.GuidesChat}.guideStatus_new`,
@@ -142,12 +142,10 @@ export const TEXT_KEYS = {
     `${PageName.GuidesChat}.searchPlaceholder`,
     `${PageName.GuidesChat}.searchTitle`,
   ],
-  CLAIM: [
+  [PageName.Claim]: [
     `${PageName.Claim}.title`,
-    `${PageName.Claim}.titleAccent`,
     `${PageName.Claim}.transactionText`,
     `${PageName.Claim}.geoText`,
-    `${PageName.Claim}.feeAmount`,
     `${PageName.Claim}.payFeeFrom`,
     `${PageName.Claim}.btnText`,
   ],

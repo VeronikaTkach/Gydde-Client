@@ -23,7 +23,9 @@ export function Wallet({ className, text }) {
   const [connectStatus, setConnectStatus] = useState(ConnectWalletStatus.Disonnected);
 
   useEffect(() => {
-    dispatch(metamaskRequest.getAccount(web3Ref.current));
+    if (!account) {
+      dispatch(metamaskRequest.getAccount(web3Ref.current));
+    }
   }, []);
 
   useEffect(() => {
@@ -42,16 +44,16 @@ export function Wallet({ className, text }) {
             {text?.title || STATIC_TEXT[PageName.ProfileWallet].title}
           </div>
           <div className={s.wallet__field_info}>
-            {hiddenWallet && (
-              <div className={cn(s.wallet__field_info_number)}>
-                <div>{hiddenWallet || '-'}</div>
+            <div className={cn(s.wallet__field_info_number)}>
+              <div>{hiddenWallet || '-'}</div>
+              {hiddenWallet && (
                 <button
                   className={cn(s.wallet__icon, 'iconCopy')}
                   onClick={() => copyText(account)}
                 />
-                {/* <button className={cn(s.wallet__icon, 'iconLink')} /> */}
-              </div>
-            )}
+              )}
+              {/* <button className={cn(s.wallet__icon, 'iconLink')} /> */}
+            </div>
             <div className={cn(s.wallet__field_info_status)}>
               <img className={s.wallet__img} src={iconMetamask} alt={'metamask'} />
               <div className={s.wallet__field_textActive}>
@@ -80,10 +82,8 @@ export function Wallet({ className, text }) {
           <div className={s.wallet__field_disconnect}>
             <div
               className={cn(s.wallet__field_textTitle, s.wallet__field_disconnect_title)}>
-              {text?.connectButton[ConnectWalletStatus.Connected] ||
-                STATIC_TEXT[PageName.ProfileWallet].connectButton[
-                  ConnectWalletStatus.Connected
-                ]}
+              {text?.connectButton[connectStatus] ||
+                STATIC_TEXT[PageName.ProfileWallet].connectButton[connectStatus]}
             </div>
             <button className={cn(s.wallet__icon, 'iconDisconnect')} />
           </div>

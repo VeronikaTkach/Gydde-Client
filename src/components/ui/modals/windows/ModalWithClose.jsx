@@ -1,8 +1,8 @@
 import cn from 'classnames';
-import s from './style.module.scss';
 import { Button } from '../../buttons/Button';
+import s from './style.module.scss';
 
-const ModalWithClose = ({ Component, children, className, onClose, styles }) => {
+export function ModalWithClose({ Component, children, className, onClose, styles }) {
   return (
     <Component className={className} styles={styles}>
       <div className={s.modal__header}>
@@ -14,6 +14,4 @@ const ModalWithClose = ({ Component, children, className, onClose, styles }) => 
       <div>{children}</div>
     </Component>
   );
-};
-
-export default ModalWithClose;
+}

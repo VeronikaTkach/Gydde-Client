@@ -8,8 +8,7 @@ import { allAuth } from '../../../../../core/store/auth/slice';
 import { showUsernameEditWindow } from '../../../../../core/store/slices/modalWindowStateSlice';
 import { Input } from '../../../../ui/Input';
 import { ButtonWithBorder } from '../../../../ui/buttons/Button';
-import ModalWithBorderShadow from '../../../../ui/modals/Modal/ModalWithBorder';
-import ModalWithClose from '../../../../ui/modals/Modal/ModalWithClose';
+import { ModalWithClose, ModalWithBorderShadow } from '../../../../ui/modals/windows';
 import s from '../style.module.scss';
 
 export function UsernameEditPopup({ text }) {

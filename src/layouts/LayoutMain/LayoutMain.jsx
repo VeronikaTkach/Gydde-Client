@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { Outlet, useLocation } from 'react-router-dom';
-import { RoutesName } from '../../core/constants/Routes';
 import { Header } from '../../components/mainParts/Header';
+import { RoutesName } from '../../core/constants/Routes';
 import s from './style.module.scss';
 
 export function LayoutMain() {

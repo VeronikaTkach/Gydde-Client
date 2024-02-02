@@ -16,16 +16,13 @@ import { StickersSpinner } from '../../../components/ui/loaders/StickersSpinner'
 import { PageName } from '../../../core/constants/PageNames';
 import { Size } from '../../../core/constants/Size';
 import { MetamaskConnectionStatus } from '../../../core/constants/Status';
-import { TEXT_KEYS } from '../../../core/constants/textKeys';
 import { staticTextHelper } from '../../../core/helpers/staticTextHelper';
-import { useStaticText } from '../../../core/hooks/useStaticText';
+import { useRequestStaticText } from '../../../core/hooks/useRequestStaticText';
 import {
   metamaskStore,
   setFirstHighlightedItem,
   setMetamaskConnectionStatus,
 } from '../../../core/store/metamask/slice';
-import { removeUnusedStaticText } from '../../../core/store/staticText/slice';
-import { getStaticText } from '../../../core/store/staticText/thunk';
 import s from './style.module.scss';
 
 const buttonIcon = {
@@ -41,17 +38,9 @@ const firstItem = 0;
 
 export function MetamaskView() {
   const dispatch = useDispatch();
-  const { text } = useStaticText(PageName.Metamask);
+  const { text } = useRequestStaticText(PageName.Metamask);
   const { connectionStatus, firstHighlightedItem } = useSelector(metamaskStore);
-
   const [currentText, setCurrentText] = useState(null);
-  useEffect(() => {
-    dispatch(getStaticText.basic(TEXT_KEYS.METAMASK_CONNECT));
-
-    return () => {
-      dispatch(removeUnusedStaticText(PageName.Metamask));
-    };
-  }, []);
 
   useEffect(() => {
     if (text) {

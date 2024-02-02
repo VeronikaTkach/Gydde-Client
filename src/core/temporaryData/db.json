@@ -106,8 +106,8 @@
 		"ProfileWallet.balanceTitle": "Balance ETH",
 		"ProfileWallet.networkTitle": "Connected network",
 		"ProfileWallet.networkName_mainnet": "Ethereum",
-		"ProfileWallet.connectButton_connected": "Connect wallet",
-		"ProfileWallet.connectButton_disconnected": "Disconnect",
+		"ProfileWallet.connectButton_connected": "Disconnect",
+		"ProfileWallet.connectButton_disconnected": "Connect wallet",
 		"ProfileWallet.subtitle": "Every time I transfer a reward to your wallet, I write it down for you. So, nothing will be lost :)",
 		"ProfileWallet.buttonText": "History",
 

@@ -16,8 +16,7 @@ import {
 import { Input } from '../../../../ui/Input';
 import { ButtonWithBorder } from '../../../../ui/buttons/Button';
 import { SocialButton } from '../../../../ui/buttons/SocialButton/SocialButton';
-import ModalWithBorderShadow from '../../../../ui/modals/Modal/ModalWithBorder';
-import ModalWithClose from '../../../../ui/modals/Modal/ModalWithClose';
+import { ModalWithClose, ModalWithBorderShadow } from '../../../../ui/modals/windows';
 import s from '../style.module.scss';
 
 export function EmailConnectPopup({ text }) {

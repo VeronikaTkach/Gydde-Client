@@ -1,9 +1,9 @@
 import cn from 'classnames';
-import { Position } from '../../core/constants/Position';
 import { Carousel } from '../../core/constants/Guide';
+import { Position } from '../../core/constants/Position';
 import { Property } from '../../core/constants/Property';
-import s from './style.module.scss';
 import { GUIDE_STATUS } from '../../core/constants/backendEnums';
+import s from './style.module.scss';
 
 //TODO переработать и сократить повторяющийся код в свободное время
 export function ItemInfo({ guide, idInfoClose, staticText }) {

@@ -5,13 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { PageName } from '../../../core/constants/PageNames';
 import { Status } from '../../../core/constants/Status';
 import { STATIC_TEXT } from '../../../core/constants/staticText';
-import { TEXT_KEYS } from '../../../core/constants/textKeys';
 import { staticTextHelper } from '../../../core/helpers/staticTextHelper';
-import { useStaticText } from '../../../core/hooks/useStaticText';
+import { useRequestStaticText } from '../../../core/hooks/useRequestStaticText';
 import { allAuth, clearError } from '../../../core/store/auth/slice';
 import { authRequest } from '../../../core/store/auth/thunk';
-import { removeUnusedStaticText } from '../../../core/store/staticText/slice';
-import { getStaticText } from '../../../core/store/staticText/thunk';
 import { Input } from '../../ui/Input';
 import { ButtonWithBorder } from '../../ui/buttons/Button';
 import {
@@ -22,7 +19,7 @@ import s from './style.module.scss';
 
 export function Email() {
   const dispatch = useDispatch();
-  const { text } = useStaticText(PageName.MailAuthorization);
+  const { text } = useRequestStaticText(PageName.MailAuthorization);
   const { status, errorType } = useSelector(allAuth);
   const [mailValidation, setMailValidation] = useState(mailValidationWithoutMessage);
 
@@ -38,14 +35,6 @@ export function Email() {
     mode: 'onBlur',
   });
   const [emailWatch, passwordWatch] = watch(['email', 'password']);
-
-  useEffect(() => {
-    dispatch(getStaticText.basic(TEXT_KEYS.MAIL_AUTHORIZATION));
-
-    return () => {
-      dispatch(removeUnusedStaticText(PageName.MailAuthorization));
-    };
-  }, []);
 
   useEffect(() => {
     if (text) {

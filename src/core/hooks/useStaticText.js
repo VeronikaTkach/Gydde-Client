@@ -10,7 +10,6 @@ export function useStaticText(pageName) {
 
   const { [staticTextName]: textPage, [staticTextStatusName]: textStatus } =
     useSelector(staticText);
-
   const [text, setText] = useState(null);
 
   useEffect(() => {

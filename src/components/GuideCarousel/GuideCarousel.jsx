@@ -1,15 +1,15 @@
+import cn from 'classnames';
+import { useColor } from 'color-thief-react';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useColor } from 'color-thief-react';
-import cn from 'classnames';
-import img from '../../assets/images/temp/img.png';
-import img1 from '../../assets/images/temp/pic.png';
-import img2 from '../../assets/images/temp/pic1.png';
 import img3 from '../../assets/images/mascot/mascotBored.png';
 import img4 from '../../assets/images/mascot/mascotFriend.png';
 import img5 from '../../assets/images/mascot/mascotGood.png';
-import { Position } from '../../core/constants/Position';
+import img from '../../assets/images/temp/img.png';
+import img1 from '../../assets/images/temp/pic.png';
+import img2 from '../../assets/images/temp/pic1.png';
 import { Carousel } from '../../core/constants/Guide';
+import { Position } from '../../core/constants/Position';
 import {
   guidesCarousel,
   switchGuides,

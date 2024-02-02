@@ -1,7 +1,9 @@
 import cn from 'classnames';
 import { useDispatch } from 'react-redux';
-import ModalWithBorderShadow from '../../../../components/ui/modals/Modal/ModalWithBorder';
-import ModalWithClose from '../../../../components/ui/modals/Modal/ModalWithClose';
+import {
+  ModalWithClose,
+  ModalWithBorderShadow,
+} from '../../../../components/ui/modals/windows';
 import { showHistoryWindow } from '../../../../core/store/slices/modalWindowStateSlice';
 import s from './style.module.scss';
 

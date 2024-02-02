@@ -152,15 +152,13 @@ export const STATIC_TEXT = {
     networkName: { mainnet: 'Ethereum', unknown: 'Unknown' },
     subtitle:
       'Every time I transfer a reward to your wallet, I write it down for you. So, nothing will be lost :)',
-    connectButton: { connected: 'Disconnect', disconnected: 'Disconnect' },
+    connectButton: { connected: 'Disconnect', disconnected: 'Connect wallet' },
     buttonText: 'History',
   },
   [PageName.Claim]: {
     title: 'Claim amount',
-    titleAccent: '~ $100',
     transactionText: 'Transaction fee compensation',
     geoText: 'What is commission paid for?',
-    feeAmount: '$0',
     payFeeFrom: 'Pay transaction fee from my wallet',
     btnText: 'Claim',
   },

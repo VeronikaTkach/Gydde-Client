@@ -1,30 +1,17 @@
 import cn from 'classnames';
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { PageName } from '../../../core/constants/PageNames';
 import { RoutesName } from '../../../core/constants/Routes';
 import { STATIC_TEXT } from '../../../core/constants/staticText';
-import { TEXT_KEYS } from '../../../core/constants/textKeys';
-import { useStaticText } from '../../../core/hooks/useStaticText';
-import { removeUnusedStaticText } from '../../../core/store/staticText/slice';
-import { getStaticText } from '../../../core/store/staticText/thunk';
+import { useRequestStaticText } from '../../../core/hooks/useRequestStaticText';
 import { NavigationLink } from '../../ui/Navlink';
 import s from './style.module.scss';
 
 const firstItem = 0;
 
 export function ProfileFolder({ className, children }) {
-  const dispatch = useDispatch();
-  const { text } = useStaticText(PageName.Profile);
+  const { text } = useRequestStaticText(PageName.Profile);
   const [folderTabs, setFolderTabs] = useState(null);
-
-  useEffect(() => {
-    dispatch(getStaticText.basic(TEXT_KEYS.PROFILE));
-
-    return () => {
-      dispatch(removeUnusedStaticText(PageName.Profile));
-    };
-  }, []);
 
   useEffect(() => {
     if (text) {

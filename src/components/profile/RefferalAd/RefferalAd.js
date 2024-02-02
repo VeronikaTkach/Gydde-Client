@@ -5,12 +5,9 @@ import geo from '../../../assets/images/menu/geo.png';
 import people from '../../../assets/images/menu/people.png';
 import { PageName } from '../../../core/constants/PageNames';
 import { STATIC_TEXT } from '../../../core/constants/staticText';
-import { useStaticText } from '../../../core/hooks/useStaticText';
 import s from './style.module.scss';
 
-export function ReferralAd({ className }) {
-  const { text } = useStaticText(PageName.ProfileReferrals);
-
+export function ReferralAd({ className, text }) {
   return (
     <div className={cn(s.referral, className)}>
       <div className={s.referral__adTitle}>

@@ -1,31 +1,18 @@
 import cn from 'classnames';
-import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import mascot from '../../../../assets/images/mascot/mascotBucks.png';
 import geo from '../../../../assets/images/menu/geo.png';
 import { PageName } from '../../../../core/constants/PageNames';
 import { STATIC_TEXT } from '../../../../core/constants/staticText';
-import { TEXT_KEYS } from '../../../../core/constants/textKeys';
-import { useStaticText } from '../../../../core/hooks/useStaticText';
+import { useRequestStaticText } from '../../../../core/hooks/useRequestStaticText';
 import { showClaimWindow } from '../../../../core/store/slices/modalWindowStateSlice';
-import { removeUnusedStaticText } from '../../../../core/store/staticText/slice';
-import { getStaticText } from '../../../../core/store/staticText/thunk';
 import { AccentButton } from '../../../ui/buttons/Button';
-import ModalWithBorderShadow from '../../../ui/modals/Modal/ModalWithBorder';
-import ModalWithClose from '../../../ui/modals/Modal/ModalWithClose';
+import { ModalWithClose, ModalWithBorderShadow } from '../../../ui/modals/windows';
 import s from './style.module.scss';
 
 export function ClaimPopup() {
   const dispatch = useDispatch();
-  const { text } = useStaticText(PageName.Claim);
-
-  useEffect(() => {
-    dispatch(getStaticText.basic(TEXT_KEYS.CLAIM));
-
-    return () => {
-      dispatch(removeUnusedStaticText(PageName.Claim));
-    };
-  }, []);
+  const { text } = useRequestStaticText(PageName.Claim);
 
   const styles = {
     minHeight: 452,

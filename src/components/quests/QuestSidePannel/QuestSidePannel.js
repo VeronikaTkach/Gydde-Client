@@ -2,32 +2,21 @@ import cn from 'classnames';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { guideRequest } from '../../../core/store/guide/thunk';
-import { PageName } from '../../../core/constants/PageNames';
 import { Status } from '../../../core/constants/Status';
-import { TEXT_KEYS } from '../../../core/constants/textKeys';
-import { useStaticText } from '../../../core/hooks/useStaticText';
 import { guide } from '../../../core/store/guide/slice';
-import { removeUnusedStaticText } from '../../../core/store/staticText/slice';
-import { getStaticText } from '../../../core/store/staticText/thunk';
 import { QuestChatCard } from '../QuestChatCard';
 import { QuestSearch } from '../QuestSearch';
 import s from './style.module.scss';
 
 const firstItem = 0;
 
-export function QuestSidePannel({ className }) {
+export function QuestSidePannel({ className, text }) {
   const dispatch = useDispatch();
-  const { text } = useStaticText(PageName.GuidesChat);
   const { guidesPreview, statusGuidesPreview } = useSelector(guide);
   const [activeQuest, setActiveQuest] = useState(firstItem);
 
   useEffect(() => {
     // dispatch(guideRequest.guidesPreview());
-    dispatch(getStaticText.basic(TEXT_KEYS.GUIDES_CHAT));
-
-    return () => {
-      dispatch(removeUnusedStaticText(PageName.GuidesChat));
-    };
   }, []);
 
   function handleClick(index) {

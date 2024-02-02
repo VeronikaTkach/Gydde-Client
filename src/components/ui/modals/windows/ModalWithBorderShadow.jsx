@@ -1,7 +1,7 @@
-import Modal from './Modal';
+import { Modal } from '../Modal';
 import s from './style.module.scss';
 
-const ModalWithBorderShadow = ({ children, className, styles }) => {
+export function ModalWithBorderShadow({ children, className, styles }) {
   const padding = 16;
   const paddingCount = 2;
   const widthWithPaddings = padding * paddingCount + styles?.maxWidth;
@@ -21,6 +21,4 @@ const ModalWithBorderShadow = ({ children, className, styles }) => {
       </div>
     </Modal>
   );
-};
-
-export default ModalWithBorderShadow;
+}
