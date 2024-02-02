@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { SoundSwitchStatus } from '../constants/SoundSwitchStatus';
 import { formatTimeFromSeconds } from '../helpers/formatTimeFromSeconds';
 import { soundSettings, switchSound } from '../store/slices/soundSettingsSlice';
-import { SoundSwitchStatus } from '../constants/SoundSwitchStatus';
 
 export function usePlayerWithHowl(src) {
   const dispatch = useDispatch();

@@ -21,6 +21,7 @@ export const MetamaskConnectionStatus = {
   Sign: 'Sign',
   Connected: 'Connected',
   Finish: 'Finish',
+  Claim: 'Claim',
 };
 
 export const ConnectWalletStatus = {

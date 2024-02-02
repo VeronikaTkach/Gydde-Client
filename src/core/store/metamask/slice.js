@@ -4,7 +4,9 @@ import { metamaskRequest } from './thunk';
 
 const initialState = {
   connectionStatus: MetamaskConnectionStatus.Connecting,
+  networkId: null,
   account: null,
+  balance: null,
   message: null,
   signedMessage: null,
   error: null,
@@ -36,7 +38,9 @@ export const metamaskSlice = createSlice({
       })
       .addCase(metamaskRequest.getAccount.fulfilled, (state, action) => {
         state.connectionStatus = MetamaskConnectionStatus.Sign;
-        state.account = action.payload;
+        state.account = action.payload.account;
+        state.balance = action.payload.balance;
+        state.networkId = action.payload.networkId;
       })
       .addCase(metamaskRequest.getAccount.rejected, (state, action) => {
         state.connectionStatus = MetamaskConnectionStatus.Error;
@@ -62,7 +66,6 @@ export const metamaskSlice = createSlice({
       })
       .addCase(metamaskRequest.sendAuthData.fulfilled, (state) => {
         state.connectionStatus = MetamaskConnectionStatus.Finish;
-        state.account = null;
         state.message = null;
         state.signedMessage = null;
       })
@@ -79,6 +82,7 @@ export const {
   setError,
   setFirstHighlightedItem,
 } = metamaskSlice.actions;
-export const metamask = (state) => state.metamask;
+export const metamaskStore = (state) => state.metamask;
+export const metamaskAccount = (state) => state.metamask.account;
 
 export default metamaskSlice.reducer;

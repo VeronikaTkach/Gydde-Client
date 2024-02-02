@@ -1,13 +1,13 @@
+import { Howler } from 'howler';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Howler } from 'howler';
+import { SoundSwitchStatus } from '../constants/SoundSwitchStatus';
 import { formatTimeFromSeconds } from '../helpers/formatTimeFromSeconds';
 import {
   setSoundId,
   soundSettings,
   switchSound,
 } from '../store/slices/soundSettingsSlice';
-import { SoundSwitchStatus } from '../constants/SoundSwitchStatus';
 
 export function usePlayer(sound, id) {
   const dispatch = useDispatch();

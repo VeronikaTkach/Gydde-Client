@@ -20,7 +20,7 @@ import { TEXT_KEYS } from '../../../core/constants/textKeys';
 import { staticTextHelper } from '../../../core/helpers/staticTextHelper';
 import { useStaticText } from '../../../core/hooks/useStaticText';
 import {
-  metamask,
+  metamaskStore,
   setFirstHighlightedItem,
   setMetamaskConnectionStatus,
 } from '../../../core/store/metamask/slice';
@@ -42,7 +42,7 @@ const firstItem = 0;
 export function MetamaskView() {
   const dispatch = useDispatch();
   const { text } = useStaticText(PageName.Metamask);
-  const { connectionStatus, firstHighlightedItem } = useSelector(metamask);
+  const { connectionStatus, firstHighlightedItem } = useSelector(metamaskStore);
 
   const [currentText, setCurrentText] = useState(null);
   useEffect(() => {

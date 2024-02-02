@@ -1,16 +1,16 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 // import { useNavigate } from 'react-router-dom';
 import Web3 from 'web3';
 import { MetamaskConnectionStatus } from '../../../core/constants/Status';
 // import { RoutesName } from '../../../core/constants/Routes';
-import s from './style.module.scss';
-import { metamaskRequest } from '../../../core/store/metamask/thunk';
 import {
-  metamask,
+  metamaskStore,
   setFirstHighlightedItem,
   setMetamaskMessage,
 } from '../../../core/store/metamask/slice';
+import { metamaskRequest } from '../../../core/store/metamask/thunk';
+import s from './style.module.scss';
 
 const firstItem = 0;
 const secondItem = 1;
@@ -19,7 +19,7 @@ export function MetamaskConnection({ text }) {
   const dispatch = useDispatch();
   // const navigate = useNavigate();
   const web3Ref = useRef(new Web3(window.ethereum));
-  const { connectionStatus, message, signedMessage } = useSelector(metamask);
+  const { connectionStatus, message, signedMessage } = useSelector(metamaskStore);
 
   useEffect(() => {
     if (connectionStatus === MetamaskConnectionStatus.Connecting) {

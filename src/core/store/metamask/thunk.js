@@ -8,10 +8,16 @@ export const metamaskRequest = {
     'metamask/getAccount',
     async function (web3, { rejectWithValue }) {
       try {
-        const response = await web3.eth.requestAccounts();
         const firstAdress = 0;
+        const account = await web3.eth.requestAccounts();
+        const balance = await web3.eth.getBalance(account[firstAdress]);
+        const networkId = await web3.eth.net.getId();
 
-        return response[firstAdress];
+        return {
+          account: account[firstAdress],
+          balance: balance.toString(),
+          networkId: networkId.toString(),
+        };
       } catch (error) {
         return rejectWithValue(error.message);
       }
