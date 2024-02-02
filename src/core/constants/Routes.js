@@ -7,6 +7,7 @@ export const RoutesName = {
   TwitterOauthPage: '/auth/callback/twitter',
   MetamaskConnectPage: '/connect/metamask',
   HelloPage: '/hello',
+  PartnerGuide: '/partnerGuide/*',
   Profile: '/profile',
   ProfileReferral: '/profile/referral',
   ProfileGuides: '/profile/guides',

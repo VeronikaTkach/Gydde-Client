@@ -1,15 +1,15 @@
 import { Route, Routes } from 'react-router-dom';
-import { GuidePage } from '../pages/GuidePage';
-import { LayoutMain } from '../layouts/LayoutMain';
-import { SocialsOauthPage } from '../pages/auth/SocialsOauthPage';
-import { HelloPage } from '../pages/HelloPage/HelloPage';
 import { RoutesName } from '../core/constants/Routes';
 import { Socials } from '../core/constants/Socials';
+import { LayoutMain } from '../layouts/LayoutMain';
+import { GuidePage } from '../pages/GuidePage';
+import { HelloPage } from '../pages/HelloPage/HelloPage';
+import { SocialsOauthPage } from '../pages/auth/SocialsOauthPage';
 import './style.scss';
 import { ProfileGuidesPage } from '../pages/profile/ProfileGuidesPage';
-import { ProfileWalletPage } from '../pages/profile/ProfileWalletPage/ProfileWalletPage';
-import { ProfileSettingsPage } from '../pages/profile/ProfileSettingsPage';
 import { ProfileReferralPage } from '../pages/profile/ProfileReferralPage/ProfileReferralPage';
+import { ProfileSettingsPage } from '../pages/profile/ProfileSettingsPage';
+import { ProfileWalletPage } from '../pages/profile/ProfileWalletPage/ProfileWalletPage';
 
 export function App() {
   return (
@@ -19,6 +19,7 @@ export function App() {
           <Route path={RoutesName.Root} element={<LayoutMain />}>
             <Route index element={<GuidePage />} />
             <Route path={RoutesName.HelloPage} element={<HelloPage />} />
+            <Route path={RoutesName.PartnerGuide} element={<HelloPage />} />
             <Route path={RoutesName.ProfileReferral} element={<ProfileReferralPage />} />
             <Route path={RoutesName.ProfileGuides} element={<ProfileGuidesPage />} />
             <Route path={RoutesName.ProfileWallet} element={<ProfileWalletPage />} />
