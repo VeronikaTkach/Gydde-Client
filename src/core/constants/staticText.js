@@ -109,7 +109,7 @@ export const STATIC_TEXT = {
     earningsTitle: 'Lifetime earnings',
     subtitle:
       "Well, if you didn't know, we still have a lot of guides that you haven't completed yet. Go ahead for knowledge!",
-    'ProfileGuides.buttonText': 'New guides',
+    buttonText: 'New guides',
   },
   [PageName.ProfileSettings]: {
     userNameTitle: 'User name',
@@ -153,6 +153,7 @@ export const STATIC_TEXT = {
     subtitle:
       'Every time I transfer a reward to your wallet, I write it down for you. So, nothing will be lost :)',
     connectButton: { connected: 'Disconnect', disconnected: 'Disconnect' },
+    buttonText: 'History',
   },
   [PageName.Claim]: {
     title: 'Claim amount',
