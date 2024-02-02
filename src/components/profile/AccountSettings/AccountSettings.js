@@ -1,10 +1,14 @@
 import cn from 'classnames';
+import { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import eng from '../../../assets/images/flag/flagEng.png';
 import mascot from '../../../assets/images/mascot/mascotGood.png';
 import { PageName } from '../../../core/constants/PageNames';
+import { LANGUAGES } from '../../../core/constants/languages';
 import { STATIC_TEXT } from '../../../core/constants/staticText';
 import { useStaticText } from '../../../core/hooks/useStaticText';
+import { language } from '../../../core/store/language/slice';
+import { languageRequest } from '../../../core/store/language/thunk';
 import {
   modalWindowState,
   showChangePasswordWindow,
@@ -26,6 +30,27 @@ export function AccountSettings({ className }) {
   const { modalEmailConnect, modalUsernameEdit, modalSetPassword, modalChangePassword } =
     useSelector(modalWindowState);
   const dispatch = useDispatch();
+  const { currentLanguage } = useSelector(language);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleClickOutside = (event) => {
+    if (menuRef.current && !menuRef.current.contains(event.target)) {
+      setIsMenuOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className={cn(s.settings, className)}>
@@ -45,14 +70,39 @@ export function AccountSettings({ className }) {
                 onClick={() => dispatch(showUsernameEditWindow(true))}></div>
               {modalUsernameEdit && <UsernameEditPopup text={text} />}
             </div>
-            <Button className={cn(s.header__langInfo, 'iconDropdownArrow')}>
-              <div className={cn(s.header__language)}>Eng</div>
-              <img
-                className={cn(s.header__language_img)}
-                src={eng}
-                alt={'Image of current language'}
-              />
-            </Button>
+            <div ref={menuRef} className={s.container__language}>
+              <Button
+                className={cn(s.header__langInfo, 'iconDropdownArrow')}
+                onClick={toggleMenu}>
+                {currentLanguage && (
+                  <div className={cn(s.header__language)}>{currentLanguage}</div>
+                )}
+                <img
+                  className={cn(s.header__language_img)}
+                  src={eng}
+                  alt={'Image of current language'}
+                />
+              </Button>
+              {isMenuOpen && (
+                <div className={s.menuLang}>
+                  <ul className={cn(s.menuLang__sublist)}>
+                    {LANGUAGES.map((item, index) => (
+                      <li
+                        className={cn(s.menuLang__item)}
+                        key={index}
+                        onClick={() => dispatch(languageRequest.change())}>
+                        <img
+                          className={cn(s.item__icon, s.item__icon_flag)}
+                          src={item.icon}
+                          alt={'language flag'}
+                        />
+                        <div className={s.item__title}>{item.lang}</div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
           </div>
           <div className={cn(s.info__connections, s.connections)}>
             <div className={cn(s.connections__title)}>
