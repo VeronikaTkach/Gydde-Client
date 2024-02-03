@@ -1,59 +1,128 @@
 @use '../../../../styles/styles.scss' as *;
 
-.referralLink {
-    &__title {
-        @include textStyleButton2;
-    }
-    &__socials {
-    }
-}
-
-.link {
-    @include width-height(100%, 68px);
-    @include flex-grid(flex, null, space-between, center);
-    gap: 16px;
-    padding: 18px $space10;
-    margin: 24px 0 20px;
+.history {
+  &__title {
+    color: var(--Colors-form-label-placeholder, #868686);
+    @include fontRoboto;
+    @include fontStyle(20px, 700, 32px);
     @include themed() {
-        border: 1px solid t($surfaceBorder1);
-        border-radius: t($radiusSmall);
-        background: t($formBackground);
+      color: t($formLabelPlaceholder);
     }
-    &__text {
-        @include fontStyle(20px, 400, 24px);
-        max-width: 306px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+    font-style: normal;
+    height: $space14;
+    padding-left: 20px;
+  }
+  &__scroll {
+    max-height: 355px; 
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 3px;
     }
-    &__copy {
-        cursor: pointer;
-        background-color: transparent;
-        font-size: 26px;
-        @include width-height(32px);
-        @include flexCenter;
-        @include themed() {
-            color: t($buttonBorderHover);
-        }
-        &:hover {
-            transition: .3s;
-            @include themed() {
-              color: t($messageLabelGuides);
-            }
-          }
+    &::-webkit-scrollbar-thumb {
+      @include themed() {
+        background-color: t($surfaceBorderSubtitles);
+      }
     }
+  }
 }
 
-.socials {
-    @include flex-grid(flex, null, space-between, center);
-    &__link {
-        border-radius: 50%;
-        font-size: 40px;
-        @include width-height(56px);
-        @include flexCenter;
-        @include themed() {
-            color: t($bgSecondary);
-            background-color: t($surfacePrimary2);
-        }
+.transaction {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include themed() {
+    border-bottom: 1px solid t($messageLabelGuides);
+  }
+  &__img {
+    padding: 24px 12px;
+  }
+  &__type {
+    width: 42px;
+    height: 48px;
+  }
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+  }
+  &__circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #D9D9D9; // todo добавить в переменные
+  }
+  &__title {
+    text-align: center;
+    @include fontRoboto;
+    @include fontStyle(20px, 700, 24px);
+    font-style: normal;
+    @include themed() {
+      color: t($textPrimaryMain);
     }
+  }
+  &__text {
+    @include fontRoboto;
+    @include fontStyle(16px, 500, 20px);
+    font-style: normal;
+    @include themed() {
+      color: t($textPrimaryMain);
+    }
+  }
+  &__info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $space10;
+    padding: 12px;
+  }
+  &__crypto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+  &__share {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    &>div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  &__plus {
+    color: var(--Colors-form-label-placeholder, #868686);
+    @include fontRoboto;
+    @include fontStyle(16px, 500, 20px);
+    font-style: normal;
+  }
+  &__metamask {
+    width: 24px;
+    height: 24px;
+  }
+  &__btn {
+    background: transparent;
+    font-size: 20px;
+    transition: .3s;
+    cursor: pointer;
+    @include themed() {
+      color: t($formLabelPlaceholder);
+    }
+    &:hover {
+      @include themed() {
+        color: t($messageLabelGuides);
+      }
+    }
+    &:active {
+      @include themed() {
+        color: t($buttonBorderHover);
+      }
+    }
+  }
 }

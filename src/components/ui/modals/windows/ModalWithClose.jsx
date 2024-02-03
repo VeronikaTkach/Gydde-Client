@@ -9,7 +9,7 @@ export function ModalWithClose({ Component, children, className, onClose, styles
         <Button
           className={cn(s.modal__close, 'iconClose')}
           onClick={onClose}
-          style={{ top: styles?.top }}></Button>
+          style={{ top: styles?.top, right: styles?.right }}></Button>
       </div>
       <div>{children}</div>
     </Component>
