@@ -149,4 +149,5 @@ export const TEXT_KEYS = {
     `${PageName.Claim}.payFeeFrom`,
     `${PageName.Claim}.btnText`,
   ],
+  [PageName.History]: [`${PageName.Claim}.title`],
 };
