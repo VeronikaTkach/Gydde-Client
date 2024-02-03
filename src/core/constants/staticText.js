@@ -162,4 +162,7 @@ export const STATIC_TEXT = {
     payFeeFrom: 'Pay transaction fee from my wallet',
     btnText: 'Claim',
   },
+  [PageName.History]: {
+    title: 'Transaction history',
+  },
 };

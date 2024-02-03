@@ -8,6 +8,9 @@ import {
   ModalWithClose,
   ModalWithBorderShadow,
 } from '../../../../components/ui/modals/windows';
+import { PageName } from '../../../../core/constants/PageNames';
+import { STATIC_TEXT } from '../../../../core/constants/staticText';
+import { useRequestStaticText } from '../../../../core/hooks/useRequestStaticText';
 import { showHistoryWindow } from '../../../../core/store/slices/modalWindowStateSlice';
 import s from './style.module.scss';
 
@@ -77,8 +80,9 @@ const transactions = [
   },
 ];
 
-export function HistoryPopup({ text }) {
+export function HistoryPopup() {
   const dispatch = useDispatch();
+  const { text } = useRequestStaticText(PageName.History);
 
   const styles = {
     maxWidth: 748,
@@ -94,14 +98,18 @@ export function HistoryPopup({ text }) {
       onClose={() => dispatch(showHistoryWindow(false))}
       styles={styles}
       closeStyle={cn(s.history__close)}>
-      <div className={cn(s.history)}>
-        <h2 className={s.history__title}>Transaction history</h2>
-        <div className={s.history__scroll}>
-          {transactions.map((item, index) => {
-            return <TransactionItem key={index} text={item} />;
-          })}
+      {text || (
+        <div className={cn(s.history)}>
+          <h2 className={s.history__title}>
+            {text?.title || STATIC_TEXT[PageName.History].title}
+          </h2>
+          <div className={s.history__scroll}>
+            {transactions.map((item, index) => {
+              return <TransactionItem key={index} text={item} />;
+            })}
+          </div>
         </div>
-      </div>
+      )}
     </ModalWithClose>
   );
 }

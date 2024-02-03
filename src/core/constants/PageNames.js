@@ -13,6 +13,7 @@ export const PageName = {
   GuidesChat: 'GuidesChat',
   PartnerGuide: 'PartnerGuide',
   Claim: 'Claim',
+  History: 'History',
 };
 
 Object.freeze(PageName);
