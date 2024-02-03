@@ -27,20 +27,6 @@
 			width: 284px;
 			height: 56px;
 			border-radius: 16px;
-			&:hover {
-				@include themed() {
-					color: $colorBlack;
-					background: $colorGreen;
-					background-clip: padding-box;
-					-webkit-text-fill-color: unset;
-				}
-			}
-			&:disabled {
-				@include themed() {
-					background: $colorGreen;
-					cursor:default;
-				}
-			}
 		}
 	}
 	&__block {

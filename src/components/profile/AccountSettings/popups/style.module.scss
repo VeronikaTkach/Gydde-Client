@@ -1,8 +1,14 @@
 @use '../../../../styles/styles.scss' as *;
 
-
-.title {
-	@include textStyleButton2;
+.modal {
+	max-width: 748px;
+	padding: 40px 60px;
+	&_littleSize {
+		max-width: 546px;
+	}
+	&__title {
+		@include textStyleButton2;
+	}
 }
 
 .form {

@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
+import mascot from '../../../assets/images/mascot/mascotWithBook.png';
 import { SubtitleWithDifferentButton } from '../../../components/Subtitle';
 import { ProfileFolder } from '../../../components/profile/ProfileFolder';
 import { ReferralAd } from '../../../components/profile/RefferalAd/RefferalAd';
@@ -31,7 +32,11 @@ export function ProfileReferralPage() {
               {userReferral === UserReferralStatus.NoReferral ? (
                 <ReferralAd text={text} />
               ) : userReferral === UserReferralStatus.Referral ? (
-                <ReferralAndGuides text={text} pageName={PageName.ProfileReferrals} />
+                <ReferralAndGuides
+                  text={text}
+                  pageName={PageName.ProfileReferrals}
+                  mascotImg={mascot}
+                />
               ) : null}
             </ProfileFolder>
           </div>

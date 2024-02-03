@@ -1,6 +1,5 @@
 import cn from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
-import mascot from '../../../assets/images/mascot/mascotGood.png';
 import { STATIC_TEXT } from '../../../core/constants/staticText';
 import {
   modalWindowState,
@@ -10,13 +9,13 @@ import { ButtonWithBorder } from '../../ui/buttons/Button';
 import { ClaimPopup } from './ClaimPopup/ClaimPopup';
 import s from './style.module.scss';
 
-export function ReferralAndGuides({ className, text, pageName }) {
+export function ReferralAndGuides({ className, text, pageName, mascotImg }) {
   const dispatch = useDispatch();
   const { modalClaim } = useSelector(modalWindowState);
 
   return (
     <div className={cn(s.profile, className)}>
-      <img className={s.profile__img} src={mascot} alt={'mascot likes it'} />
+      <img className={s.profile__img} src={mascotImg} alt={'mascot reads'} />
       <div className={s.profile__info}>
         <div className={s.profile__rewards}>
           <div className={s.profile__unclaimed}>

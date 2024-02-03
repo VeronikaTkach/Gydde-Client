@@ -1,6 +1,9 @@
 @use '../../styles/styles.scss' as *;
 
 .auth {
+	max-width: 1016px;
+	min-height: 568px;
+	padding: $space11 $space16;
 	&__header {
 		@include flex-grid(flex, row, space-between, center);
 		gap: $space6;

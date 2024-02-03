@@ -24,13 +24,6 @@ export function EmailConnectPopup({ text }) {
   const { status, errorType } = useSelector(allAuth);
   const [mailValidation, setMailValidation] = useState(mailValidationWithoutMessage);
 
-  const styles = {
-    maxWidth: 748,
-    minHeight: 398,
-    padding: '36px 60px',
-    top: 4,
-  };
-
   const {
     register,
     setValue,
@@ -73,12 +66,12 @@ export function EmailConnectPopup({ text }) {
     <ModalWithClose
       Component={ModalWithBorderShadow}
       onClose={() => dispatch(showEmailConnectWindow(false))}
-      styles={styles}>
+      className={s.modal}>
       <div>
-        <div className={cn(s.title)}>
+        <div className={cn(s.modal__title)}>
           {text?.editMailTitle || STATIC_TEXT[PageName.ProfileSettings].editMailTitle}
         </div>
-        <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+        <form className={cn(s.modal__form, s.form)} onSubmit={handleSubmit(onSubmit)}>
           <div className={s.form__inputs}>
             <div className={s.form__input}>
               <Input

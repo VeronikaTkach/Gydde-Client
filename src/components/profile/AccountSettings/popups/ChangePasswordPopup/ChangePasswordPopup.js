@@ -11,7 +11,6 @@ import { passwordValidation } from '../../../../Auth/validations/registerValidat
 import { Input } from '../../../../ui/Input';
 import { ButtonWithBorder } from '../../../../ui/buttons/Button';
 import { ModalWithClose, ModalWithBorderShadow } from '../../../../ui/modals/windows';
-import { styles } from '../SetPasswordPopup';
 import s from '../style.module.scss';
 
 export function ChangePasswordPopup({ text }) {
@@ -50,12 +49,12 @@ export function ChangePasswordPopup({ text }) {
     <ModalWithClose
       Component={ModalWithBorderShadow}
       onClose={() => dispatch(showChangePasswordWindow(false))}
-      styles={styles}>
+      className={s.modal}>
       <div>
-        <div className={cn(s.title)}>
+        <div className={cn(s.modal__title)}>
           {text?.changePassTitle || STATIC_TEXT[PageName.ProfileSettings].changePassTitle}
         </div>
-        <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+        <form className={cn(s.modal__form, s.form)} onSubmit={handleSubmit(onSubmit)}>
           <div className={s.form__inputs}>
             <div className={s.form__input}>
               <Input

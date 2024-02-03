@@ -29,7 +29,10 @@ export function Auth() {
   };
 
   return (
-    <ModalWithClose Component={ModalWithBorderShadow} onClose={onClose}>
+    <ModalWithClose
+      Component={ModalWithBorderShadow}
+      onClose={onClose}
+      className={s.auth}>
       {text && (
         <>
           {(currentAuthorizationType === AuthorizationType.NotСhosen ||

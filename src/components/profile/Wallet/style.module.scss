@@ -4,14 +4,12 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  border-bottom-left-radius: $space8;
-  border-bottom-right-radius: $space8;
-  padding: 57px 120px 0px 0px;
-  height: fit-content;
   gap: 64px;
-  @include themed() {
-    background: t($bg);
-    border: 1px solid t($surfaceBorderSubtitles);
+  &__container {
+    padding: 57px 120px 0px 0px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between
   }
   &__field {
     @include width-height(562px, 278px);
@@ -100,7 +98,6 @@
       gap: 8px;
       &_title {
         white-space: nowrap;
-        // width: 105px;
         flex-shrink: 0;
       }
     }
@@ -133,5 +130,11 @@
         color: t($buttonBorderHover);
       }
     }
+  }
+  &__loader {
+    @include flexCenter;
+    @include width-height(100%);
+    margin-bottom: -87px;
+    padding-top: 10px;
   }
 }

@@ -13,13 +13,6 @@ import { ButtonWithBorder } from '../../../../ui/buttons/Button';
 import { ModalWithClose, ModalWithBorderShadow } from '../../../../ui/modals/windows';
 import s from '../style.module.scss';
 
-export const styles = {
-  maxWidth: 748,
-  minHeight: 298,
-  padding: '36px 60px',
-  top: 4,
-};
-
 export function SetPasswordPopup({ text }) {
   const dispatch = useDispatch();
   const { status, errorType } = useSelector(allAuth);
@@ -62,14 +55,14 @@ export function SetPasswordPopup({ text }) {
 
   return (
     <ModalWithClose
+      className={s.modal}
       Component={ModalWithBorderShadow}
-      onClose={() => dispatch(showSetPasswordWindow(false))}
-      styles={styles}>
+      onClose={() => dispatch(showSetPasswordWindow(false))}>
       <div>
-        <div className={cn(s.title)}>
+        <div className={cn(s.modal__title)}>
           {text?.setPassTitle || STATIC_TEXT[PageName.ProfileSettings].setPassTitle}
         </div>
-        <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+        <form className={cn(s.modal__form, s.form)} onSubmit={handleSubmit(onSubmit)}>
           <div className={s.form__inputs}>
             <div className={s.form__input}>
               <Input

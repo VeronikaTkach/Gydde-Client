@@ -1,17 +1,12 @@
 import { useEffect } from 'react';
-import { Socials } from '../../../core/constants/Socials';
-import { twitterAuthorization } from '../../../core/api/authorizationTwitter';
-import smiley from '../../../assets/images/stickers/smiley.png';
-import ball from '../../../assets/images/stickers/ball.png';
-import bangOrange from '../../../assets/images/stickers/bangOrange.png';
-import bangWhite from '../../../assets/images/stickers/bangWhite.png';
-import metamaskSmiley from '../../../assets/images/stickers/metamask.png';
-import mascot from '../../../assets/images/mascot/mascotStands.png';
-import { StickersSpinner } from '../../../components/ui/loaders/StickersSpinner';
-import s from './style.module.scss';
-import { authRequest } from '../../../core/store/auth/thunk';
 import { useDispatch, useSelector } from 'react-redux';
+import mascot from '../../../assets/images/mascot/mascotStands.png';
+import { LoaderMascotWithStikers } from '../../../components/ui/loaders/LoaderMascotWithStikers';
+import { twitterAuthorization } from '../../../core/api/authorizationTwitter';
+import { Socials } from '../../../core/constants/Socials';
 import { allAuth } from '../../../core/store/auth/slice';
+import { authRequest } from '../../../core/store/auth/thunk';
+import s from './style.module.scss';
 
 export function SocialsOauthPage({ social }) {
   const urlParams = new URLSearchParams(window.location.search);
@@ -40,12 +35,10 @@ export function SocialsOauthPage({ social }) {
 
   return (
     <div className={s.loader}>
-      <div className={s.loader__mascot}>
-        <img src={mascot} alt={'mascot'} />
-      </div>
-      <StickersSpinner
-        className={s.loader__spinner}
-        icons={[smiley, ball, bangOrange, metamaskSmiley, bangWhite]}
+      <LoaderMascotWithStikers
+        mascotImg={mascot}
+        spinnerSize={'200px'}
+        spinnerTopPosition={'-25%'}
       />
     </div>
   );

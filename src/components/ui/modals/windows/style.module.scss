@@ -7,16 +7,23 @@
 	@include width-height(100%, 100vh);
 	@include flexCenter;
 	z-index: 100;
-	background-color: #171717f2; //TODO !временно, дизайнеры не добавили цвет пока
+	background-color: $darkenedBackground; //TODO !временно, дизайнеры не добавили цвет пока
 	&__container {
-		padding: 0 $space5;
-		margin: 0 auto;
-		max-width: 1048px;
+		position: relative;
+		// padding: 0 $space5;
+		// margin: 0 auto;
+		// max-width: 1048px;
 		width: 100%;
+		@include themed() {
+			border-radius: t($radiusSmall);
+			color: t($textPrimaryMain);
+			background-color: t($bg);
+			box-shadow: t($shadowBgPopup);
+		}
 	}
 	&__wrapper {
-		padding: $space12 $space16 $space10;
-		min-height: 568px;
+		// padding: $space12 $space16 $space10;
+		// min-height: 568px;
 		@include themed() {
 			border-radius: t($radiusSmall);
 			color: t($textPrimaryMain);
@@ -29,9 +36,9 @@
 	}
 	&__close {
 		position: absolute;
-		top: 12px;
+		top: 0;
 		right: 0;
-		z-index: 100;
+		z-index: 150;
 		font-size: 24px;
 		background-color: transparent;
 		@include themed() {
@@ -44,7 +51,44 @@
 			}
 		}
 	}
+	&Transaction {
+		max-width: 1016px;
+		padding: 36px 40px 0 0;
+		&__container {
+			display: flex;
+			@include width-height(100%);
+		}
+		&__img {
+			display: flex;
+			align-items: flex-end;
+			width: fit-content;
+			margin-top: -36px;
+			& img {
+				height: 100%;
+			}
+		}
+		&__info {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			width: 100%;
+			padding-bottom: 36px;
+		}
+		&__title {
+			@include textCenter;
+			@include fontStyle(36px, 400, 44px);
+			@include fontRussoOne;
+			margin-top: 36px;
+			@include themed() {
+				color: t($textPrimaryMain);
+			}
+		}
+		&__text {
+			flex: 1 1 auto;
+		}
+	}
 }
+
 
 
 

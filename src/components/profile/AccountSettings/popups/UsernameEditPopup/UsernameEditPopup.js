@@ -15,13 +15,6 @@ export function UsernameEditPopup({ text }) {
   const dispatch = useDispatch();
   const { status } = useSelector(allAuth);
 
-  const styles = {
-    maxWidth: 546,
-    minHeight: 292,
-    padding: '46px 60px',
-    top: 4,
-  };
-
   const {
     register,
     setValue,
@@ -39,12 +32,12 @@ export function UsernameEditPopup({ text }) {
     <ModalWithClose
       Component={ModalWithBorderShadow}
       onClose={() => dispatch(showUsernameEditWindow(false))}
-      styles={styles}>
+      className={cn(s.modal, s.modal_littleSize)}>
       <div>
-        <div className={cn(s.title)}>
+        <div className={cn(s.modal__title)}>
           {text?.editNameTitle || STATIC_TEXT[PageName.ProfileSettings].editNameTitle}
         </div>
-        <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+        <form className={cn(s.modal__form, s.form)} onSubmit={handleSubmit(onSubmit)}>
           <Input
             className={s.input}
             classError={errors.username} //TODO переделать для юзернейма

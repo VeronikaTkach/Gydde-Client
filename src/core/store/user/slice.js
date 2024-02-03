@@ -4,7 +4,7 @@ import { userRequest } from './thunk';
 
 const initialState = {
   userName: null,
-  userReferral: UserReferralStatus.NoReferral,
+  userReferral: UserReferralStatus.Referral,
 };
 
 export const userSlice = createSlice({

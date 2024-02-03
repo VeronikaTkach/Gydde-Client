@@ -3,16 +3,10 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import mascotBody from '../../../assets/images/mascot/mascotBodyStands.png';
 import mascotHands from '../../../assets/images/mascot/mascotHandsStands.png';
-import ball from '../../../assets/images/stickers/ball.png';
-import bangOrange from '../../../assets/images/stickers/bangOrange.png';
-import bangWhite from '../../../assets/images/stickers/bangWhite.png';
-import metamaskSmiley from '../../../assets/images/stickers/metamask.png';
-import smiley from '../../../assets/images/stickers/smiley.png';
 import smileyEyesStar from '../../../assets/images/stickers/smileyEyesStar.png';
 import thumbUp from '../../../assets/images/stickers/thumbUp.png';
 import { MetamaskConnection } from '../../../components/Auth/Metamask';
 import { SubtitleWithBorderButton } from '../../../components/Subtitle';
-import { StickersSpinner } from '../../../components/ui/loaders/StickersSpinner';
 import { PageName } from '../../../core/constants/PageNames';
 import { Size } from '../../../core/constants/Size';
 import { MetamaskConnectionStatus } from '../../../core/constants/Status';
@@ -23,6 +17,7 @@ import {
   setFirstHighlightedItem,
   setMetamaskConnectionStatus,
 } from '../../../core/store/metamask/slice';
+import { LoaderMascotWithStikers } from '../../ui/loaders/LoaderMascotWithStikers';
 import s from './style.module.scss';
 
 const buttonIcon = {
@@ -74,9 +69,9 @@ export function MetamaskView() {
           <div className={cn(s.connectWindow__header, s.header)}>
             <MetamaskConnection status={connectionStatus} text={currentText.statusText} />
           </div>
-          <StickersSpinner
+          <LoaderMascotWithStikers
             className={s.connectWindow__spinner}
-            icons={[smiley, ball, bangOrange, metamaskSmiley, bangWhite]}
+            spinnerSize={'200px'}
           />
           <div className={cn(s.connectWindow__mascot, s.mascot)}>
             <img className={s.mascot__body} src={mascotBody} alt={'mascot'} />

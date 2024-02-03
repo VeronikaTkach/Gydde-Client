@@ -11,11 +11,6 @@
 		display: flex;
 		justify-content: center;
 	}
-
-	&__spinner {
-		position: absolute;
-		margin-top: 45px;
-	}
 }
 
 .header {
@@ -50,7 +45,6 @@
 	}
 
 	&__text {
-		// text-align: left;
 		position: relative;
 		@include textStyleButton2;
     grid-template-columns: 1fr fit-content(20px);

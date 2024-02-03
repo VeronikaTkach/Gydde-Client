@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import mascot from '../../../assets/images/mascot/mascotReads2.png';
 import { SubtitleWithAccentButton } from '../../../components/Subtitle';
 import { ProfileFolder } from '../../../components/profile/ProfileFolder';
 import { ReferralAndGuides } from '../../../components/profile/RefferalAndGuides/RefferalAndGuides';
@@ -16,7 +17,11 @@ export function ProfileGuidesPage() {
         <div className={cn(s.content__container)}>
           <ProfileFolder>
             {text && (
-              <ReferralAndGuides staticText={text} pageName={PageName.ProfileGuides} />
+              <ReferralAndGuides
+                staticText={text}
+                pageName={PageName.ProfileGuides}
+                mascotImg={mascot}
+              />
             )}
           </ProfileFolder>
         </div>
