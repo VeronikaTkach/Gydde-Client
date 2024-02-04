@@ -146,5 +146,162 @@
 		"ProfileReferrals_NoReferral.mascotVoice": "Imagine you invite 10 friends who also invite 10 friends and they complete 10 quests each. You will earn 900$. That's AWESOME!",
 		"ProfileWallet.mascotVoice": "Every time I transfer a reward to your wallet, I write it down for you. So, nothing will be lost :)",
 		"ProfileWallet_NoWallet.mascotVoice": "Well, you don't have a wallet connected. If you don't know how to connect a wallet just tell me and I will show you how to do it :)"
-	}
+	},
+	"quest-step": [
+		[
+			{
+				"questStepType": "ONBOARDING",
+				"userQuestStepStatus": "DONE",
+				"questStepMessages": [
+					{
+						"message": "Surculus aureus stabilis maiores ager vito enim suffoco creo. Deprimo verbera templum pecco. Theca statua volubilis utroque cogo adicio.\nDolor venio cubicularis sophismata administratio curto. Eligendi templum demonstro causa velit cerno deludo advenio tristis congregatio. Defleo strues villa auctor vita in cunae surgo abscido.\nInventore carmen testimonium earum. Delibero iste conforto dolorem aetas ascisco. Impedit apostolus quisquam capto viriliter aufero aestus victoria caelestis pariatur.",
+						"audioLink": "string",
+						"imageLink": ""
+					}
+				],
+				"questStepActionType": "NEXT, TEXT, HELLO_PHRASE"
+			}
+		],
+		[
+			{
+				"questStepType": "ONBOARDING",
+				"userQuestStepStatus": "DONE",
+				"questStepMessages": [
+					{
+						"message": "Turbo sollicito tergo sono vitiosus inventore compello sed delicate candidus. Solvo armarium confero tredecim officia. Trado censura quaerat sperno volaticus antea terror tergum votum amita.\nCohaero accusantium angustus sopor magnam deripio verumtamen substantia iure. Triumphus comparo aeternus antea vulgaris eos quos capitulus vulgaris sonitus. Advenio vester depopulo tenus calculus teres sub alter delectatio comburo.",
+						"audioLink": "string",
+						"imageLink": ""
+					}
+				],
+				"questStepActionType": "NEXT"
+			}
+		],
+		[
+			{
+				"questStepType": "ONBOARDING",
+				"userQuestStepStatus": "DONE",
+				"questStepMessages": [
+					{
+						"message": "Turpis suppono carus et derelinquo appono casso. Suspendo cedo defendo. Tersus triduana provident comprehendo cupio deinde.",
+						"audioLink": "string",
+						"imageLink": "https://via.placeholder.com/197x2146/d6cdd3/afe40a.png?text=minus%20aegrus%20vel"
+					}
+				],
+				"questStepActionType": "TEXT"
+			}
+		],
+		[
+			{
+				"questStepType": "ONBOARDING",
+				"userQuestStepStatus": "DONE",
+				"questStepMessages": [
+					{
+						"message": "Utilis adduco vaco cetera tubineus cibus balbus vestigium. Copiose admoveo campana reiciendis anser comedo provident adipisci vindico. Tollo ulciscor caterva ater demergo.",
+						"audioLink": "string",
+						"imageLink": ""
+					}
+				],
+				"questStepActionType": "NEXT"
+			}
+		],
+		[
+			{
+				"questStepType": "ONBOARDING",
+				"userQuestStepStatus": "DONE",
+				"questStepMessages": [
+					{
+						"message": "Mollitia agnosco beneficium tabula auxilium. A valeo adopto. Verumtamen impedit comparo taceo.",
+						"audioLink": "string",
+						"imageLink": ""
+					}
+				],
+				"questStepActionType": "TEXT"
+			}
+		],
+		[
+			{
+				"questStepType": "ONBOARDING",
+				"userQuestStepStatus": "DONE",
+				"questStepMessages": [
+					{
+						"message": "Cohibeo cognomen communis xiphias conturbo utrum aduro vomer. Currus pax absconditus vae delinquo derideo ut. Turbo claudeo vulpes accendo spiritus stabilis incidunt ullam adicio amicitia.",
+						"audioLink": "string",
+						"imageLink": ""
+					}
+				],
+				"questStepActionType": "NEXT"
+			}
+		],
+		[
+			{
+				"questStepType": "ONBOARDING",
+				"userQuestStepStatus": "DONE",
+				"questStepMessages": [
+					{
+						"message": "Tredecim ademptio tendo victoria universe esse. ",
+						"audioLink": "string",
+						"imageLink": ""
+					}
+				],
+				"questStepActionType": "NEXT"
+			}
+		],
+		[
+			{
+				"questStepType": "ONBOARDING",
+				"userQuestStepStatus": "DONE",
+				"questStepMessages": [
+					{
+						"message": "Summa comminor contra bellicus arceo capto tergiversatio tremo uter. Timor quisquam temporibus dicta assumenda. Tam infit coaegresco talis debitis assentator.",
+						"audioLink": "string",
+						"imageLink": "https://via.placeholder.com/3316x1908/d2dec5/4d55c3.jpg?text=tabesco%20desolo%20adflicto"
+					},
+					{
+						"message": "Qui ratione caste vinum. Antepono conforto urbs. Impedit infit vilitas argumentum tergeo.\nTerga urbanus decerno auxilium thorax. Ipsum adnuo acies corporis termes admoveo officiis. Amor beatus constans theca adipisci careo vinco vitae adhuc.",
+						"audioLink": "string",
+						"imageLink": ""
+					},
+					{
+						"message": "Summa comminor contra bellicus arceo capto tergiversatio tremo uter. Timor quisquam temporibus dicta assumenda. Tam infit coaegresco talis debitis assentator.",
+						"audioLink": "string",
+						"imageLink": ""
+					}
+				],
+				"questStepActionType": "NEXT"
+			}
+		],
+		[
+			{
+				"questStepType": "ONBOARDING",
+				"userQuestStepStatus": "DONE",
+				"questStepMessages": [
+					{
+						"message": "Quisquam curatio spoliatio aetas triumphus.",
+						"audioLink": "string",
+						"imageLink": ""
+					}
+				],
+				"questStepActionType": "TEXT"
+			}
+		],
+		[
+			{
+				"questStepType": "ONBOARDING",
+				"userQuestStepStatus": "DONE",
+				"questStepMessages": [
+					{
+						"message": "Qui ratione caste vinum. Antepono conforto urbs. Impedit infit vilitas argumentum tergeo.\nTerga urbanus decerno auxilium thorax. Ipsum adnuo acies corporis termes admoveo officiis. Amor beatus constans theca adipisci careo vinco vitae adhuc.",
+						"audioLink": "string",
+						"imageLink": ""
+					},
+					{
+						"message": "Summa comminor contra bellicus arceo capto tergiversatio tremo uter. Timor quisquam temporibus dicta assumenda. Tam infit coaegresco talis debitis assentator.",
+						"audioLink": "string",
+						"imageLink": ""
+					}
+				],
+				"questStepActionType": "NEXT"
+			}
+		]
+	]
 }

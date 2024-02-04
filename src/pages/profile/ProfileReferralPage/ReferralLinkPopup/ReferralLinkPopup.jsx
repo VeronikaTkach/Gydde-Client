@@ -14,12 +14,12 @@ export function ReferralLinkPopup({ text }) {
   const dispatch = useDispatch();
   const link = 'http://gyddy.com?REFERRALCODE=yourlink'; //TODO получать с сервера
 
-  const styles = {
-    maxWidth: 546,
-    minHeight: 292,
-    padding: '46px 60px',
-    top: 4,
-  };
+  // const styles = {
+  //   maxWidth: 546,
+  //   minHeight: 292,
+  //   padding: '46px 60px',
+  //   top: 4,
+  // };
 
   const socials = [
     { name: 'iconTelegram', size: 23 },
@@ -33,7 +33,7 @@ export function ReferralLinkPopup({ text }) {
     <ModalWithClose
       Component={ModalWithBorderShadow}
       onClose={() => dispatch(showReferralLinkWindow(false))}
-      styles={styles}>
+      className={s.modal}>
       <div>
         <div className={cn(s.title)}>
           {text?.referralLinkTitle ||

@@ -17,7 +17,6 @@ import { QuestWindow } from '../../quests/QuestWindow';
 import { NavigationLink } from '../../ui/Navlink';
 import { Button, ButtonWithBorder } from '../../ui/buttons/Button';
 import s from './style.module.scss';
-// import { LocalStorageItems } from '../../../core/constants/LocalStorageItems';
 
 export function Header({ className }) {
   const dispatch = useDispatch();
@@ -25,7 +24,7 @@ export function Header({ className }) {
   const { modalAuthorization, modalQuest } = useSelector(modalWindowState);
   const { token } = useSelector(allAuth);
   // console.log(token);
-  // localStorage.setItem(LocalStorageItems.AuthorizationToken,'token')
+  // localStorage.setItem('AuthorizationToken','token')
   // localStorage.clear()
 
   return (

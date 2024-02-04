@@ -40,7 +40,7 @@ export function Wallet({ className, text }) {
   return (
     <>
       <div className={cn(s.wallet, className)}>
-        {!account ? (
+        {account ? (
           <div className={s.wallet__container}>
             <img className={s.wallet__mascot} src={mascot} alt={'mascot likes it'} />
             <div className={s.wallet__field}>

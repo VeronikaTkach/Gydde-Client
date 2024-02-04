@@ -1,5 +1,9 @@
 @use '../../../../styles/styles.scss' as *;
 
+.modal {
+  max-width: 576px;
+  padding: 50px 60px;
+}
 .title {
     @include textStyleButton2;
 }
