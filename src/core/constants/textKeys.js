@@ -150,4 +150,8 @@ export const TEXT_KEYS = {
     `${PageName.Claim}.btnText`,
   ],
   [PageName.History]: [`${PageName.Claim}.title`],
+  [PageName.PartnerGuide]: [
+    `${PageName.PartnerGuide}.subtitle`,
+    `${PageName.PartnerGuide}.buttonText`,
+  ],
 };

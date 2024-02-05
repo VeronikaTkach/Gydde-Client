@@ -4,6 +4,7 @@ import { Socials } from '../core/constants/Socials';
 import { LayoutMain } from '../layouts/LayoutMain';
 import { GuidePage } from '../pages/GuidePage';
 import { HelloPage } from '../pages/HelloPage/HelloPage';
+import { PartnerGuidePage } from '../pages/PartnerGuidePage/PartnerGuidePage';
 import { SocialsOauthPage } from '../pages/auth/SocialsOauthPage';
 import './style.scss';
 import { ProfileGuidesPage } from '../pages/profile/ProfileGuidesPage';
@@ -19,7 +20,7 @@ export function App() {
           <Route path={RoutesName.Root} element={<LayoutMain />}>
             <Route index element={<GuidePage />} />
             <Route path={RoutesName.HelloPage} element={<HelloPage />} />
-            <Route path={RoutesName.PartnerGuide} element={<HelloPage />} />
+            <Route path={RoutesName.PartnerGuide} element={<PartnerGuidePage />} />
             <Route path={RoutesName.ProfileReferral} element={<ProfileReferralPage />} />
             <Route path={RoutesName.ProfileGuides} element={<ProfileGuidesPage />} />
             <Route path={RoutesName.ProfileWallet} element={<ProfileWalletPage />} />

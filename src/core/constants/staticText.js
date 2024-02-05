@@ -165,4 +165,9 @@ export const STATIC_TEXT = {
   [PageName.History]: {
     title: 'Transaction history',
   },
+  [PageName.PartnerGuide]: {
+    subtitle:
+      "Hello! I'm Gydde! Choose your language and let's go on a journey through Web3",
+    buttonText: "Let's go!",
+  },
 };

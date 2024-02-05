@@ -1,46 +1,29 @@
 @use '../../styles/styles.scss' as *;
 
-.content {
-	&__mainScreen {
-		position: relative;
-		padding: 12px 0;
-	}
-	&__carousel {
-		position: relative;
-		padding: 0 120px;
+.partnersGuide {
+	position: relative;
+	// padding: 12px 0;
 
+	&__main {
+		display: flex;
+		gap: $space21;
+		padding: 59px 120px 59px 120px;
 	}
-	&__button {
-		position: absolute;
-		top: 0;
-		height: 100%;
-		background-color: transparent;
-		font-size: 96px;
-		z-index: 5;
-		@include themed() {
-			color: t($buttonBgActive);
-		}
-		&:hover {
-			@include themed() {
-				color: t($buttonBgHover3);
-			}
-		}
-		&_prev {
-			padding-right: 89px;
-			left: 0;
-		}
-		&_next {
-			rotate: 180deg;
-			padding-right: 89px;
-			right: 0;
-		}
+	&__card {
+		border: 1px solid grey;
+		@include width-height(680px, 360px);
+		text-align: center;
+		font-size: 50px;
+	}
+	&__languages {
+		@include width-height(360px, 360px);
 	}
 	&__mascotImg {
 		position: relative;
 		width: 340px;
 		display: flex;
 		bottom: 0;
-		margin-top: -300px;
+		margin-top: -230px;
 		z-index: 2;
 		& img {
 			display: block;
@@ -48,9 +31,10 @@
 			object-fit: cover;
 		}
 	}
+
 	&__subtitle {
 		position: absolute;
-		top: 464px;
+		top: 478px;
 		@include fontStyle(28px, 700, 40px);
 		grid-template-columns: $space14 1fr fit-content(50px);
 		grid-template-rows: 1fr 68px;
